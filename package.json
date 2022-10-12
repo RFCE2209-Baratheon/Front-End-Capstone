@@ -1,17 +1,30 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "Front End Capstone",
+  "version": "1.0",
+  "description": "Re designing the website for xxx",
+  "author": "Team Baratheon",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "webpack --mode development --watch",
+    "live": "liver server - TBD",
+    "test": "TBD"
+
+
   },
   "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.15.0",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0"
+
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "webpack": "5.74.0",
+    "webpack-cli": "4.10.0"
+
   }
 }
