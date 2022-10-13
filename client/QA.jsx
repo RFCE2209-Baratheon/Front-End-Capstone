@@ -9,4 +9,4 @@ const QA = (props) => {
 }
 
 
-export default Review;
+export default QA;
