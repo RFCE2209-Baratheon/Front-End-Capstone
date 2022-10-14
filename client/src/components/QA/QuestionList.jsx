@@ -1,8 +1,8 @@
 import React from 'react';
 import './assets/styles.css';
-
+import axios from 'axios';
 // react hooks
-const { useState } = React;
+const { useState, useEffect } = React;
 
 // remove exampleData when we connect this module to the API
 // exampleData.results[0].question_body
@@ -59,8 +59,32 @@ const exampleData = {
 }
 
 const QuestionList = () => {
+
+
   // States
   const [selected, setSelected] = useState(null)
+  const [productId, setProductId] = useState('37314')
+  const [questions, setQuestions] = useState([])
+
+  // Hooks
+  useEffect(()=> {
+
+    // Config for request
+    const config = {
+      params: {product_id: productId},
+      headers:{'Authorization':'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'}
+    }
+
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
+    .then((res)=>{
+      setQuestions(res.data.results)
+    })
+    .catch((error)=>{
+      console.error(error)
+    })
+
+  }, [productId])
+
   // Handlers
   const toggle = (index) => {
     if (selected === index) {
@@ -72,7 +96,7 @@ const QuestionList = () => {
   return (
     <div className="wrapper">
       <div className="Accordion">
-        {exampleData.results.map(function(question, index){
+        {questions.map(function(question, index){
           return(
             <div className='Question' key={index}>
               {/* in the future this should render a question component */}
