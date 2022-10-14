@@ -11,7 +11,6 @@ const QuestionList = () => {
   const [selected, setSelected] = useState(null)
   const [productId, setProductId] = useState('37314')
   const [questions, setQuestions] = useState([])
-
   // Hooks
   useEffect(()=> {
 
@@ -43,19 +42,20 @@ const QuestionList = () => {
     <div className="wrapper">
       <div className="Accordion">
         {questions.map(function(question, index){
-          return(
-            <div className='Question' key={index}>
-              {/* in the future this should render a question component */}
-              <h2 className='Title' onClick={()=>{ toggle(index) }}>
-                {`Question ${index + 1}`}
-              </h2>
-              <span>{selected === index ? '-': '+'}</span>
-              <div className={selected === index ? 'Body show': 'Body'}>
-                {`Question Body: ${question.question_body}`}
+            return(
+              <div className='Question' key={index}>
+                {/* in the future this should render a question component */}
+                <h2 className='Title' onClick={()=>{ toggle(index) }}>
+                  {`Question ${index + 1}`}
+                </h2>
+                <span>{selected === index ? '-': '+'}</span>
+                <div className={selected === index ? 'Body show': 'Body'}>
+                  {`Question Body: ${question.question_body}`}
+                </div>
               </div>
-            </div>
           )
         })}
+        <button>Show More Questions</button>
       </div>
     </div>
   )
