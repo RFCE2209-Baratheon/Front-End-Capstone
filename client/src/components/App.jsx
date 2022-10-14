@@ -1,15 +1,15 @@
 import React from 'react';
-const {useState, useEffect} = React;
-import Review from './review/Review.jsx'
+import Review from './review/Review.jsx';
 
+const { useState, useEffect } = React;
 
-const App = () => {
+function App() {
   return (
     <>
-  <h1>checking that this loads</h1>
-  <Review />
-  </>
-  )
+      <h1>checking again to see that this loads</h1>
+      <Review />
+    </>
+  );
 }
 
 export default App;

@@ -1,4 +1,4 @@
-[
+let productData = [
   {
       "id": 37311,
       "campus": "hr-rfe",
@@ -55,3 +55,5 @@
       "updated_at": "2021-08-13T14:37:33.145Z"
   }
 ]
+
+export default productData;
