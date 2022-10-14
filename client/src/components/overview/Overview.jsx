@@ -3,10 +3,14 @@ import ProductInformation from './ProductInformation.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
-import productData from '../../example_data/get_all_products.js';
+import exampleProductData from '../../example_data/get_all_products.js';
 
 const Overview = (props) => {
-  const [productData, setProductData] = useState(productData);
+  const [productData, setProductData] = useState(exampleProductData);
+  const [productId, setProductId] = useState(productData[0].id);
+
+  console.log('productData: ', productData);
+  console.log('productId: ', productId);
 
   return (
    <>
