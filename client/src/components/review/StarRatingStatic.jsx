@@ -1,22 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-
-const StarRatingStatic = ({product}) => {
+function StarRatingStatic({ product }) {
   const [rating, setRating] = useState(0);
 
-  const getAverageRating = (product) =>{
+  const getAverageRating = (product) => {
     let sum = 0;
-    product.results.forEach((review) =>{
+    product.results.forEach((review) => {
       sum += review.rating;
     });
-    let average = sum / product.results.length;
+    const average = sum / product.results.length;
     // need to round to closest 1/4 point still
     setRating(average);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getAverageRating(product);
-  },[]);
+  }, []);
 
   return (
     <div className="star-rating">
@@ -26,7 +25,7 @@ const StarRatingStatic = ({product}) => {
           <button
             type="button"
             key={index}
-            className={index <= rating ? "on" : "off"}
+            className={index <= rating ? 'on' : 'off'}
           >
             <span className="star">&#9733;</span>
           </button>
@@ -34,6 +33,6 @@ const StarRatingStatic = ({product}) => {
       })}
     </div>
   );
-};
+}
 
 export default StarRatingStatic;

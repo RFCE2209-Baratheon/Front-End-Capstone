@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-
-const StarRating = (props) => {
+function StarRating(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   return (
@@ -12,7 +11,7 @@ const StarRating = (props) => {
           <button
             type="button"
             key={index}
-            className={index <= (hover || rating) ? "on" : "off"}
+            className={index <= (hover || rating) ? 'on' : 'off'}
             onClick={() => setRating(index)}
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(rating)}
@@ -23,6 +22,6 @@ const StarRating = (props) => {
       })}
     </div>
   );
-};
+}
 
 export default StarRating;

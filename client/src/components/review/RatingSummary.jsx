@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-
-const RatingSummary = (props) => {
-
+function RatingSummary(props) {
   return (
     <div>Ratings Summary</div>
-  )
-
-};
+  );
+}
 
 export default RatingSummary;
