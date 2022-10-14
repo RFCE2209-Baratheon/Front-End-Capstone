@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
-const ImageGallery = (props) => {
+const ImageGallery = () => {
 
   return (
     <>
-      <h3>Image Gallery</h3>
+      <h3>[Image Gallery]</h3>
     </>
   )
 }
