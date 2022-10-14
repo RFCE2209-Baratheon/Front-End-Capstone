@@ -5,6 +5,8 @@ const ProductInformation = (props) => {
   return (
     <>
       <h3>Product Information</h3>
+      <div></div>
+
     </>
   )
 }
