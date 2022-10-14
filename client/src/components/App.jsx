@@ -1,10 +1,11 @@
 import React from 'react';
+import QA from './QA/QA.jsx'
 const {useState, useEffect} = React;
 
 
 const App = () => {
   return (
-  <h1>checking that this loads</h1>
+  <QA></QA>
   )
 }
 
