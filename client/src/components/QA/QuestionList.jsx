@@ -72,7 +72,6 @@ const QuestionList = () => {
   }
   return (
     <div className="wrapper">
-      Wrapper
       <div className="Accordion">
         {exampleData.results.map(function(question, index){
           return(
