@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const AddToCart = (props) => {
+const AddToCart = () => {
 
   return (
     <>
-      <h3>Add To Cart</h3>
+      <h3>[Add To Cart]</h3>
     </>
   )
 }

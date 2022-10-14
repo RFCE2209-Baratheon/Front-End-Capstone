@@ -4,7 +4,7 @@ const StyleSelector = (props) => {
 
   return (
     <>
-      <h3>Style Selector</h3>
+      <h3>[Style Selector]</h3>
     </>
   )
 }
