@@ -1,4 +1,9 @@
 import React from 'react'
+import './assets/styles.css'
+
+//react hooks
+const {useState} = React
+
 
 //remove exampleData when we connect this module to the API
 // exampleData.results[0].question_body
@@ -55,16 +60,28 @@ const exampleData = {
 }
 
 const QuestionList = () => {
+  //States
+  const [selected, setSelected] = useState(null)
+  //Handlers
+  const toggle = (index) => {
+    if (selected === index) {
+      return setSelected(null)
+    }
+
+    setSelected(index)
+  }
   return (
     <div className="wrapper">
       Wrapper
       <div className="Accordion">
         {exampleData.results.map(function(question, index){
           return(
-            <div className='Question'>
-              <h2 className='Title'>
+            <div className='question' key={index}>
+              {/*in the future this should render a question component*/}
+              <h2 className='Title' onClick={()=>{toggle(index)}}>
                 {`Question ${index + 1}`}
               </h2>
+              <span>{selected === index ? '-': '+'}</span>
               <div className='Body'>
                 {`Question Body: ${question.question_body}`}
               </div>
