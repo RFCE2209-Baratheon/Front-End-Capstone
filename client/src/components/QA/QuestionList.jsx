@@ -1,11 +1,10 @@
-import React from 'react'
-import './assets/styles.css'
+import React from 'react';
+import './assets/styles.css';
 
-//react hooks
-const {useState} = React
+// react hooks
+const { useState } = React;
 
-
-//remove exampleData when we connect this module to the API
+// remove exampleData when we connect this module to the API
 // exampleData.results[0].question_body
 // exampleData.results[0].question_id
 const exampleData = {
@@ -60,9 +59,9 @@ const exampleData = {
 }
 
 const QuestionList = () => {
-  //States
+  // States
   const [selected, setSelected] = useState(null)
-  //Handlers
+  // Handlers
   const toggle = (index) => {
     if (selected === index) {
       return setSelected(null)
@@ -75,13 +74,13 @@ const QuestionList = () => {
       <div className="Accordion">
         {exampleData.results.map(function(question, index){
           return(
-            <div className='question' key={index}>
-              {/*in the future this should render a question component*/}
-              <h2 className='Title' onClick={()=>{toggle(index)}}>
+            <div className='Question' key={index}>
+              {/* in the future this should render a question component */}
+              <h2 className='Title' onClick={()=>{ toggle(index) }}>
                 {`Question ${index + 1}`}
               </h2>
               <span>{selected === index ? '-': '+'}</span>
-              <div className='Body'>
+              <div className={selected === index ? 'Body show': 'Body'}>
                 {`Question Body: ${question.question_body}`}
               </div>
             </div>

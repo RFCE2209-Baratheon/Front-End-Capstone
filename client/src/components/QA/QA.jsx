@@ -1,12 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import QuestionList from './QuestionList.jsx'
 
-const QA = (props) => {
+import React from 'react';
+import QuestionList from './QuestionList.jsx';
 
-  return (
-   <QuestionList/>
-  )
-}
-
+const QA = () => { return (<QuestionList />) };
 
 export default QA;

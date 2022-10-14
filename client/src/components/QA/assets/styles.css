@@ -10,8 +10,28 @@
   width: 500px;
 }
 
-.question {
-  border-style: solid;
+.Question {
+  background:rgb(239, 220, 190);
   margin-bottom: 5px;
   padding: 10px 20px;
+}
+
+.Title {
+  color:rgb(122, 85, 34);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Body {
+  color:rgb(48, 109, 58);
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.Body.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1,0,1,0);
 }
