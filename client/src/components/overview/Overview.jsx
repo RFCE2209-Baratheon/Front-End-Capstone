@@ -8,7 +8,7 @@ import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
 import './assets/styles.css';
 
-const Overview = (props) => {
+const Overview = () => {
   const [productData, setProductData] = useState(exampleProductData[0]);
   const [productId, setProductId] = useState(productData.id);
 
@@ -16,6 +16,8 @@ const Overview = (props) => {
   const [styleId, setStyleId] = useState(styleData.style_id);
 
   const [reviewData, setReviewData] = useState(exampleReviews);
+
+  const [styleImages, setStyleImages] = useState(exampleStyleData.results[0].photos);
 
   console.log('productData: ', productData);
   console.log('productId: ', productId);
@@ -25,7 +27,7 @@ const Overview = (props) => {
   return (
     <>
       <h1>Overview</h1>
-      <ImageGallery />
+      <ImageGallery styleImages={styleImages} />
       <ProductInformation productData={productData} productId={productId} styleData={styleData} styleId={styleId}
       reviewData={reviewData}/>
       <StyleSelector />
