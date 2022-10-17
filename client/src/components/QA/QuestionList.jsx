@@ -11,13 +11,14 @@ const QuestionList = () => {
   const [selected, setSelected] = useState(null)
   const [productId, setProductId] = useState('37314')
   const [questions, setQuestions] = useState([])
+  let questionsAmount = 0;
   // Hooks
   useEffect(()=> {
 
     // Config for request
     const config = {
       params: {product_id: productId},
-      headers:{'Authorization':'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'}
+      headers:{'Authorization':'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'}
     }
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
@@ -41,7 +42,11 @@ const QuestionList = () => {
   return (
     <div className="wrapper">
       <div className="Accordion">
+      {(questions.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
+
         {questions.map(function(question, index){
+            questionsAmount++
+            if(questionsAmount < 5){
             return(
               <div className='Question' key={index}>
                 {/* in the future this should render a question component */}
@@ -53,9 +58,8 @@ const QuestionList = () => {
                   {`Question Body: ${question.question_body}`}
                 </div>
               </div>
-          )
+          )}
         })}
-        <button>Show More Questions</button>
       </div>
     </div>
   )
