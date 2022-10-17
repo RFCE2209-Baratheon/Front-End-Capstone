@@ -1,5 +1,6 @@
 import React from 'react'
 import Answer from './Answer.jsx'
+import Helpful from './Helpful.jsx'
 import {QuestionFolder} from './assets/styles.js'
 
 const {useState} = React;
@@ -13,8 +14,6 @@ const toggleOpen = () => {
   setOpen(!open)
 }
 
-
-  console.log(question.answers)
   return (
     <div>
       <h2 onClick={toggleOpen}> {`Q: ${question.question_body}`}</h2>
@@ -23,9 +22,7 @@ const toggleOpen = () => {
         <Answer answer={question.answers}/>
       </div>
       <button> Load More Answers </button>
-      <span> Helpful
-                <u>Yes</u>| <u>Report</u>
-      </span>
+      <Helpful helpfulCount={question.question_helpfulness}/>
       </QuestionFolder>
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react';
 // import './assets/styles.css'
 import axios from 'axios';
-import {QuestionFolder, Accordion} from './assets/styles.js'
+import {Accordion, Wrapper} from './assets/styles.js'
 import IndividualQuestion from './IndividualQuestion.jsx'
 // react hooks
 const { useState, useEffect } = React;
@@ -46,7 +46,8 @@ const QuestionList = () => {
   // }
   return (
     <span> Questions & Answers
-    <div className="wrapper">
+    <Wrapper>
+    <div>
       <Accordion>
       <div className="Accordion">
         {(questions.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
@@ -58,6 +59,7 @@ const QuestionList = () => {
       </div>
       </Accordion>
     </div>
+    </Wrapper>
     </span>
 
   )
