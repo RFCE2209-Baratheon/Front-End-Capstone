@@ -31,6 +31,7 @@ color:rgb(122, 85, 34);
 max-height: 0;
 overflow: hidden;
 transition: all 0.5s cubic-bezier(0,1,0,1);`
+
 const BodyShow = styled.div`
 height: auto;
 max-height: 9999px;
