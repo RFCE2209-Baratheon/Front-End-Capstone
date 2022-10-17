@@ -15,8 +15,11 @@ const Answer = ({answer}) => {
             <div></div>
             <div>{`Answer: ${answer[currentKey].body}`}</div>
             <div>
-              <span>{`by ${answer[currentKey].answerer_name}, ${answer[currentKey].date} | `}</span>
-              <span>Helpful <button>Yes</button>| <button>Report</button></span>
+              <span>{`by ${answer[currentKey].answerer_name}`}</span>
+              <span>{format(parseISO(`${answer[currentKey].date}`), 'MMMM d, yyyy')}</span>
+              <span> Helpful
+                <button>Yes</button>| <button>Report</button>
+              </span>
             </div>
           </div>
           </Questions>
@@ -28,3 +31,5 @@ const Answer = ({answer}) => {
 }
 
 export default Answer
+
+
