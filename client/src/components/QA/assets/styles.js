@@ -10,6 +10,7 @@ align-items: center;
 
 const Accordion = styled.div`
 width: 500px;
+background: rgb(239, 220, 190);
 `
 
 const Questions = styled.div`
@@ -41,5 +42,11 @@ transition: all 0.5s cubic-bezier(1,0,1,0);
 const AddQuestion = styled.button`
 display: flex;
 `
+const QuestionFolder = styled.div`
+width: 100%;
+    max-height: ${(props) => (props.open ? '500px' : '0')};
+    transition: all 1s ease-in-out;
+    overflow: hidden;
+`
 
-export {Wrapper, Accordion, Questions, Title, Body, BodyShow, AddQuestion}
+export {Accordion, Questions, QuestionFolder}
