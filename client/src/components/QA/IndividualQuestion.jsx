@@ -17,11 +17,15 @@ const toggleOpen = () => {
   console.log(question.answers)
   return (
     <div>
-      <h2 onClick={toggleOpen}> {question.question_body}</h2>
+      <h2 onClick={toggleOpen}> {`Q: ${question.question_body}`}</h2>
       <QuestionFolder open={open}>
       <div>
         <Answer answer={question.answers}/>
       </div>
+      <button> Load More Answers </button>
+      <span> Helpful
+                <u>Yes</u>| <u>Report</u>
+      </span>
       </QuestionFolder>
     </div>
   )

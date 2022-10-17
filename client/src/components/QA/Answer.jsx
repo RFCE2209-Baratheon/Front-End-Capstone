@@ -13,12 +13,12 @@ const Answer = ({answer}) => {
           <Questions key={index}>
           <div>
             <div></div>
-            <div>{`Answer: ${answer[currentKey].body}`}</div>
+            <div>{`A: ${answer[currentKey].body}`}</div>
             <div>
-              <span>{`by ${answer[currentKey].answerer_name}`}</span>
+              <span>{`by ${answer[currentKey].answerer_name} `}</span>
               <span>{format(parseISO(`${answer[currentKey].date}`), 'MMMM d, yyyy')}</span>
               <span> Helpful
-                <button>Yes</button>| <button>Report</button>
+                <u>Yes</u>| <u>Report</u>
               </span>
             </div>
           </div>
