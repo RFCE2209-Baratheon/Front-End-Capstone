@@ -14,6 +14,9 @@
     "dev": "webpack serve --open"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.9",
     "axios": "^0.21.0",
     "express": "^4.15.0",
     "react": "^18.0.0",

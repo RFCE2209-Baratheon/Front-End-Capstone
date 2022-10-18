@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-function StarRatingStatic({ product }) {
-  const [rating, setRating] = useState(0);
+function StarRatingStatic({rating},{product}) {
+  const [avgRating, setRating] = useState(rating);
 
   const getAverageRating = (product) => {
     let sum = 0;
@@ -14,7 +14,9 @@ function StarRatingStatic({ product }) {
   };
 
   useEffect(() => {
-    getAverageRating(product);
+    if (!rating) {
+      getAverageRating(product);
+    }
   }, []);
 
   return (
@@ -25,7 +27,7 @@ function StarRatingStatic({ product }) {
           <button
             type="button"
             key={index}
-            className={index <= rating ? 'on' : 'off'}
+            className={index <= avgRating ? 'on' : 'off'}
           >
             <span className="star">&#9733;</span>
           </button>

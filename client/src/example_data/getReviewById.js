@@ -8,7 +8,7 @@ let review = {
           "rating": 1,
           "summary": "this product stinks",
           "recommend": true,
-          "response": null,
+          "response": "Glad you're enjoying the product!",
           "body": "I dont like it",
           "date": "2022-07-13T00:00:00.000Z",
           "reviewer_name": "anonymous cat",
@@ -20,8 +20,8 @@ let review = {
           "rating": 5,
           "summary": "asdf",
           "recommend": true,
-          "response": null,
-          "body": "this should change the review count, but its not showing up on the reviews ",
+          "response": "250 characters is not something to get excited about",
+          "body": "This body should be over 250 characters and show the show more title if it is.  I am writing a lot more just to make sure this is 250 characters. I have no clue how many charcters this is yet, but hopefully I am getting close to 250  This body should be over 250 characters and show the show more title if it is.  I am writing a lot more just to make sure this is 250 characters. I have no clue how many charcters this is yet, but hopefully I am getting close to 250  This body should be over 250 characters and show the show more title if it is.  I am writing a lot more just to make sure this is 250 characters. I have no clue how many charcters this is yet, but hopefully I am getting close to 250 ",
           "date": "2022-07-12T00:00:00.000Z",
           "reviewer_name": "joe",
           "helpfulness": 72,
@@ -32,7 +32,7 @@ let review = {
           "rating": 3,
           "summary": "Meh Camo",
           "recommend": false,
-          "response": null,
+          "response": "this is my response",
           "body": "It's super tight too",
           "date": "2022-06-01T00:00:00.000Z",
           "reviewer_name": "CamoDude",
@@ -65,7 +65,22 @@ let review = {
               {
                   "id": 2456066,
                   "url": "https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg"
-              }
+              },
+              {
+                "id": 2456067,
+                "url": "https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg"
+            },
+            {
+                "id": 2456068,
+                "url": "https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg"
+            },
+            {
+              "id": 2456069,
+              "url": "https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg"
+          }, {
+            "id": 2456070,
+            "url": "https://i.pinimg.com/736x/33/32/6d/33326dcddbf15c56d631e374b62338dc.jpg"
+        }
           ]
       }
   ]
