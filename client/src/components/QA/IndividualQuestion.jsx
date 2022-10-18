@@ -7,7 +7,7 @@ import {QuestionFolder} from './assets/styles.js'
 const {useState, useEffect} = React;
 const IndividualQuestion = ({question}) => {
 
-console.log(typeof question)
+
 
 //State
 const [open, setOpen] = useState(null)
@@ -19,7 +19,7 @@ const toggleOpen = () => {
 
 //component
   return (
-    <div>
+    <div data-testid='testing'>
       <h2 onClick={toggleOpen}> {`Q: ${question.question_body}`}</h2>
       <QuestionFolder open={open}>
       <div>

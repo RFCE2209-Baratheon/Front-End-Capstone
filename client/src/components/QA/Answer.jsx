@@ -15,14 +15,20 @@ const Answer = ({answer}) => {
   let questionDetailKeys = Object.keys(answer)
   const start = 0;
   let end = 2
+  let key;
   //state
 
   const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
   const [hide, setHide] = useState(true)
 
+  //hooks
+
+
   //handlers
   const handleMoreAnswers = () => {
-    let newEnd = end + 1;
+
+    let newEnd = end + 2;
+
     setKeys(questionDetailKeys.slice(start, newEnd))
     if (newEnd = questionDetailKeys.length) {
       setHide(false)
@@ -31,9 +37,9 @@ const Answer = ({answer}) => {
 
   //component
   return (
-
       <>
         {keys.map(function (currentKey, index) {
+          key = currentKey;
           return (
           <Questions key={index}>
           <div>
