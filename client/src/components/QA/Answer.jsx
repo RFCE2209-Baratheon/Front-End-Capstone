@@ -7,6 +7,8 @@ import Images from './Images.jsx'
 
 const {useState, useEffect} = React;
 
+
+//component
 const Answer = ({answer}) => {
 
   //local variables
@@ -52,10 +54,9 @@ const Answer = ({answer}) => {
   )
 }
 
+//proptypes
 Answer.propTypes = {
   answer: PropTypes.object
 }
 
 export default Answer
-
-

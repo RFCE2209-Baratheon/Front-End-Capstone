@@ -29,6 +29,9 @@ const QuestionList = () => {
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
+      if (res.data.results.length === 0) {
+        setHide(false)
+      }
       setQuestions(res.data.results)
       setRenderQ(res.data.results.slice(start, end))
     })
@@ -36,19 +39,19 @@ const QuestionList = () => {
       console.error(error)
     })
 
-
-
   }, [productId])
 
   useEffect(()=>{
+
     if (end !== endStart && end >= questions.length) {
       setHide(false);
     }
+
   }, [end])
 
   // Handlers
   const loadMore = () => {
-    if (renderQ.length < questions.length) {
+    if (renderQ.length <= questions.length) {
       let newEnd = end + 2
       let newResults = questions.slice(start, newEnd)
       setEnd(newEnd)
@@ -58,7 +61,7 @@ const QuestionList = () => {
 
   //component
   return (
-    <span> Questions & Answers
+    <span> QUESTIONS & ANSWERS
     <Wrapper>
     <div>
       <Accordion>
