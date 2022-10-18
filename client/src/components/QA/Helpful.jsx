@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 import {HelpfulButton} from './assets/styles.js'
 
 const {useState} = React;
@@ -21,6 +22,10 @@ return (
   {`${helpful}`} | <u>Report</u>
 </span>
 )
+}
+
+Helpful.propTypes = {
+  helpfulCount  : PropTypes.number
 }
 
 export default Helpful

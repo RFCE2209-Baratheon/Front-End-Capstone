@@ -1,11 +1,13 @@
 import React from 'react'
 import Answer from './Answer.jsx'
 import Helpful from './Helpful.jsx'
+import {PropTypes} from 'prop-types'
 import {QuestionFolder} from './assets/styles.js'
 
 const {useState, useEffect} = React;
 const IndividualQuestion = ({question}) => {
 
+console.log(typeof question)
 
 //State
 const [open, setOpen] = useState(null)
@@ -29,4 +31,7 @@ const toggleOpen = () => {
   )
 }
 
+IndividualQuestion.propTypes = {
+  question: PropTypes.object
+}
 export default IndividualQuestion

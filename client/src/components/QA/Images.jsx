@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 import {ImagesStyled} from './assets/styles.js'
 const Images = ({images}) => {
 
@@ -13,5 +14,7 @@ const Images = ({images}) => {
   )
 
 }
-
+Images.propTypes = {
+  images: PropTypes.array
+}
 export default Images;

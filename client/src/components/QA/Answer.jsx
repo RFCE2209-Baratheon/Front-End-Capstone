@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 import {Questions} from './assets/styles.js'
 import {format, parseISO} from 'date-fns'
 import Helpful from './Helpful.jsx'
@@ -49,6 +50,10 @@ const Answer = ({answer}) => {
       </>
 
   )
+}
+
+Answer.propTypes = {
+  answer: PropTypes.object
 }
 
 export default Answer
