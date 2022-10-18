@@ -105,8 +105,8 @@ app.post('/cart', (req, res) => {
 
 app.get('/reviews/', (req, res) => {
   console.log(req.query)
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', {params : {product_id : req.query.product_id, count: 5000}, headers : {'Authorization': config.TOKEN}})
-    .then (function(response){
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', { params: { product_id: req.query.product_id, sort: req.query.sort, count: 5000 }, headers: { Authorization: config.TOKEN } })
+    .then((response) => {
       res.json(response.data);
     });
 });
