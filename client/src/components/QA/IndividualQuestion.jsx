@@ -15,6 +15,7 @@ const toggleOpen = () => {
   setOpen(!open)
 }
 
+//component
   return (
     <div>
       <h2 onClick={toggleOpen}> {`Q: ${question.question_body}`}</h2>

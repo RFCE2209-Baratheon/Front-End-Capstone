@@ -3,6 +3,7 @@ import {HelpfulButton} from './assets/styles.js'
 
 const {useState} = React;
 
+//handlers
 const Helpful = ({helpfulCount}) => {
 
   const [helpful, setHelpful] = useState(helpfulCount)
@@ -11,6 +12,7 @@ const Helpful = ({helpfulCount}) => {
     setHelpful(helpful+1)
   }
 
+//component
 return (
 <span> Helpful
   <HelpfulButton>

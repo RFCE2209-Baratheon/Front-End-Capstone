@@ -17,12 +17,6 @@ const Answer = ({answer}) => {
   const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
   const [hide, setHide] = useState(true)
 
-
-  //hooks
-  // useEffect(()=>{
-  //   setKeys()
-  // }, [])
-
   //handlers
   const handleMoreAnswers = () => {
     let newEnd = end + 1;
@@ -32,6 +26,7 @@ const Answer = ({answer}) => {
     }
   }
 
+  //component
   return (
 
       <>

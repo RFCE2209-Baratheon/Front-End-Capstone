@@ -1,9 +1,8 @@
 import React from 'react';
-// import './assets/styles.css'
 import axios from 'axios';
 import {Accordion, Wrapper} from './assets/styles.js'
 import IndividualQuestion from './IndividualQuestion.jsx'
-// react hooks
+
 const { useState, useEffect } = React;
 
 const QuestionList = () => {
@@ -11,8 +10,8 @@ const QuestionList = () => {
   //Local Variables
   const start = 0;
   const endStart = 2
+
   // States
-  // const [selected, setSelected] = useState(null)
   const [end, setEnd] = useState(endStart)
   const [productId, setProductId] = useState('37314')
   const [renderQ, setRenderQ] = useState([])
@@ -56,9 +55,8 @@ const QuestionList = () => {
       setRenderQ(newResults)
     }
   }
-  // const handleSort = () => {
 
-  // }
+  //component
   return (
     <span> Questions & Answers
     <Wrapper>
@@ -82,26 +80,3 @@ const QuestionList = () => {
 }
 
 export default QuestionList;
-
-
-// {questions.map(function(question, index){
-//   questionsAmount++
-//   if(questionsAmount < 5){
-//   return(
-
-
-//     <div className='Question' key={index}>
-//       {/* in the future this should render a question component */}
-
-//       <h2 className='Title' onClick={()=>{ toggle(index) }}>
-//         {`Question ${index + 1}`}
-//       </h2>
-
-//       <span>{selected === index ? '-': '+'}</span>
-//       <div className={selected === index ? 'Body show': 'Body'}>
-//         {`Question Body: ${question.question_body}`}
-//       </div>
-//     </div>
-
-// )}
-// })}
