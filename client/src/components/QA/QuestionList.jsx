@@ -14,8 +14,8 @@ const QuestionList = () => {
   const [productId, setProductId] = useState('37314')
   const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
+  const [hide, setHide] = useState(true)
 
-  // let questionsAmount = 0;
   // Hooks
   useEffect(()=> {
 
@@ -28,7 +28,7 @@ const QuestionList = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
       setQuestions(res.data.results)
-      setRenderQ(res.data.results.slice(0,4))
+      setRenderQ(res.data.results.slice(0,1))
     })
     .catch((error)=>{
       console.error(error)
@@ -37,7 +37,21 @@ const QuestionList = () => {
 
 
   }, [productId])
+  console.log(renderQ.length, ' and ', questions.length)
+  // Handlers
+  const loadMore = () => {
+    if (renderQ.length < questions.length) {
+      let newResults = questions.slice()
+      console.log(newResults)
+      setRenderQ(newResults)
+    }
+    if (renderQ.length = questions.length) {
+      setHide(false)
+    }
+  }
+  // const handleSort = () => {
 
+  // }
   return (
     <span> Questions & Answers
     <Wrapper>
@@ -51,6 +65,7 @@ const QuestionList = () => {
           )
         })}
       </div>
+      {hide ? <button onClick={loadMore}> Load more questions </button> : <></>}
       </Accordion>
     </div>
     </Wrapper>
