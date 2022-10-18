@@ -68,7 +68,7 @@ const QuestionList = () => {
       <div className="Accordion">
         {(renderQ.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
         {renderQ.map(function(question, index) {
-          console.log(question, 'copy this')
+
           return (
             <IndividualQuestion key={index} question={question} open={open}/>
           )

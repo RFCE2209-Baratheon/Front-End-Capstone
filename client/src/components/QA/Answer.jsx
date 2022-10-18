@@ -11,18 +11,23 @@ const {useState, useEffect} = React;
 //component
 const Answer = ({answer}) => {
 
+
   //local variables
+  let answerArray = [answer]
   let questionDetailKeys = Object.keys(answer)
   const start = 0;
   let end = 2
   let key;
   //state
-
   const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
   const [hide, setHide] = useState(true)
 
-  //hooks
-
+  // hooks
+  useEffect(()=>{
+    if (questionDetailKeys.length <= 2) {
+      setHide(false)
+    }
+  }, [answerArray])
 
   //handlers
   const handleMoreAnswers = () => {
@@ -30,7 +35,7 @@ const Answer = ({answer}) => {
     let newEnd = end + 2;
 
     setKeys(questionDetailKeys.slice(start, newEnd))
-    if (newEnd = questionDetailKeys.length) {
+    if (newEnd >= questionDetailKeys.length) {
       setHide(false)
     }
   }
