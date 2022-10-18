@@ -12,8 +12,9 @@ const QuestionList = () => {
   // States
   // const [selected, setSelected] = useState(null)
   const [productId, setProductId] = useState('37314')
+  const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
-
+  console.log('here',questions)
   // let questionsAmount = 0;
   // Hooks
   useEffect(()=> {
@@ -24,15 +25,16 @@ const QuestionList = () => {
       headers:{'Authorization':'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'}
     }
 
-
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
       setQuestions(res.data.results)
+      setRenderQ(res.data.results.slice(0,2))
     })
     .catch((error)=>{
       console.error(error)
     })
+
+
 
   }, [productId])
 
@@ -50,8 +52,8 @@ const QuestionList = () => {
     <div>
       <Accordion>
       <div className="Accordion">
-        {(questions.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
-        {questions.map(function(question, index) {
+        {(renderQ.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
+        {renderQ.map(function(question, index) {
           return (
             <IndividualQuestion key={index} question={question} open={open}/>
           )
