@@ -5,12 +5,11 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';
 import { FaPinterest } from 'react-icons/fa';
 
-
-const ProductInformation = ({ productData, productId, styleData, styleId, reviewData }) => {
-
-  const StyledSalePrice = styled.div`
+const StyledSalePrice = styled.div`
     color: red;
   `;
+
+const ProductInformation = ({ productData, productId, styleData, styleId, reviewData }) => {
 
   return (
     <>
@@ -21,16 +20,16 @@ const ProductInformation = ({ productData, productId, styleData, styleId, review
       </div> : null}
 
       <div>{productData.category.toUpperCase()}</div>
-      <h3>{productData.name}</h3>
+      <h1>{productData.name}</h1>
 
       {styleData.sale_price ?
         <div><s>{styleData.original_price}</s> <StyledSalePrice>{styleData.sale_price}</StyledSalePrice></div>
-      : styleData.original_price}
+      : '$' + styleData.original_price}
 
       {productData.description ?
         <div>
-          <h3>{productData.slogan}</h3>
-          <div>{productData.description}</div>
+          <h2>{productData.slogan}</h2>
+          <p>{productData.description}</p>
         </div>
       : null}
       <div>
