@@ -38,14 +38,6 @@ const QuestionList = () => {
 
   }, [productId])
 
-  // Handlers
-  // const toggle = (index) => {
-  //   if (selected === index) {
-  //     return setSelected(null)
-  //   }
-
-  //   setSelected(index)
-  // }
   return (
     <span> Questions & Answers
     <Wrapper>

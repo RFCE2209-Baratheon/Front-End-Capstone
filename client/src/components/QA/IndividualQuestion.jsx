@@ -9,11 +9,6 @@ const IndividualQuestion = ({question}) => {
 
 //State
 const [open, setOpen] = useState(null)
-const [answerPer, setAnswerPer] = useState([])
-
-useEffect(()=>{
-
-}, [])
 
 //Handler
 const toggleOpen = () => {
