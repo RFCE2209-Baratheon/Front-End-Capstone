@@ -3,11 +3,18 @@ import Answer from './Answer.jsx'
 import Helpful from './Helpful.jsx'
 import {QuestionFolder} from './assets/styles.js'
 
-const {useState} = React;
+const {useState, useEffect} = React;
 const IndividualQuestion = ({question}) => {
+
+console.log('questions in inQ', question.answers)
 
 //State
 const [open, setOpen] = useState(null)
+const [answerPer, setAnswerPer] = useState([])
+
+useEffect(()=>{
+
+}, [])
 
 //Handler
 const toggleOpen = () => {
