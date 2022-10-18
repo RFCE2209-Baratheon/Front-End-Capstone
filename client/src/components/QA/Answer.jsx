@@ -8,13 +8,29 @@ const {useState, useEffect} = React;
 
 const Answer = ({answer}) => {
 
-
+  //local variables
   let questionDetailKeys = Object.keys(answer)
-  const [keys, setKeys] = useState([])
+  const start = 0;
+  let end = 2
+  //state
 
-  useEffect(()=>{
-    setKeys(questionDetailKeys.slice(0,2))
-  }, [])
+  const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
+  const [hide, setHide] = useState(true)
+
+  console.log('details lenght', questionDetailKeys.length)
+  //hooks
+  // useEffect(()=>{
+  //   setKeys()
+  // }, [])
+
+  //handlers
+  const handleMoreAnswers = () => {
+    let newEnd = end + 1;
+    setKeys(questionDetailKeys.slice(start, newEnd))
+    if (newEnd = questionDetailKeys.length) {
+      setHide(false)
+    }
+  }
 
   return (
 
@@ -34,6 +50,7 @@ const Answer = ({answer}) => {
           </Questions >
           )
         })}
+        {hide ? <button onClick={handleMoreAnswers}> Load More Answers </button> : <></>}
       </>
 
   )

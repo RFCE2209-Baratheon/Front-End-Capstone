@@ -6,7 +6,6 @@ import {QuestionFolder} from './assets/styles.js'
 const {useState, useEffect} = React;
 const IndividualQuestion = ({question}) => {
 
-console.log('questions in inQ', question.answers)
 
 //State
 const [open, setOpen] = useState(null)
@@ -28,7 +27,6 @@ const toggleOpen = () => {
       <div>
         <Answer answer={question.answers}/>
       </div>
-      <button> Load More Answers </button>
       <Helpful helpfulCount={question.question_helpfulness}/>
       </QuestionFolder>
     </div>

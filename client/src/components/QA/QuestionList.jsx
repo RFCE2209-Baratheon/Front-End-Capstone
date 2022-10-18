@@ -14,7 +14,7 @@ const QuestionList = () => {
   const [productId, setProductId] = useState('37314')
   const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
-  console.log('here',questions)
+
   // let questionsAmount = 0;
   // Hooks
   useEffect(()=> {
@@ -28,7 +28,7 @@ const QuestionList = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
       setQuestions(res.data.results)
-      setRenderQ(res.data.results.slice(0,2))
+      setRenderQ(res.data.results.slice(0,4))
     })
     .catch((error)=>{
       console.error(error)
