@@ -8,9 +8,12 @@ const { useState, useEffect } = React;
 
 const QuestionList = () => {
 
-
+  //Local Variables
+  const start = 0;
+  const endStart = 2
   // States
   // const [selected, setSelected] = useState(null)
+  const [end, setEnd] = useState(endStart)
   const [productId, setProductId] = useState('37314')
   const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
@@ -28,7 +31,7 @@ const QuestionList = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
       setQuestions(res.data.results)
-      setRenderQ(res.data.results.slice(0,1))
+      setRenderQ(res.data.results.slice(start, end))
     })
     .catch((error)=>{
       console.error(error)
@@ -37,16 +40,20 @@ const QuestionList = () => {
 
 
   }, [productId])
-  console.log(renderQ.length, ' and ', questions.length)
+
+  useEffect(()=>{
+    if (end !== endStart && end >= questions.length) {
+      setHide(false);
+    }
+  }, [end])
+
   // Handlers
   const loadMore = () => {
     if (renderQ.length < questions.length) {
-      let newResults = questions.slice()
-      console.log(newResults)
+      let newEnd = end + 2
+      let newResults = questions.slice(start, newEnd)
+      setEnd(newEnd)
       setRenderQ(newResults)
-    }
-    if (renderQ.length = questions.length) {
-      setHide(false)
     }
   }
   // const handleSort = () => {

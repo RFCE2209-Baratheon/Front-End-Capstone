@@ -17,7 +17,7 @@ const Answer = ({answer}) => {
   const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
   const [hide, setHide] = useState(true)
 
-  console.log('details lenght', questionDetailKeys.length)
+
   //hooks
   // useEffect(()=>{
   //   setKeys()
