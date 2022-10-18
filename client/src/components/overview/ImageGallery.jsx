@@ -25,6 +25,9 @@ const StyledCarouselItem = styled.div`
 
 const ImageGallery = ({ styleImages }) => {
 
+  const [defaultView, setDefaultView] = useState(true);
+
+
   const [current, setCurrent] = useState(0);
   const length = styleImages.length; // 9
 
@@ -62,16 +65,14 @@ const ImageGallery = ({ styleImages }) => {
     setActiveThumbnails(styleImages.slice(start, end));
   }
 
-  useEffect(() => {
-    changeThumbnails();
-  }, [start, end]);
+  useEffect(changeThumbnails, [start]);
 
   return (
     <>
       <h3>[Image Gallery]</h3>
 
       <StyledCarousel>
-        <StyledExpand />
+        <StyledExpand onClick={()=>setDefaultView(!defaultView)} />
         {current !== length -1 && <StyledRightArrow onClick={nextSlide} />}
         {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
 
@@ -83,6 +84,7 @@ const ImageGallery = ({ styleImages }) => {
           </StyledCarouselItem>
         )}
 
+        {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
         <StyledThumbnailAlign>
           {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
           {activeThumbnails.map((thumbnail, index) =>
