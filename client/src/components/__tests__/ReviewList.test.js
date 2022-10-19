@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/extensions */
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
@@ -9,7 +11,7 @@ afterEach(() => {
 });
 
 test('should render ReviewList Component', () => {
-  render(<ReviewList/>);
+  render(<ReviewList />);
   const reviewListElement = screen.getByTestId('reviewlist-1');
   expect(reviewListElement).toBeInTheDocument();
-})
+});

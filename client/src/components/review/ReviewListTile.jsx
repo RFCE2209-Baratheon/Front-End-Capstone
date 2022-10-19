@@ -28,6 +28,7 @@ const Response = styled.div`{
 }`;
 
 function ReviewListTile({ review }) {
+
   const dateString = JSON.stringify(review.date.slice(0, 10));
 
   return (

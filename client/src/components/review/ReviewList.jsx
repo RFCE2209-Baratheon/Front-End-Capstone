@@ -14,6 +14,8 @@ const Container = styled.div`{
   padding: 10px;
   border-radius: 20px;
   margin: 32px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }`;
 
 const MoreReviewButton = styled.button`{
@@ -50,6 +52,12 @@ const ListButton = styled.button`{
   margin: 0;
   font: inherit;
   cursor: pointer;
+}`;
+
+const ScrollDiv = styled.div`{
+  max-height: 800px;
+  overflow: scroll;
+  border: solid;
 }`;
 
 const ReviewList = ({ product }) => {
@@ -120,10 +128,10 @@ const ReviewList = ({ product }) => {
           </Menu>
           )}
         </div>
-        <div>
+        <ScrollDiv>
           {' '}
           {reviews.map((review) => (<ReviewListTile key={review.id} review={review} />))}
-        </div>
+        </ScrollDiv>
       </Container>
       {moreReviewsButton
       && <MoreReviewButton onClick={() => { expandReviews(); }}>More Reviews</MoreReviewButton>}

@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import styled, {css} from 'styled-components';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/function-component-definition */
+import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
 
-const Thumbnail = styled.img `
+const Thumbnail = styled.img`
   width: 40px;
   height: 40px;
-`
-const ModalBackground = styled.div `{
+`;
+const ModalBackground = styled.div`{
   width: 100%;
   height: 100%;
   background-color: black;
@@ -15,9 +17,9 @@ const ModalBackground = styled.div `{
   align-items: center;
   top: 0;
   left: 0;
-}`
+}`;
 
-const ModalContainer = styled.div `{
+const ModalContainer = styled.div`{
   width: 500px;
   height: 500px;
   border-radius: 12px;
@@ -26,36 +28,38 @@ const ModalContainer = styled.div `{
   display: flex;
   flex-direction: column;
   padding: 25px;
-}`
+}`;
 
-const FullImage = styled.img `{
+const FullImage = styled.img`{
 
-}`
+}`;
 
-const CloseButton = styled.button `{
+const CloseButton = styled.button`{
 
-}`
+}`;
 
 const ImagePopUp = ({ image }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
 
   return (
     <>
-      <Thumbnail onClick={() => { toggleModal() }} key={image.id} src={image.url} />
-      {isOpen &&
+      <Thumbnail onClick={() => { toggleModal(); }} key={image.id} src={image.url} />
+      {isOpen
       // <img onClick ={() => {toggleModal()}} src={image.url}></img>
+      && (
       <ModalBackground>
         <ModalContainer>
-          <CloseButton onClick={() => { toggleModal() }}>X</CloseButton>
+          <CloseButton onClick={() => { toggleModal(); }}>X</CloseButton>
           <FullImage src={image.url} />
         </ModalContainer>
-      </ModalBackground>}
+      </ModalBackground>
+      )}
     </>
-  )
-}
+  );
+};
 
 export default ImagePopUp;
