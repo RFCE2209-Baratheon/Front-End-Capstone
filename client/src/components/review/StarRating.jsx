@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 function StarRating(props) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [ratingDescription, setRatingDescription] = useState(['', 'Poor', 'Fair', 'Average', 'Good', 'Great']);
+
+  console.log(ratingDescription[hover])
   return (
-    <div className="star-rating">
+    <div style={{ whiteSpace: 'nowrap' }} className="star-rating">
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
@@ -20,6 +23,7 @@ function StarRating(props) {
           </button>
         );
       })}
+      <p style={{ display: 'inline-block' }}>{`${ratingDescription[hover]}`}</p>
     </div>
   );
 }

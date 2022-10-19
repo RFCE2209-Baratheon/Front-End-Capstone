@@ -22,11 +22,16 @@ function ReviewListBody({ review }) {
     showBody(review.body);
   }, []);
 
+  const handleClick = () => {
+    setBody(review.body);
+    setToggleBody(!toggleBody);
+  };
+
   return (
     <>
       <p>{body}</p>
       {toggleBody
-        && <p onClick={() => setBody(review.body)} style={{ textDecoration: 'underline', color: 'blue' }}>Show More...</p>}
+        && <p onClick={() => { handleClick(); }} style={{ textDecoration: 'underline', color: 'blue' }}>Show More...</p>}
       {review.photos.map((image) => (
         <ImagePopUp image={image} />
       ))}

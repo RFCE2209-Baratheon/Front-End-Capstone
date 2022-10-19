@@ -1,7 +1,7 @@
 const path = require("path")
 const express = require("express"); // npm installed
 const axios = require('axios');
-const config = require('./config.js');
+const config = require('../config.js');
 
 
 const app = express();
@@ -104,7 +104,6 @@ app.post('/cart', (req, res) => {
 
 
 app.get('/reviews/', (req, res) => {
-  console.log(req.query)
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', { params: { product_id: req.query.product_id, sort: req.query.sort, count: 5000 }, headers: { Authorization: config.TOKEN } })
     .then((response) => {
       res.json(response.data);

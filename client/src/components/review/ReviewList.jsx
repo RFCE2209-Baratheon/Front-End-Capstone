@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
@@ -7,6 +8,8 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 import ReviewListTile from './ReviewListTile.jsx';
+import { DropDown, Option } from './DropDown.jsx';
+import AddReviewForm from './AddReviewForm.jsx';
 
 const Container = styled.div`{
   test-align: center;
@@ -18,7 +21,7 @@ const Container = styled.div`{
   overflow-y: auto;
 }`;
 
-const MoreReviewButton = styled.button`{
+const SelectButton = styled.button`{
   color: palevioletred;
   font-size: 1.5em;
   margin: 1em;
@@ -66,13 +69,18 @@ const ReviewList = ({ product }) => {
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
   const [dropOpen, setDropOpen] = useState(false);
+  const [addReviewToggle, setAddReviewToggle] = useState(false);
 
   useEffect(() => {
     getReviews('relevant');
   }, []);
 
+  useEffect(() => {
+    setReviewListIndex(1);
+  }, [allReviews]);
+
   const getReviews = (sortParameter) => {
-    axios.get('/reviews/', { params: { product_id: 37311, sort: sortParameter } })
+    axios.get('/reviews/', { params: { product_id: product.id, sort: sortParameter } })
       .then(getReviewSuccess)
       .catch((err) => {
         console.log(err);
@@ -105,11 +113,12 @@ const ReviewList = ({ product }) => {
     setDropOpen(!dropOpen);
   };
 
-  const handleSortReviews = (sortParameter) => {
-    setAllReviews([]);
-    setReviews([]);
-    console.log('REVIEWS', allReviews);
-    getReviews(sortParameter);
+  const handleSelect = (e) => {
+    getReviews(e.target.value);
+  };
+
+  const addReviewHandler = () => {
+    setAddReviewToggle(!addReviewToggle);
   };
 
   return (
@@ -118,15 +127,8 @@ const ReviewList = ({ product }) => {
         <div data-testid="reviewlist-1">
           {allReviews.length}
           {' '}
-          reviews, sorted by _____
-          <button style={{ textDecoration: 'underline', color: 'blue' }} onClick={handleDropOpen}>Select Sorting Preference</button>
-          {dropOpen && (
-          <Menu>
-            <List><ListButton onClick={() => { handleSortReviews('Newest'); }}>Newest</ListButton></List>
-            <List><ListButton onClick={() => { handleSortReviews('Helpful'); }}>Helpful</ListButton></List>
-            <List><ListButton onClick={() => { handleSortReviews('Relevant'); }}>Relevant</ListButton></List>
-          </Menu>
-          )}
+          reviews, sorted by
+          <DropDown handleSelect={handleSelect} />
         </div>
         <ScrollDiv>
           {' '}
@@ -134,7 +136,17 @@ const ReviewList = ({ product }) => {
         </ScrollDiv>
       </Container>
       {moreReviewsButton
-      && <MoreReviewButton onClick={() => { expandReviews(); }}>More Reviews</MoreReviewButton>}
+      && <SelectButton onClick={() => { expandReviews(); }}>More Reviews</SelectButton>}
+      <SelectButton onClick={addReviewHandler}>Add a Review</SelectButton>
+      {addReviewToggle
+       && (
+       <AddReviewForm
+         addReviewToggle={addReviewToggle}
+         setAddReviewToggle={setAddReviewToggle}
+         productName={product.name}
+       >
+       </AddReviewForm>
+       )}
     </>
   );
 };

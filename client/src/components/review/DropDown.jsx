@@ -34,9 +34,9 @@ const StyledButton = styled.input`
 `;
 export const DropDown = ({handleSelect}) => (
   <select onChange={handleSelect}>
-    <option value="Relevant">Relevance</option>
-    <option value="Newest">Newest</option>
-    <option value="Helpful">Helpfulness</option>
+    <option value="relevant">Relevance</option>
+    <option value="newest">Newest</option>
+    <option value="helpful">Helpfulness</option>
   </select>
 );
 
