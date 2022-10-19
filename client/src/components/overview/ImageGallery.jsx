@@ -1,32 +1,25 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
-import CarouselItem from './CarouselItem.jsx';
-import Thumbnail from './Thumbnail.jsx';
+import {StyledExpand} from './styledIcons.js';
+import DefaultView from './DefaultView.jsx';
+import ExpandedView from './ExpandedView.jsx';
 
-const StyledThumbnailAlign = styled.div`
-  text-align: left;
-  position: absolute;
+const ImageGalleryContainerDefault = styled.div`
+  width: 500px;
+  &:hover {
+    cursor:zoom-in;
+  }
 `
-const StyledCarousel = styled.section`
+const ImageGalleryContainerExpand = styled.div`
   position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-`
-// transitions not working
-const StyledCarouselItem = styled.div`
-  opacity: ${props => props.active ? '1' : '0'};
-  transition-duration: ${props => props.active ? '1s' : '1s ease'};
-  transition-property: sliding-vertically;
+  width: 100%;
 `
 
 const ImageGallery = ({ styleImages }) => {
 
   const [defaultView, setDefaultView] = useState(true);
-
+  const [expandedView, setExpandedView] = useState(false);
 
   const [current, setCurrent] = useState(0);
   const length = styleImages.length; // 9
@@ -39,11 +32,13 @@ const ImageGallery = ({ styleImages }) => {
     var verticalScroll = true;
   }
 
-  const nextSlide = () => {
+  const nextSlide = (e) => {
+    e.stopPropagation();
     setCurrent(current === length - 1 ? length - 1 : current + 1);
   };
 
-  const prevSlide = () => {
+  const prevSlide = (e) => {
+    e.stopPropagation();
     setCurrent(current === 0 ? 0 : current - 1);
   };
 
@@ -51,12 +46,14 @@ const ImageGallery = ({ styleImages }) => {
     return null;
   }
 
-  const upSlide = () => {
+  const upSlide = (e) => {
+    e.stopPropagation();
     setStart(start === 0 ? 0 : start - 1);
     setEnd(end === 7 ? 7 : end - 1);
   };
 
-  const downSlide = () => {
+  const downSlide = (e) => {
+    e.stopPropagation();
     setStart(start === length - 7 ? length - 7 : start + 1);
     setEnd(end === length ? length : end + 1);
   };
@@ -65,34 +62,31 @@ const ImageGallery = ({ styleImages }) => {
     setActiveThumbnails(styleImages.slice(start, end));
   }
 
-  useEffect(changeThumbnails, [start]);
+  useEffect(changeThumbnails, [start, end]);
+
+  const changeView = () => {
+    setDefaultView(!defaultView);
+    setExpandedView(!expandedView);
+  }
 
   return (
     <>
       <h3>[Image Gallery]</h3>
 
-      <StyledCarousel>
-        <StyledExpand onClick={()=>setDefaultView(!defaultView)} />
-        {current !== length -1 && <StyledRightArrow onClick={nextSlide} />}
-        {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
+      {/* <div data-testid="expand-button">
+        <StyledExpand onClick={() => {
+          setDefaultView(!defaultView);
+          setExpandedView(!expandedView);
+        }} />
+      </div> */}
+      <ImageGalleryContainerDefault onClick={changeView}>
+        {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} start={start} end={end} />}
+      </ImageGalleryContainerDefault>
 
-        {styleImages.map((image, index) =>
-          <StyledCarouselItem active={index === current} key={index}>
-            {index === current && (
-              <CarouselItem image={image} />
-            )}
-          </StyledCarouselItem>
-        )}
-
-        {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
-        <StyledThumbnailAlign>
-          {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
-          {activeThumbnails.map((thumbnail, index) =>
-            <Thumbnail thumbnail={thumbnail} key={index} selected={index === current} onClick={() => setCurrent(index)} />
-          )}
-          {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
-        </StyledThumbnailAlign>
-      </StyledCarousel>
+      <ImageGalleryContainerExpand onClick={changeView}>
+        {expandedView && <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} start={start} end={end} />}
+      </ImageGalleryContainerExpand>
+      {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
     </>
   )
 }

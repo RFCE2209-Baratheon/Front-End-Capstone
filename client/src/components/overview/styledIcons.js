@@ -4,7 +4,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const StyledLeftArrow = styled(AiOutlineArrowLeft)`
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 85px;
   font-size: 2rem;
   color: #000;
@@ -14,7 +14,7 @@ const StyledLeftArrow = styled(AiOutlineArrowLeft)`
 `
 const StyledRightArrow = styled(AiOutlineArrowRight)`
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 450px;
   font-size: 2rem;
   color: #000;
@@ -25,7 +25,7 @@ const StyledRightArrow = styled(AiOutlineArrowRight)`
 
 const StyledExpand = styled(AiOutlineExpand)`
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 450px;
   font-size: 2rem;
   color: #000;
@@ -36,7 +36,7 @@ const StyledExpand = styled(AiOutlineExpand)`
 
 const StyledUpArrow = styled(IoIosArrowUp)`
   position: absolute;
-  top: -5%;
+  top: 22%;
   left: 30px;
   font-size: 2rem;
   color: #000;
@@ -47,7 +47,7 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 100%;
+  top: 92%;
   left: 30px;
   font-size: 2rem;
   color: #000;
@@ -56,4 +56,20 @@ const StyledDownArrow = styled(IoIosArrowDown)`
   user-select: none;
 `
 
-export {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand};
+const StyledLeftArrowExpand = styled(StyledLeftArrow)`
+  left: 515px;
+`
+
+const StyledRightArrowExpand = styled(StyledRightArrow)`
+  left: 925px;
+`
+
+const StyledUpArrowExpand = styled(StyledUpArrow)`
+  left: 430px;
+`
+
+const StyledDownArrowExpand = styled(StyledDownArrow)`
+  left: 430px;
+`
+
+export {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand, StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand};
