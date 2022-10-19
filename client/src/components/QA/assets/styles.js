@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-display: flex;
-height: 50%;
+
+max-height: 50vh;
 width: 100vh;
 justify-content: top-left;
 align-items: center;
 border: inset;
+overflow-y: scroll;
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 `
 const HelpfulButton = styled.button`
 border: none;
@@ -34,33 +40,17 @@ margin-bottom: 5px;
 padding: 10px 20px;
 `
 
-const Title = styled.h2`
-color:rgb(122, 85, 34);
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
 
-const Body = styled.div`
-color:rgb(122, 85, 34);
-max-height: 0;
-overflow: hidden;
-transition: all 0.5s cubic-bezier(0,1,0,1);`
-
-const BodyShow = styled.div`
-height: auto;
-max-height: 9999px;
-transition: all 0.5s cubic-bezier(1,0,1,0);
-`
-
-const AddQuestion = styled.button`
-display: flex;
-`
 const QuestionFolder = styled.div`
-width: 100%;
-    max-height: ${(props) => (props.open ? '500px' : '0px')};
-    transition: all 1s ease-in-out;
-    overflow: hidden;
+  width: 100%;
+  max-height: ${(props) => (props.open ? '20vh' : '0px')};
+  transition: all 1s ease-in-out;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
 `
 
 export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled}
