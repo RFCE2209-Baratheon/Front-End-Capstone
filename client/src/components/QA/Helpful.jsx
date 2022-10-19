@@ -19,7 +19,10 @@ return (
   <HelpfulButton>
   <u onClick={helpfulOnclick}>Yes</u>
   </HelpfulButton>
-  {`${helpful}`} | <u>Report</u>
+  {`${helpful}`} |
+  <HelpfulButton>
+  <u>Report</u>
+  </HelpfulButton>
 </span>
 )
 }

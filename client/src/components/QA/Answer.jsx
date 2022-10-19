@@ -1,65 +1,83 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
-import {Questions} from './assets/styles.js'
+import {Questions, HelpfulButton, Test, AnswerStyle} from './assets/styles.js'
 import {format, parseISO} from 'date-fns'
 import Helpful from './Helpful.jsx'
 import Images from './Images.jsx'
-
+import axios from 'axios'
 const {useState, useEffect} = React;
 
 
-//component
+
 const Answer = ({answer}) => {
 
-
-  //local variables
-  let answerArray = [answer]
-  let questionDetailKeys = Object.keys(answer)
-  const start = 0;
-  let end = 2
-  let key;
-  //state
-  const [keys, setKeys] = useState(questionDetailKeys.slice(start, end))
+  //states and variables
+  const [answers, setAnswers] = useState([])
+  const [renderA, setRenderA] = useState([])
   const [hide, setHide] = useState(true)
+  const [end, setEnd] = useState(2)
+  const start = 0;
 
-  // hooks
-  useEffect(()=>{
-    if (questionDetailKeys.length <= 2) {
-      setHide(false)
+  useEffect(()=> {
+
+    // Config for request
+    const config = {
+      headers:{'Authorization':'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'}
     }
-  }, [answerArray])
+
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${answer}/answers`, config)
+    .then((res)=>{
+      setAnswers(res.data.results)
+      setRenderA(res.data.results.slice(start, end))
+    })
+    .catch((error)=>{
+      console.error(error)
+    })
+
+  }, [answer])
+
+
+  useEffect(()=> {
+    console.log('renderA length', renderA.length, 'answers length', answers.length)
+    if (renderA.length === answers.length) {
+      setHide(false)
+    } else {
+      setHide(true)
+    }
+  }, [renderA])
 
   //handlers
   const handleMoreAnswers = () => {
-
-    let newEnd = end + 2;
-
-    setKeys(questionDetailKeys.slice(start, newEnd))
-    if (newEnd >= questionDetailKeys.length) {
-      setHide(false)
-    }
+    setRenderA(answers.slice(start, renderA.length + 2))
   }
+
+
 
   //component
   return (
       <>
-        {keys.map(function (currentKey, index) {
-          key = currentKey;
+        {renderA.map(function (currentAnswer, index) {
+          // {console.log('current key', currentKey, 'answer', answer)}
           return (
           <Questions key={index}>
+          <Test>
           <div>
-            <div>{`A: ${answer[currentKey].body}`}</div>
+            <AnswerStyle>
+            <span>{`A: ${currentAnswer.body}`}</span>
+            </AnswerStyle>
             <div>
-              <span>{`by ${answer[currentKey].answerer_name} `}</span>
-              <Images images={answer[currentKey].photos} />
-              <span>{format(parseISO(`${answer[currentKey].date}`), 'MMMM d, yyyy')}</span>
-              <Helpful helpfulCount={answer[currentKey].helpfulness}/>
+              <Images images={currentAnswer.photos} />
+              <span>{`by ${currentAnswer.answerer_name}, `}</span>
+              <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
+              <Helpful helpfulCount={currentAnswer.helpfulness}/>
             </div>
           </div>
+          </Test>
           </Questions >
           )
         })}
-        {hide ? <button onClick={handleMoreAnswers}> Load More Answers </button> : <></>}
+        <button>Add Answer</button>
+        {hide ? <button onClick={handleMoreAnswers}> Load More Answers </button> : <span> No more answers...</span>}
       </>
 
   )
@@ -67,7 +85,7 @@ const Answer = ({answer}) => {
 
 //proptypes
 Answer.propTypes = {
-  answer: PropTypes.object
+  answer: PropTypes.number
 }
 
 export default Answer

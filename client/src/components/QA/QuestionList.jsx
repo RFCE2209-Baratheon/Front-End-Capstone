@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import {Accordion, Wrapper} from './assets/styles.js'
+import {Accordion, Wrapper, SearchBarStyle} from './assets/styles.js'
 import IndividualQuestion from './IndividualQuestion.jsx'
+import SearchBar from './SearchBar.jsx'
 
 const { useState, useEffect } = React;
 
@@ -18,18 +19,19 @@ const QuestionList = () => {
   const [questions, setQuestions] = useState([])
   const [hide, setHide] = useState(true)
 
+  console.log(questions)
   // Hooks
   useEffect(()=> {
 
     // Config for request
     const config = {
       params: {product_id: productId, count: 100},
-      headers:{'Authorization':'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'},
+      headers:{'Authorization':'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'},
     }
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
     .then((res)=>{
-      console.log(res.data.results)
+
       if (res.data.results.length <= 4) {
         setHide(false)
       }
@@ -49,9 +51,9 @@ const QuestionList = () => {
     }
 
   }, [end])
-
+  // console.log('renderQ',renderQ, 'questions',questions)
   // Handlers
-  console.log(questions.length, renderQ.length)
+
   const loadMore = () => {
 
     if (renderQ.length <= questions.length) {
@@ -65,7 +67,9 @@ const QuestionList = () => {
 
   //component
   return (
-    <span> QUESTIONS & ANSWERS
+    <>
+    <span> QUESTIONS & ANSWERS </span>
+    <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ}/>
     <Wrapper>
     <div>
       <Accordion>
@@ -82,7 +86,7 @@ const QuestionList = () => {
       </Accordion>
     </div>
     </Wrapper>
-    </span>
+    </>
 
   )
 }

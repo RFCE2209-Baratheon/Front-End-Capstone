@@ -3,10 +3,12 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
 
 max-height: 50vh;
-width: 100vh;
+padding: 10px;
+width: auto;
 justify-content: top-left;
 align-items: center;
-border: inset;
+border: solid;
+border-width: 1px;
 overflow-y: scroll;
 
 ::-webkit-scrollbar {
@@ -16,7 +18,8 @@ overflow-y: scroll;
 `
 const HelpfulButton = styled.button`
 border: none;
-background-color:inhert;
+background-color:transparent;
+text-align: right;
 cursor: pointer;
   &:hover {
     background-color: lightblue;
@@ -25,25 +28,27 @@ cursor: pointer;
 
 const ImagesStyled = styled.img`
 
-width: 10%;
+width: 5%;
+padding-bottom: 20px;
 height: auto;
 `
 const Accordion = styled.div`
-width: 500px;
+width: auto;
 background: none;
 `
 
 const Questions = styled.div`
-border: solid;
+border-top: ridge;
+border-top: ridge;
 background:none;
 margin-bottom: 5px;
-padding: 10px 20px;
+
 `
 
 
 const QuestionFolder = styled.div`
   width: 100%;
-  max-height: ${(props) => (props.open ? '20vh' : '0px')};
+  max-height: ${(props) => (props.open ? '100vh' : '0px')};
   transition: all 1s ease-in-out;
   overflow-y: scroll;
 
@@ -52,5 +57,26 @@ const QuestionFolder = styled.div`
     background: transparent; /* make scrollbar transparent */
   }
 `
+const AnswerStyle = styled.span`
+display: inline-block;
+padding-bottom: 25px;
+`
 
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled}
+const SearchBarStyle = styled.input`
+width: 99%;
+padding: 10px;
+`
+const SearchBarWrapper = styled.div`
+padding: 10px;
+`
+
+const Test =styled.div`
+padding-top 25px;
+padding-bottom 25px;
+`
+const AlignRight = styled.span`
+float: right;
+padding: 5px;
+`
+
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper}
