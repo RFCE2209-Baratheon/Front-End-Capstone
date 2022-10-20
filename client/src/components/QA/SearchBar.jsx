@@ -1,5 +1,6 @@
 import React from 'react'
 import {SearchBarStyle, SearchBarWrapper} from './assets/styles.js'
+import {PropTypes} from 'prop-types'
 
 const {useState, useEffect} = React;
 
@@ -37,6 +38,16 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
     </SearchBarWrapper>
   );
 
+}
+
+SearchBar.propTypes = {
+  questions: PropTypes.array,
+  setRenderQ: PropTypes.func,
+  renderQ: PropTypes.array,
+  searchedQ: PropTypes.array,
+  setSearchedQ: PropTypes.func,
+  enableSearchQ: PropTypes.bool,
+  setEnableSearchQ: PropTypes.func
 }
 
 export default SearchBar
