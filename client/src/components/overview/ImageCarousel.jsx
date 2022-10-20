@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-// import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
 import CarouselItem from './CarouselItem.jsx';
 
+// currently does not work
 const StyledCarouselItem = styled.div`
   opacity: ${props => props.active ? '1' : '0'};
   transition-duration: ${props => props.active ? '1s' : '1s ease'};

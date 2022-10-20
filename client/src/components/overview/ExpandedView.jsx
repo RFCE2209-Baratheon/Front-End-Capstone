@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand} from './styledIcons.js';
-// import CarouselItem from './CarouselItem.jsx';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 
@@ -26,13 +25,13 @@ const StyledCarouselImageSize = styled.div`
   }
 `
 
-const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, start, end} ) => {
+const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
   const [magnified, setMagnified] = useState(false);
   var onClickMagnify = (e) => {
     e.stopPropagation();
     setMagnified(!magnified);
   }
-  // arrow buttons should show in expanded view before magnified gets set to true --currently does not
+  // arrow buttons should show in expanded view before magnified gets set to true --currently in wrong position
   return (
     <>
       <StyledCarousel>

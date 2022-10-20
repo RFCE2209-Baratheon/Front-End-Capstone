@@ -1,30 +1,39 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { FaTwitter } from 'react-icons/fa';
-import { FaFacebook } from 'react-icons/fa';
-import { FaPinterest } from 'react-icons/fa';
+import { FaTwitter, FaFacebook, FaPinterest } from 'react-icons/fa';
 
 const StyledSalePrice = styled.div`
-    color: red;
-  `;
+  color: red;
+`
 
-const ProductInformation = ({ productData, productId, styleData, styleId, reviewData }) => {
+const StyledSocials = styled.div`
+`
+
+const TwitterButton = styled(FaTwitter)`
+`
+
+const PinterestButton = styled(FaFacebook)`
+`
+
+const FacebookButton = styled(FaPinterest)`
+`
+
+const ProductInformation = ({ productData, currentStyle, reviewData }) => {
 
   return (
     <>
-      <h3>[Product Information]</h3>
       {reviewData ?
-      <div>
-        <span>⭐️⭐️⭐️⭐️⭐️</span> <a href="">Link to [#] reviews</a>
-      </div> : null}
+      <p>
+        <span>⭐️⭐️⭐️⭐️⭐️</span> <a href="">Read all [#] reviews</a>
+      </p> : null}
 
       <div>{productData.category.toUpperCase()}</div>
       <h1>{productData.name}</h1>
 
-      {styleData.sale_price ?
-        <div><s>{styleData.original_price}</s> <StyledSalePrice>{styleData.sale_price}</StyledSalePrice></div>
-      : '$' + styleData.original_price}
+      {currentStyle.sale_price ?
+        <div><s>${currentStyle.original_price}</s> <StyledSalePrice>${currentStyle.sale_price}</StyledSalePrice></div>
+      : '$' + currentStyle.original_price}
 
       {productData.description ?
         <div>
@@ -32,9 +41,9 @@ const ProductInformation = ({ productData, productId, styleData, styleId, review
           <p>{productData.description}</p>
         </div>
       : null}
-      <div>
-        <FaTwitter/> <FaPinterest/> <FaFacebook/>
-      </div>
+      <StyledSocials>
+        <TwitterButton/> <PinterestButton/> <FacebookButton/>
+      </StyledSocials>
     </>
   )
 }
