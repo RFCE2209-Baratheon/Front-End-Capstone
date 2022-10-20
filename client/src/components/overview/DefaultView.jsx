@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
-// import CarouselItem from './CarouselItem.jsx';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 
@@ -23,7 +22,7 @@ const StyledCarouselImageSize = styled.div`
   width: 500px;
 `
 
-const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, start, end} ) => {
+const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
 
   return (
     <>

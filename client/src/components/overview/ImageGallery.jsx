@@ -62,7 +62,7 @@ const ImageGallery = ({ styleImages }) => {
     setActiveThumbnails(styleImages.slice(start, end));
   }
 
-  useEffect(changeThumbnails, [start, end]);
+  useEffect(changeThumbnails, [start, end, styleImages]);
 
   const changeView = () => {
     setDefaultView(!defaultView);
@@ -71,8 +71,6 @@ const ImageGallery = ({ styleImages }) => {
 
   return (
     <>
-      <h3>[Image Gallery]</h3>
-
       {/* <div data-testid="expand-button">
         <StyledExpand onClick={() => {
           setDefaultView(!defaultView);
@@ -80,11 +78,11 @@ const ImageGallery = ({ styleImages }) => {
         }} />
       </div> */}
       <ImageGalleryContainerDefault onClick={changeView}>
-        {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} start={start} end={end} />}
+        {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} end={end} />}
       </ImageGalleryContainerDefault>
 
       <ImageGalleryContainerExpand onClick={changeView}>
-        {expandedView && <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} start={start} end={end} />}
+        {expandedView && <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} end={end} />}
       </ImageGalleryContainerExpand>
       {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
     </>
