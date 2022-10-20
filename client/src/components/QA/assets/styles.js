@@ -45,10 +45,14 @@ margin-bottom: 5px;
 
 `
 
-
+// .attrs(props => ({
+//   type: 'text',
+//   size: props.small ? 5 : undefined,
+// }))
 const QuestionFolder = styled.div`
+
   width: 100%;
-  max-height: ${(props) => (props.open ? '100vh' : '0px')};
+  max-height: ${(props) => (props.open ? '25vh' : '0px')};
   transition: all 1s ease-in-out;
   overflow-y: scroll;
 

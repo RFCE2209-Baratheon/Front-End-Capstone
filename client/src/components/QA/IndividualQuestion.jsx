@@ -5,7 +5,7 @@ import {PropTypes} from 'prop-types'
 import {QuestionFolder, AlignRight} from './assets/styles.js'
 
 const {useState, useEffect} = React;
-const IndividualQuestion = ({question}) => {
+const IndividualQuestion = ({question, index}) => {
 
 
 //State
@@ -23,16 +23,15 @@ const toggleOpen = () => {
       <AlignRight>
       <Helpful helpfulCount={question.question_helpfulness}/>
       </AlignRight>
-      <QuestionFolder open={open}>
-      <div>
+      <QuestionFolder className={index} open={open}>
         <Answer answer={question.question_id}/>
-      </div>
       </QuestionFolder>
     </div>
   )
 }
 
 IndividualQuestion.propTypes = {
-  question: PropTypes.object
+  question: PropTypes.object,
+  index: PropTypes.number
 }
 export default IndividualQuestion

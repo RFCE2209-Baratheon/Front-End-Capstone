@@ -17,9 +17,10 @@ const QuestionList = () => {
   const [productId, setProductId] = useState('37314')
   const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
+  const [searchedQ, setSearchedQ] = useState([])
   const [hide, setHide] = useState(true)
+  const [enableSearchQ, setEnableSearchQ] = useState(false)
 
-  console.log(questions)
   // Hooks
   useEffect(()=> {
 
@@ -51,9 +52,13 @@ const QuestionList = () => {
     }
 
   }, [end])
-  // console.log('renderQ',renderQ, 'questions',questions)
-  // Handlers
 
+  useEffect(()=>{
+    if (searchedQ.length > 0) {
+      setEnableSearchQ(true)
+    }
+  }, [searchedQ])
+  // Handlers
   const loadMore = () => {
 
     if (renderQ.length <= questions.length) {
@@ -69,22 +74,23 @@ const QuestionList = () => {
   return (
     <>
     <span> QUESTIONS & ANSWERS </span>
-    <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ}/>
+    <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
     <Wrapper>
-    <div>
       <Accordion>
       <div className="Accordion">
         {(renderQ.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
-        {renderQ.map(function(question, index) {
-
+        {enableSearchQ ? searchedQ.map(function(question, index) {
           return (
-            <IndividualQuestion key={index} question={question} open={open}/>
+            <IndividualQuestion key={index} question={question} open={open} index={index}/>
+          )
+        }) : renderQ.map(function(question, index) {
+          return (
+            <IndividualQuestion key={index} question={question} open={open} index={index}/>
           )
         })}
       </div>
       {hide ? <button onClick={loadMore}> Load more questions </button> : <></>}
       </Accordion>
-    </div>
     </Wrapper>
     </>
 
