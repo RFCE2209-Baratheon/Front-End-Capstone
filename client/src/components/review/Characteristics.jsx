@@ -16,8 +16,6 @@ const Characteristics = ({
   const [sizeRatings, setSizeRatings] = useState(['none selected', 'A Size Too Small', '1/2 a Size Too Small', 'Perfect', '1/2 a Size Too Big', 'A Size Too Wide']);
   const [fitRatings, setFitRatings] = useState(['none selected', 'Runs Tight', 'Runs Slightly Tight', 'Perfect', 'Runs Slightly Long', 'Runs Long']);
 
-  console.log('META', metaData);
-
   return (
     <>
       {(metaData.characteristics.Width)

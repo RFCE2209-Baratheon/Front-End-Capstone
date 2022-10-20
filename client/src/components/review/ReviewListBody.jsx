@@ -7,6 +7,10 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ImagePopUp from './ImagePopUp.jsx';
 
+const BodyStyle = styled.p`{
+  max-width: 450px;
+}`;
+
 function ReviewListBody({ review }) {
   const [body, setBody] = useState(review.body.slice(0, 250));
   const [toggleBody, setToggleBody] = useState(false);
@@ -29,7 +33,7 @@ function ReviewListBody({ review }) {
 
   return (
     <>
-      <p>{body}</p>
+      <BodyStyle>{body}</BodyStyle>
       {toggleBody
         && <p onClick={() => { handleClick(); }} style={{ textDecoration: 'underline', color: 'blue' }}>Show More...</p>}
       {review.photos.map((image) => (

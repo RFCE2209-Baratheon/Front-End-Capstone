@@ -1,8 +1,18 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
+import styled, { css } from 'styled-components';
 import ReviewList from './ReviewList.jsx';
 import RatingSummary from './RatingSummary.jsx';
-import review from '../../example_data/getReviewById.js';
+
+const Container = styled.div`{
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}`;
+
+const Title = styled.h1`{
+  text-align: center
+}`;
 
 function Review({ product }) {
   // const [product, setProduct] = useState(review);
@@ -21,8 +31,11 @@ function Review({ product }) {
 
   return (
     <>
-      <ReviewList product={tempProduct} />
-      <RatingSummary product={tempProduct} />
+      <Title>Ratings & Reviews</Title>
+      <Container>
+        <RatingSummary product={tempProduct} />
+        <ReviewList product={tempProduct} />
+      </Container>
     </>
   );
 }

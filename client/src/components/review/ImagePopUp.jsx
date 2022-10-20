@@ -20,18 +20,23 @@ const ModalBackground = styled.div`{
 }`;
 
 const ModalContainer = styled.div`{
-  width: 500px;
-  height: 500px;
+  width: 800px;
+  height: 800px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 25px;
 }`;
 
 const FullImage = styled.img`{
-
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  width: auto;
+  height: auto;
 }`;
 
 const CloseButton = styled.button`{

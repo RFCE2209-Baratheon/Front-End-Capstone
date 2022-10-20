@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
@@ -76,19 +77,23 @@ const metaData = {
   },
 };
 
-const AddReviewForm = ({ setAddReviewToggle, addReviewToggle, productName }) => {
+const AddReviewForm = ({
+  setAddReviewToggle, addReviewToggle, productName, productId,
+}) => {
   const [width, setWidth] = useState(0);
   const [comfort, setComfort] = useState(0);
   const [quality, setQuality] = useState(0);
   const [length, setLength] = useState(0);
   const [size, setSize] = useState(0);
   const [fit, setFit] = useState(0);
-  const [summary, setSummary] = useState('');
+  const [summaryText, setSummaryText] = useState('');
   const [body, setBody] = useState('');
   const [bodyLength, setBodyLength] = useState(0);
   const [bodyLengthLeft, setBodyLengthLeft] = useState(0);
   const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [starRating, setRating] = useState(0);
+  const [recommendValue, setRecommendValue] = useState(false);
 
   useEffect(() => {
     setBodyLength(body.length);
@@ -97,6 +102,30 @@ const AddReviewForm = ({ setAddReviewToggle, addReviewToggle, productName }) => 
   useEffect(() => {
     setBodyLengthLeft(50 - bodyLength);
   }, [bodyLength]);
+
+console.log(metaData.characteristics.Width.id)
+
+  const Submit = () => {
+    // if (summaryText.length)
+    let formData = {
+      product_id: productId,
+      rating: starRating,
+      summary: summaryText,
+      recommend: recommendValue,
+      name: userName,
+      email: userEmail,
+      photos: null,
+      // characteristics: {
+      //   metaData.characteristics.Width.id: width,
+      //   metaData.characteristics.Comfort.id: comfort,
+      //   metaData.characteristics.Quality.id: quality,
+      //   metaData.characteristics.Length.id: length,
+      //   metaData.characteristics.Size.id: size,
+      //   metaData.characteristics.Fit.id: fit
+      // }
+    };
+    console.log(formData)
+  };
 
   return (
     <ModalBackground>
@@ -108,12 +137,12 @@ const AddReviewForm = ({ setAddReviewToggle, addReviewToggle, productName }) => 
           {' '}
         </h3>
         <p>Overall Rating - Select a Star</p>
-        <StarRating />
-        <div onChange={(e) => { setRecommend(e.target.value); }}>
+        <StarRating setRating={setRating} rating={starRating} />
+        <div onChange={(e) => { setRecommendValue(e.target.value); }}>
           <p style={{ display: 'inline-block' }}>Do you recommend this product?</p>
-          <input type="radio" value="yes" name="recommend" />
+          <input type="radio" value="true" name="recommend" />
           Yes
-          <input type="radio" value="no" name="recommend" />
+          <input type="radio" value="false" name="recommend" />
           No
         </div>
         <Characteristics
@@ -132,7 +161,7 @@ const AddReviewForm = ({ setAddReviewToggle, addReviewToggle, productName }) => 
           fit={fit}
         />
         <h5>Review Summary</h5>
-        <input maxLength="60" onChange={(e) => { setSummary(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
+        <input maxLength="60" onChange={(e) => { setSummaryText(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
         <h5>Main Review</h5>
         <div>
           <InputBody maxLength="1000" onChange={(e) => { setBody(e.target.value); }} type="text" placeholder="Why did you like the product or not?" required />
@@ -145,10 +174,10 @@ const AddReviewForm = ({ setAddReviewToggle, addReviewToggle, productName }) => 
         <input maxLength="60" onChange={(e) => { setUserName(e.target.value); }} type="text" placeholder="Example: jackson11!" />
         <p style={{ fontSize: '10px' }}>For privacy reasons, do not use your full name or email address.</p>
         <h5>Email</h5>
-        <input maxLength="60" onChange={(e) => { setEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
+        <input maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
         <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
         <SelectButton type="button">Photo Upload</SelectButton>
-        <SelectButton type="button">Submit Review</SelectButton>
+        <SelectButton onClick={() => { Submit(); }} type="button">Submit Review</SelectButton>
       </ModalContainer>
     </ModalBackground>
   );

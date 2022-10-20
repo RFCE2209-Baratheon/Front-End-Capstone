@@ -58,9 +58,11 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 800px;
+  max-height: 600px;
   overflow: scroll;
-  border: solid;
+  // border: solid;
+  border-radius: 10px;
+
 }`;
 
 const ReviewList = ({ product }) => {
@@ -122,7 +124,7 @@ const ReviewList = ({ product }) => {
   };
 
   return (
-    <>
+    <div>
       <Container>
         <div data-testid="reviewlist-1">
           {allReviews.length}
@@ -144,10 +146,11 @@ const ReviewList = ({ product }) => {
          addReviewToggle={addReviewToggle}
          setAddReviewToggle={setAddReviewToggle}
          productName={product.name}
+         productId={product.id}
        >
        </AddReviewForm>
        )}
-    </>
+    </div>
   );
 };
 
