@@ -103,19 +103,20 @@ font-family: 'Arial';
 }`
 
 const ModalBackground = styled.div`
-width: 100%;
-height: 100%;
-padding: 0;
-background: rgba(0, 0, 0, 0.8);
-position: fixed;
-display: flex;
-justify-content: center;
-align-items: center;
-`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}`
 
 const ModalWrapper = styled.div`
-  width: 400px;
-  height: 500px;
+  width: 35em;
+  height: 35em;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;

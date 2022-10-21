@@ -1,10 +1,9 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
 
-const AddQuestion = ({loadMore, openModal}) => {
+const AddQuestion = ({openModal}) => {
 
   const handleClick = () => {
-    loadMore()
     openModal()
   }
 
@@ -17,7 +16,6 @@ const AddQuestion = ({loadMore, openModal}) => {
 
 AddQuestion.propTypes = {
 
-  loadMore: PropTypes.func,
   openModal: PropTypes.func,
 
 }
