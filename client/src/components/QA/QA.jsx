@@ -1,12 +1,7 @@
-import React, {useState, useEffect} from 'react';
 
+import React from 'react';
+import QuestionList from './QuestionList.jsx';
 
-const QA = (props) => {
-
-  return (
-   <div>hi again</div>
-  )
-}
-
+const QA = () => { return (<QuestionList />) };
 
 export default QA;

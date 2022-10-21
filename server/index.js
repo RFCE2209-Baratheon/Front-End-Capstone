@@ -3,30 +3,84 @@ const express = require('express'); // npm installed
 const axios = require('axios');
 const config = require('../config.js');
 
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
 // other configuration...
-app.use(express.json());
+app.use(express.json())
+
 app.listen(3000);
 
-// Q&A Route Handlers
+/*Q&A Route Handlers*/
+
+
+
+// QuestionList
+// Get questions
+// Get questions for the given product
+
+// Get/qa/questions
+app.get('/qa/questions', (req, res) => {
+
+  const requestConfig = {
+    params: req.query,
+    headers: {'Authorization': config.TOKEN}
+  }
+
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', requestConfig)
+  .then((response)=> {
+    res.json(response.data)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+
+})
 
 // Answers List
 // Returns answers for a given question. This list does not include any reported answers.
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
+  console.log('params', req.query.answer)
+  const requestConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  console.log('getting questions answers')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
+  .then((response)=>{
+    console.log('success', response.data)
+    res.send(response.data)
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+})
 
-});
+
 
 // Add a Question
 // Adds a question for the given product
 
 // POST /qa/questions
-app.post('/qa/questions', (req, res) => {
+app.post('/qa/questions/', (req, res) => {
+  console.log(req.body)
+  const requestConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
 
-});
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', req.body, requestConfig)
+  .then((response)=> {
+    console.log('hello', response.status)
+    res.sendStatus(response.status)
+  })
+  .catch((err)=>{
+    console.log('WE ARE HAVING SOME ISSUES!', err)
+  })
+})
+
 // Add an Answer
 // Adds an answer for the given question
 
