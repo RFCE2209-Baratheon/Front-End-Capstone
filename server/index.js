@@ -1,22 +1,13 @@
 const path = require("path")
 const express = require("express"); // npm installed
-// const webpack = require('webpack')
-// const webpackDevMiddleWare = require('webpack-dev-middleware')
+
 const config = require("../config.js");
 const axios = require("axios");
 
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe
 
 const app = express();
-// const configure = require('../webpack.config.js')
-// const compiler = webpack(configure)
 
-
-// app.use(
-//   webpackDevMiddleWare(compiler, {
-//     publicPath: configure.output.publicPath,
-//   })
-// )
 app.use(express.static(path.join(__dirname, "../public")));
 // other configuration...
 app.use(express.json())
