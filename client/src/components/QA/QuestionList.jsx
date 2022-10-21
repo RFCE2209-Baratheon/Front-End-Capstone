@@ -94,7 +94,7 @@ const QuestionList = () => {
           )
         }) : renderQ.map(function(question, index) {
           return (
-            <IndividualQuestion key={index} question={question} open={open} index={index}/>
+            <IndividualQuestion key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
           )
         })}
       </div>

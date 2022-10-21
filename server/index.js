@@ -44,14 +44,13 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log('params', req.query.answer)
+
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
-  console.log('getting questions answers')
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
   .then((response)=>{
-    console.log('success', response.data)
+
     res.send(response.data)
   })
   .catch((error)=>{
@@ -66,14 +65,14 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
-  console.log(req.body)
+
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
 
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', req.body, requestConfig)
   .then((response)=> {
-    console.log('hello', response.status)
+
     res.sendStatus(response.status)
   })
   .catch((err)=>{
@@ -93,7 +92,21 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 
 // PUT /qa/questions/:question_id/helpful
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  // {params: {question_id: id}}
+  let number = req.query.question_id
 
+  const newConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/helpful`, {}, newConfig)
+
+  .then((success) => {
+    console.log('succesfully put route for helpful questions')
+    res.end()
+  })
+  .catch((error) => {
+    console.log('error in put route for helpful questions', error)
+  })
 });
 // Report Question
 // Updates a question to show it was reported. Note, this action does not delete the question, but the question will not be returned in the above GET request.
@@ -193,10 +206,10 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.body)
+
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
     .then((response) => {
-      console.log(response);
+
     })
     .catch((error) => {
       console.log(error);
