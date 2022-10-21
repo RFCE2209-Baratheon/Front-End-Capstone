@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 
 const CharacteristicRating = ({ type, setFunc, widthRatings }) => (
-  <div onChange={(e) => { setFunc(e.target.value); }}>
+  <div onChange={(e) => { setFunc(Number(e.target.value)); }}>
     <p style={{ display: 'inline-block' }}>{`Please rate the ${type}`}</p>
-    <input type="radio" value="1" name={type} />
+    <input required type="radio" value="1" name={type} />
     1
     <input type="radio" value="2" name={type} />
     2

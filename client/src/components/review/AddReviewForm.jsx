@@ -1,8 +1,13 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/extensions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import axios from 'axios';
 import StarRating from './StarRating.jsx';
 import Characteristics from './Characteristics.jsx';
 
@@ -87,7 +92,7 @@ const AddReviewForm = ({
   const [size, setSize] = useState(0);
   const [fit, setFit] = useState(0);
   const [summaryText, setSummaryText] = useState('');
-  const [body, setBody] = useState('');
+  const [bodyText, setBodyText] = useState('');
   const [bodyLength, setBodyLength] = useState(0);
   const [bodyLengthLeft, setBodyLengthLeft] = useState(0);
   const [userName, setUserName] = useState('');
@@ -96,88 +101,124 @@ const AddReviewForm = ({
   const [recommendValue, setRecommendValue] = useState(false);
 
   useEffect(() => {
-    setBodyLength(body.length);
-  }, [body]);
+    setBodyLength(bodyText.length);
+  }, [bodyText]);
 
   useEffect(() => {
     setBodyLengthLeft(50 - bodyLength);
   }, [bodyLength]);
 
-console.log(metaData.characteristics.Width.id)
+  const submitNewReview = (formData) => {
+    console.log('DATA', formData);
+    // { params: { product_id: product.id, sort: sortParameter } }
+    axios.post('/reviews', formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getIds = () => {
+    const characteristicsObject = {};
+    for (const key in metaData.characteristics) {
+      characteristicsObject[key.toLowerCase()] = metaData.characteristics[key].id;
+    }
+    return characteristicsObject;
+  };
 
   const Submit = () => {
-    // if (summaryText.length)
-    let formData = {
+    const ids = getIds();
+    const formData = {
       product_id: productId,
       rating: starRating,
       summary: summaryText,
+      body: bodyText,
       recommend: recommendValue,
       name: userName,
       email: userEmail,
-      photos: null,
-      // characteristics: {
-      //   metaData.characteristics.Width.id: width,
-      //   metaData.characteristics.Comfort.id: comfort,
-      //   metaData.characteristics.Quality.id: quality,
-      //   metaData.characteristics.Length.id: length,
-      //   metaData.characteristics.Size.id: size,
-      //   metaData.characteristics.Fit.id: fit
-      // }
+      photos: [''],
+      characteristics: {},
     };
-    console.log(formData)
+    const objectOfCharacteristics = {
+      width,
+      comfort,
+      quality,
+      fit,
+      size,
+      length,
+    };
+    for (const key in ids) {
+      formData.characteristics[ids[key]] = objectOfCharacteristics[key];
+    }
+    submitNewReview(formData);
+  };
+
+  const changeRecommendValue = (value) => {
+    if (typeof value === 'string') {
+      if (value.toLowerCase() === 'true') {
+        setRecommendValue(true);
+      }
+      if (value.toLowerCase() === 'false') {
+        setRecommendValue(false);
+      }
+    }
   };
 
   return (
     <ModalBackground>
       <ModalContainer>
         <button onClick={() => { setAddReviewToggle(!addReviewToggle); }}>X</button>
-        <h1>Write Your Review</h1>
-        <h3>
-          {`About the ${productName}`}
-          {' '}
-        </h3>
-        <p>Overall Rating - Select a Star</p>
-        <StarRating setRating={setRating} rating={starRating} />
-        <div onChange={(e) => { setRecommendValue(e.target.value); }}>
-          <p style={{ display: 'inline-block' }}>Do you recommend this product?</p>
-          <input type="radio" value="true" name="recommend" />
-          Yes
-          <input type="radio" value="false" name="recommend" />
-          No
-        </div>
-        <Characteristics
-          metaData={metaData}
-          setWidth={setWidth}
-          setComfort={setComfort}
-          setQuality={setQuality}
-          setLength={setLength}
-          setSize={setSize}
-          setFit={setFit}
-          width={width}
-          comfort={comfort}
-          quality={quality}
-          length={length}
-          size={size}
-          fit={fit}
-        />
-        <h5>Review Summary</h5>
-        <input maxLength="60" onChange={(e) => { setSummaryText(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
-        <h5>Main Review</h5>
-        <div>
-          <InputBody maxLength="1000" onChange={(e) => { setBody(e.target.value); }} type="text" placeholder="Why did you like the product or not?" required />
-          {bodyLengthLeft > 0
+        <form>
+          <h1>Write Your Review</h1>
+          <h3>
+            {`About the ${productName}`}
+            {' '}
+          </h3>
+          <p>Overall Rating - Select a Star</p>
+          <StarRating required setRating={setRating} rating={starRating} />
+          <div onChange={(e) => { changeRecommendValue(e.target.value); }}>
+            <p style={{ display: 'inline-block' }}>Do you recommend this product?</p>
+            <input required type="radio" value="true" name="recommend" />
+            Yes
+            <input type="radio" value="false" name="recommend" />
+            No
+          </div>
+          <Characteristics
+            metaData={metaData}
+            setWidth={setWidth}
+            setComfort={setComfort}
+            setQuality={setQuality}
+            setLength={setLength}
+            setSize={setSize}
+            setFit={setFit}
+            width={width}
+            comfort={comfort}
+            quality={quality}
+            length={length}
+            size={size}
+            fit={fit}
+          />
+          <h5>Review Summary</h5>
+          <input maxLength="60" onChange={(e) => { setSummaryText(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
+          <h5>Main Review</h5>
+          <div>
+            <InputBody required minLength="50" maxLength="1000" onChange={(e) => { setBodyText(e.target.value); }} type="text" placeholder="Why did you like the product or not?" />
+            {bodyLengthLeft > 0
           && <p>{`Minimum required characters left: ${bodyLengthLeft}`}</p>}
-          {bodyLengthLeft <= 0
+            {bodyLengthLeft <= 0
           && <p>Minimum Reached</p>}
-        </div>
-        <h5>User Name</h5>
-        <input maxLength="60" onChange={(e) => { setUserName(e.target.value); }} type="text" placeholder="Example: jackson11!" />
-        <p style={{ fontSize: '10px' }}>For privacy reasons, do not use your full name or email address.</p>
-        <h5>Email</h5>
-        <input maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
-        <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
-        <SelectButton type="button">Photo Upload</SelectButton>
-        <SelectButton onClick={() => { Submit(); }} type="button">Submit Review</SelectButton>
+          </div>
+          <h5>User Name</h5>
+          <input required maxLength="60" onChange={(e) => { setUserName(e.target.value); }} type="text" placeholder="Example: jackson11!" />
+          <p style={{ fontSize: '10px' }}>For privacy reasons, do not use your full name or email address.</p>
+          <h5>Email</h5>
+          <input required maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
+          <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
+          <SelectButton type="button">Photo Upload</SelectButton>
+          <SelectButton type="submit" onClick={() => { Submit(); }}>Submit Review</SelectButton>
+        </form>
       </ModalContainer>
     </ModalBackground>
   );

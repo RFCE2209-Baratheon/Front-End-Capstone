@@ -5,7 +5,6 @@ function StarRating({setRating, rating}) {
   const [hover, setHover] = useState(0);
   const [ratingDescription, setRatingDescription] = useState(['', 'Poor', 'Fair', 'Average', 'Good', 'Great']);
 
-  console.log(ratingDescription[hover])
   return (
     <div style={{ whiteSpace: 'nowrap' }} className="star-rating">
       {[...Array(5)].map((star, index) => {

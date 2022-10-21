@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { css } from 'styled-components';
 import ReviewList from './ReviewList.jsx';
 import RatingSummary from './RatingSummary.jsx';
@@ -14,8 +15,9 @@ const Title = styled.h1`{
   text-align: center
 }`;
 
-function Review({ product }) {
-  // const [product, setProduct] = useState(review);
+function Review({ productId }) {
+  const [product, setProduct] = useState(tempProduct);
+  const [metaData, setMetaData] = useState({});
 
   const tempProduct = {
     id: 37311,
@@ -29,12 +31,28 @@ function Review({ product }) {
     updated_at: '2021-08-13T14:37:33.145Z',
   };
 
+  // const getMetaData = () => {
+  //   axios.get('/reviews/meta', { params: { product_id: tempProduct.id } })
+  //     .then(getMetaSucces)
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getMetaData();
+  // }, []);
+
+  // const getMetaSucces = (response) => {
+  //   setMetaData(response);
+  // };
+
   return (
     <>
       <Title>Ratings & Reviews</Title>
       <Container>
-        <RatingSummary product={tempProduct} />
-        <ReviewList product={tempProduct} />
+        <RatingSummary metaData={metaData} product={tempProduct} />
+        <ReviewList metaData={metaData} product={tempProduct} />
       </Container>
     </>
   );
