@@ -1,12 +1,19 @@
 import React from 'react';
 import QA from './QA/QA.jsx'
-// const {useState, useEffect} = React;
+import Review from './review/Review.jsx';
+import Related from './related_items/Related_items.jsx';
+import Overview from './overview/Overview.jsx';
 
 
-const App = () => {
+function App() {
   return (
-  <QA></QA>
-  )
+    <div>
+      <Overview />
+      <Related />
+      <QA />
+      <Review />
+    </div>
+  );
 }
 
 export default App;
