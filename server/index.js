@@ -72,7 +72,7 @@ app.get('/products/:product_id', (req, res) => {
   let itemId = req.params.product_id;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
     headers: {
-      Authorization: authorization.token,
+      Authorization: config.TOKEN,
     },
   })
     .then((productInfo) => {
@@ -87,7 +87,7 @@ app.get('/products/:product_id/styles', (req, res) => {
   let itemId = req.params.product_id;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/styles`, {
     headers: {
-      Authorization: authorization.token,
+      Authorization: config.TOKEN,
     }
   })
     .then((styles) => {
@@ -102,7 +102,7 @@ app.get('/products/:product_id/related', (req, res) => {
   let itemId = req.params.product_id;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/related`, {
     headers: {
-      Authorization: authorization.token,
+      Authorization: config.TOKEN,
     },
   })
     .then((relatedItems) => {
