@@ -58,7 +58,7 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 600px;
+  max-height: 1400px;
   overflow: scroll;
   // border: solid;
   border-radius: 10px;

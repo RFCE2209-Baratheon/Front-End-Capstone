@@ -50,10 +50,6 @@ const Overview = () => {
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
 
-  console.log('productData: ', productData);
-  console.log('productId: ', productId);
-  console.log('styleData: ', styleData);
-  console.log('currentStyle: ', currentStyle);
 
   var onStyleClick = (id) => {
     for (var i = 0; i < styleData.length; i++) {
