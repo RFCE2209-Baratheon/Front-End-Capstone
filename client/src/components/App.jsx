@@ -1,14 +1,14 @@
 import React from 'react';
 import Related from './related_items/Related_items.jsx';
 const {useState, useEffect} = React;
-
+import Overview from './overview/Overview.jsx';
 
 const App = () => {
   return (
     <div>
-      <h1></h1>
+      <Overview />
       <Related />
-  </div>
+    </div>
   )
 }
 
