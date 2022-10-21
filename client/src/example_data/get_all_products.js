@@ -1,4 +1,4 @@
-[
+var allProducts = [
   {
       "id": 37311,
       "campus": "hr-rfe",
@@ -54,4 +54,6 @@
       "created_at": "2021-08-13T14:37:33.145Z",
       "updated_at": "2021-08-13T14:37:33.145Z"
   }
-]
+];
+
+export default allProducts;
