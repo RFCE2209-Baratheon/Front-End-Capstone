@@ -103,5 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-# Config file with Authorization key to API
 config.js

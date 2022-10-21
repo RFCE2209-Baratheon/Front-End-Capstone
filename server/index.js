@@ -69,15 +69,48 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/products/:product_id', (req, res) => {
-
+  let itemId = req.params.product_id;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
+    headers: {
+      Authorization: authorization.token,
+    },
+  })
+    .then((productInfo) => {
+      res.send(productInfo.data);
+    })
+    .catch((error) => {
+      res.status(500);
+    });
 });
 
 app.get('/products/:product_id/styles', (req, res) => {
-
+  let itemId = req.params.product_id;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/styles`, {
+    headers: {
+      Authorization: authorization.token,
+    }
+  })
+    .then((styles) => {
+      res.send(styles.data);
+    })
+    .catch((error) => {
+      res.status(500);
+    })
 });
 
 app.get('/products/:product_id/related', (req, res) => {
-
+  let itemId = req.params.product_id;
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/related`, {
+    headers: {
+      Authorization: authorization.token,
+    },
+  })
+    .then((relatedItems) => {
+      res.send(relatedItems.data);
+    })
+    .catch((error) => {
+      res.status(500);
+    });
 });
 
 // unsure here
