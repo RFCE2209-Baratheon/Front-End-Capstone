@@ -75,7 +75,7 @@ function RatingSummary({ product }) {
       <h3>Rating Summary</h3>
       <SummaryContainer>
         {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
-          <p style={{ whiteSpace: 'nowrap' }}>
+          <p onClick ={(e)=>{handleFilter(e.target.value)}} style={{ whiteSpace: 'nowrap' }}>
             {`${rating} stars`}
             <Bar style={{ display: 'inline-block' }} sum={totalReviews} rating={metaData.ratings[rating]} />
           </p>
