@@ -16,10 +16,7 @@ const ImageGalleryContainerExpand = styled.div`
   width: 100%;
 `
 
-const ImageGallery = ({ styleImages }) => {
-
-  const [defaultView, setDefaultView] = useState(true);
-  const [expandedView, setExpandedView] = useState(false);
+const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
 
   const [current, setCurrent] = useState(0);
   const length = styleImages.length; // 9
@@ -63,11 +60,6 @@ const ImageGallery = ({ styleImages }) => {
   }
 
   useEffect(changeThumbnails, [start, end, styleImages]);
-
-  const changeView = () => {
-    setDefaultView(!defaultView);
-    setExpandedView(!expandedView);
-  }
 
   return (
     <>

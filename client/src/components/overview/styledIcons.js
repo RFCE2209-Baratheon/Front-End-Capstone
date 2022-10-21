@@ -47,7 +47,7 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 680px;
+  top: 695px;
   left: 30px;
   font-size: 2rem;
   color: #000;

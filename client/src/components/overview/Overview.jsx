@@ -6,20 +6,23 @@ import AddToCart from './AddToCart.jsx';
 import exampleProductData from '../../example_data/get_all_products.js';
 import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
-import './assets/styles.css';
 import styled from 'styled-components';
 import GlobalStyle from './globalStyles.js';
 
 const StyledContainer = styled.div`
   display: grid;
-  grid-template-columns: 550px auto;
+  grid-template-columns: ${props => props.default ? '550px auto' : 'auto 550px auto'};
   grid-template-rows: auto;
-  grid-template-areas:
-    "left1 right1"
+  grid-template-areas: ${props => props.default ?
+    `"left1 right1"
     "left1 right2"
-    "left1 right3";
+    "left1 right3"` :
+    `". left1 ."
+    ". left1 . "
+    ". left1 . "`};
   column-gap: 10px;
 `
+
 const StyledImageGallery = styled.div`
   grid-area: left1;
 `
@@ -44,6 +47,9 @@ const Overview = () => {
 
   const [reviewData, setReviewData] = useState(exampleReviews);
 
+  const [defaultView, setDefaultView] = useState(true);
+  const [expandedView, setExpandedView] = useState(false);
+
   console.log('productData: ', productData);
   console.log('productId: ', productId);
   console.log('styleData: ', styleData);
@@ -57,24 +63,30 @@ const Overview = () => {
     }
   }
 
+  const changeView = () => {
+    setDefaultView(!defaultView);
+    setExpandedView(!expandedView);
+  }
+
   return (
     <>
     <GlobalStyle />
-      <StyledContainer>
-        <StyledImageGallery>
-          <ImageGallery styleImages={currentStyle.photos} />
-        </StyledImageGallery>
-        <StyledProductInfo>
-          <ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>
-        </StyledProductInfo>
-        <StyledStyleSelector>
-          <StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />
-          </StyledStyleSelector>
-        <StyledAddToCart>
-          <AddToCart currentStyleSkus={currentStyle.skus} />
-        </StyledAddToCart>
-
-      </StyledContainer>
+      <StyledContainer default={defaultView}>
+      <StyledImageGallery>
+        <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />
+      </StyledImageGallery>
+        {defaultView && <>
+          <StyledProductInfo>
+            <ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>
+          </StyledProductInfo>
+          <StyledStyleSelector>
+            <StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />
+            </StyledStyleSelector>
+          <StyledAddToCart>
+            <AddToCart currentStyleSkus={currentStyle.skus} />
+          </StyledAddToCart>
+        </>}
+    </StyledContainer>
     </>
   );
 }

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 const AddToCartButton = styled.button`
   background-color: white;
+  font-family: Monospace;
 `
 
-const AddToCart = ({currentStyleSkus}) => {
+const AddToCart = ({ currentStyleSkus }) => {
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
 
@@ -40,6 +41,7 @@ const AddToCart = ({currentStyleSkus}) => {
   const onButtonClick = () => {
     // api call: add to cart
   }
+
   return (
     <>
       <select value={size} name="size" onChange={(e) => {

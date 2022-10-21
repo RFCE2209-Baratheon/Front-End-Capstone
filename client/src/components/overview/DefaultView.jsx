@@ -5,9 +5,8 @@ import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, Style
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 
-const StyledCarousel = styled.section`
+const StyledCarousel = styled.div`
   position: relative;
-  height: 80vh;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -26,18 +25,18 @@ const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextS
 
   return (
     <>
-      {current !== length-1 && <StyledRightArrow onClick={nextSlide} />}
-      {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
       <StyledCarousel>
+        {current !== length-1 && <StyledRightArrow onClick={nextSlide} />}
+        {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
         <StyledCarouselImageSize>
           <ImageCarousel styleImages={styleImages} current={current} />
         </StyledCarouselImageSize>
         <StyledThumbnailAlign>
           <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} />
         </StyledThumbnailAlign>
+        {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
+        {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
       </StyledCarousel>
-      {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
-      {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
     </>
   );
 }

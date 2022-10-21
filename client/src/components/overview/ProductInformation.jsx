@@ -3,20 +3,18 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaTwitter, FaFacebook, FaPinterest } from 'react-icons/fa';
 
-const StyledSalePrice = styled.div`
+const StyledSalePrice = styled.span`
   color: red;
 `
 
 const StyledSocials = styled.div`
-`
-
-const TwitterButton = styled(FaTwitter)`
-`
-
-const PinterestButton = styled(FaFacebook)`
-`
-
-const FacebookButton = styled(FaPinterest)`
+  > * {
+    margin: 10px;
+    color: #5A5A5A;
+    &: hover {
+      color: #1C305C;
+    };
+}
 `
 
 const ProductInformation = ({ productData, currentStyle, reviewData }) => {
@@ -42,7 +40,10 @@ const ProductInformation = ({ productData, currentStyle, reviewData }) => {
         </div>
       : null}
       <StyledSocials>
-        <TwitterButton/> <PinterestButton/> <FacebookButton/>
+        <a target="blank" href={"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2F&amp;src=sdkpreparse"}>
+        <FaTwitter size={20}/></a>
+        <a target="blank" href={"https://www.pinterest.com/pin/99360735500167749/"}><FaPinterest size={20}/></a>
+        <a target="blank" href={"https://twitter.com/intent/tweet?text=Hello%20world"}><FaFacebook size={20}/></a>
       </StyledSocials>
     </>
   )

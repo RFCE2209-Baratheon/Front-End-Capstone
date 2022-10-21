@@ -29,7 +29,9 @@ const StyledOverlay = styled.div`
   bottom: 0px;
   right: 14px;
   color: white;
-  font-size: 25px;
+  font-size: 30px;
+  user-select: none;
+  cursor: pointer;
 `
 
 const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
