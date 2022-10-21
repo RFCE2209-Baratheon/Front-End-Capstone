@@ -45,8 +45,22 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-
+  console.log('params', req.query.answer)
+  const requestConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  console.log('getting questions answers')
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
+  .then((response)=>{
+    console.log('success', response.data)
+    res.send(response.data)
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
 })
+
+
 
 // Add a Question
 // Adds a question for the given product

@@ -45,6 +45,7 @@ const QuestionList = () => {
     })
 
   }, [productId, shouldFetchQ])
+  console.log('questions', questions)
 
   useEffect(()=>{
 

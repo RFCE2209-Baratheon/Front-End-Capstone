@@ -22,11 +22,12 @@ const Answer = ({answer}) => {
 
     // Config for request
     const config = {
-      headers:{'Authorization':'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'}
+      params:{answer}
     }
-
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${answer}/answers`, config)
+    console.log('hello')
+    axios.get(`/qa/questions/:question_id/answers`, config)
     .then((res)=>{
+      console.log('in the component', res.data.results)
       setAnswers(res.data.results)
       setRenderA(res.data.results.slice(start, end))
     })
