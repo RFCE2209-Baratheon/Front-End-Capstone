@@ -65,9 +65,11 @@ const ScrollDiv = styled.div`{
 
 }`;
 
-const ReviewList = ({ product }) => {
-  const [allReviews, setAllReviews] = useState([]);
-  const [reviews, setReviews] = useState([]);
+const ReviewList = ({
+  product, reviews, setReviews, allReviews, setAllReviews,
+}) => {
+  // const [allReviews, setAllReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
   const [dropOpen, setDropOpen] = useState(false);
@@ -129,7 +131,7 @@ const ReviewList = ({ product }) => {
         <div data-testid="reviewlist-1">
           {allReviews.length}
           {' '}
-          reviews, sorted by
+          reviews for this product, sorted by
           <DropDown handleSelect={handleSelect} />
         </div>
         <ScrollDiv>

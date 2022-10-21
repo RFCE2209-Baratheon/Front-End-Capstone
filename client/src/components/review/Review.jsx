@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styled, { css } from 'styled-components';
 import ReviewList from './ReviewList.jsx';
 import RatingSummary from './RatingSummary.jsx';
@@ -9,6 +8,7 @@ const Container = styled.div`{
   display: grid;
   grid-template-columns: auto auto;
   padding: 10px;
+  background-color: #c9c8c7;
 }`;
 
 const Title = styled.h1`{
@@ -18,6 +18,8 @@ const Title = styled.h1`{
 function Review({ productId }) {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState({});
+  const [reviews, setReviews] = useState([]);
+  const [allReviews, setAllReviews] = useState([]);
 
   const tempProduct = {
     id: 37311,
@@ -31,28 +33,26 @@ function Review({ productId }) {
     updated_at: '2021-08-13T14:37:33.145Z',
   };
 
-  // const getMetaData = () => {
-  //   axios.get('/reviews/meta', { params: { product_id: tempProduct.id } })
-  //     .then(getMetaSucces)
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getMetaData();
-  // }, []);
-
-  // const getMetaSucces = (response) => {
-  //   setMetaData(response);
-  // };
-
   return (
     <>
       <Title>Ratings & Reviews</Title>
       <Container>
-        <RatingSummary metaData={metaData} product={tempProduct} />
-        <ReviewList metaData={metaData} product={tempProduct} />
+        <RatingSummary
+          reviews={reviews}
+          setReviews={setReviews}
+          metaData={metaData}
+          product={tempProduct}
+          allReviews={allReviews}
+          setAllReviews={setAllReviews}
+        />
+        <ReviewList
+          reviews={reviews}
+          setReviews={setReviews}
+          metaData={metaData}
+          product={tempProduct}
+          allReviews={allReviews}
+          setAllReviews={setAllReviews}
+        />
       </Container>
     </>
   );

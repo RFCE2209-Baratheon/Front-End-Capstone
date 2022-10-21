@@ -33,6 +33,7 @@ function ReviewListTile({ review }) {
 
   return (
     <Container data-testid="reviewlisttile-1">
+      <p>{review.rating}</p>
       <StarRatingStatic rating={review.rating} review={review} />
       <p style={{ whiteSpace: 'nowrap' }}>
         {`Verified User ${review.reviewer_name}`}

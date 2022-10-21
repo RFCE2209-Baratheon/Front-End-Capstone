@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/function-component-definition */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';
@@ -25,12 +28,17 @@ const BreakDown = styled.div`{
   padding: 10px;
 }`;
 
-function RatingSummary({ product }) {
+const RatingSummary = ({
+  product, allReviews, setAllReviews, reviews, setReviews,
+}) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
   const [average, setAverage] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
-  const [ratings, setRatings] = useState([]);
+  // const [ratings, setRatings] = useState([]);
   const [metaData, setMetaData] = useState([]);
+  const [toggleFilter, setToggleFilter] = useState({
+    1: false, 2: false, 3: false, 4: false, 5: false,
+  });
 
   const calculateAverage = () => {
     const { ratings } = metaData;
@@ -64,6 +72,12 @@ function RatingSummary({ product }) {
     calculateAverage();
   }, [metaData]);
 
+  const handleFilter = (rating) => {
+    const results = allReviews.filter((review) => JSON.stringify(review.rating) === rating);
+    setReviews(results);
+  };
+  console.log(reviews);
+
   if (metaData.length === 0) {
     return null;
   }
@@ -75,7 +89,7 @@ function RatingSummary({ product }) {
       <h3>Rating Summary</h3>
       <SummaryContainer>
         {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
-          <p onClick ={(e)=>{handleFilter(e.target.value)}} style={{ whiteSpace: 'nowrap' }}>
+          <p onClick={(e) => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
             {`${rating} stars`}
             <Bar style={{ display: 'inline-block' }} sum={totalReviews} rating={metaData.ratings[rating]} />
           </p>
