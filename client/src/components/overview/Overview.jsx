@@ -8,6 +8,7 @@ import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
 import './assets/styles.css';
 import styled from 'styled-components';
+import GlobalStyle from './globalStyles.js';
 
 const StyledContainer = styled.div`
   display: grid;
@@ -58,6 +59,7 @@ const Overview = () => {
 
   return (
     <>
+    <GlobalStyle />
       <StyledContainer>
         <StyledImageGallery>
           <ImageGallery styleImages={currentStyle.photos} />
@@ -69,7 +71,7 @@ const Overview = () => {
           <StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />
           </StyledStyleSelector>
         <StyledAddToCart>
-          <AddToCart />
+          <AddToCart currentStyleSkus={currentStyle.skus} />
         </StyledAddToCart>
 
       </StyledContainer>
