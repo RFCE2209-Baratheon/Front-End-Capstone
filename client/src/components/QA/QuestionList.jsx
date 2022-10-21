@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import {Accordion, Wrapper, SearchBarStyle} from './assets/styles.js'
+import {Accordion, Wrapper, SearchBarStyle, ModalButton, ModalStyle} from './assets/styles.js'
 import IndividualQuestion from './IndividualQuestion.jsx'
 import SearchBar from './SearchBar.jsx'
+import LoadMoreQs from './LoadMoreQs.jsx'
+import Modal from './Modal.jsx'
+import AddQuestion from './AddQuestion.jsx'
 
 const { useState, useEffect } = React;
 
@@ -20,17 +23,15 @@ const QuestionList = () => {
   const [searchedQ, setSearchedQ] = useState([])
   const [hide, setHide] = useState(true)
   const [enableSearchQ, setEnableSearchQ] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [shouldFetchQ, setShouldFetchQ] = useState(false)
 
   // Hooks
   useEffect(()=> {
 
-    // Config for request
-    const config = {
-      params: {product_id: productId, count: 100},
-      headers:{'Authorization':'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'},
-    }
+    console.log('setting questions')
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', config)
+    axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
 
       if (res.data.results.length <= 4) {
@@ -43,7 +44,7 @@ const QuestionList = () => {
       console.error(error)
     })
 
-  }, [productId])
+  }, [productId, shouldFetchQ])
 
   useEffect(()=>{
 
@@ -71,15 +72,21 @@ const QuestionList = () => {
     }
   }
 
+  const openModal = () => {
+    console.log(showModal)
+    setShowModal(!showModal)
+  }
+
   //component
   return (
     <>
+    { showModal ? <Modal openModal={openModal} productId={productId} setProductId={setProductId} setShowModal={setShowModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
     <span> QUESTIONS & ANSWERS </span>
     <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
     <Wrapper>
       <Accordion>
       <div className="Accordion">
-        {(renderQ.length === 0) ? <button className='AddQuestion'>Add a question</button> :<></>}
+
         {enableSearchQ ? searchedQ.map(function(question, index) {
           return (
             <IndividualQuestion key={index} question={question} open={open} index={index}/>
@@ -90,7 +97,9 @@ const QuestionList = () => {
           )
         })}
       </div>
-      {hide ? <button onClick={loadMore}> Load more questions </button> : <></>}
+      <AddQuestion loadMore={loadMore} openModal={openModal}/>
+      {hide ? <LoadMoreQs loadMore={loadMore}/> : <></>}
+
       </Accordion>
     </Wrapper>
     </>

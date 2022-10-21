@@ -38,7 +38,6 @@ const Answer = ({answer}) => {
 
 
   useEffect(()=> {
-    console.log('renderA length', renderA.length, 'answers length', answers.length)
     if (renderA.length === answers.length) {
       setHide(false)
     } else {
