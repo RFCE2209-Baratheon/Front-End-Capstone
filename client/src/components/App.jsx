@@ -1,10 +1,14 @@
 import React from 'react';
+import Related from './related_items/Related_items.jsx';
 const {useState, useEffect} = React;
 
 
 const App = () => {
   return (
-  <h1>checking that this loads</h1>
+    <div>
+      <h1></h1>
+      <Related />
+  </div>
   )
 }
 

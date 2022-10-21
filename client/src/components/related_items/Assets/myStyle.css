@@ -1,0 +1,12 @@
+#slider{
+height: 100%;
+width: 100%;
+white-space: nowrap;
+overflow-x: scroll;
+scrollbar-width: none;
+/* scroll-behavior: smooth; */
+}
+
+#slider::-webkit-scrollbar{
+  display: none;
+}
