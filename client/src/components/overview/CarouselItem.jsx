@@ -7,7 +7,7 @@ const StyledCarouselImage = styled.img`
   max-height: 100%;
   max-width: 100%;
 `
-//
+
 const StyledReactZoomImage = styled.div`
   &:hover {
     cursor:zoom-out;
