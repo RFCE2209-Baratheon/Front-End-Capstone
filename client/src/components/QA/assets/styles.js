@@ -17,6 +17,8 @@ overflow-y: scroll;
 }
 `
 const HelpfulButton = styled.button`
+
+
 border: none;
 background-color:transparent;
 text-align: right;
