@@ -8,8 +8,10 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
+import { CloudinaryContext, Image } from 'cloudinary-react';
 import StarRating from './StarRating.jsx';
 import Characteristics from './Characteristics.jsx';
+import { fetchPhotos, openUploadWidget } from './CloudinaryService';
 
 const ModalBackground = styled.div`{
   width: 100%;
@@ -49,41 +51,13 @@ const SelectButton = styled.button`{
   border-radius: 3px;
 }`;
 
-const metaData = {
-  product_id: '37315',
-  ratings: {
-    1: '33',
-    2: '7',
-    3: '20',
-    4: '14',
-    5: '20',
-  },
-  recommended: {
-    false: '40',
-    true: '54',
-  },
-  characteristics: {
-    Size: {
-      id: 125044,
-      value: '2.7454545454545455',
-    },
-    Width: {
-      id: 125045,
-      value: '2.9642857142857143',
-    },
-    Comfort: {
-      id: 125046,
-      value: '3.1960784313725490',
-    },
-    Quality: {
-      id: 125047,
-      value: '3.0784313725490196',
-    },
-  },
-};
+const Thumbnail = styled.img`
+  width: 40px;
+  height: 40px;
+`;
 
 const AddReviewForm = ({
-  setAddReviewToggle, addReviewToggle, productName, productId,
+  setAddReviewToggle, addReviewToggle, productName, productId, metaData,
 }) => {
   const [width, setWidth] = useState(0);
   const [comfort, setComfort] = useState(0);
@@ -99,6 +73,8 @@ const AddReviewForm = ({
   const [userEmail, setUserEmail] = useState('');
   const [starRating, setRating] = useState(0);
   const [recommendValue, setRecommendValue] = useState(false);
+  const [images, setImages] = useState([]);
+  console.log('IMAGE', images);
 
   useEffect(() => {
     setBodyLength(bodyText.length);
@@ -107,6 +83,10 @@ const AddReviewForm = ({
   useEffect(() => {
     setBodyLengthLeft(50 - bodyLength);
   }, [bodyLength]);
+
+  useEffect(() => {
+    fetchPhotos('image', setImages);
+  }, []);
 
   const submitNewReview = (formData) => {
     console.log('DATA', formData);
@@ -138,7 +118,7 @@ const AddReviewForm = ({
       recommend: recommendValue,
       name: userName,
       email: userEmail,
-      photos: [''],
+      photos: images,
       characteristics: {},
     };
     const objectOfCharacteristics = {
@@ -166,59 +146,93 @@ const AddReviewForm = ({
     }
   };
 
+  const beginUpload = (tag) => {
+    const uploadOptions = {
+      cloudName: 'dmmzqckuu',
+      tags: [tag],
+      uploadPreset: 'fecupload',
+    };
+
+    openUploadWidget(uploadOptions, (error, photos) => {
+      if (!error) {
+        console.log(photos);
+        if (photos.event === 'success') {
+          setImages([...images, photos.info.url]);
+        }
+      } else {
+        console.log(error);
+      }
+    });
+  };
+
   return (
     <ModalBackground>
       <ModalContainer>
-        <button onClick={() => { setAddReviewToggle(!addReviewToggle); }}>X</button>
-        <form>
-          <h1>Write Your Review</h1>
-          <h3>
-            {`About the ${productName}`}
-            {' '}
-          </h3>
-          <p>Overall Rating - Select a Star</p>
-          <StarRating required setRating={setRating} rating={starRating} />
-          <div onChange={(e) => { changeRecommendValue(e.target.value); }}>
-            <p style={{ display: 'inline-block' }}>Do you recommend this product?</p>
-            <input required type="radio" value="true" name="recommend" />
-            Yes
-            <input type="radio" value="false" name="recommend" />
-            No
-          </div>
-          <Characteristics
-            metaData={metaData}
-            setWidth={setWidth}
-            setComfort={setComfort}
-            setQuality={setQuality}
-            setLength={setLength}
-            setSize={setSize}
-            setFit={setFit}
-            width={width}
-            comfort={comfort}
-            quality={quality}
-            length={length}
-            size={size}
-            fit={fit}
-          />
-          <h5>Review Summary</h5>
-          <input maxLength="60" onChange={(e) => { setSummaryText(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
-          <h5>Main Review</h5>
-          <div>
-            <InputBody required minLength="50" maxLength="1000" onChange={(e) => { setBodyText(e.target.value); }} type="text" placeholder="Why did you like the product or not?" />
-            {bodyLengthLeft > 0
+        <CloudinaryContext cloudName="dmmzqckuu">
+          <button onClick={() => { setAddReviewToggle(!addReviewToggle); }}>X</button>
+          <form>
+            <h1>Write Your Review</h1>
+            <h3>
+              {`About the ${productName}`}
+              {' '}
+            </h3>
+            <p>Overall Rating - Select a Star</p>
+            <StarRating required setRating={setRating} rating={starRating} />
+            <div onChange={(e) => { changeRecommendValue(e.target.value); }}>
+              <p style={{ display: 'inline-block' }}>Do you recommend this product?</p>
+              <input required type="radio" value="true" name="recommend" />
+              Yes
+              <input type="radio" value="false" name="recommend" />
+              No
+            </div>
+            <Characteristics
+              metaData={metaData}
+              setWidth={setWidth}
+              setComfort={setComfort}
+              setQuality={setQuality}
+              setLength={setLength}
+              setSize={setSize}
+              setFit={setFit}
+              width={width}
+              comfort={comfort}
+              quality={quality}
+              length={length}
+              size={size}
+              fit={fit}
+            />
+            <h5>Review Summary</h5>
+            <input maxLength="60" onChange={(e) => { setSummaryText(e.target.value); }} type="text" placeholder="Example: Best purchase ever!" />
+            <h5>Main Review</h5>
+            <div>
+              <InputBody required minLength="50" maxLength="1000" onChange={(e) => { setBodyText(e.target.value); }} type="text" placeholder="Why did you like the product or not?" />
+              {bodyLengthLeft > 0
           && <p>{`Minimum required characters left: ${bodyLengthLeft}`}</p>}
-            {bodyLengthLeft <= 0
+              {bodyLengthLeft <= 0
           && <p>Minimum Reached</p>}
-          </div>
-          <h5>User Name</h5>
-          <input required maxLength="60" onChange={(e) => { setUserName(e.target.value); }} type="text" placeholder="Example: jackson11!" />
-          <p style={{ fontSize: '10px' }}>For privacy reasons, do not use your full name or email address.</p>
-          <h5>Email</h5>
-          <input required maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
-          <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
-          <SelectButton type="button">Photo Upload</SelectButton>
-          <SelectButton type="submit" onClick={() => { Submit(); }}>Submit Review</SelectButton>
-        </form>
+            </div>
+            <h5>User Name</h5>
+            <input required maxLength="60" onChange={(e) => { setUserName(e.target.value); }} type="text" placeholder="Example: jackson11!" />
+            <p style={{ fontSize: '10px' }}>For privacy reasons, do not use your full name or email address.</p>
+            <h5>Email</h5>
+            <input required maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
+            <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
+            {images.length < 5
+            && <SelectButton type="button" onClick={() => beginUpload()}>Photo Upload</SelectButton>}
+            <section>
+              {images.map((i) => (
+                <Image
+                  height="40px"
+                  width="40px"
+                  key={i}
+                  publicId={i}
+                  fetch-format="auto"
+                  quality="auto"
+                />
+              ))}
+            </section>
+            <SelectButton type="submit" onClick={() => { Submit(); }}>Submit Review</SelectButton>
+          </form>
+        </CloudinaryContext>
       </ModalContainer>
     </ModalBackground>
   );

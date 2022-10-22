@@ -2,19 +2,19 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-const ProgressBar = styled.progress`{
-  background: green;
-  border-radius: 20px;
-}`;
-
-const Bar = ({ rating, sum }) => (
-  <div>
-    <ProgressBar style={{ display: 'inline-block' }} value={(rating / sum) * 100} max="100" />
-    <p style={{ display: 'inline-block' }}>
-      {`(${rating})`}
-      {' '}
-    </p>
-  </div>
-);
+const Bar = ({ rating, sum, toggle, star }) => {
+  console.log(toggle);
+  return (
+    <div>
+      <progress style={{ backgroundColor: 'lightblue', display: 'inline-block' }} value={(rating / sum) * 100} max="100" />
+      <p style={{ display: 'inline-block' }}>
+        {`(${rating})`}
+        {' '}
+      </p>
+      {toggle
+      && <p>{`Filtered by ${star} stars`}</p>}
+    </div>
+  );
+};
 
 export default Bar;

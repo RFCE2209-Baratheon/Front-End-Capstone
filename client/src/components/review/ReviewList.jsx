@@ -66,7 +66,7 @@ const ScrollDiv = styled.div`{
 }`;
 
 const ReviewList = ({
-  product, reviews, setReviews, allReviews, setAllReviews,
+  product, reviews, setReviews, allReviews, setAllReviews, metaData,
 }) => {
   // const [allReviews, setAllReviews] = useState([]);
   // const [reviews, setReviews] = useState([]);
@@ -124,6 +124,9 @@ const ReviewList = ({
   const addReviewHandler = () => {
     setAddReviewToggle(!addReviewToggle);
   };
+  if (metaData.length === 0) {
+    return null;
+  }
 
   return (
     <div>
@@ -145,6 +148,7 @@ const ReviewList = ({
       {addReviewToggle
        && (
        <AddReviewForm
+         metaData={metaData}
          addReviewToggle={addReviewToggle}
          setAddReviewToggle={setAddReviewToggle}
          productName={product.name}
