@@ -8,6 +8,7 @@ import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
 import styled from 'styled-components';
 import GlobalStyle from './globalStyles.js';
+import axios from 'axios';
 
 const StyledContainer = styled.div`
   display: grid;
@@ -38,22 +39,50 @@ const StyledAddToCart = styled.div`
   grid-area: right3;
 `
 
-const Overview = () => {
-  const [productData, setProductData] = useState(exampleProductData[0]);
-  const [productId, setProductId] = useState(productData.id);
+const Overview = ({productId}) => {
 
-  const [styleData, setStyleData] = useState(exampleStyleData.results);
-  const [currentStyle, setCurrentStyle] = useState(styleData[0]);
+
+  const [styleData, setStyleData] = useState(null);
+  const [currentStyle, setCurrentStyle] = useState(null);
+  const [productData, setProductData] = useState(null);
+
+  useEffect(()=> {
+
+    axios.get(`/products/${productId}/styles`)
+      .then((response) => {
+        setStyleData(response.data.results)
+        setCurrentStyle(response.data.results[0])
+      })
+      .catch((error) => {
+        console.log('error, could not get styles from api. error: ', error)
+      });
+      axios.get(`products/${productId}`)
+      .then((response) => {
+        console.log('PRODUCT DATA IS RIGHT HERE', response.data)
+        setProductData(response.data);
+        //setProductId(parseInt(response.data.id))
+      })
+      .catch((error) => {
+        console.log('error, could not get current product data from api. error: ', error)
+      });
+  }, [productId])
+
+
+  // const [productData, setProductData] = useState(allProducts[1]);
+  // const [productId, setProductId] = useState(productID);
+  // console.log('productData:', productData)
+  // const [styleData, setStyleData] = useState(exampleStyleData.results);
+  // const [currentStyle, setCurrentStyle] = useState(styleData[0]);
 
   const [reviewData, setReviewData] = useState(exampleReviews);
 
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
 
-  console.log('productData: ', productData);
-  console.log('productId: ', productId);
-  console.log('styleData: ', styleData);
-  console.log('currentStyle: ', currentStyle);
+   console.log('productData: ', productData);
+   console.log('productId: ', productId);
+   console.log('styleData: ', styleData);
+   console.log('currentStyle: ', currentStyle);
 
   var onStyleClick = (id) => {
     for (var i = 0; i < styleData.length; i++) {
@@ -73,17 +102,17 @@ const Overview = () => {
     <GlobalStyle />
       <StyledContainer default={defaultView}>
       <StyledImageGallery>
-        <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />
+        {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
       </StyledImageGallery>
         {defaultView && <>
           <StyledProductInfo>
-            <ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>
+            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
           </StyledProductInfo>
           <StyledStyleSelector>
-            <StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />
+            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
             </StyledStyleSelector>
           <StyledAddToCart>
-            <AddToCart currentStyleSkus={currentStyle.skus} />
+            {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
           </StyledAddToCart>
         </>}
     </StyledContainer>

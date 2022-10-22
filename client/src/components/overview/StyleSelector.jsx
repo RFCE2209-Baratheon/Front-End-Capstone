@@ -37,6 +37,9 @@ const StyledOverlay = styled.div`
 const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
 
   const [styleId, setStyleId] = useState(currentStyle.style_id);
+  let list;
+  console.log('in style selector: ', styleData)
+
 
   return (
     <>
