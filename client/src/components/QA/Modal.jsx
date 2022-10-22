@@ -28,12 +28,9 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
     e.preventDefault()
 
     const dataObj = newPostObj(questionRef.current.value, nicknameRef.current.value, emailRef.current.value, parseInt(productId))
-    console.log(dataObj)
 
     axios.post('/qa/questions', dataObj)
     .then((res)=>{
-      console.log('success trying to close modal')
-
       setShowModal(false)
       setShouldFetchQ(!shouldFetchQ)
     })

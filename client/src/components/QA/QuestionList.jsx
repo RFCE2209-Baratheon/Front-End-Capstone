@@ -31,7 +31,6 @@ const QuestionList = ({productID}) => {
   useEffect(()=> {
 
     console.log('setting questions')
-    console.log(typeof productID)
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
@@ -76,7 +75,6 @@ const QuestionList = ({productID}) => {
   }
 
   const openModal = () => {
-    console.log(showModal)
     setShowModal(!showModal)
   }
 

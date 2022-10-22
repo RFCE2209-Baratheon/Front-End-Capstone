@@ -134,7 +134,7 @@ const ReviewList = ({ product }) => {
         </div>
         <ScrollDiv>
           {' '}
-          {reviews.map((review) => (<ReviewListTile key={review.id} review={review} />))}
+          {reviews.map((review, index) => (<ReviewListTile key={index} review={review} />))}
         </ScrollDiv>
       </Container>
       {moreReviewsButton

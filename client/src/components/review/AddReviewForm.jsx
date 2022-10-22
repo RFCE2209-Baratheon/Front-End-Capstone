@@ -109,7 +109,6 @@ const AddReviewForm = ({
   }, [bodyLength]);
 
   const submitNewReview = (formData) => {
-    console.log('DATA', formData);
     // { params: { product_id: product.id, sort: sortParameter } }
     axios.post('/reviews', formData)
       .then((response) => {

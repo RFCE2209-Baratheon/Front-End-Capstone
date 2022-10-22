@@ -24,7 +24,7 @@ const Answer = ({answer}) => {
     const config = {
       params:{answer}
     }
-    console.log('hello')
+    // console.log('hello')
     axios.get(`/qa/questions/:question_id/answers`, config)
     .then((res)=>{
       setAnswers(res.data.results)
@@ -48,7 +48,7 @@ const Answer = ({answer}) => {
   //handlers
 
   const helpfulAnswerOnclick = (iD) => {
-    console.log('id', iD)
+
     const config = {params: {answer_id: iD}}
     axios.put('/qa/answers/:answer_id/helpful', {}, config)
     .then((success) => {
@@ -72,7 +72,6 @@ const Answer = ({answer}) => {
   return (
       <>
         {renderA.map(function (currentAnswer, index) {
-          {console.log('currentAnswer', currentAnswer, 'answer', answer)}
           return (
           <Questions key={index}>
           <Test>

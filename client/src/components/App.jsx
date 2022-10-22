@@ -20,7 +20,7 @@ function App() {
       });
   }, [])
 
-  console.log('id: ', productId)
+  console.log('Loading ap with pid: ', productId)
 
   return (
     <>

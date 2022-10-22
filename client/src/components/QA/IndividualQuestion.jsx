@@ -9,7 +9,7 @@ const {useState, useEffect} = React;
 const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) => {
 
   const helpfulQuestionOnclick = (iD) => {
-    console.log('id', iD)
+
     const config = {params: {question_id: iD}}
     axios.put('/qa/questions/:question_id/helpful', {}, config)
     .then((success) => {
@@ -21,7 +21,7 @@ const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) =>
 
   }
 
-console.log('this is a question', question)
+
 //State
 const [open, setOpen] = useState(null)
 
