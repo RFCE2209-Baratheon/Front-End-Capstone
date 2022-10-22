@@ -9,7 +9,7 @@ const {useState, useEffect} = React;
 
 
 
-const Answer = ({answer}) => {
+const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
 
   //states and variables
   const [answers, setAnswers] = useState([])
@@ -62,6 +62,20 @@ const Answer = ({answer}) => {
 
   }
 
+  const reportAnswerOnclick = (iD) => {
+
+    const config = {params: {answer_id: iD}}
+    axios.put('/qa/answers/:answer_id/report', {}, config)
+    .then((success) => {
+      console.log('question reported at id:', iD)
+      setShouldFetchQ(!shouldFetchQ)
+    })
+    .catch((error) => {
+
+    })
+
+  }
+
   const handleMoreAnswers = () => {
     setRenderA(answers.slice(start, renderA.length + 2))
   }
@@ -83,7 +97,7 @@ const Answer = ({answer}) => {
               <Images images={currentAnswer.photos} />
               <span>{`by ${currentAnswer.answerer_name}, `}</span>
               <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
-              <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} handler={helpfulAnswerOnclick}/>
+              <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} helpfulHandler={helpfulAnswerOnclick} reportHandler={reportAnswerOnclick}/>
             </div>
           </div>
           </Test>
@@ -99,7 +113,9 @@ const Answer = ({answer}) => {
 
 //proptypes
 Answer.propTypes = {
-  answer: PropTypes.number
+  answer: PropTypes.number,
+  shouldFetchQ: PropTypes.bool,
+  setShouldFetchQ: PropTypes.func
 }
 
 export default Answer

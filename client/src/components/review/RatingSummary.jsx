@@ -75,7 +75,7 @@ function RatingSummary({ product }) {
       <p>{`Based on a total of ${totalReviews} reviews!`}</p>
       <h3>Rating Summary</h3>
       <SummaryContainer>
-        {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
+        {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
           <p style={{ whiteSpace: 'nowrap' }}>
             {`${rating} stars`}
             <Bar style={{ display: 'inline-block' }} sum={totalReviews} rating={metaData.ratings[rating]} />

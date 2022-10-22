@@ -13,7 +13,20 @@ const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) =>
     const config = {params: {question_id: iD}}
     axios.put('/qa/questions/:question_id/helpful', {}, config)
     .then((success) => {
-      // setShouldFetchQ(!shouldFetchQ)
+      setShouldFetchQ(!shouldFetchQ)
+    })
+    .catch((error) => {
+
+    })
+
+  }
+
+  const reportQuestionOnclick = (iD) => {
+
+    const config = {params: {question_id: iD}}
+    axios.put('/qa/questions/:question_id/report', {}, config)
+    .then((success) => {
+      setShouldFetchQ(!shouldFetchQ)
     })
     .catch((error) => {
 
@@ -35,10 +48,10 @@ const toggleOpen = () => {
     <div data-testid='testing'>
       <span onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
       <AlignRight>
-      <Helpful helpfulCount={question.question_helpfulness} id={question.question_id} handler={helpfulQuestionOnclick}/>
+      <Helpful helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
       <QuestionFolder className={index} open={open}>
-        <Answer answer={question.question_id}/>
+        <Answer answer={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
       </QuestionFolder>
     </div>
   )

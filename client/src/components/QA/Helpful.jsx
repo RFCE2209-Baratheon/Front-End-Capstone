@@ -2,21 +2,28 @@ import React from 'react'
 import {PropTypes} from 'prop-types'
 import {HelpfulButton} from './assets/styles.js'
 import axios from 'axios'
-
+import Report from './Report.jsx'
 const {useState} = React;
 
 //handlers
-const Helpful = ({helpfulCount, id, handler}) => {
+const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
 
   const [helpful, setHelpful] = useState(helpfulCount)
   const [voted, setVoted] = useState(true);
 
   const helpfulOnclick = () => {
-    handler(id)
+    helpfulHandler(id)
     setVoted(false)
     setHelpful(helpful+1)
   }
 
+  const reportOnclick = () => {
+    // handler(id)
+    // setVoted(false)
+    // setHelpful(helpful+1)
+    reportHandler(id)
+    console.log('calling report handler')
+  }
 
 //component
 return (
@@ -26,7 +33,7 @@ return (
     { voted ? <u className='underlined' onClick={helpfulOnclick}>Yes</u> : <u>Already Voted</u>}
     </HelpfulButton>
     {`${helpful}|`}
-    <HelpfulButton> Report</HelpfulButton>
+    <Report reportOnclick={reportOnclick}/>
   </span>
 
 )
@@ -35,7 +42,8 @@ return (
 Helpful.propTypes = {
   helpfulCount  : PropTypes.number,
   id: PropTypes.number,
-  handler: PropTypes.func
+  helpfulHandler: PropTypes.func,
+  reportHandler: PropTypes.func
 }
 
 export default Helpful

@@ -88,7 +88,6 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 // PUT /qa/questions/:question_id/helpful
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
   // {params: {question_id: id}}
-  console.log('here we are')
   let number = req.query.question_id
 
   const newConfig = {
@@ -110,6 +109,20 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 // PUT /qa/questions/:question_id/report
 app.put('/qa/questions/:question_id/report', (req, res) => {
 
+  let number = req.query.question_id
+
+  const newConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/report`, {}, newConfig)
+
+  .then((success) => {
+    console.log('succesfully put route for report questions')
+    res.end()
+  })
+  .catch((error) => {
+    console.log('error in put route for report questions', error)
+  })
 });
 // Mark Answer as Helpful
 // Updates an answer to show it was found helpful.
@@ -138,7 +151,20 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 
 // PUT /qa/answers/:answer_id/report
 app.put('/qa/answers/:answer_id/report', (req, res) => {
+  let number = req.query.answer_id
 
+  const newConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/report`, {}, newConfig)
+
+  .then((success) => {
+    console.log('succesfully put route for report answer')
+    res.end()
+  })
+  .catch((error) => {
+    console.log('error in put route for report answer', error)
+  })
 });
 
 // product detail handlers
