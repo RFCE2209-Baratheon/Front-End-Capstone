@@ -15,6 +15,7 @@ const StyledCarousel = styled.div`
 const StyledThumbnailAlign = styled.div`
   text-align: left;
   position: absolute;
+  margin-left: 10px;
 `
 
 const StyledCarouselImageSize = styled.div`

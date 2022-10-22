@@ -7,12 +7,11 @@ import exampleProductData from '../../example_data/get_all_products.js';
 import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
 import styled from 'styled-components';
-import GlobalStyle from './globalStyles.js';
 import axios from 'axios';
 
 const StyledContainer = styled.div`
   display: grid;
-  grid-template-columns: ${props => props.default ? '50% auto' : 'auto 550px auto'};
+  grid-template-columns: ${props => props.default ? '650px auto' : 'auto 550px auto'};
   grid-template-rows: auto;
   grid-template-areas: ${props => props.default ?
     `"left1 right1"
@@ -22,12 +21,12 @@ const StyledContainer = styled.div`
     ". left1 . "
     ". left1 . "`};
   column-gap: 10px;
+  min-width: 1100px;
 `
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
-  margin: auto;
-  position:
+  // margin: 0;
 `
 
 const StyledProductInfo = styled.div`
@@ -81,8 +80,7 @@ const Overview = ({ productId }) => {
   }
 
   return (
-    <>
-    <GlobalStyle />
+    <div class="overview-container">
       <StyledContainer default={defaultView}>
         <StyledImageGallery>
           {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
@@ -99,7 +97,7 @@ const Overview = ({ productId }) => {
           </StyledAddToCart>
         </>}
       </StyledContainer>
-    </>
+    </div>
   );
 }
 

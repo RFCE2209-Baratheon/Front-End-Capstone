@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Monospace;
     font-size: 16px;
   }
+
 `;
 
 export default GlobalStyle;

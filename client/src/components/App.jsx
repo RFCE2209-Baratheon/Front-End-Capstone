@@ -4,6 +4,7 @@ import Review from './review/Review.jsx';
 import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
+import GlobalStyle from '../globalStyles.js';
 
 function App() {
   const [productId, setProductId] = useState(null);
@@ -23,10 +24,11 @@ function App() {
 
   return (
     <div>
+      <GlobalStyle />
       {productId && <Overview productId={productId} />}
       <Related />
-      <Review />
       {productId && <QA productID={productId} />}
+      <Review />
     </div>
   );
 }
