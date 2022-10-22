@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const StyledContainer = styled.div`
   display: grid;
-  grid-template-columns: ${props => props.default ? '550px auto' : 'auto 550px auto'};
+  grid-template-columns: ${props => props.default ? '50% auto' : 'auto 550px auto'};
   grid-template-rows: auto;
   grid-template-areas: ${props => props.default ?
     `"left1 right1"
@@ -26,6 +26,8 @@ const StyledContainer = styled.div`
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
+  margin: auto;
+  position:
 `
 
 const StyledProductInfo = styled.div`
@@ -82,20 +84,20 @@ const Overview = ({ productId }) => {
     <>
     <GlobalStyle />
       <StyledContainer default={defaultView}>
-      <StyledImageGallery>
-        {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
-      </StyledImageGallery>
-      {defaultView && <>
-        <StyledProductInfo>
-          {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
-        </StyledProductInfo>
-        <StyledStyleSelector>
-          {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
-          </StyledStyleSelector>
-        <StyledAddToCart>
-          {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
-        </StyledAddToCart>
-      </>}
+        <StyledImageGallery>
+          {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
+        </StyledImageGallery>
+        {defaultView && <>
+          <StyledProductInfo>
+            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
+          </StyledProductInfo>
+          <StyledStyleSelector>
+            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
+            </StyledStyleSelector>
+          <StyledAddToCart>
+            {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
+          </StyledAddToCart>
+        </>}
       </StyledContainer>
     </>
   );
