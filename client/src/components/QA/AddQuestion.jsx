@@ -8,7 +8,7 @@ const AddQuestion = ({openModal}) => {
   }
 
   return (
-  <button onClick={handleClick}> Add a question </button>
+  <button className='addQuestion'onClick={handleClick}> Add a question </button>
   )
 
 

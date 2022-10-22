@@ -80,11 +80,11 @@ const QuestionList = ({productID}) => {
 
   //component
   return (
-    <>
+    <div className='questionList'>
     { showModal ? <Modal openModal={openModal} productId={productId} setProductId={setProductId} setShowModal={setShowModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
     <span> QUESTIONS & ANSWERS </span>
     <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
-    <Wrapper>
+    <Wrapper className ='accordionWrapper'>
       <Accordion>
       <div className="Accordion">
 
@@ -104,7 +104,7 @@ const QuestionList = ({productID}) => {
       </Accordion>
     </Wrapper>
 
-    </>
+    </div>
 
   )
 }

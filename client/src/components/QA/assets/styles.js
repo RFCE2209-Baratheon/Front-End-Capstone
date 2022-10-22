@@ -15,7 +15,33 @@ overflow-y: scroll;
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+
+.loadMore {
+  white-space: normal !important;
+  word-break:break-word;
+  font-size: 19px;
+  margin: 5px;
+  height: 50px;
+  width 200px;
+  border: solid;
+  border-width: 1px;
+}
+
+.addQuestion{
+  font-size: 20px;
+  margin: 5px;
+  height: 50px;
+  width 200px;
+  border: solid;
+  border-width: 1px;
+}
+
 `
+
+const QuestionListStyle = styled.div`
+
+`
+
 const HelpfulButton = styled.button`
 
 
@@ -67,7 +93,22 @@ const AnswerStyle = styled.span`
 display: inline-block;
 padding-bottom: 25px;
 `
+const IndividualQuestionStyle = styled.div`
 
+.user {
+  font-style: italic;
+}
+.underlined {
+  font-size: 1vw;
+}
+.answer {
+  font-size: 1vw;
+}
+span {
+  font-size: 1vw;
+}
+
+`
 const SearchBarStyle = styled.input`
 width: 99%;
 padding: 10px;
@@ -212,4 +253,4 @@ gap: 10px;
   margin-bottom: 25px;
 }
 `
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm}
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle}

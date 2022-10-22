@@ -91,11 +91,11 @@ const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
           <Test>
           <div>
             <AnswerStyle>
-            <span>{`A: ${currentAnswer.body}`}</span>
+            <span className= 'answer'>{`A: ${currentAnswer.body}`}</span>
             </AnswerStyle>
             <div>
               <Images images={currentAnswer.photos} />
-              <span>{`by ${currentAnswer.answerer_name}, `}</span>
+              <span className='user'>{`by ${currentAnswer.answerer_name}, `}</span>
               <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
               <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} helpfulHandler={helpfulAnswerOnclick} reportHandler={reportAnswerOnclick}/>
             </div>

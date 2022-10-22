@@ -10,7 +10,7 @@ const Report = ({reportOnclick}) => {
 
 
   return (
-   <HelpfulButton onClick={reportOnclick}><u>Report</u></HelpfulButton>
+   <HelpfulButton onClick={reportOnclick}><u className='underlined'>Report</u></HelpfulButton>
   )
 
 }

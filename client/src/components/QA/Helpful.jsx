@@ -28,11 +28,11 @@ const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
 //component
 return (
 
-  <span> {`Helpful|`}
+  <span> {`Helpful | `}
     <HelpfulButton>
-    { voted ? <u className='underlined' onClick={helpfulOnclick}>Yes</u> : <u>Already Voted</u>}
+    { voted ? <u className='underlined' onClick={helpfulOnclick}>Yes</u> : <u className='underlined'>Already Voted</u>}
     </HelpfulButton>
-    {`${helpful}|`}
+    {`${helpful} | `}
     <Report reportOnclick={reportOnclick}/>
   </span>
 

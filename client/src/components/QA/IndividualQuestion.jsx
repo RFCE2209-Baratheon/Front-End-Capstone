@@ -2,7 +2,7 @@ import React from 'react'
 import Answer from './Answer.jsx'
 import Helpful from './Helpful.jsx'
 import {PropTypes} from 'prop-types'
-import {QuestionFolder, AlignRight} from './assets/styles.js'
+import {QuestionFolder, AlignRight, IndividualQuestionStyle} from './assets/styles.js'
 import axios from 'axios'
 
 const {useState, useEffect} = React;
@@ -45,15 +45,15 @@ const toggleOpen = () => {
 
 //component
   return (
-    <div data-testid='testing'>
-      <span onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
+    <IndividualQuestionStyle className = 'questionWrapper'>
+      <span className='question' onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
       <AlignRight>
-      <Helpful helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
+        <Helpful className='helpful'helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
       <QuestionFolder className={index} open={open}>
         <Answer answer={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
       </QuestionFolder>
-    </div>
+    </IndividualQuestionStyle>
   )
 }
 
