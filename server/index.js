@@ -93,6 +93,7 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 // PUT /qa/questions/:question_id/helpful
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
   // {params: {question_id: id}}
+  console.log('here we are')
   let number = req.query.question_id
 
   const newConfig = {
