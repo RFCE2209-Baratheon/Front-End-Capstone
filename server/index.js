@@ -8,14 +8,11 @@ const config = require('../config.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
-// other configuration...
 app.use(express.json())
 
 app.listen(3000);
 
 /*Q&A Route Handlers*/
-
-
 
 // QuestionList
 // Get questions

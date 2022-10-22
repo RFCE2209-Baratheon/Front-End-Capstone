@@ -39,15 +39,15 @@ const StyledAddToCart = styled.div`
   grid-area: right3;
 `
 
-const Overview = ({productId}) => {
-
-
+const Overview = ({ productId }) => {
   const [styleData, setStyleData] = useState(null);
   const [currentStyle, setCurrentStyle] = useState(null);
   const [productData, setProductData] = useState(null);
+  const [reviewData, setReviewData] = useState(exampleReviews);
+  const [defaultView, setDefaultView] = useState(true);
+  const [expandedView, setExpandedView] = useState(false);
 
   useEffect(()=> {
-
     axios.get(`/products/${productId}/styles`)
       .then((response) => {
         setStyleData(response.data.results)
@@ -56,35 +56,16 @@ const Overview = ({productId}) => {
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
       });
-      axios.get(`products/${productId}`)
+    axios.get(`products/${productId}`)
       .then((response) => {
-        console.log('PRODUCT DATA IS RIGHT HERE', response.data)
         setProductData(response.data);
-        //setProductId(parseInt(response.data.id))
       })
       .catch((error) => {
         console.log('error, could not get current product data from api. error: ', error)
       });
   }, [productId])
 
-
-  // const [productData, setProductData] = useState(allProducts[1]);
-  // const [productId, setProductId] = useState(productID);
-  // console.log('productData:', productData)
-  // const [styleData, setStyleData] = useState(exampleStyleData.results);
-  // const [currentStyle, setCurrentStyle] = useState(styleData[0]);
-
-  const [reviewData, setReviewData] = useState(exampleReviews);
-
-  const [defaultView, setDefaultView] = useState(true);
-  const [expandedView, setExpandedView] = useState(false);
-
-   console.log('productData: ', productData);
-   console.log('productId: ', productId);
-   console.log('styleData: ', styleData);
-   console.log('currentStyle: ', currentStyle);
-
-  var onStyleClick = (id) => {
+  const onStyleClick = (id) => {
     for (var i = 0; i < styleData.length; i++) {
       if (styleData[i].style_id === id) {
         setCurrentStyle(styleData[i]);
@@ -104,18 +85,18 @@ const Overview = ({productId}) => {
       <StyledImageGallery>
         {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
       </StyledImageGallery>
-        {defaultView && <>
-          <StyledProductInfo>
-            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
-          </StyledProductInfo>
-          <StyledStyleSelector>
-            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
-            </StyledStyleSelector>
-          <StyledAddToCart>
-            {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
-          </StyledAddToCart>
-        </>}
-    </StyledContainer>
+      {defaultView && <>
+        <StyledProductInfo>
+          {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
+        </StyledProductInfo>
+        <StyledStyleSelector>
+          {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
+          </StyledStyleSelector>
+        <StyledAddToCart>
+          {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
+        </StyledAddToCart>
+      </>}
+      </StyledContainer>
     </>
   );
 }
