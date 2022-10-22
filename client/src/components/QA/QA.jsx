@@ -1,7 +1,13 @@
 
 import React from 'react';
 import QuestionList from './QuestionList.jsx';
+import {PropTypes} from 'prop-types'
+const QA = ({productID}) => { return (<QuestionList productID={productID}  />) };
 
-const QA = () => { return (<QuestionList />) };
+
+
+QA.propTypes = {
+  productID: PropTypes.number,
+}
 
 export default QA;

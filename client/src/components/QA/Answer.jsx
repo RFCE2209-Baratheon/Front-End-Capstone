@@ -46,6 +46,22 @@ const Answer = ({answer}) => {
   }, [renderA])
 
   //handlers
+
+  const helpfulAnswerOnclick = (iD) => {
+    console.log('id', iD)
+    const config = {params: {answer_id: iD}}
+    axios.put('/qa/answers/:answer_id/helpful', {}, config)
+    .then((success) => {
+      // setShouldFetchQ(!shouldFetchQ)
+      setVoted(false)
+      setHelpful(helpful+1)
+    })
+    .catch((error) => {
+
+    })
+
+  }
+
   const handleMoreAnswers = () => {
     setRenderA(answers.slice(start, renderA.length + 2))
   }
@@ -56,7 +72,7 @@ const Answer = ({answer}) => {
   return (
       <>
         {renderA.map(function (currentAnswer, index) {
-          // {console.log('current key', currentKey, 'answer', answer)}
+          {console.log('currentAnswer', currentAnswer, 'answer', answer)}
           return (
           <Questions key={index}>
           <Test>
@@ -68,7 +84,7 @@ const Answer = ({answer}) => {
               <Images images={currentAnswer.photos} />
               <span>{`by ${currentAnswer.answerer_name}, `}</span>
               <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
-              <Helpful helpfulCount={currentAnswer.helpfulness}/>
+              <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} handler={helpfulAnswerOnclick}/>
             </div>
           </div>
           </Test>

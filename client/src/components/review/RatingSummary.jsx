@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';

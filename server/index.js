@@ -8,14 +8,11 @@ const config = require('../config.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
-// other configuration...
 app.use(express.json())
 
 app.listen(3000);
 
 /*Q&A Route Handlers*/
-
-
 
 // QuestionList
 // Get questions
@@ -50,7 +47,6 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
   }
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
   .then((response)=>{
-
     res.send(response.data)
   })
   .catch((error)=>{
@@ -72,7 +68,6 @@ app.post('/qa/questions/', (req, res) => {
 
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', req.body, requestConfig)
   .then((response)=> {
-
     res.sendStatus(response.status)
   })
   .catch((err)=>{
@@ -121,7 +116,22 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 
 // PUT /qa/answers/:answer_id/helpful
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  // {params: {question_id: id}}
+  console.log('here we are')
+  let number = req.query.answer_id
 
+  const newConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${number}/helpful`, {}, newConfig)
+
+  .then((success) => {
+    console.log('succesfully put route for helpful answers')
+    res.end()
+  })
+  .catch((error) => {
+    console.log('error in put route for helpful answers', error)
+  })
 });
 // Report Answer
 // Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
@@ -133,17 +143,31 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/', {
+    headers: {
+      Authorization: config.TOKEN,
+    },
+  })
+  .then((productInfo) => {
+    console.log(productInfo.data)
+    res.send(productInfo.data);
+  })
+  .catch((error) => {
+    res.status(500);
+  });
 });
 
 app.get('/products/:product_id', (req, res) => {
+  console.log('hellooooooooo')
   let itemId = req.params.product_id;
+  console.log('itemId: ', itemId)
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
     headers: {
       Authorization: config.TOKEN,
     },
   })
     .then((productInfo) => {
+      console.log('product info', productInfo.data)
       res.send(productInfo.data);
     })
     .catch((error) => {
@@ -210,7 +234,6 @@ app.post('/reviews', (req, res) => {
 
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
     .then((response) => {
-
     })
     .catch((error) => {
       console.log(error);

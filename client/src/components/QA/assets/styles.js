@@ -96,13 +96,29 @@ const ModalButton = styled.button`
   cursor: pointer;
 `
 
-const ModalStyle = createGlobalStyle` * {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-overflow-y: scroll;
-font-family: 'Arial';
-}`
+const AppStyle = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+background: gray;
+
+.Overview {
+
+}
+
+.QA {
+
+}
+
+.Related {
+
+}
+
+.Review {
+
+}
+
+`
 
 const ModalBackground = styled.div`
   width: 100%;
@@ -196,4 +212,4 @@ gap: 10px;
   margin-bottom: 25px;
 }
 `
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, ModalStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm}
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm}
