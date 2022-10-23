@@ -48,6 +48,7 @@ const QuestionListStyle = styled.div`
     white-space: normal !important;
     word-break:break-word;
     font-size: 19px;
+    z-index: 0;
     margin: 5px;
     height: 50px;
     width 200px;
@@ -204,6 +205,7 @@ const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
   top: 0;
   left: 0;
 }`
