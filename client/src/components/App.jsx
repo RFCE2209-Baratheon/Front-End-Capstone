@@ -20,12 +20,12 @@ function App() {
       });
   }, [])
 
-  console.log('id: ', productId)
+  // console.log('id: ', productId)
 
   return (
     <div>
       <GlobalStyle />
-      {productId && <Overview productId={productId} />}
+      {productId && <Overview productId={'37315'} />}
       <Related />
       {productId && <QA productID={productId} />}
       <Review />

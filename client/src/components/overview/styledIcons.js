@@ -7,7 +7,7 @@ const StyledLeftArrow = styled(AiOutlineArrowLeft)`
   top: 325px;
   left: 90px;
   font-size: 2rem;
-  color: #000;
+  color: red;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -17,7 +17,7 @@ const StyledRightArrow = styled(AiOutlineArrowRight)`
   top: 325px;
   left: 550px;
   font-size: 2rem;
-  color: #000;
+  color: red;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -28,7 +28,7 @@ const StyledExpand = styled(AiOutlineExpand)`
   top: 25%;
   left: 450px;
   font-size: 2rem;
-  color: #000;
+  color: red;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -36,10 +36,10 @@ const StyledExpand = styled(AiOutlineExpand)`
 
 const StyledUpArrow = styled(IoIosArrowUp)`
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 30px;
   font-size: 2rem;
-  color: #000;
+  color: red;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -47,10 +47,10 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 695px;
+  top: 580px;
   left: 30px;
   font-size: 2rem;
-  color: #000;
+  color: red;
   z-index: 10;
   cursor: pointer;
   user-select: none;

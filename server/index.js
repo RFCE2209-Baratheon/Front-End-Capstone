@@ -41,11 +41,11 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log('params', req.query.answer)
+  // console.log('params', req.query.answer)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
-  console.log('getting questions answers')
+  // console.log('getting questions answers')
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
   .then((response)=>{
     // console.log('success', response.data)
@@ -63,7 +63,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
@@ -201,7 +201,7 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
     .then((response) => {
       // console.log(response);
