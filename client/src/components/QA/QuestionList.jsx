@@ -62,7 +62,7 @@ const QuestionList = ({productID}) => {
     }
   }, [searchedQ])
 
-  // Handlers
+  // Handlers & helpers
   const loadMore = () => {
 
     if (renderQ.length <= questions.length) {

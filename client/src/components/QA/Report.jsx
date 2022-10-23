@@ -6,15 +6,15 @@ const {useState} = React
 
 const Report = ({reportOnclick}) => {
 
-
-
-
+  //component
   return (
    <HelpfulButton onClick={reportOnclick}><u className='underlined'>Report</u></HelpfulButton>
   )
 
 }
 
+
+//proptype
 Report.propTypes = {
   reportOnclick: PropTypes.func
 }

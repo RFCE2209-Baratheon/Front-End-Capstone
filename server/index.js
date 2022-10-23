@@ -41,11 +41,11 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-
+  console.log('the question id in get answers list', req.params.question_id)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers`, requestConfig )
   .then((response)=>{
     res.send(response.data)
   })
@@ -156,7 +156,7 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
   const newConfig = {
     headers: {'Authorization': config.TOKEN}
   }
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/report`, {}, newConfig)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${number}/report`, {}, newConfig)
 
   .then((success) => {
     console.log('succesfully put route for report answer')

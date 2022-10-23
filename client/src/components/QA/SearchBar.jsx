@@ -8,12 +8,14 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
 
   const [searchText, setSearchText] = useState('')
 
+//hooks
   useEffect(()=>{
     if(searchText === '') {
       setEnableSearchQ(false)
     }
   },[searchText])
 
+//handlers & helpers
   const handleSearch = (e) => {
     let currentText = e.target.value
     setSearchText(currentText)
@@ -32,6 +34,7 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
     setSearchedQ(newArray)
   }
 
+//component
   return (
     <SearchBarWrapper>
       <SearchBarStyle type='text' placeholder='Have a question, search for answers' onChange={(e)=>{handleSearch(e)}}/>
@@ -40,6 +43,7 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
 
 }
 
+//proptype
 SearchBar.propTypes = {
   questions: PropTypes.array,
   setRenderQ: PropTypes.func,

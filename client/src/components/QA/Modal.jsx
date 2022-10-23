@@ -6,6 +6,7 @@ import axios from 'axios'
 
 
 const {useState, useRef} = React;
+
 const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, setShouldFetchQ}) => {
 
   //state & refs
@@ -65,6 +66,7 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
   )
 }
 
+//proptypes
 Modal.propTypes = {
   openModal: PropTypes.func,
   productId: PropTypes.string,

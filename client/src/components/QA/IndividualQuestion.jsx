@@ -51,7 +51,7 @@ const toggleOpen = () => {
         <Helpful className='helpful'helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
       <QuestionFolder className={index} open={open}>
-        <Answer answer={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
+        <Answer questionid={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
       </QuestionFolder>
     </IndividualQuestionStyle>
   )

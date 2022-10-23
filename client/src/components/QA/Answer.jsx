@@ -9,7 +9,7 @@ const {useState, useEffect} = React;
 
 
 
-const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
+const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
 
   //states and variables
   const [answers, setAnswers] = useState([])
@@ -21,11 +21,9 @@ const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
   useEffect(()=> {
 
     // Config for request
-    const config = {
-      params:{answer}
-    }
     // console.log('hello')
-    axios.get(`/qa/questions/:question_id/answers`, config)
+    console.log('this is the question id', questionid)
+    axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
       setAnswers(res.data.results)
       setRenderA(res.data.results.slice(start, end))
@@ -34,7 +32,7 @@ const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
       console.error(error)
     })
 
-  }, [answer])
+  }, [])
 
 
   useEffect(()=> {
@@ -68,6 +66,14 @@ const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
     axios.put('/qa/answers/:answer_id/report', {}, config)
     .then((success) => {
       console.log('question reported at id:', iD)
+      axios.get(`/qa/questions/${questionid}/answers`)
+        .then((res)=>{
+          setAnswers(res.data.results)
+          setRenderA(res.data.results.slice(start, end))
+        })
+        .catch((error)=>{
+          console.error(error)
+        })
       setShouldFetchQ(!shouldFetchQ)
     })
     .catch((error) => {
@@ -113,7 +119,7 @@ const Answer = ({answer, shouldFetchQ, setShouldFetchQ}) => {
 
 //proptypes
 Answer.propTypes = {
-  answer: PropTypes.number,
+  questionid: PropTypes.number,
   shouldFetchQ: PropTypes.bool,
   setShouldFetchQ: PropTypes.func
 }
