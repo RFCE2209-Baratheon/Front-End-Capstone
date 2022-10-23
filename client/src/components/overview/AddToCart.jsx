@@ -9,19 +9,16 @@ const AddToCartButton = styled.button`
 
 const AddToCart = ({ currentStyleSkus }) => {
   const [size, setSize] = useState('');
+  const [sizeSelected, setSizeSelected] = useState(false);
   const [maxQuantity, setMaxQuantity] = useState(1);
   const [quantity, setQuantity] = useState(1);
-  const [sizeSelected, setSizeSelected] = useState(false);
+  var mappedQtyOptions;
 
-  let list = false;
   var mappedSizeOptions = Object.keys(currentStyleSkus).map((sku, index) => {
-    list = true;
     if (currentStyleSkus[sku].quantity > 0) {
       return <option key={index}>{currentStyleSkus[sku].size}</option>}
     }
   )
-
-  var mappedQtyOptions;
 
   useEffect(() => {
     Object.keys(currentStyleSkus).forEach((sku, index) =>
@@ -43,7 +40,18 @@ const AddToCart = ({ currentStyleSkus }) => {
   }
 
   const onButtonClick = () => {
-    axios.post('/cart')
+    var sku_id;
+    Object.keys(currentStyleSkus).forEach((sku, index) => {
+      console.log('quantity state: ', quantity)
+      console.log('size state: ', size)
+      // console.log('currentStyleSkus[sku].quantity')
+      if (currentStyleSkus[sku].quantity >= quantity && currentStyleSkus[sku].size === size) {
+        sku_id = sku;
+
+      }
+    })
+    console.log('sku_id in click handler: ', sku_id)
+    axios.post('/cart', {sku_id: sku_id})
       .then((response) => {
         console.log(response);
       })
@@ -65,7 +73,7 @@ const AddToCart = ({ currentStyleSkus }) => {
           <select name="quantity" onChange={(e) => {
             setQuantity(e.target.value);
             }}>
-            { sizeSelected && maxQuantity > 0 ? <option value="select">1</option> : <option value="select">-</option> }
+            { sizeSelected && maxQuantity > 0 ? <> <option value="select">1</option> {mappedQtyOptions} </> : <option value="select">-</option> }
           </select>
 
           <p>
