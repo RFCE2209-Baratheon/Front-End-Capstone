@@ -22,7 +22,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
 
     // Config for request
     // console.log('hello')
-    console.log('this is the question id', questionid)
     axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
       setAnswers(res.data.results)

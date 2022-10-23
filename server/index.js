@@ -130,7 +130,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 // PUT /qa/answers/:answer_id/helpful
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   // {params: {question_id: id}}
-  console.log('here we are')
+
   let number = req.query.answer_id
 
   const newConfig = {
@@ -175,7 +175,7 @@ app.get('/products', (req, res) => {
     },
   })
   .then((productInfo) => {
-    console.log(productInfo.data)
+
     res.send(productInfo.data);
   })
   .catch((error) => {
@@ -184,16 +184,16 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/products/:product_id', (req, res) => {
-  console.log('hellooooooooo')
+
   let itemId = req.params.product_id;
-  console.log('itemId: ', itemId)
+
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
     headers: {
       Authorization: config.TOKEN,
     },
   })
     .then((productInfo) => {
-      console.log('product info', productInfo.data)
+
       res.send(productInfo.data);
     })
     .catch((error) => {

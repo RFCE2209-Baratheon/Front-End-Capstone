@@ -9,6 +9,8 @@ const {useState, useRef} = React;
 
 const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, setShouldFetchQ}) => {
 
+  console.log('productID in modal', productId)
+
   //state & refs
   const questionRef = useRef(null)
   const nicknameRef = useRef(null)

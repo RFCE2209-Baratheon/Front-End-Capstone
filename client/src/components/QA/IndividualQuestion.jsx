@@ -26,6 +26,7 @@ const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) =>
     const config = {params: {question_id: iD}}
     axios.put('/qa/questions/:question_id/report', {}, config)
     .then((success) => {
+      console.log('report success, fetching questions now')
       setShouldFetchQ(!shouldFetchQ)
     })
     .catch((error) => {
