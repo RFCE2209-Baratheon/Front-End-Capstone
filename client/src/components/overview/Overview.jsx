@@ -26,7 +26,6 @@ const StyledContainer = styled.div`
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
-  // margin: 0;
 `
 
 const StyledProductInfo = styled.div`
