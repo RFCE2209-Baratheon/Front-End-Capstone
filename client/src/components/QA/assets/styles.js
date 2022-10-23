@@ -1,5 +1,6 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import {MdClose} from 'react-icons/md'
+
 const Wrapper = styled.div`
 
 max-height: 50vh;
@@ -23,6 +24,8 @@ padding: 20px;
 height: 300px;
 width: auto;
 
+
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
@@ -33,7 +36,9 @@ const QuestionListStyle = styled.div`
   position: relative;
   border: solid;
   border-width: 1px;
-  width: auto;
+  border-radius: 5px;
+  margin: 50px;
+  width: 75%;
 
   .Title {
     position: relative;
@@ -173,29 +178,6 @@ const ModalButton = styled.button`
   cursor: pointer;
 `
 
-const AppStyle = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background: gray;
-
-.Overview {
-
-}
-
-.QA {
-
-}
-
-.Related {
-
-}
-
-.Review {
-
-}
-
-`
 
 const ModalBackground = styled.div`
   width: 100%;
@@ -290,4 +272,4 @@ gap: 10px;
   margin-bottom: 25px;
 }
 `
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle,QListWrapper}
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle,QListWrapper}

@@ -4,7 +4,7 @@ import Review from './review/Review.jsx';
 import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
-
+import {AppStyle} from '../assets/styles.js'
 const {createContext} = React
 
 
@@ -44,12 +44,15 @@ function App() {
 
   return (
     <>
+    <AppStyle>
 
       {productId && <Overview className='Overview' productId={productId}></Overview>}
       <Related className='Related' />
       {productId && <QA className='QA' productID={productId} />}
       <Review className='Review'/>
-      </>
+
+    </AppStyle>
+    </>
 
   );
 }
