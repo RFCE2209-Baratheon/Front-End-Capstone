@@ -116,7 +116,8 @@ const QuestionFolder = styled.div`
 
   width: 100%;
   max-height: ${(props) => (props.open ? '25vh' : '0px')};
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
+  transition-delay: 0ms;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -136,7 +137,7 @@ border-width: 1px;
 border-color: rgb(219, 144, 86);
 background: rgb(219, 144, 86);
 border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '10px' : '0px')};
-border-bottom-left-radius: ${(props) => (props.selectIndex === '3' ? '10px' : '0px')};
+border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '10px' : '0px')};
 
 .user {
   font-style: italic;
