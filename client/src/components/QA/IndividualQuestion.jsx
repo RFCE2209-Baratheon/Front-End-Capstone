@@ -7,8 +7,8 @@ import axios from 'axios'
 
 const {useState, useEffect} = React;
 
-const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) => {
-
+const IndividualQuestion = ({renderQLength, question, index, shouldFetchQ, setShouldFetchQ}) => {
+console.log('renderQLength', renderQLength)
 
 
 
@@ -50,7 +50,7 @@ const reportQuestionOnclick = (iD) => {
 
 //component
   return (
-    <IndividualQuestionStyle className = 'questionWrapper'>
+    <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
       <span className='question' onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
       <AlignRight>
         <Helpful className='helpful'helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>

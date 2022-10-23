@@ -23,6 +23,9 @@ overflow-y: scroll;
 padding: 20px;
 height: 300px;
 width: auto;
+border-top: solid;
+border-bottom: solid;
+border-width: 1px;
 
 
 
@@ -47,6 +50,7 @@ const QuestionListStyle = styled.div`
   }
 
   .loadMore {
+    border-radius: 5px;
     background: rgb(219, 144, 86);
     position: relative;
     left: 35%;
@@ -61,6 +65,7 @@ const QuestionListStyle = styled.div`
   }
 
   .addQuestion{
+    border-radius: 5px;
     background: rgb(219, 144, 86);
     position: relative;
     left: 35%;
@@ -97,7 +102,7 @@ background: none;
 
 const Questions = styled.div`
 border-top: ridge;
-background: rgb(255, 168, 102);
+background: rgb(240, 177, 17);
 border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
 
@@ -125,12 +130,13 @@ padding-bottom: 25px;
 `
 const IndividualQuestionStyle = styled.div`
 
-border-top: ridge;
-border-color:rgb(222, 133, 64);
+border-left: solid;
+border-top: solid
+border-width: 1px;
+border-color: rgb(219, 144, 86);
 background: rgb(219, 144, 86);
-.question{
-
-}
+border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '10px' : '0px')};
+border-bottom-left-radius: ${(props) => (props.selectIndex === '3' ? '10px' : '0px')};
 
 .user {
   font-style: italic;
@@ -147,6 +153,7 @@ span {
 
 `
 const SearchBarStyle = styled.input`
+border-radius: 5px;
 width: 99%;
 padding: 10px;
 background: rgb(219, 144, 86);

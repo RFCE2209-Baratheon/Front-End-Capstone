@@ -100,7 +100,7 @@ const QuestionList = ({productID}) => {
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
+                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
                 )
               })}
             </div>
