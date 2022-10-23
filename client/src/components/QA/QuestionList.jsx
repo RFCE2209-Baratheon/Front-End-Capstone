@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Accordion, Wrapper, SearchBarStyle, ModalButton, ModalStyle} from './assets/styles.js'
+import {Accordion, Wrapper, SearchBarStyle, ModalButton, ModalStyle, QuestionListStyle, QListWrapper} from './assets/styles.js'
 import {PropTypes} from 'prop-types'
 import IndividualQuestion from './IndividualQuestion.jsx'
 import SearchBar from './SearchBar.jsx'
@@ -32,7 +32,7 @@ const QuestionList = ({productID}) => {
 
     console.log('setting questions')
 
-    axios.get('/qa/questions', {params: {product_id: productId, count: 50}})
+    axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
 
       if (res.data.results.length <= 4) {
@@ -80,31 +80,31 @@ const QuestionList = ({productID}) => {
 
   //component
   return (
-    <div className='questionList'>
-    { showModal ? <Modal openModal={openModal} productId={productId} setProductId={setProductId} setShowModal={setShowModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
-    <span> QUESTIONS & ANSWERS </span>
-    <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
-    <Wrapper className ='accordionWrapper'>
-      <Accordion>
-      <div className="Accordion">
+    <QuestionListStyle className='qListStyle'>
+      { showModal ? <Modal openModal={openModal} productId={productId} setProductId={setProductId} setShowModal={setShowModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
+        <div className ='Title'> QUESTIONS & ANSWERS </div>
+        <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
+      <QListWrapper>
 
-        {enableSearchQ ? searchedQ.map(function(question, index) {
-          return (
-            <IndividualQuestion key={index} question={question} open={open} index={index}/>
-          )
-        }) : renderQ.map(function(question, index) {
-          return (
-            <IndividualQuestion key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
-          )
-        })}
-      </div>
+        <Wrapper className ='accordionWrapper'>
+          <Accordion>
+            <div className="Accordion">
+              {enableSearchQ ? searchedQ.map(function(question, index) {
+                return (
+                  <IndividualQuestion key={index} question={question} open={open} index={index}/>
+                )
+              }) : renderQ.map(function(question, index) {
+                return (
+                  <IndividualQuestion key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
+                )
+              })}
+            </div>
+          </Accordion>
+        </Wrapper>
+      </QListWrapper>
       <AddQuestion loadMore={loadMore} openModal={openModal}/>
       {hide ? <LoadMoreQs loadMore={loadMore}/> : <></>}
-
-      </Accordion>
-    </Wrapper>
-
-    </div>
+    </QuestionListStyle>
 
   )
 }

@@ -7,8 +7,6 @@ padding: 10px;
 width: auto;
 justify-content: top-left;
 align-items: center;
-border: solid;
-border-width: 1px;
 overflow-y: scroll;
 
 ::-webkit-scrollbar {
@@ -16,30 +14,52 @@ overflow-y: scroll;
   background: transparent; /* make scrollbar transparent */
 }
 
-.loadMore {
-  white-space: normal !important;
-  word-break:break-word;
-  font-size: 19px;
-  margin: 5px;
-  height: 50px;
-  width 200px;
-  border: solid;
-  border-width: 1px;
-}
 
-.addQuestion{
-  font-size: 20px;
-  margin: 5px;
-  height: 50px;
-  width 200px;
-  border: solid;
-  border-width: 1px;
-}
 
 `
-
+const QListWrapper = styled.div`
+overflow-y: scroll;
+padding: 20px;
+height: 300px;
+width: auto;
+`
 const QuestionListStyle = styled.div`
+  background: rgb(222, 133, 64);
+  position: relative;
+  border: solid;
+  border-width: 1px;
 
+  .Title {
+    position: relative;
+    font-size: 1.25vw;
+    margin:15px;
+  }
+
+  .loadMore {
+    background: rgb(153, 147, 144);
+    position: relative;
+    left: 35%;
+    white-space: normal !important;
+    word-break:break-word;
+    font-size: 19px;
+    margin: 5px;
+    height: 50px;
+    width 200px;
+    border: solid;
+    border-width: 1px;
+  }
+
+  .addQuestion{
+    background: rgb(153, 147, 144);
+    position: relative;
+    left: 35%;
+    font-size: 20px;
+    margin: 5px;
+    height: 50px;
+    width 200px;
+    border: solid;
+    border-width: 1px;
+  }
 `
 
 const HelpfulButton = styled.button`
@@ -67,8 +87,8 @@ background: none;
 
 const Questions = styled.div`
 border-top: ridge;
-border-top: ridge;
-background:none;
+background: rgb(219, 144, 86);
+border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
 
 `
@@ -95,6 +115,13 @@ padding-bottom: 25px;
 `
 const IndividualQuestionStyle = styled.div`
 
+border-top: ridge;
+border-color:rgb(222, 133, 64);
+background: rgb(219, 144, 86);
+.question{
+
+}
+
 .user {
   font-style: italic;
 }
@@ -112,6 +139,10 @@ span {
 const SearchBarStyle = styled.input`
 width: 99%;
 padding: 10px;
+background: rgb(219, 144, 86);
+::placeholder {
+  color: black;
+}
 `
 const SearchBarWrapper = styled.div`
 padding: 10px;
@@ -253,4 +284,4 @@ gap: 10px;
   margin-bottom: 25px;
 }
 `
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle}
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, AppStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle,QListWrapper}
