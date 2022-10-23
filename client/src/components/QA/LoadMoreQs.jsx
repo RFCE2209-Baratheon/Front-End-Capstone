@@ -5,7 +5,7 @@ const LoadMoreQs = ({loadMore}) => {
 
 
   return (
-  <button className='loadMore' onClick={loadMore}> Load more questions </button>
+  <button className='loadMore' id='123' onClick={(e) => {loadMore(e)}}> Load more questions </button>
   )
 
 
