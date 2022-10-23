@@ -52,11 +52,11 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
               <h2>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <span className='formSpan'>Your Question *</span>
-                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef}></textarea>
+                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
                 <span className='formSpan'>Your Nickname *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef}></input>
+                <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
                 <span className='formSpan'placeholder>Your Email *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef}></input>
+                <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
                 <span className='finalSpan'>For authentication reasons, you will not be emailed</span>
                 <button className='submit'>Submit</button>
               </ModalForm>
