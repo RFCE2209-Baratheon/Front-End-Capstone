@@ -22,12 +22,18 @@ overflow-y: scroll;
 padding: 20px;
 height: 300px;
 width: auto;
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 `
 const QuestionListStyle = styled.div`
-  background: rgb(222, 133, 64);
+  background: rgb(240, 177, 17);
   position: relative;
   border: solid;
   border-width: 1px;
+  width: auto;
 
   .Title {
     position: relative;
@@ -36,7 +42,7 @@ const QuestionListStyle = styled.div`
   }
 
   .loadMore {
-    background: rgb(153, 147, 144);
+    background: rgb(219, 144, 86);
     position: relative;
     left: 35%;
     white-space: normal !important;
@@ -45,20 +51,18 @@ const QuestionListStyle = styled.div`
     margin: 5px;
     height: 50px;
     width 200px;
-    border: solid;
-    border-width: 1px;
+
   }
 
   .addQuestion{
-    background: rgb(153, 147, 144);
+    background: rgb(219, 144, 86);
     position: relative;
     left: 35%;
     font-size: 20px;
     margin: 5px;
     height: 50px;
     width 200px;
-    border: solid;
-    border-width: 1px;
+
   }
 `
 
@@ -87,7 +91,7 @@ background: none;
 
 const Questions = styled.div`
 border-top: ridge;
-background: rgb(219, 144, 86);
+background: rgb(255, 168, 102);
 border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
 
