@@ -19,11 +19,12 @@ const ImageGalleryContainerExpand = styled.div`
 const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
 
   const [current, setCurrent] = useState(0);
-  const length = styleImages.length; // 9
+  const length = styleImages.length; // 11
 
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(7);
   const [activeThumbnails, setActiveThumbnails] = useState(styleImages.slice(start, end));
+
 
   if (length > 7) {
     var verticalScroll = true;
@@ -59,7 +60,7 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     setActiveThumbnails(styleImages.slice(start, end));
   }
 
-  useEffect(changeThumbnails, [start, end, styleImages]);
+  useEffect(changeThumbnails, [start, styleImages]);
 
   return (
     <>

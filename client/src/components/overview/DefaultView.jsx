@@ -32,7 +32,7 @@ const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextS
           <ImageCarousel styleImages={styleImages} current={current} />
         </StyledCarouselImageSize>
         <StyledThumbnailAlign>
-          <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} />
+          <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} end={end} />
         </StyledThumbnailAlign>
         {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
         {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
