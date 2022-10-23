@@ -18,6 +18,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
   const [end, setEnd] = useState(2)
   const start = 0;
 
+  //hooks & handlers
   useEffect(()=> {
 
     // Config for request
@@ -33,7 +34,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
 
   }, [])
 
-
   useEffect(()=> {
     if (renderA.length === answers.length) {
       setHide(false)
@@ -41,8 +41,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
       setHide(true)
     }
   }, [renderA])
-
-  //handlers
 
   const helpfulAnswerOnclick = (iD) => {
 

@@ -32,7 +32,7 @@ const QuestionList = ({productID}) => {
 
   let currentTime = new Date()
 
-  // Hooks
+  // Hooks & Handler
   useEffect(()=> {
 
     console.log('setting questions')
@@ -67,7 +67,6 @@ const QuestionList = ({productID}) => {
     }
   }, [searchedQ])
 
-  // Handlers
   const loadMore = (e) => {
 
     postInteraction(e.target.id, currentComponent, currentTime);
@@ -83,7 +82,6 @@ const QuestionList = ({productID}) => {
   const openModal = () => {
     setShowModal(!showModal)
   }
-
 
   //component
   return (
@@ -116,6 +114,7 @@ const QuestionList = ({productID}) => {
   )
 }
 
+//propTypes
 QuestionList.propTypes = {
   productID: PropTypes.number
 }

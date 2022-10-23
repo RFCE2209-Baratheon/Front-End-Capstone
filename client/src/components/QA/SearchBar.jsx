@@ -8,14 +8,13 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
 
   const [searchText, setSearchText] = useState('')
 
-//hooks
+//hooks & handlers
   useEffect(()=>{
     if(searchText === '') {
       setEnableSearchQ(false)
     }
   },[searchText])
 
-//handlers & helpers
   const handleSearch = (e) => {
     let currentText = e.target.value
     setSearchText(currentText)

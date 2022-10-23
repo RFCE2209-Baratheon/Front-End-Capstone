@@ -39,6 +39,7 @@ return (
 )
 }
 
+//proptypes
 Helpful.propTypes = {
   helpfulCount  : PropTypes.number,
   id: PropTypes.number,

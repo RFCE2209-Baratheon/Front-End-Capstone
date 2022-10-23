@@ -6,42 +6,46 @@ import {QuestionFolder, AlignRight, IndividualQuestionStyle} from './assets/styl
 import axios from 'axios'
 
 const {useState, useEffect} = React;
+
 const IndividualQuestion = ({question, index, shouldFetchQ, setShouldFetchQ}) => {
 
-  const helpfulQuestionOnclick = (iD) => {
 
-    const config = {params: {question_id: iD}}
-    axios.put('/qa/questions/:question_id/helpful', {}, config)
-    .then((success) => {
-      setShouldFetchQ(!shouldFetchQ)
-    })
-    .catch((error) => {
 
-    })
-
-  }
-
-  const reportQuestionOnclick = (iD) => {
-
-    const config = {params: {question_id: iD}}
-    axios.put('/qa/questions/:question_id/report', {}, config)
-    .then((success) => {
-      console.log('report success, fetching questions now')
-      setShouldFetchQ(!shouldFetchQ)
-    })
-    .catch((error) => {
-
-    })
-
-  }
 
 
 //State
 const [open, setOpen] = useState(null)
 
-//Handler
+//hooks & handlers
 const toggleOpen = () => {
   setOpen(!open)
+}
+
+const helpfulQuestionOnclick = (iD) => {
+
+  const config = {params: {question_id: iD}}
+  axios.put('/qa/questions/:question_id/helpful', {}, config)
+  .then((success) => {
+    setShouldFetchQ(!shouldFetchQ)
+  })
+  .catch((error) => {
+
+  })
+
+}
+
+const reportQuestionOnclick = (iD) => {
+
+  const config = {params: {question_id: iD}}
+  axios.put('/qa/questions/:question_id/report', {}, config)
+  .then((success) => {
+    console.log('report success, fetching questions now')
+    setShouldFetchQ(!shouldFetchQ)
+  })
+  .catch((error) => {
+
+  })
+
 }
 
 //component
@@ -58,6 +62,7 @@ const toggleOpen = () => {
   )
 }
 
+//propTypes
 IndividualQuestion.propTypes = {
   question: PropTypes.object,
   index: PropTypes.number,
