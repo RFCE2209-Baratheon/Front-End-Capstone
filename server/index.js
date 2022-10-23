@@ -210,3 +210,15 @@ app.put('reviews/:review_id/helpful/', (req, res) => {
 app.put('reviews/:review_id/report/', (req, res) => {
 
 });
+
+
+app.post('/interactions', (req, res) => {
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/interactions', req.body, { headers: { Authorization: config.TOKEN }})
+    .then((response) => {
+      console.log('interaction status', response.status)
+      res.sendStatus(response.status);
+    })
+    .catch((error) => {
+      console.log('Error posting to API');
+    });
+})

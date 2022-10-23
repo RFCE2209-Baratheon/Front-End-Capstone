@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProductInformation from './ProductInformation.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -8,6 +8,7 @@ import exampleStyleData from '../../example_data/get_styles.js';
 import exampleReviews from '../../example_data/get_reviews.js';
 import styled from 'styled-components';
 import GlobalStyle from './globalStyles.js';
+import {interactionContext} from '../App.jsx';
 
 const StyledContainer = styled.div`
   display: grid;
@@ -49,15 +50,21 @@ const Overview = () => {
 
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
+  console.log('interaction context in overview', interactionContext)
+  const postInteraction = useContext(interactionContext);
+
+
+  postInteraction("h1", "overview", "22-22-22");
 
   console.log('productData: ', productData);
   console.log('productId: ', productId);
   console.log('styleData: ', styleData);
   console.log('currentStyle: ', currentStyle);
 
-  var onStyleClick = (id) => {
+  var onStyleClick = (e, ID) => {
+    console.log('e.id: ', e.target.id)
     for (var i = 0; i < styleData.length; i++) {
-      if (styleData[i].style_id === id) {
+      if (styleData[i].style_id === ID) {
         setCurrentStyle(styleData[i]);
       }
     }
