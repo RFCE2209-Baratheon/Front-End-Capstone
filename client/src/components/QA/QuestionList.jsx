@@ -28,6 +28,7 @@ const QuestionList = () => {
   const [shouldFetchQ, setShouldFetchQ] = useState(false)
   const postInteraction = useContext(interactionContext)
   const currentComponent = 'QA';
+
   let currentTime = new Date()
 
   // Hooks
