@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {
   RelatedBlockContainer, LeftArrow, RightArrow,
-} from './assets/relatedBlock.style.js';
+} from './Assets/comparisonWidget.style.js';
 import RelatedCard from './RelatedCard.jsx';
 import OutfitCards from './OutfitCards.jsx';
 

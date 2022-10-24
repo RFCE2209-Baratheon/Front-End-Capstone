@@ -5,17 +5,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   RelatedBlockContainer, LeftArrow, RightArrow,
-} from './assets/relatedBlock.style.js';
+} from './Assets/comparisonWidget.style.js';
 import RelatedInfo from './RelatedInfo.jsx';
 import RelatedCard from './RelatedCard.jsx';
 import staticData from '../../example_data/relatedProductStyles.json';
 import exampleOfProducts from '../../example_data/relatedProductStyles.json';
-import './assets/myStyle.css';
+import './Assets/myStyle.css';
 
-const RelatedBlock = function ({ mainId }) {
+const RelatedBlock = function ({ productId, setProductId }) {
   const [leftArrow, setLeftArrow] = useState(0);
   const [rightArrow, setRightArrow] = useState(0);
-  const [productId, setProductId] = useState(mainId);
   const [relatedArray, setRelatedArray] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState([]);
@@ -40,6 +39,12 @@ const RelatedBlock = function ({ mainId }) {
       .then((results) => {
         setRelatedArray(results.data);
       })
+      // .then(() => {
+      //   axios.get(`/products/${id}`)
+      //   .then((singleProduct) => {
+      //     arrayOfProducts.push(singleProduct.data);
+      //   })
+      // })
       .catch((error) => {
         console.log(error);
       });
@@ -133,6 +138,8 @@ const RelatedBlock = function ({ mainId }) {
     setLeftArrow(slider.scrollLeft);
   };
 
+
+
   // useEffect(() => {
   //   const products = [37330, 37955, 37458, 38296, 38245, 37508];
   //   const dataArray = [];
@@ -156,7 +163,7 @@ const RelatedBlock = function ({ mainId }) {
         {leftArrow === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
         <div id="slider">
           {/* {imageData} */}
-          <RelatedInfo dataCompiled={dataCompiled} setDataCompiled={setDataCompiled} />
+          <RelatedInfo dataCompiled={dataCompiled} setDataCompiled={setDataCompiled} productId={productId} setProductId={setProductId} />
         </div>
         {leftArrow === rightArrow ? <></> : <RightArrow onClick={slideRight} />}
       </RelatedBlockContainer>
