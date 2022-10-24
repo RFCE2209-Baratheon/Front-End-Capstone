@@ -129,7 +129,7 @@ const RatingSummary = ({
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
         {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
-          <div key={index} onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
+          <p key={index} onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
             {`${rating} stars`}
             <Bar style={{ display: 'inline-block' }} star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
           </div>

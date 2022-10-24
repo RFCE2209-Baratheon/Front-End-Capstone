@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 const Bar = ({
   rating, sum, toggle, star,
 }) => (
-  <div>
-    <progress style={{backgroundColor:"red"}} value={(rating / sum) * 100} max="100" />
-    <div style={{ display: 'inline-block' }}>
+  <div style={{backgroundColor:"red"}}>
+    <progress  value={(rating / sum) * 100} max="100" />
+    <p style={{ display: 'inline-block' }}>
       {`(${rating})`}
       {' '}
     </div>
