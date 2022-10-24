@@ -5,7 +5,6 @@ import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
 import {AppStyle} from '../assets/styles.js'
-import GlobalStyle from '../globalStyles.js';
 
 const {createContext} = React
 
