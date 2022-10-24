@@ -44,7 +44,7 @@ const AddToCart = ({ currentStyleSkus }) => {
     // api call: add to cart
   }
 
-  console.log('mappedSizeOptions: ', mappedSizeOptions)
+  // console.log('mappedSizeOptions: ', mappedSizeOptions)
 
   return (
     <> {mappedSizeOptions[0] ?

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import {StyledExpand} from './styledIcons.js';
+import {TiArrowBack} from 'react-icons/ti'
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;
@@ -16,14 +16,19 @@ const ImageGalleryContainerExpand = styled.div`
   width: 100%;
 `
 
+
 const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
 
   const [current, setCurrent] = useState(0);
-  const length = styleImages.length; // 9
+  const length = styleImages.length;
 
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(7);
   const [activeThumbnails, setActiveThumbnails] = useState(styleImages.slice(start, end));
+
+  if (!Array.isArray(styleImages) || length <= 0) {
+    return null;
+  }
 
   if (length > 7) {
     var verticalScroll = true;
@@ -39,9 +44,6 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     setCurrent(current === 0 ? 0 : current - 1);
   };
 
-  if (!Array.isArray(styleImages) || length <= 0) {
-    return null;
-  }
 
   const upSlide = (e) => {
     e.stopPropagation();
@@ -59,7 +61,7 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     setActiveThumbnails(styleImages.slice(start, end));
   }
 
-  useEffect(changeThumbnails, [start, end, styleImages]);
+  useEffect(changeThumbnails, [start, styleImages]);
 
   return (
     <>
@@ -70,13 +72,14 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
         }} />
       </div> */}
       <ImageGalleryContainerDefault onClick={changeView}>
-        {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} end={end} />}
+        {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} />}
       </ImageGalleryContainerDefault>
 
       <ImageGalleryContainerExpand onClick={changeView}>
-        {expandedView && <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} end={end} />}
+        {expandedView && <>
+        <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} changeView={changeView} />
+        </> }
       </ImageGalleryContainerExpand>
-      {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
     </>
   )
 }

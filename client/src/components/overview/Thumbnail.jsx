@@ -14,8 +14,8 @@ const StyledThumbnail = styled.img`
   const StyledThumbnailDiv = styled.div`
   display: flex;
   justify-content: center;
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   overflow: hidden;
   position: relative;
   margin: 5px;

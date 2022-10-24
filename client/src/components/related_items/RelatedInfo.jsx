@@ -2,7 +2,7 @@ import React from 'react';
 import RelatedCard from './RelatedCard.jsx';
 
 const RelatedInfo = function ({ dataCompiled, setDataCompiled }) {
-  console.log(dataCompiled);
+  // console.log(dataCompiled);
   const mappedData = dataCompiled.map((dataObj, idx) => {
     let category = dataObj.category;
     let productName = dataObj.name;
