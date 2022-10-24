@@ -8,14 +8,11 @@ const config = require('../config.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
-// other configuration...
 app.use(express.json())
 
 app.listen(3000);
 
 /*Q&A Route Handlers*/
-
-
 
 // QuestionList
 // Get questions
@@ -44,14 +41,14 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log('params', req.query.answer)
+  // console.log('params', req.query.answer)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
-  console.log('getting questions answers')
+  // console.log('getting questions answers')
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
   .then((response)=>{
-    console.log('success', response.data)
+    // console.log('success', response.data)
     res.send(response.data)
   })
   .catch((error)=>{
@@ -66,14 +63,14 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
 
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', req.body, requestConfig)
   .then((response)=> {
-    console.log('hello', response.status)
+    // console.log('hello', response.status)
     res.sendStatus(response.status)
   })
   .catch((err)=>{
@@ -119,7 +116,17 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/', {
+    headers: {
+      Authorization: config.TOKEN,
+    },
+  })
+  .then((response) => {
+    res.send(response.data);
+  })
+  .catch((error) => {
+    res.status(500);
+  });
 });
 
 app.get('/products/:product_id', (req, res) => {
@@ -130,6 +137,7 @@ app.get('/products/:product_id', (req, res) => {
     },
   })
     .then((productInfo) => {
+      // console.log('product info', productInfo.data)
       res.send(productInfo.data);
     })
     .catch((error) => {
@@ -173,8 +181,17 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-
+  var id = req.body.sku_id;
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart', {sku_id: id}, {headers: { Authorization: config.TOKEN }})
+  .then((response)=> {
+    res.sendStatus(response.status);
+  })
+  .catch((err)=>{
+    console.log('Error, cannot post to cart. Error: ', err)
+  })
 });
+
+
 
 // Rating and Reviews
 
@@ -193,10 +210,10 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
     })
     .catch((error) => {
       console.log(error);

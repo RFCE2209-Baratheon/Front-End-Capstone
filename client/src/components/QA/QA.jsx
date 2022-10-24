@@ -2,6 +2,6 @@
 import React from 'react';
 import QuestionList from './QuestionList.jsx';
 
-const QA = () => { return (<QuestionList />) };
+const QA = ({productID}) => { return (<QuestionList productID={productID}  />) };
 
 export default QA;

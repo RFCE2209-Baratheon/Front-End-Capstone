@@ -24,10 +24,10 @@ const Answer = ({answer}) => {
     const config = {
       params:{answer}
     }
-    console.log('hello')
+    // console.log('hello')
     axios.get(`/qa/questions/:question_id/answers`, config)
     .then((res)=>{
-      console.log('in the component', res.data.results)
+      // console.log('in the component', res.data.results)
       setAnswers(res.data.results)
       setRenderA(res.data.results.slice(start, end))
     })

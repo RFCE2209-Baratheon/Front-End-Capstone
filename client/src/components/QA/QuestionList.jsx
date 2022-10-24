@@ -10,7 +10,7 @@ import {interactionContext} from '../App.jsx'
 
 const { useState, useEffect, useContext } = React;
 
-const QuestionList = () => {
+const QuestionList = ({productID}) => {
 
   //Local Variables
   const start = 0;
@@ -18,7 +18,7 @@ const QuestionList = () => {
 
   // States
   const [end, setEnd] = useState(endStart)
-  const [productId, setProductId] = useState('37314')
+  const [productId, setProductId] = useState(productID)
   const [renderQ, setRenderQ] = useState([])
   const [questions, setQuestions] = useState([])
   const [searchedQ, setSearchedQ] = useState([])
@@ -34,7 +34,8 @@ const QuestionList = () => {
   // Hooks
   useEffect(()=> {
 
-    console.log('setting questions')
+    // console.log('setting questions')
+    // console.log(typeof productID)
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
@@ -50,7 +51,7 @@ const QuestionList = () => {
     })
 
   }, [productId, shouldFetchQ])
-  console.log('questions', questions)
+  // console.log('questions', questions)
 
   useEffect(()=>{
 
@@ -81,7 +82,7 @@ const QuestionList = () => {
   }
 
   const openModal = () => {
-    console.log(showModal)
+    // console.log(showModal)
     setShowModal(!showModal)
   }
 
