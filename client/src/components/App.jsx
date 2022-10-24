@@ -29,12 +29,15 @@ const postInteraction = (element, widget, time) => {
 
 function App() {
   const [productId, setProductId] = useState(null);
+  const [productName, setProductName] = useState('');
+
 
   useEffect(() => {
     axios.get('/products')
       .then((response) => {
         // set default data to first product
         setProductId(parseInt(response.data[0].id));
+        setProductName(response.data[0].name);
       })
       .catch((error) => {
         console.log('error, could not get products from api. error: ', error)
@@ -50,7 +53,7 @@ function App() {
       {productId && <Overview className='Overview' productId={productId}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
       {productId && <QA className='QA' productID={productId} />}
-      <Review className='Review'/>
+      {productId && <Review productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
     </>

@@ -16,7 +16,7 @@ import { fetchPhotos, openUploadWidget } from './CloudinaryService';
 const ModalBackground = styled.div`{
   width: 100%;
   height: 100%;
-  background-color: grey;
+  background-color: lightgrey;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -36,8 +36,18 @@ const ModalContainer = styled.div`{
   flex-direction: column;
   padding: 25px;
   overflow: scroll;
+  overflow-x: hidden;
   z-index: -1;
-
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: white;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid #808080;
+    border-radius: 10px;
+    width: 10px;
+  }
 }`;
 
 const InputBody = styled.input`{
@@ -169,6 +179,7 @@ const AddReviewForm = ({
 
   return (
     <ModalBackground>
+        <div style={{backgroundColor: "white", borderColor: "white", borderRadius: "12px", padding: "5px"}}>
       <ModalContainer>
         <CloudinaryContext cloudName="dmmzqckuu">
           <button onClick={() => { setAddReviewToggle(!addReviewToggle); }}>X</button>
@@ -237,6 +248,7 @@ const AddReviewForm = ({
           </form>
         </CloudinaryContext>
       </ModalContainer>
+        </div>
     </ModalBackground>
   );
 };
