@@ -4,7 +4,12 @@ import Review from './review/Review.jsx';
 import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
+<<<<<<< HEAD
 import {AppStyle} from '../assets/styles.js'
+=======
+import GlobalStyle from '../globalStyles.js';
+
+>>>>>>> Development
 const {createContext} = React
 
 
@@ -29,6 +34,7 @@ const postInteraction = (element, widget, time) => {
 function App() {
   const [productId, setProductId] = useState(null);
 
+<<<<<<< HEAD
   useEffect(() => {
     axios.get('/products')
       .then((response) => {
@@ -54,7 +60,31 @@ function App() {
     </AppStyle>
     </>
 
+=======
+  const [productId, setProductId] = useState(null);
+
+  useEffect(() => {
+    axios.get('/products')
+      .then((response) => {
+        // set default data to first product
+        setProductId(parseInt(response.data[0].id));
+      })
+      .catch((error) => {
+        console.log('error, could not get products from api. error: ', error)
+      });
+  }, [])
+
+  return (
+    <div>
+      <GlobalStyle />
+      {productId && <Overview productId={productId} />}
+      <Related />
+      {productId && <QA productID={productId} />}
+      <Review />
+    </div>
+>>>>>>> Development
   );
+
 }
 
 

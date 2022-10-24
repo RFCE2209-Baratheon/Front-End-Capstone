@@ -48,7 +48,7 @@ var styles = {
           ],
           "skus": {
               "1281032": {
-                  "quantity": 0,
+                  "quantity": 8,
                   "size": "XS"
               },
               "1281033": {
@@ -69,7 +69,7 @@ var styles = {
               },
               "1281037": {
                   "quantity": 4,
-                  "size": "XXL"
+                  "size": "XL"
               }
           }
       },
