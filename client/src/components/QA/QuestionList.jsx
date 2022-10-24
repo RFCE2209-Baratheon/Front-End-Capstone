@@ -90,7 +90,6 @@ const QuestionList = ({productID}) => {
         <div className ='Title'> QUESTIONS & ANSWERS </div>
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
-
         <Wrapper className ='accordionWrapper'>
           <Accordion>
             <div className="Accordion">

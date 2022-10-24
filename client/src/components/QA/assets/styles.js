@@ -22,10 +22,7 @@ const QListWrapper = styled.div`
 overflow-y: scroll;
 padding: 20px;
 height: 300px;
-width: auto;
-border-top: solid;
-border-bottom: solid;
-border-width: 1px;
+width: 100%;
 
 
 
@@ -36,12 +33,17 @@ border-width: 1px;
 `
 const QuestionListStyle = styled.div`
   background: rgb(240, 177, 17);
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+
   border: solid;
   border-width: 1px;
   border-radius: 5px;
   margin: 50px;
-  width: 75%;
+  width: 50%;
 
   .Title {
     position: relative;
@@ -50,10 +52,9 @@ const QuestionListStyle = styled.div`
   }
 
   .loadMore {
+    align: center;
     border-radius: 5px;
     background: rgb(219, 144, 86);
-    position: relative;
-    left: 35%;
     white-space: normal !important;
     word-break:break-word;
     font-size: 19px;
@@ -61,14 +62,11 @@ const QuestionListStyle = styled.div`
     margin: 5px;
     height: 50px;
     width 200px;
-
   }
 
   .addQuestion{
     border-radius: 5px;
     background: rgb(219, 144, 86);
-    position: relative;
-    left: 35%;
     font-size: 20px;
     margin: 5px;
     height: 50px;
@@ -96,7 +94,7 @@ padding-bottom: 20px;
 height: auto;
 `
 const Accordion = styled.div`
-width: auto;
+
 background: none;
 `
 
@@ -155,7 +153,8 @@ span {
 `
 const SearchBarStyle = styled.input`
 border-radius: 5px;
-width: 99%;
+flex-wrap: wrap;
+width: 500px;
 padding: 10px;
 background: rgb(219, 144, 86);
 ::placeholder {
