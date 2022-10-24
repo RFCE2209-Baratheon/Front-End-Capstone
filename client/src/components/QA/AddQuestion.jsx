@@ -1,23 +1,21 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
 
-const AddQuestion = ({loadMore, openModal}) => {
-
+const AddQuestion = ({openModal}) => {
+//hooks & handlers
   const handleClick = () => {
-    loadMore()
     openModal()
   }
-
+//component
   return (
-  <button onClick={handleClick}> Add a question </button>
+  <button className='addQuestion'onClick={handleClick}> Add a question </button>
   )
 
 
 }
-
+//propTypes
 AddQuestion.propTypes = {
 
-  loadMore: PropTypes.func,
   openModal: PropTypes.func,
 
 }

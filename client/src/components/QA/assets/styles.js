@@ -1,22 +1,85 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import {MdClose} from 'react-icons/md'
+
 const Wrapper = styled.div`
 
 max-height: 50vh;
-padding: 10px;
+padding: 5px;
 width: auto;
 justify-content: top-left;
 align-items: center;
-border: solid;
-border-width: 1px;
 overflow-y: scroll;
 
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+
+
+
 `
+const QListWrapper = styled.div`
+overflow-y: scroll;
+padding: 20px;
+height: 300px;
+width: 100%;
+
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+`
+const QuestionListStyle = styled.div`
+  background: rgb(240,177,17);
+  // rgsb(219, 144, 86)
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+
+  border: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 50px;
+  width: 50%;
+
+  .Title {
+    position: relative;
+    font-size: 1.25vw;
+    margin:15px;
+  }
+
+  .loadMore {
+    align: center;
+    border-radius: 5px;
+    background: rgb(240,177,17);
+    //rgb(240,177,17)
+    white-space: normal !important;
+    word-break:break-word;
+    font-size: 19px;
+    z-index: 0;
+    margin: 5px;
+    height: 50px;
+    width 200px;
+  }
+
+  .addQuestion{
+    border-radius: 5px;
+    background: rgb(240,177,17);
+    font-size: 20px;
+    margin: 5px;
+    height: 50px;
+    width 200px;
+
+  }
+`
+
 const HelpfulButton = styled.button`
+
+
 border: none;
 background-color:transparent;
 text-align: right;
@@ -33,14 +96,18 @@ padding-bottom: 20px;
 height: auto;
 `
 const Accordion = styled.div`
-width: auto;
+
 background: none;
 `
 
 const Questions = styled.div`
-border-top: ridge;
-border-top: ridge;
-background:none;
+// border-top: ridge;
+// border-left: ridge;
+border: ridge;
+border-radius: 5px;
+background: lightgray;
+// border-top-left-radius: 5px;
+border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
 
 `
@@ -53,7 +120,8 @@ const QuestionFolder = styled.div`
 
   width: 100%;
   max-height: ${(props) => (props.open ? '25vh' : '0px')};
-  transition: all 1s ease-in-out;
+  transition: all .5s ease-in-out;
+  transition-delay: 0ms;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -65,13 +133,44 @@ const AnswerStyle = styled.span`
 display: inline-block;
 padding-bottom: 25px;
 `
+const IndividualQuestionStyle = styled.div`
 
+border-left: solid;
+border-top: solid
+border-width: 1px;
+border-color: rgb(240,177,17);
+background: rgb(240,177,17);
+border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-bottom-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '5px' : '0px')};
+
+.user {
+  font-style: italic;
+}
+.underlined {
+  font-size: 1vw;
+}
+.answer {
+  font-size: 1vw;
+}
+span {
+  font-size: 1vw;
+}
+
+`
 const SearchBarStyle = styled.input`
-width: 99%;
-padding: 10px;
+border-radius: 5px;
+flex-wrap: wrap;
+width: 500px;
+padding: 5px;
+background: rgb(240,177,17);
+::placeholder {
+  color: black;
+}
 `
 const SearchBarWrapper = styled.div`
-padding: 10px;
+padding: 5px;
 `
 
 const Test =styled.div`
@@ -94,28 +193,23 @@ const ModalButton = styled.button`
   cursor: pointer;
 `
 
-const ModalStyle = createGlobalStyle` * {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-overflow-y: scroll;
-font-family: 'Arial';
-}`
 
 const ModalBackground = styled.div`
-width: 100%;
-height: 100%;
-padding: 0;
-background: rgba(0, 0, 0, 0.8);
-position: fixed;
-display: flex;
-justify-content: center;
-align-items: center;
-`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}`
 
 const ModalWrapper = styled.div`
-  width: 400px;
-  height: 500px;
+  width: 35em;
+  height: 35em;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -123,7 +217,7 @@ const ModalWrapper = styled.div`
   grid-template-columns: 1fr;
   position: relative;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 0px;
@@ -141,7 +235,7 @@ const ModalContent = styled.div`
     margin-bottom: 1rem;
   }
   button {
-    padding: 10px 24px;
+    padding: 5px 24px;
     background: #141414;
     color: #fff;
     border: none;
@@ -162,10 +256,10 @@ const ModalForm = styled.form`
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 10px;
+gap: 5px;
 .formSpan {
   width 90%;
-  padding: 10px 24px;
+  padding: 5px 24px;
   background: #141414;
   color: #fff;
   border: none;
@@ -193,4 +287,4 @@ gap: 10px;
   margin-bottom: 25px;
 }
 `
-export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, ModalStyle, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm}
+export {Accordion, Questions, QuestionFolder, HelpfulButton, Wrapper, ImagesStyled, AlignRight, Test, AnswerStyle, SearchBarStyle, SearchBarWrapper, ModalButton, ModalBackground, ModalWrapper, ModalContent,CloseModalButton, ModalForm, IndividualQuestionStyle, QuestionListStyle,QListWrapper}
