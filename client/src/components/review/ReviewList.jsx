@@ -58,16 +58,17 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 600px;
+  max-height: 1400px;
   overflow: scroll;
   // border: solid;
   border-radius: 10px;
+  overflow-x: hidden;
 
 }`;
 
-const ReviewList = ({ product }) => {
-  const [allReviews, setAllReviews] = useState([]);
-  const [reviews, setReviews] = useState([]);
+const ReviewList = ({
+  product, reviews, setReviews, allReviews, setAllReviews, metaData,
+}) => {
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
   const [dropOpen, setDropOpen] = useState(false);
@@ -123,18 +124,28 @@ const ReviewList = ({ product }) => {
     setAddReviewToggle(!addReviewToggle);
   };
 
+  if (metaData.length === 0) {
+    return null;
+  }
+
   return (
     <div>
       <Container>
         <div data-testid="reviewlist-1">
           {allReviews.length}
           {' '}
-          reviews, sorted by
+          reviews for this product, sorted by
           <DropDown handleSelect={handleSelect} />
         </div>
         <ScrollDiv>
           {' '}
-          {reviews.map((review, index) => (<ReviewListTile key={index} review={review} />))}
+          {reviews.map((review) => (
+            <ReviewListTile
+              metaData={metaData}
+              key={review.id}
+              review={review}
+            />
+          ))}
         </ScrollDiv>
       </Container>
       {moreReviewsButton
@@ -143,6 +154,7 @@ const ReviewList = ({ product }) => {
       {addReviewToggle
        && (
        <AddReviewForm
+         metaData={metaData}
          addReviewToggle={addReviewToggle}
          setAddReviewToggle={setAddReviewToggle}
          productName={product.name}

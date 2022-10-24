@@ -271,8 +271,15 @@ app.post('/reviews', (req, res) => {
     });
 });
 
-app.put('reviews/:review_id/helpful/', (req, res) => {
-
+app.put('/reviews', (req, res) => {
+  console.log(req.body.id)
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/1275306/helpful`, { headers: { Authorization: config.TOKEN } })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 app.put('reviews/:review_id/report/', (req, res) => {
