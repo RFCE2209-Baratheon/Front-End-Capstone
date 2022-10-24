@@ -50,7 +50,6 @@ const AddToCart = ({ currentStyleSkus }) => {
 
       }
     })
-    console.log('sku_id in click handler: ', sku_id)
     axios.post('/cart', {sku_id: sku_id})
       .then((response) => {
         console.log(response);

@@ -29,8 +29,8 @@ const QuestionList = ({productID}) => {
   // Hooks
   useEffect(()=> {
 
-    console.log('setting questions')
-    console.log(typeof productID)
+    // console.log('setting questions')
+    // console.log(typeof productID)
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
@@ -46,7 +46,7 @@ const QuestionList = ({productID}) => {
     })
 
   }, [productId, shouldFetchQ])
-  console.log('questions', questions)
+  // console.log('questions', questions)
 
   useEffect(()=>{
 
@@ -75,7 +75,7 @@ const QuestionList = ({productID}) => {
   }
 
   const openModal = () => {
-    console.log(showModal)
+    // console.log(showModal)
     setShowModal(!showModal)
   }
 

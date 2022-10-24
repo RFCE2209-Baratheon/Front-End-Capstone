@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineExpand } from 'react-icons/ai';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { TiArrowBack } from 'react-icons/ti';
+
 
 const StyledLeftArrow = styled(AiOutlineArrowLeft)`
   position: absolute;
   top: 325px;
   left: 90px;
   font-size: 2rem;
-  color: #000;
+  color: yellow;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -17,18 +19,18 @@ const StyledRightArrow = styled(AiOutlineArrowRight)`
   top: 325px;
   left: 550px;
   font-size: 2rem;
-  color: #000;
+  color: yellow;
   z-index: 10;
   cursor: pointer;
   user-select: none;
 `
 
 const StyledExpand = styled(AiOutlineExpand)`
-  position: absolute;
+  position: relative;
   top: 25%;
   left: 450px;
   font-size: 2rem;
-  color: #000;
+  color: yellow;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -39,7 +41,7 @@ const StyledUpArrow = styled(IoIosArrowUp)`
   top: 20px;
   left: 30px;
   font-size: 2rem;
-  color: #000;
+  color: yellow;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -47,10 +49,10 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 695px;
+  top: 560px;
   left: 30px;
   font-size: 2rem;
-  color: #000;
+  color: yellow;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -65,11 +67,25 @@ const StyledRightArrowExpand = styled(StyledRightArrow)`
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`
-  left: 430px;
+  left: -5px;
+  top: 20px;
+  color: darkgrey;
 `
 
 const StyledDownArrowExpand = styled(StyledDownArrow)`
-  left: 430px;
+  left: -5px;
+  color: darkgrey;
 `
 
-export {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand, StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand};
+const StyledBackButton = styled(TiArrowBack)`
+  top: 0px;
+  // left: 30px;
+  position: relative;
+  font-size: 2rem;
+  color: black;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+`
+
+export {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand, StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand, StyledBackButton};
