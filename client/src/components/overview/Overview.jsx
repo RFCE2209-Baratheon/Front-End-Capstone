@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProductInformation from './ProductInformation.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -47,6 +47,11 @@ const Overview = ({ productId }) => {
   const [reviewData, setReviewData] = useState(exampleReviews);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
+  console.log('interaction context in overview', interactionContext)
+  const postInteraction = useContext(interactionContext);
+
+
+  postInteraction("h1", "overview", "22-22-22");
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
@@ -68,7 +73,7 @@ const Overview = ({ productId }) => {
 
   const onStyleClick = (id) => {
     for (var i = 0; i < styleData.length; i++) {
-      if (styleData[i].style_id === id) {
+      if (styleData[i].style_id === ID) {
         setCurrentStyle(styleData[i]);
       }
     }

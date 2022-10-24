@@ -6,8 +6,9 @@ import SearchBar from './SearchBar.jsx'
 import LoadMoreQs from './LoadMoreQs.jsx'
 import Modal from './Modal.jsx'
 import AddQuestion from './AddQuestion.jsx'
+import {interactionContext} from '../App.jsx'
 
-const { useState, useEffect } = React;
+const { useState, useEffect, useContext } = React;
 
 const QuestionList = ({productID}) => {
 
@@ -25,6 +26,10 @@ const QuestionList = ({productID}) => {
   const [enableSearchQ, setEnableSearchQ] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [shouldFetchQ, setShouldFetchQ] = useState(false)
+  const postInteraction = useContext(interactionContext)
+  const currentComponent = 'QA';
+
+  let currentTime = new Date()
 
   // Hooks
   useEffect(()=> {
@@ -63,8 +68,10 @@ const QuestionList = ({productID}) => {
   }, [searchedQ])
 
   // Handlers
-  const loadMore = () => {
+  const loadMore = (e) => {
+    console.log('loading more qs event', e.target.id)
 
+    postInteraction(e.target.id, currentComponent, currentTime);
     if (renderQ.length <= questions.length) {
 
       let newEnd = end + 2
@@ -78,6 +85,7 @@ const QuestionList = ({productID}) => {
     // console.log(showModal)
     setShowModal(!showModal)
   }
+
 
   //component
   return (

@@ -6,7 +6,27 @@ import Overview from './overview/Overview.jsx';
 import axios from 'axios';
 import GlobalStyle from '../globalStyles.js';
 
+const {createContext} = React
+
+const postInteraction = (element, widget, time) => {
+
+  let dataObj = {
+    element: element,
+    widget: widget,
+    time: time
+  }
+
+  axios.post('/interactions', dataObj)
+    .then((success) => {
+      console.log(`Posted element: ${element} widget: ${widget} time: ${time}`)
+    })
+    .catch((error) => {
+      console.log('Error posting interaction data')
+    })
+}
+
 function App() {
+
   const [productId, setProductId] = useState(null);
 
   useEffect(() => {
@@ -20,17 +40,17 @@ function App() {
       });
   }, [])
 
-  // console.log('id: ', productId)
-
   return (
     <div>
       <GlobalStyle />
-      {productId && <Overview productId={'37315'} />}
+      {productId && <Overview productId={productId} />}
       <Related />
       {productId && <QA productID={productId} />}
       <Review />
     </div>
   );
+
 }
 
 export default App;
+export const interactionContext = createContext(postInteraction)
