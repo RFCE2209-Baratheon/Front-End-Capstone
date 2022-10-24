@@ -14,7 +14,7 @@ console.log('renderQLength', renderQLength)
 
 
 //State
-const [open, setOpen] = useState(null)
+const [open, setOpen] = useState(false)
 
 //hooks & handlers
 const toggleOpen = () => {

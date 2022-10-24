@@ -4,7 +4,7 @@ import {MdClose} from 'react-icons/md'
 const Wrapper = styled.div`
 
 max-height: 50vh;
-padding: 10px;
+padding: 5px;
 width: auto;
 justify-content: top-left;
 align-items: center;
@@ -32,7 +32,8 @@ width: 100%;
 }
 `
 const QuestionListStyle = styled.div`
-  background: rgb(240, 177, 17);
+  background: rgb(240,177,17);
+  // rgsb(219, 144, 86)
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -54,7 +55,8 @@ const QuestionListStyle = styled.div`
   .loadMore {
     align: center;
     border-radius: 5px;
-    background: rgb(219, 144, 86);
+    background: rgb(240,177,17);
+    //rgb(240,177,17)
     white-space: normal !important;
     word-break:break-word;
     font-size: 19px;
@@ -66,7 +68,7 @@ const QuestionListStyle = styled.div`
 
   .addQuestion{
     border-radius: 5px;
-    background: rgb(219, 144, 86);
+    background: rgb(240,177,17);
     font-size: 20px;
     margin: 5px;
     height: 50px;
@@ -99,8 +101,12 @@ background: none;
 `
 
 const Questions = styled.div`
-border-top: ridge;
-background: rgb(240, 177, 17);
+// border-top: ridge;
+// border-left: ridge;
+border: ridge;
+border-radius: 5px;
+background: lightgray;
+// border-top-left-radius: 5px;
 border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
 
@@ -132,10 +138,12 @@ const IndividualQuestionStyle = styled.div`
 border-left: solid;
 border-top: solid
 border-width: 1px;
-border-color: rgb(219, 144, 86);
-background: rgb(219, 144, 86);
-border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '10px' : '0px')};
-border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '10px' : '0px')};
+border-color: rgb(240,177,17);
+background: rgb(240,177,17);
+border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-bottom-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '5px' : '0px')};
 
 .user {
   font-style: italic;
@@ -155,14 +163,14 @@ const SearchBarStyle = styled.input`
 border-radius: 5px;
 flex-wrap: wrap;
 width: 500px;
-padding: 10px;
-background: rgb(219, 144, 86);
+padding: 5px;
+background: rgb(240,177,17);
 ::placeholder {
   color: black;
 }
 `
 const SearchBarWrapper = styled.div`
-padding: 10px;
+padding: 5px;
 `
 
 const Test =styled.div`
@@ -209,7 +217,7 @@ const ModalWrapper = styled.div`
   grid-template-columns: 1fr;
   position: relative;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     width: 0px;
@@ -227,7 +235,7 @@ const ModalContent = styled.div`
     margin-bottom: 1rem;
   }
   button {
-    padding: 10px 24px;
+    padding: 5px 24px;
     background: #141414;
     color: #fff;
     border: none;
@@ -248,10 +256,10 @@ const ModalForm = styled.form`
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 10px;
+gap: 5px;
 .formSpan {
   width 90%;
-  padding: 10px 24px;
+  padding: 5px 24px;
   background: #141414;
   color: #fff;
   border: none;

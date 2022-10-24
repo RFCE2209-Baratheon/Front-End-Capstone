@@ -37,7 +37,7 @@ const QuestionList = ({productID}) => {
 
     console.log('setting questions')
 
-    axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
+    axios.get('/qa/questions', {params: {product_id: productId, count: 500}})
     .then((res)=>{
 
       if (res.data.results.length <= 4) {
