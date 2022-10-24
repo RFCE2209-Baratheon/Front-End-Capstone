@@ -8,14 +8,11 @@ const config = require('../config.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../public')));
-// other configuration...
 app.use(express.json())
 
 app.listen(3000);
 
 /*Q&A Route Handlers*/
-
-
 
 // QuestionList
 // Get questions
@@ -114,17 +111,30 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/', {
+    headers: {
+      Authorization: config.TOKEN,
+    },
+  })
+  .then((productInfo) => {
+    console.log(productInfo.data)
+    res.send(productInfo.data);
+  })
+  .catch((error) => {
+    res.status(500);
+  });
 });
 
 app.get('/products/:product_id', (req, res) => {
   let itemId = req.params.product_id;
+  console.log('itemId: ', itemId)
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
     headers: {
       Authorization: config.TOKEN,
     },
   })
     .then((productInfo) => {
+      console.log('product info', productInfo.data)
       res.send(productInfo.data);
     })
     .catch((error) => {

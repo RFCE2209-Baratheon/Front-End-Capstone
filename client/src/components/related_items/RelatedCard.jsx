@@ -7,7 +7,7 @@ import {
 } from './Assets/comparisonWidget.style.js';
 
 const RelatedCard = function ({
-  category, productName, price, image, salePrice, features, productId, setProductId
+  category, productName, price, image, salePrice, features, productId, setProductId, currentId
 }) {
   const [showCompModal, setShowCompModal] = useState(false);
 
@@ -18,9 +18,9 @@ const RelatedCard = function ({
 
   return (
     <RelatedCardGraphic data-testid="cardOne">
-      {showCompModal ? (<ComparisonModal productName={productName} category={category} features={features} productId={productId} setProductId={setProductId} /> ): null}
+      {showCompModal ? (<ComparisonModal productName={productName} category={category} features={features} productId={productId} setProductId={setProductId} showCompModal={showCompModal} setShowCompModal={setShowCompModal} openCompModal={openCompModal} /> ): null}
       <RelatedActnBttn onClick={openCompModal}/>
-      <ImageOnCard image={image} />
+      <ImageOnCard onClick={() => {setProductId(currentId)}} image={image} />
       <TextOnCard>
         <p>
           {category}

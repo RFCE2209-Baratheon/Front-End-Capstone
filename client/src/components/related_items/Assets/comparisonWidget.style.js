@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { ImCancelCircle } from "react-icons/im";
 import { AiFillStar } from 'react-icons/ai';
 
 export const RelatedBlockContainer = styled.div`
@@ -103,24 +104,51 @@ cursor: pointer;
 // width: 100%;
 // height: 100%;
 // background: black;
-// // position: absolute;
+// position: fixed;
 // display: flex;
 // justify-content: center;
 // align-items: center;
+// top: 0;
+// left: 0;
 // `;
 
 export const ModalWrapper = styled.div`
-width: 400px;
-height: 400px;
+width: 40vh;
+height: 20vw;
 box-shadow: 3px 10px 16px black;
 background: white;
-color: salmon;
-// display: grid;
-// grid-template-columns: 1fr 1fr;
+// color: black;
+display: grid;
+grid-template-columns: 1fr;
 position: fixed;
 z-index: 10;
 border-radius: 10px;
 bottom: 35em;
+// overflow: scroll;
+`;
+
+export const ModalCloseBtn = styled(ImCancelCircle)`
+cursor: pointer;
+position: absolute;
+z-index: 10;
+right: -1em;
+top: -1em;
+width: 2em;
+height: 2em;
+`;
+
+export const TableModal = styled.table`
+// color: #46484E;
+text-align: center;
+width: 100%;
+table-layout: fixed;
+`;
+
+export const TableValues = styled.tr`
+color: salmon;
+word-wrap: break-word;
+// display: flex;
+// align-items: center;
 `
 
 

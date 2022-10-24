@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {StyledExpand} from './styledIcons.js';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
+import {StyledExpand} from './styledIcons.js';
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;

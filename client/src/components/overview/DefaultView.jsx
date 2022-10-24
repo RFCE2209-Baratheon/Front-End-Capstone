@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
+import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
 
 const StyledCarousel = styled.div`
   position: relative;
@@ -22,7 +22,6 @@ const StyledCarouselImageSize = styled.div`
 `
 
 const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
-
   return (
     <>
       <StyledCarousel>

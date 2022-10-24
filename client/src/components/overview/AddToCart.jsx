@@ -49,10 +49,10 @@ const AddToCart = ({ currentStyleSkus }) => {
         setSizeSelected(true);
         }}>
         <option value="select">select size</option>
-          {list ? mappedSizeOptions : null}
+        {list ? mappedSizeOptions : null}
       </select>
       <select name="quantity">
-        {sizeSelected && quantity > 0 ? <option value="select">1</option> : <option value="select">-</option> }
+        {sizeSelected && quantity > 0 ? <option value="select">1</option> : <option value="select">-</option>}
         {quantity > 0 ? mappedQtyOptions : <option>OUT OF STOCK</option>}
       </select>
       <p>

@@ -12,10 +12,9 @@ import staticData from '../../example_data/relatedProductStyles.json';
 import exampleOfProducts from '../../example_data/relatedProductStyles.json';
 import './Assets/myStyle.css';
 
-const RelatedBlock = function ({ mainId }) {
+const RelatedBlock = function ({ productId, setProductId }) {
   const [leftArrow, setLeftArrow] = useState(0);
   const [rightArrow, setRightArrow] = useState(0);
-  const [productId, setProductId] = useState(mainId);
   const [relatedArray, setRelatedArray] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState([]);

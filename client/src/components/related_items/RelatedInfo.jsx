@@ -9,8 +9,9 @@ const RelatedInfo = function ({ dataCompiled, setDataCompiled, productId, setPro
     let image = dataObj.results[0].photos[0].thumbnail_url;
     let salePrice = dataObj.results[0].sale_price;
     let features = dataObj.features;
+    let currentId = dataObj.id;
 
-    return <RelatedCard category={category} productName={productName} price={price} image={image} salePrice={salePrice} features={features} productId={productId} setProductId={setProductId} key={idx} />;
+    return <RelatedCard category={category} productName={productName} price={price} image={image} salePrice={salePrice} features={features} currentId={currentId} productId={productId} setProductId={setProductId} key={idx} />;
   });
 
   return (
