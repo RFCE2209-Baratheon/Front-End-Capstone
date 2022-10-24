@@ -181,8 +181,17 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-
+  var id = req.body.sku_id;
+  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart', {sku_id: id}, {headers: { Authorization: config.TOKEN }})
+  .then((response)=> {
+    res.sendStatus(response.status);
+  })
+  .catch((err)=>{
+    console.log('Error, cannot post to cart. Error: ', err)
+  })
 });
+
+
 
 // Rating and Reviews
 
