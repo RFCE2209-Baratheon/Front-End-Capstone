@@ -75,7 +75,7 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
         {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} />}
       </ImageGalleryContainerDefault>
 
-      <ImageGalleryContainerExpand onClick={changeView}>
+      <ImageGalleryContainerExpand>
         {expandedView && <>
         <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} changeView={changeView} />
         </> }

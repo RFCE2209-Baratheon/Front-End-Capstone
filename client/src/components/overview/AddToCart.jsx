@@ -42,12 +42,8 @@ const AddToCart = ({ currentStyleSkus }) => {
   const onButtonClick = () => {
     var sku_id;
     Object.keys(currentStyleSkus).forEach((sku, index) => {
-      console.log('quantity state: ', quantity)
-      console.log('size state: ', size)
-      // console.log('currentStyleSkus[sku].quantity')
       if (currentStyleSkus[sku].quantity >= quantity && currentStyleSkus[sku].size === size) {
         sku_id = sku;
-
       }
     })
     axios.post('/cart', {sku_id: sku_id})
