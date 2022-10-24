@@ -48,7 +48,7 @@ function App() {
     <AppStyle>
 
       {productId && <Overview className='Overview' productId={productId}></Overview>}
-      <Related className='Related' />
+      {productId && <Related productId={productId} setProductId={setProductId} />}
       {productId && <QA className='QA' productID={productId} />}
       <Review className='Review'/>
 
