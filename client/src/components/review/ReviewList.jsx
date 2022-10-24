@@ -62,6 +62,7 @@ const ScrollDiv = styled.div`{
   overflow: scroll;
   // border: solid;
   border-radius: 10px;
+  overflow-x: hidden;
 
 }`;
 
