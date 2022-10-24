@@ -7,7 +7,6 @@ import ImageSidebar from './ImageSidebar.jsx';
 
 const StyledCarousel = styled.section`
   position: relative;
-  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +37,7 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
         {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
         {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
           <StyledThumbnailAlign>
-            <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} />
+            <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} />
           </StyledThumbnailAlign>
           <StyledCarouselImageSize onClick={onClickMagnify}>
             <ImageCarousel styleImages={styleImages} current={current} magnified={magnified} />

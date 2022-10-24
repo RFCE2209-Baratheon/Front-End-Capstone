@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import {StyledExpand} from './styledIcons.js';
+import { StyledExpand } from './styledIcons.js';
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;
@@ -19,12 +19,15 @@ const ImageGalleryContainerExpand = styled.div`
 const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
 
   const [current, setCurrent] = useState(0);
-  const length = styleImages.length; // 11
+  const length = styleImages.length;
 
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(7);
   const [activeThumbnails, setActiveThumbnails] = useState(styleImages.slice(start, end));
 
+  if (!Array.isArray(styleImages) || length <= 0) {
+    return null;
+  }
 
   if (length > 7) {
     var verticalScroll = true;
@@ -40,9 +43,6 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     setCurrent(current === 0 ? 0 : current - 1);
   };
 
-  if (!Array.isArray(styleImages) || length <= 0) {
-    return null;
-  }
 
   const upSlide = (e) => {
     e.stopPropagation();
@@ -77,7 +77,6 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
       <ImageGalleryContainerExpand onClick={changeView}>
         {expandedView && <ExpandedView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} end={end} />}
       </ImageGalleryContainerExpand>
-      {/* ISSUE: vertical arrow clicks mess up "current" state (renders wrong main image) & highlighted thumbnail sticks to position and not thumbnail */}
     </>
   )
 }

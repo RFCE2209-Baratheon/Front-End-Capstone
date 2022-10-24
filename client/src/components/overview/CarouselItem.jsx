@@ -26,7 +26,7 @@ const StyledReactZoomImage = styled.div`
 `
 
 const CarouselItem = ( {image, magnified} ) => {
-  const zoomProps =  {width: 500, zoomWidth: 500, img: image.url, zoomPosition: 'original'};
+  const zoomProps =  {width: 600, height: 600, zoomWidth: 600, img: image.url, zoomPosition: 'original'};
 
   return (
     <>

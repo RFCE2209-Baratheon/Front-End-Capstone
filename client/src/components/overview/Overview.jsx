@@ -26,7 +26,6 @@ const StyledContainer = styled.div`
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
-  // margin: 0;
 `
 
 const StyledProductInfo = styled.div`
@@ -80,7 +79,6 @@ const Overview = ({ productId }) => {
   }
 
   return (
-    <div class="overview-container">
       <StyledContainer default={defaultView}>
         <StyledImageGallery>
           {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
@@ -97,7 +95,6 @@ const Overview = ({ productId }) => {
           </StyledAddToCart>
         </>}
       </StyledContainer>
-    </div>
   );
 }
 
