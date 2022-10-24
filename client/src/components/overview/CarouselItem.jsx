@@ -4,8 +4,19 @@ import styled from 'styled-components';
 import ReactImageZoom from 'react-image-zoom';
 
 const StyledCarouselImage = styled.img`
-  max-height: 100%;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`
+
+const StyledCarouselImageDiv = styled.div`
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
 `
 
 const StyledReactZoomImage = styled.div`
@@ -15,15 +26,17 @@ const StyledReactZoomImage = styled.div`
 `
 
 const CarouselItem = ( {image, magnified} ) => {
-  const zoomProps =  {width: 500, zoomWidth: 500, img: image.url, zoomPosition: 'original'};
+  const zoomProps =  {width: 600, height: 600, zoomWidth: 600, img: image.url, zoomPosition: 'original'};
 
   return (
     <>
+    <StyledCarouselImageDiv>
       {magnified &&
       <StyledReactZoomImage>
         <ReactImageZoom {...zoomProps} />
       </StyledReactZoomImage>}
       {!magnified && <StyledCarouselImage src={image.url} />}
+    </StyledCarouselImageDiv>
     </>
   )
 }
