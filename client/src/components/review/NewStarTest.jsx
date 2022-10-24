@@ -18,27 +18,12 @@ const NewStarTest = () => {
           <stop offset="25%" style={{ stopColor: 'rgb(228, 229, 233)' }} />
         </linearGradient>
       </svg>
-      {/* <select onChange={(e) => { setIconValue(Number(e.target.value)); }}>
-        { Array.from(new Array(value), (value, index) => index + 1).map((value) => (
-          <option
-            key={value}
-            value={value}
-          >
-            {value}
-          </option>
-        )) }
-      </select> */}
       {[...Array(5)].map((icon, i) => {
         const value = i + 1;
         return (
-          <label>
-            {/* <input
-              type="radio"
-              name="rating"
-              value={value}
-              onClick={() => setRating(value)}
-            /> */}
+          <label key={i}>
             <FaStar
+              key={i}
               className="star"
               color={value <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
               size={size}
