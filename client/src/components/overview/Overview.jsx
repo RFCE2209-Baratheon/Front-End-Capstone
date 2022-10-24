@@ -30,6 +30,7 @@ const StyledImageGallery = styled.div`
 
 const StyledProductInfo = styled.div`
   grid-area: right1;
+  max-width: 720px;
 `
 
 const StyledStyleSelector = styled.div`
