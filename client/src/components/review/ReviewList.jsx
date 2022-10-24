@@ -68,8 +68,6 @@ const ScrollDiv = styled.div`{
 const ReviewList = ({
   product, reviews, setReviews, allReviews, setAllReviews, metaData,
 }) => {
-  // const [allReviews, setAllReviews] = useState([]);
-  // const [reviews, setReviews] = useState([]);
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
   const [dropOpen, setDropOpen] = useState(false);
@@ -124,6 +122,7 @@ const ReviewList = ({
   const addReviewHandler = () => {
     setAddReviewToggle(!addReviewToggle);
   };
+
   if (metaData.length === 0) {
     return null;
   }
@@ -139,7 +138,13 @@ const ReviewList = ({
         </div>
         <ScrollDiv>
           {' '}
-          {reviews.map((review) => (<ReviewListTile key={review.id} review={review} />))}
+          {reviews.map((review) => (
+            <ReviewListTile
+              metaData={metaData}
+              key={review.id}
+              review={review}
+            />
+          ))}
         </ScrollDiv>
       </Container>
       {moreReviewsButton

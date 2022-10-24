@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
 
 function StarRatingStaticSummary({ rating }, { product }) {
   // const [avgRating, setRating] = useState(rating);

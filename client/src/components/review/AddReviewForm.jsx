@@ -16,13 +16,14 @@ import { fetchPhotos, openUploadWidget } from './CloudinaryService';
 const ModalBackground = styled.div`{
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: grey;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
+  z-index: 1;
 }`;
 
 const ModalContainer = styled.div`{
@@ -35,6 +36,8 @@ const ModalContainer = styled.div`{
   flex-direction: column;
   padding: 25px;
   overflow: scroll;
+  z-index: -1;
+
 }`;
 
 const InputBody = styled.input`{

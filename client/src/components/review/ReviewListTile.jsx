@@ -27,7 +27,7 @@ const Response = styled.div`{
   padding: 10px;
 }`;
 
-function ReviewListTile({ review }) {
+function ReviewListTile({ review, metaData }) {
 
   const dateString = JSON.stringify(review.date.slice(0, 10));
 
@@ -58,7 +58,7 @@ function ReviewListTile({ review }) {
         <p>{review.response}</p>
       </Response>
       )}
-      <Helpfulness help={review.helpfulness} />
+      <Helpfulness review={review} help={review.helpfulness} metaData={metaData} />
     </Container>
   );
 }

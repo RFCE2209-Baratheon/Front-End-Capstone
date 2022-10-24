@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
@@ -28,7 +29,7 @@ const tempProduct = {
   updated_at: '2021-08-13T14:37:33.145Z',
 };
 
-function Review({ productId }) {
+const Review = ({ productId }) => {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -50,32 +51,32 @@ function Review({ productId }) {
     setMetaData(response.data);
   };
 
-  if (metaData)
-
-  return (
-    <>
-      <Title>Ratings & Reviews</Title>
-      <Container>
-        <RatingSummary
-          reviews={reviews}
-          setReviews={setReviews}
-          setMetaData={setMetaData}
-          metaData={metaData}
-          product={tempProduct}
-          allReviews={allReviews}
-          setAllReviews={setAllReviews}
-        />
-        <ReviewList
-          reviews={reviews}
-          setReviews={setReviews}
-          metaData={metaData}
-          product={tempProduct}
-          allReviews={allReviews}
-          setAllReviews={setAllReviews}
-        />
-      </Container>
-    </>
-  );
+  if (metaData) {
+    return (
+      <>
+        <Title>Ratings & Reviews</Title>
+        <Container>
+          <RatingSummary
+            reviews={reviews}
+            setReviews={setReviews}
+            setMetaData={setMetaData}
+            metaData={metaData}
+            product={tempProduct}
+            allReviews={allReviews}
+            setAllReviews={setAllReviews}
+          />
+          <ReviewList
+            reviews={reviews}
+            setReviews={setReviews}
+            metaData={metaData}
+            product={tempProduct}
+            allReviews={allReviews}
+            setAllReviews={setAllReviews}
+          />
+        </Container>
+      </>
+    );
+  }
 }
 
 export default Review;
