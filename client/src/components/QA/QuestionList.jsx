@@ -35,12 +35,7 @@ const QuestionList = ({productID}) => {
   // Hooks & Handler
   useEffect(()=> {
 
-<<<<<<< HEAD
     console.log('setting questions')
-=======
-    // console.log('setting questions')
-    // console.log(typeof productID)
->>>>>>> Development
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 500}})
     .then((res)=>{
@@ -56,11 +51,6 @@ const QuestionList = ({productID}) => {
     })
 
   }, [productId, shouldFetchQ])
-<<<<<<< HEAD
-
-=======
-  // console.log('questions', questions)
->>>>>>> Development
 
   useEffect(()=>{
 
@@ -89,10 +79,6 @@ const QuestionList = ({productID}) => {
   }
 
   const openModal = () => {
-<<<<<<< HEAD
-=======
-    // console.log(showModal)
->>>>>>> Development
     setShowModal(!showModal)
   }
 

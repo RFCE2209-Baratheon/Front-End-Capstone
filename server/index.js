@@ -41,20 +41,11 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-<<<<<<< HEAD
   console.log('the question id in get answers list', req.params.question_id)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers`, requestConfig )
-=======
-  // console.log('params', req.query.answer)
-  const requestConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  // console.log('getting questions answers')
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.query.answer}/answers`, requestConfig )
->>>>>>> Development
   .then((response)=>{
     res.send(response.data)
   })
@@ -70,11 +61,6 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
-<<<<<<< HEAD
-
-=======
-  // console.log(req.body)
->>>>>>> Development
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
@@ -187,14 +173,8 @@ app.get('/products', (req, res) => {
       Authorization: config.TOKEN,
     },
   })
-<<<<<<< HEAD
-  .then((productInfo) => {
-
-    res.send(productInfo.data);
-=======
   .then((response) => {
     res.send(response.data);
->>>>>>> Development
   })
   .catch((error) => {
     res.status(500);
@@ -202,24 +182,14 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/products/:product_id', (req, res) => {
-<<<<<<< HEAD
-
   let itemId = req.params.product_id;
-
-=======
-  let itemId = req.params.product_id;
->>>>>>> Development
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
     headers: {
       Authorization: config.TOKEN,
     },
   })
     .then((productInfo) => {
-<<<<<<< HEAD
-
-=======
       // console.log('product info', productInfo.data)
->>>>>>> Development
       res.send(productInfo.data);
     })
     .catch((error) => {
@@ -292,11 +262,7 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-<<<<<<< HEAD
-
-=======
   // console.log(req.body)
->>>>>>> Development
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
     .then((response) => {
     })

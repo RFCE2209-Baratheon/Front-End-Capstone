@@ -22,19 +22,9 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
   useEffect(()=> {
 
     // Config for request
-<<<<<<< HEAD
     // console.log('hello')
     axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
-=======
-    const config = {
-      params:{answer}
-    }
-    // console.log('hello')
-    axios.get(`/qa/questions/:question_id/answers`, config)
-    .then((res)=>{
-      // console.log('in the component', res.data.results)
->>>>>>> Development
       setAnswers(res.data.results)
       setRenderA(res.data.results.slice(start, end))
     })
