@@ -47,11 +47,10 @@ const Overview = ({ productId }) => {
   const [reviewData, setReviewData] = useState(exampleReviews);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
-  console.log('interaction context in overview', interactionContext)
-  const postInteraction = useContext(interactionContext);
+  // const postInteraction = useContext(interactionContext);
 
 
-  postInteraction("h1", "overview", "22-22-22");
+  // postInteraction("h1", "overview", "22-22-22");
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
