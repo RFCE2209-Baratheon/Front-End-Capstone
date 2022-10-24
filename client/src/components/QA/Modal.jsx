@@ -6,7 +6,10 @@ import axios from 'axios'
 
 
 const {useState, useRef} = React;
+
 const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, setShouldFetchQ}) => {
+
+  console.log('productID in modal', productId)
 
   //state & refs
   const questionRef = useRef(null)
@@ -28,12 +31,9 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
     e.preventDefault()
 
     const dataObj = newPostObj(questionRef.current.value, nicknameRef.current.value, emailRef.current.value, parseInt(productId))
-    console.log(dataObj)
 
     axios.post('/qa/questions', dataObj)
     .then((res)=>{
-      console.log('success trying to close modal')
-
       setShowModal(false)
       setShouldFetchQ(!shouldFetchQ)
     })
@@ -52,11 +52,11 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
               <h2>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <span className='formSpan'>Your Question *</span>
-                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef}></textarea>
+                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
                 <span className='formSpan'>Your Nickname *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef}></input>
+                <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
                 <span className='formSpan'placeholder>Your Email *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef}></input>
+                <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
                 <span className='finalSpan'>For authentication reasons, you will not be emailed</span>
                 <button className='submit'>Submit</button>
               </ModalForm>
@@ -68,6 +68,7 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
   )
 }
 
+//proptypes
 Modal.propTypes = {
   openModal: PropTypes.func,
   productId: PropTypes.string,

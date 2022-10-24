@@ -4,10 +4,13 @@ import Review from './review/Review.jsx';
 import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
+import {AppStyle} from '../assets/styles.js'
 import GlobalStyle from '../globalStyles.js';
 
 const {createContext} = React
 
+
+//data-tracker
 const postInteraction = (element, widget, time) => {
 
   let dataObj = {
@@ -26,7 +29,6 @@ const postInteraction = (element, widget, time) => {
 }
 
 function App() {
-
   const [productId, setProductId] = useState(null);
 
   useEffect(() => {
@@ -40,17 +42,24 @@ function App() {
       });
   }, [])
 
+  console.log('Loading App.jsx with pid: ', productId)
+
   return (
-    <div>
-      <GlobalStyle />
-      {productId && <Overview productId={productId} />}
-      <Related />
-      {productId && <QA productID={productId} />}
-      <Review />
-    </div>
+    <>
+    <AppStyle>
+
+      {productId && <Overview className='Overview' productId={productId}></Overview>}
+      <Related className='Related' />
+      {productId && <QA className='QA' productID={productId} />}
+      <Review className='Review'/>
+
+    </AppStyle>
+    </>
+
   );
 
 }
+
 
 export default App;
 export const interactionContext = createContext(postInteraction)

@@ -13,6 +13,8 @@ const Images = ({images}) => {
   )
 
 }
+
+//propTypes
 Images.propTypes = {
   images: PropTypes.array
 }

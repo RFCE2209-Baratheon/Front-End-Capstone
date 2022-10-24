@@ -47,10 +47,7 @@ const Overview = ({ productId }) => {
   const [reviewData, setReviewData] = useState(exampleReviews);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
-  // const postInteraction = useContext(interactionContext);
 
-
-  // postInteraction("h1", "overview", "22-22-22");
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
@@ -84,6 +81,8 @@ const Overview = ({ productId }) => {
   }
 
   return (
+    <>
+
       <StyledContainer default={defaultView}>
         <StyledImageGallery>
           {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
@@ -100,6 +99,8 @@ const Overview = ({ productId }) => {
           </StyledAddToCart>
         </>}
       </StyledContainer>
+
+    </>
   );
 }
 

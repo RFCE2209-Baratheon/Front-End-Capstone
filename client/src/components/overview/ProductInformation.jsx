@@ -19,6 +19,10 @@ const StyledSocials = styled.div`
 
 const ProductInformation = ({ productData, currentStyle, reviewData }) => {
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> Development
   return (
     <>
       {reviewData ?
