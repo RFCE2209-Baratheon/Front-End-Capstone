@@ -35,7 +35,6 @@ const StyledOverlay = styled.div`
 `
 
 const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
-
   const [styleId, setStyleId] = useState(currentStyle.style_id);
 
   return (
@@ -45,9 +44,9 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
       <br></br>
       <StyledIconsDiv>
         {styleData.map((style, index) =>
-          <StyledIconDiv key={index} onClick={() => {
+          <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
             setStyleId(style.style_id)
-            onStyleClick(styleId);
+            onStyleClick(e, styleId);
             }}>
             <StyledIconImage src={style.photos[0].thumbnail_url}/>
             {styleId === style.style_id && <StyledOverlay>✓</StyledOverlay>}

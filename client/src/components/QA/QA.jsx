@@ -1,12 +1,15 @@
-import React, {useState, useEffect} from 'react';
 
+import React from 'react';
 
-const QA = (props) => {
+import QuestionList from './QuestionList.jsx';
+import {QuestionListStyle} from './assets/styles.js'
+import {PropTypes} from 'prop-types'
 
-  return (
-   <div>hi again</div>
-  )
+const QA = ({productID}) => { return (<QuestionList productID={productID} /> )};
+
+//propTypes
+QA.propTypes = {
+  productID: PropTypes.number,
 }
-
 
 export default QA;
