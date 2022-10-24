@@ -128,22 +128,22 @@ const RatingSummary = ({
       {clearFilters
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
-        {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
-          <p onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
+        {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
+          <div key={index} onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
             {`${rating} stars`}
             <Bar style={{ display: 'inline-block' }} star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
-          </p>
+          </div>
         ))}
       </SummaryContainer>
       <h3>Product Breakdown</h3>
       <BreakDown>
-        {Object.keys(metaData.characteristics).map((characteristic) => (
-          <p>
+        {Object.keys(metaData.characteristics).map((characteristic, index) => (
+          <div key={index}>
             <ProductBreakDown
               characteristic={characteristic}
               value={metaData.characteristics[characteristic]}
             />
-          </p>
+          </div>
         ))}
       </BreakDown>
     </Container>

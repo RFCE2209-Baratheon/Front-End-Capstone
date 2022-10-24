@@ -139,10 +139,10 @@ const ReviewList = ({
         </div>
         <ScrollDiv>
           {' '}
-          {reviews.map((review) => (
+          {reviews.map((review, index) => (
             <ReviewListTile
               metaData={metaData}
-              key={review.id}
+              key={index}
               review={review}
             />
           ))}

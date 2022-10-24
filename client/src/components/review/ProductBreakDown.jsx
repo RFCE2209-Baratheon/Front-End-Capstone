@@ -51,11 +51,11 @@ const ProductBreakDown = ({ characteristic, value }) => {
       <Bar list="tickmarks" name="char" min="0" max="100" value={value.value * 10} step="0" type="range" />
       <label htmlFor="char">{characteristic}</label>
       <List id="tickmarks">
-        <option value="0" label={characteristicArray[0]} />
-        <option value="25" label={characteristicArray[1]} />
-        <option value="50" label={characteristicArray[2]} />
-        <option value="75" label={characteristicArray[3]} />
-        <option value="100" label={characteristicArray[4]} />
+        <option defaultValue="0" label={characteristicArray[0]} />
+        <option defaultValue="25" label={characteristicArray[1]} />
+        <option defaultValue="50" label={characteristicArray[2]} />
+        <option defaultValue="75" label={characteristicArray[3]} />
+        <option defaultValue="100" label={characteristicArray[4]} />
       </List>
     </>
   );

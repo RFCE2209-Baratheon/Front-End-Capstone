@@ -6,11 +6,11 @@ const Bar = ({
   rating, sum, toggle, star,
 }) => (
   <div>
-    <progress  value={(rating / sum) * 100} max="100" />
-    <p style={{ display: 'inline-block' }}>
+    <progress style={{backgroundColor:"red"}} value={(rating / sum) * 100} max="100" />
+    <div style={{ display: 'inline-block' }}>
       {`(${rating})`}
       {' '}
-    </p>
+    </div>
     {toggle
       && <p>{`Filtered by ${star} stars`}</p>}
   </div>

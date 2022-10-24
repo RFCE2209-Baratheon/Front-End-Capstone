@@ -223,6 +223,7 @@ const AddReviewForm = ({
             <section>
               {images.map((i) => (
                 <Image
+                  key="i"
                   height="40px"
                   width="40px"
                   key={i}
