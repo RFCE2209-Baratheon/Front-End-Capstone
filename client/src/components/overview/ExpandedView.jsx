@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand} from './styledIcons.js';
+import {StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand, StyledBackButton} from './styledIcons.js';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 
@@ -13,7 +13,6 @@ const StyledCarousel = styled.section`
 `
 
 const StyledThumbnailAlign = styled.div`
-  text-align: left;
   position: relative;
 `
 
@@ -24,21 +23,22 @@ const StyledCarouselImageSize = styled.div`
   }
 `
 
-const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
+const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end, changeView} ) => {
   const [magnified, setMagnified] = useState(false);
   var onClickMagnify = (e) => {
     e.stopPropagation();
     setMagnified(!magnified);
   }
-  // arrow buttons should show in expanded view before magnified gets set to true --currently in wrong position
+
   return (
     <>
       <StyledCarousel>
+        <StyledThumbnailAlign>
+        <StyledBackButton onClick={changeView}></StyledBackButton>
         {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
         {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
-          <StyledThumbnailAlign>
             <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} />
-          </StyledThumbnailAlign>
+        </StyledThumbnailAlign>
           <StyledCarouselImageSize onClick={onClickMagnify}>
             <ImageCarousel styleImages={styleImages} current={current} magnified={magnified} />
           </StyledCarouselImageSize>

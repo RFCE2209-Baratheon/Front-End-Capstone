@@ -31,10 +31,11 @@ const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextS
         <StyledCarouselImageSize>
           <ImageCarousel styleImages={styleImages} current={current} />
         </StyledCarouselImageSize>
+
+        {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
         <StyledThumbnailAlign>
           <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} end={end} />
         </StyledThumbnailAlign>
-        {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
         {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
       </StyledCarousel>
     </>
