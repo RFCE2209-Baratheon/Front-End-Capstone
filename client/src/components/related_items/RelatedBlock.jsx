@@ -130,14 +130,12 @@ const RelatedBlock = function ({ productId, setProductId }) {
     const slider = document.getElementById('slider');
     slider.scrollLeft -= 250;
     setLeftArrow(slider.scrollLeft);
-    console.log(slider.scrollLeft);
   };
 
   const slideRight = function () {
     const slider = document.getElementById('slider');
     slider.scrollLeft += 250;
     setLeftArrow(slider.scrollLeft);
-    console.log(slider.scrollLeft);
   };
 
 

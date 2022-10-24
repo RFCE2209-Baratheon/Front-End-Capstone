@@ -9,7 +9,7 @@ const {useState, useEffect} = React;
 
 
 
-const Answer = ({answer}) => {
+const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
 
   //states and variables
   const [answers, setAnswers] = useState([])
@@ -18,16 +18,13 @@ const Answer = ({answer}) => {
   const [end, setEnd] = useState(2)
   const start = 0;
 
+  //hooks & handlers
   useEffect(()=> {
 
     // Config for request
-    const config = {
-      params:{answer}
-    }
-    console.log('hello')
-    axios.get(`/qa/questions/:question_id/answers`, config)
+    // console.log('hello')
+    axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
-      console.log('in the component', res.data.results)
       setAnswers(res.data.results)
       setRenderA(res.data.results.slice(start, end))
     })
@@ -35,8 +32,7 @@ const Answer = ({answer}) => {
       console.error(error)
     })
 
-  }, [answer])
-
+  }, [])
 
   useEffect(()=> {
     if (renderA.length === answers.length) {
@@ -46,7 +42,43 @@ const Answer = ({answer}) => {
     }
   }, [renderA])
 
-  //handlers
+  const helpfulAnswerOnclick = (iD) => {
+
+    const config = {params: {answer_id: iD}}
+    axios.put('/qa/answers/:answer_id/helpful', {}, config)
+    .then((success) => {
+      // setShouldFetchQ(!shouldFetchQ)
+      setVoted(false)
+      setHelpful(helpful+1)
+    })
+    .catch((error) => {
+
+    })
+
+  }
+
+  const reportAnswerOnclick = (iD) => {
+
+    const config = {params: {answer_id: iD}}
+    axios.put('/qa/answers/:answer_id/report', {}, config)
+    .then((success) => {
+      console.log('question reported at id:', iD)
+      axios.get(`/qa/questions/${questionid}/answers`)
+        .then((res)=>{
+          setAnswers(res.data.results)
+          setRenderA(res.data.results.slice(start, end))
+        })
+        .catch((error)=>{
+          console.error(error)
+        })
+      setShouldFetchQ(!shouldFetchQ)
+    })
+    .catch((error) => {
+
+    })
+
+  }
+
   const handleMoreAnswers = () => {
     setRenderA(answers.slice(start, renderA.length + 2))
   }
@@ -57,19 +89,18 @@ const Answer = ({answer}) => {
   return (
       <>
         {renderA.map(function (currentAnswer, index) {
-          // {console.log('current key', currentKey, 'answer', answer)}
           return (
           <Questions key={index}>
           <Test>
           <div>
             <AnswerStyle>
-            <span>{`A: ${currentAnswer.body}`}</span>
+            <span className= 'answer'>{`A: ${currentAnswer.body}`}</span>
             </AnswerStyle>
             <div>
               <Images images={currentAnswer.photos} />
-              <span>{`by ${currentAnswer.answerer_name}, `}</span>
+              <span className='user'>{`by ${currentAnswer.answerer_name}, `}</span>
               <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
-              <Helpful helpfulCount={currentAnswer.helpfulness}/>
+              <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} helpfulHandler={helpfulAnswerOnclick} reportHandler={reportAnswerOnclick}/>
             </div>
           </div>
           </Test>
@@ -85,7 +116,9 @@ const Answer = ({answer}) => {
 
 //proptypes
 Answer.propTypes = {
-  answer: PropTypes.number
+  questionid: PropTypes.number,
+  shouldFetchQ: PropTypes.bool,
+  setShouldFetchQ: PropTypes.func
 }
 
 export default Answer

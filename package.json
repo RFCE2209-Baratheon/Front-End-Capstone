@@ -21,6 +21,8 @@
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.9",
     "axios": "^0.21.0",
+    "cloudinary-core": "^2.13.0",
+    "cloudinary-react": "^1.8.1",
     "date-fns": "^2.29.3",
     "express": "^4.15.0",
     "jest-environment-jsdom": "^29.2.1",

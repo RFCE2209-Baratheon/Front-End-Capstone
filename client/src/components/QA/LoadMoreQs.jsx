@@ -3,15 +3,15 @@ import {PropTypes} from 'prop-types'
 
 const LoadMoreQs = ({loadMore}) => {
 
-
+//component
   return (
-  <button onClick={loadMore}> Load more questions </button>
+  <button className='loadMore' id='123' onClick={(e) => {loadMore(e)}}> Load more questions </button>
   )
 
 
 }
 
-
+//propTypes
 LoadMoreQs.propTypes = {
   loadMore: PropTypes.func,
 }

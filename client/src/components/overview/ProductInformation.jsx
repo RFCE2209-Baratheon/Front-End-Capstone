@@ -19,7 +19,6 @@ const StyledSocials = styled.div`
 
 const ProductInformation = ({ productData, currentStyle, reviewData }) => {
 
-  console.log('INSIDE PRODUCTDATA', productData)
   return (
     <>
       {reviewData ?
