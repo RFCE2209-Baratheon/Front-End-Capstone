@@ -167,7 +167,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
         </div>
         {leftArrow === rightArrow ? <></> : <RightArrow onClick={slideRight} />}
       </RelatedBlockContainer>
-    </div>
+      </div>
   );
 };
 
