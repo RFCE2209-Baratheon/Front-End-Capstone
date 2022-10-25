@@ -18,10 +18,12 @@ const [showAModal, setShowAModal] = useState(false)
 const [questionId, setQuestionId] = useState(question.question_id)
 const [shouldFetchA, setShouldFetchA] = useState(false);
 const [open, setOpen] = useState(null)
+const [helpfulCount, setHelpfulCount] = useState(question.question_helpfulness)
 
 
 
 //hooks & handlers
+
 useEffect(()=>{
   if (searchedQ.length > 0) {
     console.log('length of searchedQ', searchedQ.length)
@@ -80,7 +82,7 @@ const reportQuestionOnclick = (iD) => {
     <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
       <span className='question' onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
       <AlignRight>
-        <Helpful className='helpful'helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
+        <Helpful className='helpful'helpfulCount={helpfulCount} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
       <QuestionFolder className={index} open={open}>
         <Answer questionid={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} openAModal={openAModal} shouldFetchA={shouldFetchA} searchedQ={searchedQ}/>
