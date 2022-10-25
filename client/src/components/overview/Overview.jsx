@@ -58,14 +58,16 @@ const Overview = ({ productId }) => {
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
       });
+
     axios.get(`products/${productId}`)
-      .then((response) => {
-        setProductData(response.data);
-      })
-      .catch((error) => {
-        console.log('error, could not get current product data from api. error: ', error)
-      });
-  }, [productId])
+    .then((response) => {
+      setProductData(response.data);
+    })
+    .catch((error) => {
+      console.log('error, could not get current product data from api. error: ', error)
+    });
+
+  }, [productId]);
 
   const onStyleClick = (id) => {
     for (var i = 0; i < styleData.length; i++) {
