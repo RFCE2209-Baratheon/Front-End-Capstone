@@ -41,7 +41,6 @@ const RatingSummary = ({
   const [clearFilters, setClearFilters] = useState(false);
 
   const calculateAverage = () => {
-    console.log('IN CALCULATE AVERAGE', metaData)
     let { ratings } = metaData;
     let sum = 0;
     let sumFormula = 0;
@@ -118,15 +117,15 @@ const RatingSummary = ({
     return null;
   }
 
-  console.log('AVERAGE IN RATING SUMMARY', average)
   return (
     <Container>
+      <div>
       <h1>
-        Average Rating
         {' '}
         {average}
       </h1>
       <StarRatingStaticSummary rating={average} />
+      </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h3 style={{textAlign:"center"}}>Rating Summary</h3>
       {clearFilters
