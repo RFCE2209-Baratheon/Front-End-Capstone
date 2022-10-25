@@ -35,12 +35,12 @@ function ReviewListTile({ review, metaData }) {
     <Container data-testid="reviewlisttile-1">
       <p>{review.rating}</p>
       <StarRatingStatic rating={review.rating} review={review} />
-      <p style={{ whiteSpace: 'nowrap' }}>
+      <div style={{ whiteSpace: 'nowrap' }}>
         {`Verified User ${review.reviewer_name}`}
         <p style={{ display: 'inline-block' }}>
           {dateString}
         </p>
-      </p>
+      </div>
       <Summary>{review.summary.slice(0, 60)}</Summary>
       <ReviewListBody review={review} />
       {(review.recommend

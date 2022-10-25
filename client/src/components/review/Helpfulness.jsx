@@ -48,15 +48,15 @@ const Helpfulness = ({ review, help }) => {
       {'Helpful? '}
       <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} style={{ textDecoration: 'underline', color: 'blue' }}>
         {'Yes '}
-        <HelpfulClick style={{ color: 'black' }}>
+        <span style={{ color: 'black' }}>
           {` |${helpfulness.yes}|  `}
-        </HelpfulClick>
+        </span>
       </HelpfulClick>
       <HelpfulClick disabled={clicked} onClick={() => { noHandler(helpfulness); }} style={{ textDecoration: 'underline', color: 'blue' }}>
         {'No '}
-        <HelpfulClick style={{ color: 'black' }}>
+        <span style={{ color: 'black' }}>
           {` |${helpfulness.no}|  `}
-        </HelpfulClick>
+        </span>
       </HelpfulClick>
     </HelpfulDiv>
   );

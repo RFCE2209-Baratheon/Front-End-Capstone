@@ -18,13 +18,13 @@ const Container = styled.div`{
 }`;
 
 const SummaryContainer = styled.div`{
-  border:solid;
+
   borer-radius: 20px;
   padding: 10px;
 }`;
 
 const BreakDown = styled.div`{
-  border:solid;
+
   borer-radius: 20px;
   padding: 10px;
 }`;
@@ -81,8 +81,9 @@ const RatingSummary = ({
       }
       const resultsFiltered = allReviews.filter((review) =>
       JSON.stringify(review.rating) === rating);
-      const results = [...copy, ...resultsFiltered];
-      setReviews(results);
+      const results = [...resultsFiltered, ...copy];
+      const withoutDuplicates = [... new Set(results)]
+      setReviews(withoutDuplicates);
     }
     if (!tempObj[rating]) {
       setClearFilters(false);
@@ -124,26 +125,27 @@ const RatingSummary = ({
       </h1>
       <NewStarTest rating={average} />
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
-      <h3>Rating Summary</h3>
+      <h3 style={{textAlign:"center"}}>Rating Summary</h3>
       {clearFilters
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
-        {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
-          <p onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
-            {`${rating} stars`}
-            <Bar style={{ display: 'inline-block' }} star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
-          </p>
+        {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
+          <div key={index} onClick={() => { handleFilter(rating); }} style={{ marginTop:"10px", textAlign:"center", fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+            {`${rating} STARS`}
+            <div style={{height:"10px"}}></div>
+            <Bar star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
+          </div>
         ))}
       </SummaryContainer>
-      <h3>Product Breakdown</h3>
+      <h3 style={{textAlign:"center"}}>Product Breakdown</h3>
       <BreakDown>
-        {Object.keys(metaData.characteristics).map((characteristic) => (
-          <p>
+        {Object.keys(metaData.characteristics).map((characteristic, index) => (
+          <div key={index}>
             <ProductBreakDown
               characteristic={characteristic}
               value={metaData.characteristics[characteristic]}
             />
-          </p>
+          </div>
         ))}
       </BreakDown>
     </Container>

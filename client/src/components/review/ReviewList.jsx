@@ -27,7 +27,7 @@ const SelectButton = styled.button`{
   margin: 1em;
   padding: 0.25em 1em;
   border: 2px solid black;
-  border-radius: 3px;
+  border-radius: 10px;
 }`;
 
 const Menu = styled.ul`{
@@ -63,6 +63,16 @@ const ScrollDiv = styled.div`{
   // border: solid;
   border-radius: 10px;
   overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border: 1px solid #808080;
+    background: white;
+    border-radius: 10px;
+    width: 10px;
 
 }`;
 
@@ -139,10 +149,10 @@ const ReviewList = ({
         </div>
         <ScrollDiv>
           {' '}
-          {reviews.map((review) => (
+          {reviews.map((review, index) => (
             <ReviewListTile
               metaData={metaData}
-              key={review.id}
+              key={index}
               review={review}
             />
           ))}

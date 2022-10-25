@@ -41,7 +41,6 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log('the question id in get answers list', req.params.question_id)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
