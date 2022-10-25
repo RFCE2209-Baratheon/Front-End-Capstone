@@ -39,7 +39,7 @@ const StyledExpand = styled(AiOutlineExpand)`
 const StyledUpArrow = styled(IoIosArrowUp)`
   position: absolute;
   top: 20px;
-  left: 30px;
+  // left: 30px;
   font-size: 2rem;
   color: yellow;
   z-index: 10;
@@ -50,7 +50,7 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
   top: 560px;
-  left: 30px;
+  // left: 30px;
   font-size: 2rem;
   color: yellow;
   z-index: 10;
@@ -63,22 +63,22 @@ const StyledLeftArrowExpand = styled(StyledLeftArrow)`
 `
 
 const StyledRightArrowExpand = styled(StyledRightArrow)`
-  left: 615px;
+  // left: 615px;
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`
-  left: -5px;
-  top: 20px;
+  // left: -5px;
+  // top: 20px;
   color: darkgrey;
 `
 
 const StyledDownArrowExpand = styled(StyledDownArrow)`
-  left: -5px;
+  // left: -5px;
   color: darkgrey;
 `
 
 const StyledBackButton = styled(TiArrowBack)`
-  top: 0px;
+  // top: 0px;
   // left: 30px;
   position: relative;
   font-size: 2rem;

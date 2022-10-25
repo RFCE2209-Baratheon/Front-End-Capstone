@@ -14,6 +14,8 @@ const StyledCarousel = styled.section`
 
 const StyledThumbnailAlign = styled.div`
   position: relative;
+  // display: flex;
+  // justify-content: center;
 `
 
 const StyledCarouselImageSize = styled.div`
@@ -21,6 +23,11 @@ const StyledCarouselImageSize = styled.div`
   &:hover {
     cursor:crosshair;
   }
+`
+
+const StyledButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end, changeView} ) => {
@@ -34,16 +41,19 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
     <>
       <StyledCarousel>
         <StyledThumbnailAlign>
-        <StyledBackButton onClick={changeView}></StyledBackButton>
-        {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
-        {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
+          {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
+          {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
+          <StyledButtonDiv>
+            <StyledBackButton onClick={changeView}></StyledBackButton>
+            {!magnified && verticalScroll && start !== 0 && <StyledUpArrowExpand onClick={upSlide} />}
+            {!magnified && verticalScroll && end !== length && <StyledDownArrowExpand onClick={downSlide} />}
+          </StyledButtonDiv>
+
             <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} />
         </StyledThumbnailAlign>
           <StyledCarouselImageSize onClick={onClickMagnify}>
             <ImageCarousel styleImages={styleImages} current={current} magnified={magnified} />
           </StyledCarouselImageSize>
-        {!magnified && verticalScroll && start !== 0 && <StyledUpArrowExpand onClick={upSlide} />}
-        {!magnified && verticalScroll && end !== length && <StyledDownArrowExpand onClick={downSlide} />}
       </StyledCarousel>
     </>
   );
