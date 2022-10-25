@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const {useState, useRef} = React;
 
-const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, setShouldFetchQ}) => {
+const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
 
   console.log('productID in modal', productId)
 
@@ -34,7 +34,7 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
 
     axios.post('/qa/questions', dataObj)
     .then((res)=>{
-      setShowModal(false)
+      setShowQModal(false)
       setShouldFetchQ(!shouldFetchQ)
     })
     .catch((err)=>{
@@ -61,7 +61,7 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
                 <button className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>
-            <CloseModalButton aria-label='Close modal' onClick={openModal}/>
+            <CloseModalButton aria-label='Close modal' onClick={openQModal}/>
           </ModalWrapper>
         </ModalBackground>
     </>
@@ -70,10 +70,10 @@ const Modal = ({openModal, productId, setProductId, setShowModal, shouldFetchQ, 
 
 //proptypes
 Modal.propTypes = {
-  openModal: PropTypes.func,
+  openQModal: PropTypes.func,
   productId: PropTypes.string,
   setProductId: PropTypes.func,
-  setShowModal: PropTypes.func,
+  setShowQModal: PropTypes.func,
   shouldFetchQ: PropTypes.bool,
   setShouldFetchQ: PropTypes.func,
 }
