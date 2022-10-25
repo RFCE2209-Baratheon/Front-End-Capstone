@@ -15,9 +15,10 @@ const OutfitBlock = function ({ productId }) {
   const [outfitData, setOutfitData] = useState([]);
 
   useEffect(() => {
-    let displayedData = {name: "", category: "", price: "", url: ""}
+    let displayedData = {};
     axios.get(`products/${productId}`)
       .then((response) => {
+        displayedData.id = response.data.id;
         displayedData.name = response.data.name;
         displayedData.category = response.data.category;
         displayedData.price = response.data.default_price;
@@ -55,7 +56,9 @@ const OutfitBlock = function ({ productId }) {
   };
 
   const onClick = () => {
+    console.log('This is outfit data', outfitData);
     let copy = outfitData.slice();
+    console.log('COPY', copy);
     // let joinedData = [...currentProduct, ...copy]
     copy.push(currentProduct);
     setOutfitData(copy);
