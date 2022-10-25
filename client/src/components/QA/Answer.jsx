@@ -5,24 +5,27 @@ import {format, parseISO} from 'date-fns'
 import Helpful from './Helpful.jsx'
 import Images from './Images.jsx'
 import axios from 'axios'
+import AddAnswer from './AddAnswer.jsx'
+
 const {useState, useEffect} = React;
 
 
 
-const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
+const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFetchA, searchedQ}) => {
 
   //states and variables
   const [answers, setAnswers] = useState([])
   const [renderA, setRenderA] = useState([])
   const [hide, setHide] = useState(true)
   const [end, setEnd] = useState(2)
+
   const start = 0;
 
   //hooks & handlers
   useEffect(()=> {
 
     // Config for request
-    // console.log('hello')
+    console.log('Fetching answers')
     axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
       setAnswers(res.data.results)
@@ -32,7 +35,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
       console.error(error)
     })
 
-  }, [])
+  }, [shouldFetchA])
 
   useEffect(()=> {
     if (renderA.length === answers.length) {
@@ -107,7 +110,8 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ}) => {
           </Questions >
           )
         })}
-        <button>Add Answer</button>
+        {/* Add answer button goes here*/}
+        <AddAnswer openAModal={openAModal}/>
         {hide ? <button onClick={handleMoreAnswers}> Load More Answers </button> : <span> No more answers...</span>}
       </>
 

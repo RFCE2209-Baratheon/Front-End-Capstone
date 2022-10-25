@@ -12,6 +12,7 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
   useEffect(()=>{
     if(searchText === '') {
       setEnableSearchQ(false)
+      setSearchedQ([])
     }
   },[searchText])
 

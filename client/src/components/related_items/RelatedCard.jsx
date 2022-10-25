@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import ComparisonModal from './ComparisonModal.jsx';
 import styled from 'styled-components';
 import { AiOutlineStar } from 'react-icons/ai';
 import {
   RelatedCardGraphic, TextOnCard, ImageOnCard, SalePrice, PriceStruckthrough, RelatedActnBttn
-} from './assets/relatedBlock.style.js';
+} from './Assets/comparisonWidget.style.js';
 
 const RelatedCard = function ({
-  category, productName, price, image, salePrice,
+  category, productName, price, image, salePrice, features, productId, setProductId, currentId
 }) {
+  const [showCompModal, setShowCompModal] = useState(false);
+
+  const openCompModal = function () {
+    setShowCompModal(!showCompModal);
+    console.log('being clicked', showCompModal);
+  };
+
   return (
     <RelatedCardGraphic data-testid="cardOne">
-      <RelatedActnBttn />
-      <ImageOnCard image={image} />
+      {showCompModal ? (<ComparisonModal productName={productName} category={category} features={features} productId={productId} setProductId={setProductId} showCompModal={showCompModal} setShowCompModal={setShowCompModal} openCompModal={openCompModal} /> ): null}
+      <RelatedActnBttn onClick={openCompModal}/>
+      <ImageOnCard onClick={() => {setProductId(currentId)}} image={image} />
       <TextOnCard>
         <p>
           {category}

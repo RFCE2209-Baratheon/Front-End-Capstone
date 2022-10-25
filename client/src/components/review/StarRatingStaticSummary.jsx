@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { FaStar } from 'react-icons/fa';
 
-function StarRatingStaticSummary({rating},{product}) {
-  const [avgRating, setRating] = useState(rating);
+function StarRatingStaticSummary({ rating }, { product }) {
+  // const [avgRating, setRating] = useState(rating);
 
   return (
     <div className="star-rating">
@@ -11,7 +12,7 @@ function StarRatingStaticSummary({rating},{product}) {
           <button
             type="button"
             key={index}
-            className={index <= avgRating ? 'on' : 'off'}
+            className={index <= rating ? 'on' : 'off'}
           >
             <span className="star">&#9733;</span>
           </button>

@@ -1,10 +1,10 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
 
-const AddQuestion = ({openModal}) => {
+const AddQuestion = ({openQModal}) => {
 //hooks & handlers
   const handleClick = () => {
-    openModal()
+    openQModal()
   }
 //component
   return (
@@ -13,10 +13,11 @@ const AddQuestion = ({openModal}) => {
 
 
 }
+
 //propTypes
 AddQuestion.propTypes = {
 
-  openModal: PropTypes.func,
+  openQModal: PropTypes.func,
 
 }
 
