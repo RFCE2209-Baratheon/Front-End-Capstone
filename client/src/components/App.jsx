@@ -42,7 +42,9 @@ function App() {
       .catch((error) => {
         console.log('error, could not get products from api. error: ', error)
       });
-  }, [])
+  }, []);
+
+
 
   console.log('Loading App.jsx with pid: ', productId)
 

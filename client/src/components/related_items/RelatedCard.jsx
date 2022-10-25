@@ -17,8 +17,9 @@ const RelatedCard = function ({
   };
 
   return (
+    <>
+    {showCompModal ? (<ComparisonModal productName={productName} category={category} features={features} productId={productId} setProductId={setProductId} showCompModal={showCompModal} setShowCompModal={setShowCompModal} openCompModal={openCompModal} /> ): null}
     <RelatedCardGraphic data-testid="cardOne">
-      {showCompModal ? (<ComparisonModal productName={productName} category={category} features={features} productId={productId} setProductId={setProductId} showCompModal={showCompModal} setShowCompModal={setShowCompModal} openCompModal={openCompModal} /> ): null}
       <RelatedActnBttn onClick={openCompModal}/>
       <ImageOnCard onClick={() => {setProductId(currentId)}} image={image} />
       <TextOnCard>
@@ -60,6 +61,7 @@ const RelatedCard = function ({
         </div>
       </TextOnCard>
     </RelatedCardGraphic>
+    </>
   );
 };
 
