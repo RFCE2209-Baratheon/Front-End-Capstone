@@ -9,7 +9,7 @@ import styled, { css } from 'styled-components';
 import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
 import Bar from './Bar.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
-import NewStarTest from './NewStarTest.jsx';
+// import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
   border: solid;
@@ -123,7 +123,7 @@ const RatingSummary = ({
         {' '}
         {average}
       </h1>
-      <NewStarTest rating={average} />
+      <StarRatingStaticSummary rating={average} />
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h3 style={{textAlign:"center"}}>Rating Summary</h3>
       {clearFilters

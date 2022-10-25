@@ -3,12 +3,6 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import {VscTriangleDown} from 'react-icons/vsc'
 
-const StyleBar = styled.div`
-width: ${(props) =>  (props.value)}%;
-height: 10px;
-background-color: #066701;
-border-radius: 20px;
-`;
 
 const OuterBar = styled.div`
 background-color: grey;

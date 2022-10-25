@@ -17,6 +17,10 @@ const NewStarTest = () => {
           <stop offset="25%" style={{ stopColor: 'rgb(255, 193, 7)' }} />
           <stop offset="25%" style={{ stopColor: 'rgb(228, 229, 233)' }} />
         </linearGradient>
+        <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="75%" style={{ stopColor: 'rgb(255, 193, 7)' }} />
+          <stop offset="75%" style={{ stopColor: 'rgb(228, 229, 233)' }} />
+        </linearGradient>
       </svg>
       {[...Array(5)].map((icon, i) => {
         const value = i + 1;
