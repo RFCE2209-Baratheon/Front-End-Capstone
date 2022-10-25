@@ -33,7 +33,7 @@ const RatingSummary = ({
   product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(0);
+  const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
@@ -41,7 +41,8 @@ const RatingSummary = ({
   const [clearFilters, setClearFilters] = useState(false);
 
   const calculateAverage = () => {
-    const { ratings } = metaData;
+    console.log('IN CALCULATE AVERAGE', metaData)
+    let { ratings } = metaData;
     let sum = 0;
     let sumFormula = 0;
     for (const rating in ratings) {
@@ -116,6 +117,8 @@ const RatingSummary = ({
   if (average === 0) {
     return null;
   }
+
+  console.log('AVERAGE IN RATING SUMMARY', average)
   return (
     <Container>
       <h1>

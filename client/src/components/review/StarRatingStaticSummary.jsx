@@ -9,9 +9,10 @@ const Gradient = styled.linearGradient`{
 
 function StarRatingStaticSummary({rating}) {
 
-  console.log('AVERAGE', rating)
-
-  let average = 3.4;
+  let average = Number(rating);
+  if (rating === 'NaN') {
+    average = 1;
+  }
   let whole = Math.floor(average);
   let fraction = average % whole;
   let empty = 5 - whole;
