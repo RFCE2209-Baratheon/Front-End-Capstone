@@ -9,7 +9,7 @@ const {useState, useRef} = React;
 
 const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
 
-  console.log('productID in modal', productId)
+
 
   //state & refs
   const questionRef = useRef(null)

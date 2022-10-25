@@ -9,7 +9,7 @@ const Gradient = styled.linearGradient`{
 
 function StarRatingStaticSummary({rating}) {
 
-  console.log('AVERAGE', rating)
+
 
   let average = 3.4;
   let whole = Math.floor(average);

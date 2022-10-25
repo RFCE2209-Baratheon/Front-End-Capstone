@@ -24,7 +24,7 @@ const [open, setOpen] = useState(null)
 //hooks & handlers
 useEffect(()=>{
   if (searchedQ.length > 0) {
-    console.log('length of searchedQ', searchedQ.length)
+
     setEnableSearchQ(true)
     setOpen(null)
   }
@@ -34,7 +34,7 @@ useEffect(()=>{
 }, [searchedQ])
 
 const toggleOpen = () => {
-  console.log(open)
+
   if(open === null) {
 
     setOpen(true)
@@ -96,7 +96,11 @@ IndividualQuestion.propTypes = {
   question: PropTypes.object,
   index: PropTypes.number,
   shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func
-
+  setShouldFetchQ: PropTypes.func,
+  renderQ: PropTypes.array,
+  searchedQ: PropTypes.array,
+  setEnableSearchQ: PropTypes.func,
+  renderQLength: PropTypes.number
 }
+
 export default IndividualQuestion

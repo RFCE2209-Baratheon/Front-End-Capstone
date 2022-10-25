@@ -87,7 +87,7 @@ const QuestionList = ({productID}) => {
   const openQModal = () => {
     setShowQModal(!showQModal)
   }
-  console.log('is searched q enabled', enableSearchQ)
+
   //component
   return (
     <QuestionListStyle className='qListStyle'>
