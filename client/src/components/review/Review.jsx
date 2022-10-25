@@ -10,7 +10,7 @@ const Container = styled.div`{
   display: grid;
   grid-template-columns: auto auto;
   padding: 10px;
-  background-color: #c9c8c7;
+  width: 1000px;
 }`;
 
 const Title = styled.h1`{

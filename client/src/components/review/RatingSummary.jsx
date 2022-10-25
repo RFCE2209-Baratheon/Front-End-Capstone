@@ -12,20 +12,18 @@ import ProductBreakDown from './ProductBreakDown.jsx';
 // import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
-  border: solid;
-  border-radius: 20px;
   padding: 10px;
 }`;
 
 const SummaryContainer = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 
 const BreakDown = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 
@@ -118,11 +116,11 @@ const RatingSummary = ({
   }
   return (
     <Container>
-      <h1>
+      <h2>
         Average Rating
         {' '}
         {average}
-      </h1>
+      </h2>
       <StarRatingStaticSummary rating={average} />
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h3 style={{textAlign:"center"}}>Rating Summary</h3>
