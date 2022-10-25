@@ -1,5 +1,5 @@
 import React from 'react';
-import { RelatedCardGraphic, TextOnCard, ImageOnCard } from './assets/relatedBlock.style.js';
+import { RelatedCardGraphic, TextOnCard, ImageOnCard } from './Assets/comparisonWidget.style.js';
 
 const OutfitCards = function () {
   return (
