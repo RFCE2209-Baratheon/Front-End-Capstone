@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import $ from 'jquery';
 
 const AddToCartButton = styled.button`
   background-color: white;
   font-family: monospace;
+`
+
+const AddToCartContainer = styled.div`
+  width: 200px;
+  height: 200px;
+  padding: 50px;
 `
 
 const AddToCart = ({ currentStyleSkus }) => {
@@ -12,6 +19,9 @@ const AddToCart = ({ currentStyleSkus }) => {
   const [sizeSelected, setSizeSelected] = useState(false);
   const [maxQuantity, setMaxQuantity] = useState(1);
   const [quantity, setQuantity] = useState(1);
+  const dropdownRef = useRef(null);
+  const messageRef = useRef(null);
+
   var mappedQtyOptions;
 
   var mappedSizeOptions = Object.keys(currentStyleSkus).map((sku, index) => {
@@ -41,40 +51,55 @@ const AddToCart = ({ currentStyleSkus }) => {
 
   const onButtonClick = () => {
     var sku_id;
-    Object.keys(currentStyleSkus).forEach((sku, index) => {
-      if (currentStyleSkus[sku].quantity >= quantity && currentStyleSkus[sku].size === size) {
-        sku_id = sku;
-      }
-    })
-    axios.post('/cart', {sku_id: sku_id})
+    if (!sizeSelected) {
+      $(messageRef.current).text('Please select a size');
+      $(dropdownRef.current).attr('size', mappedSizeOptions.length);
+      $(dropdownRef.current).on('change',function () {
+        $(messageRef.current).text('');
+        $(dropdownRef.current).attr('size', 1);
+      });
+    }
+
+    if (sizeSelected) {
+      Object.keys(currentStyleSkus).forEach((sku, index) => {
+        if (currentStyleSkus[sku].quantity >= quantity && currentStyleSkus[sku].size === size) {
+          sku_id = sku;
+        }
+      })
+      axios.post('/cart', {sku_id: sku_id})
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
         console.log('error, could not add item to cart. error: ', error)
       });
+    }
   }
 
   return (
     <> {mappedSizeOptions[0] ?
-        <>
-          <select value={size} name="size" onChange={(e) => {
+        <AddToCartContainer>
+          <div ref={messageRef}></div>
+
+
+          <select ref={dropdownRef} value={size} name="size" onChange={(e) => {
             setSize(e.target.value);
             setSizeSelected(true);
-            }}>
+          }}>
             <option value="select">select size</option> {mappedSizeOptions}
           </select>
 
           <select name="quantity" onChange={(e) => {
             setQuantity(e.target.value);
-            }}>
+          }}>
             { sizeSelected && maxQuantity > 0 ? <> <option value="select">1</option> {mappedQtyOptions} </> : <option value="select">-</option> }
           </select>
+
 
           <p>
             {maxQuantity > 0 && <AddToCartButton onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
           </p>
-        </> : <div>OUT OF STOCK</div> }
+        </AddToCartContainer> : <div>OUT OF STOCK</div> }
     </>
   )
 }
