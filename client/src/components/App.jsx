@@ -36,7 +36,7 @@ function App() {
     axios.get('/products')
       .then((response) => {
         // set default data to first product
-        setProductId(parseInt(response.data[1].id));
+        setProductId(parseInt(response.data[0].id));
         setProductName(response.data[0].name);
       })
       .catch((error) => {
