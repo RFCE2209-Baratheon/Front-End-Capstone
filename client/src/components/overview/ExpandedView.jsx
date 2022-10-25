@@ -30,6 +30,11 @@ const StyledButtonDiv = styled.div`
   justify-content: center;
 `
 
+const StyledHorizontalButtons = styled.div`
+  display: flex;
+  align-content: center;
+`
+
 const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end, changeView} ) => {
   const [magnified, setMagnified] = useState(false);
   var onClickMagnify = (e) => {
@@ -40,9 +45,11 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
   return (
     <>
       <StyledCarousel>
-        <StyledThumbnailAlign>
+        <StyledHorizontalButtons>
           {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
           {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
+        </StyledHorizontalButtons>
+        <StyledThumbnailAlign>
           <StyledButtonDiv>
             <StyledBackButton onClick={changeView}></StyledBackButton>
             {!magnified && verticalScroll && start !== 0 && <StyledUpArrowExpand onClick={upSlide} />}

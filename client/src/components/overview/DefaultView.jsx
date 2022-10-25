@@ -26,22 +26,28 @@ const StyledVerticalButtons = styled.div`
   display: flex;
   justify-content: center;
 `
+const StyledHorizontalButtons = styled.div`
+  display: flex;
+  align-content: center;
+`
 
 const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
   return (
     <>
       <StyledCarousel>
-          {current !== length-1 && <StyledRightArrow onClick={nextSlide} />}
-          {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
+          <StyledHorizontalButtons>
+            {current !== length-1 && <StyledRightArrow onClick={nextSlide} />}
+            {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
+          </StyledHorizontalButtons>
         <StyledCarouselImageSize>
           <ImageCarousel styleImages={styleImages} current={current} />
         </StyledCarouselImageSize>
 
-        <StyledVerticalButtons>
-          {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
-          {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
-        </StyledVerticalButtons>
         <StyledThumbnailAlign>
+          <StyledVerticalButtons>
+            {verticalScroll && start !== 0 && <StyledUpArrow onClick={upSlide} />}
+            {verticalScroll && end !== length && <StyledDownArrow onClick={downSlide} />}
+          </StyledVerticalButtons>
           <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} end={end} />
         </StyledThumbnailAlign>
       </StyledCarousel>
