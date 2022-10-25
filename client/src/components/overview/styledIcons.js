@@ -6,7 +6,6 @@ import { TiArrowBack } from 'react-icons/ti';
 
 const StyledLeftArrow = styled(AiOutlineArrowLeft)`
   position: absolute;
-  top: 325px;
   left: 90px;
   font-size: 2rem;
   color: yellow;
@@ -16,7 +15,6 @@ const StyledLeftArrow = styled(AiOutlineArrowLeft)`
 `
 const StyledRightArrow = styled(AiOutlineArrowRight)`
   position: absolute;
-  top: 325px;
   left: 550px;
   font-size: 2rem;
   color: yellow;
@@ -38,8 +36,7 @@ const StyledExpand = styled(AiOutlineExpand)`
 
 const StyledUpArrow = styled(IoIosArrowUp)`
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: -28px;
   font-size: 2rem;
   color: yellow;
   z-index: 10;
@@ -49,8 +46,7 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 560px;
-  left: 30px;
+  top: 500px;
   font-size: 2rem;
   color: yellow;
   z-index: 10;
@@ -67,20 +63,18 @@ const StyledRightArrowExpand = styled(StyledRightArrow)`
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`
-  left: -5px;
-  top: 20px;
+  top: -20px;
   color: darkgrey;
 `
 
 const StyledDownArrowExpand = styled(StyledDownArrow)`
-  left: -5px;
+  top: 500px;
   color: darkgrey;
 `
 
 const StyledBackButton = styled(TiArrowBack)`
-  top: 0px;
-  // left: 30px;
-  position: relative;
+  top: -50px;
+  position: absolute;
   font-size: 2rem;
   color: black;
   z-index: 10;
