@@ -24,7 +24,7 @@ const Bar = ({
   rating, sum, toggle, star, color, width
 }) => (
 
-  <div style={{width:"100%"}}>
+  <div data-testid="bar-1" style={{width:"100%"}}>
     <OuterBar >
       <StyleBar rating={rating} sum={sum}/>
       </OuterBar>
