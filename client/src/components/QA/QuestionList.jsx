@@ -92,7 +92,7 @@ const QuestionList = ({productID}) => {
   return (
     <QuestionListStyle className='qListStyle'>
       { showQModal ? <Modal openQModal={openQModal} productId={productId} setProductId={setProductId} setShowQModal={setShowQModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
-        <div className ='Title'> QUESTIONS & ANSWERS </div>
+        <h2 className ='Title'> QUESTIONS & ANSWERS </h2>
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>

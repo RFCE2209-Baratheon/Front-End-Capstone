@@ -32,7 +32,10 @@ width: 100%;
 }
 `
 const QuestionListStyle = styled.div`
+<<<<<<< HEAD
   background: transparent;
+=======
+>>>>>>> Development
   // rgsb(219, 144, 86)
   display: flex;
   flex-wrap: wrap;
@@ -53,9 +56,13 @@ const QuestionListStyle = styled.div`
 
   .loadMore {
     align: center;
+<<<<<<< HEAD
     border: solid;
     border-color: #393D3F;
     border-width: 2px;
+=======
+    border-radius: 5px;
+>>>>>>> Development
     background: #F4F4F9;
     //rgb(240,177,17)
     white-space: normal !important;
@@ -68,10 +75,15 @@ const QuestionListStyle = styled.div`
   }
 
   .addQuestion{
+<<<<<<< HEAD
     border: solid;
     border-color: #393D3F;
     background: #F4F4F9;
     border-width: 2px;
+=======
+    border-radius: 5px;
+    background: #F4F4F9;
+>>>>>>> Development
     font-size: 20px;
     margin: 5px;
     height: 50px;
@@ -106,11 +118,16 @@ background: none;
 const Questions = styled.div`
 // border-top: ridge;
 // border-left: ridge;
+<<<<<<< HEAD
 // border: ridge;
 border-radius: 5px;
 background: #F4F4F9;
+=======
+border-radius: 1px;
+background: transparent;
+>>>>>>> Development
 // border-top-left-radius: 5px;
-border-color:rgb(222, 133, 64);
+border-color:black;
 margin-bottom: 5px;
 
 `
@@ -138,10 +155,17 @@ padding-bottom: 25px;
 `
 const IndividualQuestionStyle = styled.div`
 
+<<<<<<< HEAD
 // border-left: solid;
 // border-top: solid
 // border-width: 1px;
 // border-color: #F4F4F9;
+=======
+
+border-top: solid
+border-width: .5px;
+border-color: #393D3F;
+>>>>>>> Development
 background: transparent;
 // border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
 // border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
@@ -167,7 +191,7 @@ border-radius: 5px;
 flex-wrap: wrap;
 width: 500px;
 padding: 5px;
-background: rgb(240,177,17);
+background: #F4F4F9;
 ::placeholder {
   color: black;
 }
@@ -203,7 +227,7 @@ const ModalButton = styled.button`
 const ModalBackground = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(57, 61, 63, 1)
   position: fixed;
   display: flex;
   justify-content: center;
@@ -216,7 +240,7 @@ const ModalBackground = styled.div`
 const ModalWrapper = styled.div`
   width: 35em;
   height: 35em;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 16px rgba(57, 61, 63, 1);
   background: #fff;
   color: #000;
   display: grid;
