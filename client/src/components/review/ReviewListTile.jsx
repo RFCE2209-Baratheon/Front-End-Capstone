@@ -11,6 +11,8 @@ import Helpfulness from './Helpfulness.jsx';
 const Container = styled.div`{
   test-align: center;
   border: solid;
+  border-width: 1px;
+  border-color: #62929E;
   padding: 10px;
   border-radius: 20px;
   margin: 32px;

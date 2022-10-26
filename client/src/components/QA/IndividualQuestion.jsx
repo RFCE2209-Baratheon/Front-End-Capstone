@@ -78,7 +78,7 @@ const reportQuestionOnclick = (iD) => {
   return (
     <>
     <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
-      <span className='question' onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
+      <span className='question' onClick={toggleOpen}> <b>{`Q: ${question.question_body}`}</b></span>
       <AlignRight>
         <Helpful className='helpful'helpfulCount={question.question_helpfulness} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
