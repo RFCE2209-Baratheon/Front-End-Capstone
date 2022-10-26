@@ -31,7 +31,7 @@ const RatingSummary = ({
   product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(0);
+  const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
@@ -39,7 +39,7 @@ const RatingSummary = ({
   const [clearFilters, setClearFilters] = useState(false);
 
   const calculateAverage = () => {
-    const { ratings } = metaData;
+    let { ratings } = metaData;
     let sum = 0;
     let sumFormula = 0;
     for (const rating in ratings) {
@@ -114,14 +114,16 @@ const RatingSummary = ({
   if (average === 0) {
     return null;
   }
+
   return (
     <Container>
-      <h2>
-        Average Rating
+      <div>
+      <h1>
         {' '}
         {average}
-      </h2>
+      </h1>
       <StarRatingStaticSummary rating={average} />
+      </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h3 style={{textAlign:"center"}}>Rating Summary</h3>
       {clearFilters

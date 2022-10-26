@@ -9,9 +9,10 @@ const Gradient = styled.linearGradient`{
 
 function StarRatingStaticSummary({rating}) {
 
-  console.log('AVERAGE', rating)
-
-  let average = 3.4;
+  let average = Number(rating);
+  if (rating === 'NaN') {
+    average = 1;
+  }
   let whole = Math.floor(average);
   let fraction = average % whole;
   let empty = 5 - whole;
@@ -20,8 +21,8 @@ function StarRatingStaticSummary({rating}) {
   }
 
   return (
-    <div style={{textAlign:"center"}} className="star-rating">
-<svg style={{height:"0px"}} className="linear-gradient-template">
+    <div style={{width:"min-content", textAlign:"center"}} className="star-rating">
+    <svg style={{height:"0px"}} className="linear-gradient-template">
     <Gradient id="half" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="50%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
         <stop offset="50%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
@@ -39,8 +40,8 @@ function StarRatingStaticSummary({rating}) {
         <stop offset="0%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
     </Gradient>
     <Gradient id="full" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="100%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>
-        <stop offset="100%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
+        <stop offset="100%" style={{stopColor: "#393939"}}></stop>
+        <stop offset="100%" style={{stopColor: "#393939"}}></stop>
     </Gradient>
 </svg>
 
