@@ -3,7 +3,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import ReviewList from '../review/ReviewList.jsx';
+import Bar from '../review/Bar.jsx';
 import '@testing-library/jest-dom';
 
 const metaData = {
@@ -136,7 +136,7 @@ afterEach(() => {
 });
 
 test('should render ReviewList Component', () => {
-  render(<ReviewList product={product} reviews={reviews} allReviews={allReviews} metaData = {metaData}/>);
-  const reviewListElement = screen.getByTestId('reviewlist-1');
-  expect(reviewListElement).toBeInTheDocument();
+  render(<Bar star={282} toggle={false} sum={5} rating={metaData.ratings[0]}/>);
+  const barElement = screen.getByTestId('bar-1');
+  expect(barElement).toBeInTheDocument();
 });

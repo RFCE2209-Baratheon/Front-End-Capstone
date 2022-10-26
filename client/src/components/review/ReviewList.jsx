@@ -31,6 +31,9 @@ const SelectButton = styled.button`{
   border: 2px solid #62929E;
   border-radius: 50px;
   box-shadow: 5px 5px 10px;
+  &:hover {
+    background-color:  #546A7B
+  }
 }`;
 
 const Menu = styled.ul`{
@@ -61,7 +64,7 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 1400px;
+  max-height: 850px;
   overflow: scroll;
   // border: solid;
   border-radius: 10px;
@@ -142,7 +145,9 @@ const ReviewList = ({
   }
 
   return (
+    <>
     <div style={{display:"inherit"}}>
+      <div style={{height:"100px"}}></div>
       <Container>
         <div data-testid="reviewlist-1">
           {allReviews.length}
@@ -161,9 +166,11 @@ const ReviewList = ({
           ))}
         </ScrollDiv>
       </Container>
+      <div>
       {moreReviewsButton
       && <SelectButton onClick={() => { expandReviews(); }}>More Reviews</SelectButton>}
       <SelectButton onClick={addReviewHandler}>Add a Review</SelectButton>
+      </div>
       {addReviewToggle
        && (
        <AddReviewForm
@@ -174,8 +181,10 @@ const ReviewList = ({
          productId={product.id}
        >
        </AddReviewForm>
+
        )}
     </div>
+    </>
   );
 };
 

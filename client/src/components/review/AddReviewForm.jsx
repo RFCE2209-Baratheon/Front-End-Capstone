@@ -178,7 +178,7 @@ const AddReviewForm = ({
   };
 
   return (
-    <ModalBackground>
+    <ModalBackground data-testid="addReview-1" >
         <div style={{backgroundColor: "white", borderColor: "white", borderRadius: "12px", padding: "5px"}}>
       <ModalContainer>
         <CloudinaryContext cloudName="dmmzqckuu">
