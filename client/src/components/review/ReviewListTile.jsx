@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { FcCheckmark } from 'react-icons/fc';
+import { parseISO, format } from 'date-fns';
 import ReviewListBody from './ReviewListBody.jsx';
 import StarRatingStatic from './StarRatingStatic.jsx';
 import Helpfulness from './Helpfulness.jsx';
@@ -32,16 +33,17 @@ const Response = styled.div`{
 function ReviewListTile({ review, metaData }) {
 
   const dateString = JSON.stringify(review.date.slice(0, 10));
+  console.log(review.date)
 
   return (
     <Container data-testid="reviewlisttile-1">
       <p>{review.rating}</p>
       <StarRatingStatic rating={review.rating} review={review} />
       <div style={{ whiteSpace: 'nowrap' }}>
-        {`Verified User ${review.reviewer_name}`}
-        <p style={{ display: 'inline-block' }}>
-          {dateString}
-        </p>
+        {`Verified User ${review.reviewer_name} ${format(parseISO(`${review.date}`), ' MMMM d, yyyy ')} `}
+        {/* <p style={{ display: 'inline-block' }}>
+
+        </p> */}
       </div>
       <Summary>{review.summary.slice(0, 60)}</Summary>
       <ReviewListBody review={review} />
