@@ -145,6 +145,7 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less)$": "<rootDir>/__mocks__/styledMock.js"
    },
+
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
 

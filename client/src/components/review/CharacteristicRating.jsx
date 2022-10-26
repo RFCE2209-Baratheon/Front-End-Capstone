@@ -1,8 +1,10 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
 
-const CharacteristicRating = ({ type, setFunc, widthRatings }) => (
-  <div onChange={(e) => { setFunc(Number(e.target.value)); }}>
+const CharacteristicRating = ({ type, setFunc, widthRatings }) => {
+   console.log('HELLO', type, widthRatings)
+  return (
+  <div data-testid="characteristic-1" onChange={(e) => { setFunc(Number(e.target.value)); }}>
     <p style={{ display: 'inline-block' }}>{`Please rate the ${type}`}</p>
     <input required type="radio" value="1" name={type} />
     1
@@ -15,6 +17,7 @@ const CharacteristicRating = ({ type, setFunc, widthRatings }) => (
     <input type="radio" value="5" name={type} />
     5
   </div>
-);
+  )
+};
 
 export default CharacteristicRating;
