@@ -87,7 +87,7 @@ const QuestionList = ({productID}) => {
   const openQModal = () => {
     setShowQModal(!showQModal)
   }
-  console.log('is searched q enabled', enableSearchQ)
+
   //component
   return (
     <QuestionListStyle className='qListStyle'>
@@ -96,15 +96,15 @@ const QuestionList = ({productID}) => {
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
-          <Accordion>
+          <Accordion >
             <div className="Accordion">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid='IQ' renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid="IQ" renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               })}
             </div>

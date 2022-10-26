@@ -20,7 +20,6 @@ overflow-y: scroll;
 `
 const QListWrapper = styled.div`
 overflow-y: scroll;
-padding: 20px;
 height: 300px;
 width: 100%;
 
@@ -32,6 +31,7 @@ width: 100%;
 }
 `
 const QuestionListStyle = styled.div`
+  background: transparent;
   // rgsb(219, 144, 86)
   display: flex;
   flex-wrap: wrap;
@@ -40,10 +40,10 @@ const QuestionListStyle = styled.div`
 
 
   border: solid;
-  border-width: 1px;
-  border-radius: 5px;
+  border-color: #393D3F;
   margin: 50px;
   width: 50%;
+  padding: 40px;
 
   .Title {
     position: relative;
@@ -53,25 +53,37 @@ const QuestionListStyle = styled.div`
 
   .loadMore {
     align: center;
-    border-radius: 5px;
+    border: solid;
+    border-color: #393D3F;
+    border-width: 2px;
     background: #F4F4F9;
     //rgb(240,177,17)
     white-space: normal !important;
     word-break:break-word;
     font-size: 19px;
+    color: #393D3F;
     z-index: 0;
     margin: 5px;
     height: 50px;
     width 200px;
+    &:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
   }
 
   .addQuestion{
-    border-radius: 5px;
+    border: solid;
+    border-color: #393D3F;
     background: #F4F4F9;
+    color: #393D3F;
+    border-width: 2px;
     font-size: 20px;
     margin: 5px;
     height: 50px;
     width 200px;
+    &:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
 
   }
 `
@@ -102,8 +114,9 @@ background: none;
 const Questions = styled.div`
 // border-top: ridge;
 // border-left: ridge;
-border-radius: 1px;
-background: transparent;
+// border: ridge;
+border-radius: 5px;
+background: #F4F4F9;
 // border-top-left-radius: 5px;
 border-color:black;
 margin-bottom: 5px;
@@ -133,10 +146,10 @@ padding-bottom: 25px;
 `
 const IndividualQuestionStyle = styled.div`
 
-
-border-top: solid
-border-width: .5px;
-border-color: #393D3F;
+// border-left: solid;
+// border-top: solid
+// border-width: 1px;
+// border-color: #F4F4F9;
 background: transparent;
 // border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
 // border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
@@ -172,8 +185,11 @@ padding: 5px;
 `
 
 const Test =styled.div`
-padding-top 25px;
-padding-bottom 25px;
+padding-top: 25px;
+padding-bottom: 25px;
+padding-left: 10px;
+border: solid;
+border-color: #393D3F;
 `
 const AlignRight = styled.span`
 float: right;

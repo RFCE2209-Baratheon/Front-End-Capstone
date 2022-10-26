@@ -11,7 +11,7 @@ module.exports = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/1n/xtg0zr9528q0tlzw0km75w800000gn/T/jest_dx",
+  // cacheDirectory: "/private/var/folders/ws/l9r6j8_57x9bz4432rm34n580000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
@@ -144,6 +144,9 @@ module.exports = {
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
   // snapshotSerializers: [],
+  moduleNameMapper: {
+    "\\.(css|less)$": "<rootDir>/__mocks__/styledMock.js"
+   },
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
