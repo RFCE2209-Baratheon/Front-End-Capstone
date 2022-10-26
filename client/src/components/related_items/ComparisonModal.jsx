@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import {PropTypes} from 'prop-types';
 import { ModalWrapper, ModalCloseBtn, TableValues, TableModal, ModalBackground } from './Assets/comparisonWidget.style.js';
 
 const ComparisonModal = function ({ productName, category, features, productId, setProductId, openCompModal }) {

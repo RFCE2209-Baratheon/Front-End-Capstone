@@ -20,6 +20,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
   const [relatedArray, setRelatedArray] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState([]);
+  const [ratingInfo, setRatingInfo] = useState([]);
   const [dataCompiled, setDataCompiled] = useState([]);
 
 
@@ -103,6 +104,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
 
   useEffect(() => {
     // fetchData();
+    setDataCompiled([]);
     let arrayOfRelated = [];
     axios.get(`/products/${productId}/related`)
       .then((results) => {
@@ -115,11 +117,28 @@ const RelatedBlock = function ({ productId, setProductId }) {
             })),
             Promise.all(arrayOfRelated.map((id) => {
               return axios.get(`/products/${id}/styles`)
+            })),
+            Promise.all(arrayOfRelated.map((id) => {
+              return axios.get('/reviews/meta', { params: { product_id: id } })
             }))
           ]
         )
       })
-      .then(([products, styles]) => {
+      .then(([products, styles, ratings]) => {
+        ratings = ratings.map((response) => {
+          let ratingData = {};
+          let obj = response.data.ratings;
+          let numOfReviews = 0;
+          let weightedFactor = 0;
+          for(let key in obj) {
+            weightedFactor += Number(key) * Number(obj[key]);
+            numOfReviews += Number(obj[key]);
+          }
+          let ratingAverage = weightedFactor / numOfReviews;
+          ratingData.id = response.data.product_id;
+          ratingData.ratingAvg = ratingAverage;
+          return ratingData;
+        })
         products = products.map((response) => {
           return response.data
         })
@@ -127,16 +146,40 @@ const RelatedBlock = function ({ productId, setProductId }) {
           return response.data
         })
 
-        let joinedProducts = products.map((product) => {
-          for(let i = 0; i < styles.length; i++) {
-            if(product.id === Number(styles[i].product_id)) {
-              return {...product, ...styles[i]}
-            }
-          }
-        })
-        setDataCompiled(joinedProducts)
+        setProductInfo(products);
+        setStyleInfo(styles);
+        setRatingInfo(ratings);
+
+        // let joinedProducts = products.map((product) => {
+
+        //   for(let i = 0; i < styles.length; i++) {
+        //     if(product.id === Number(styles[i].product_id)) {
+        //       var ratingAverage;
+        //       axios.get('/reviews/meta', { params: { product_id: product.id } })
+        //       // you need to store the meta data somehow/somewhere...
+        //       .then((getMetaSuccess) => {
+        //         let obj = getMetaSuccess.data.ratings;
+        //         let numOfReviews = 0;
+        //         let weightedFactor = 0;
+        //         for(let key in obj) {
+        //           weightedFactor += Number(key) * Number(obj[key]);
+        //           numOfReviews += Number(obj[key]);
+        //         }
+        //         ratingAverage = weightedFactor / numOfReviews;
+        //         // setDataCompiled(dataCompiled => [...dataCompiled, {product: product, styles:styles[i], rating: ratingAverage }])
+        //         console.log(dataCompiled);
+        //       })
+        //       .catch((err) => {
+        //         console.log(err);
+        //       });
+        //       return {...product, ...styles[i], ratingAvg: ratingAverage }
+        //     }
+        //   }
+        // })
+        // setDataCompiled(joinedProducts)
       })
   }, [productId]);
+
 
   // useEffect(() => {
   //   fetchProducts();
@@ -146,19 +189,15 @@ const RelatedBlock = function ({ productId, setProductId }) {
   //   fetchStyles();
   // }, [productInfo]);
 
-  useEffect (() => {
-    const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
-    // console.log('scroll width', document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth);
-    setRightArrow(farRight);
-  }, [dataCompiled]);
+  // useEffect (() => {
+  //   const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
+  //   // console.log('scroll width', document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth);
+  //   setRightArrow(farRight);
+  // }, [dataCompiled]);
 
   useEffect(() => {
-    if(scrollValue === mySlider.current.scrollWidth - mySlider.current.clientWidth) {
-      console.log("All the way to the right");
-    } else if (mySlider.current.scrollLeft === 0){
-      console.log("all the way to the right")
-    }
-    console.log(scrollValue);
+    const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
+    setRightArrow(farRight);
   }, [scrollValue]);
 
 
@@ -206,15 +245,13 @@ const RelatedBlock = function ({ productId, setProductId }) {
     <div data-testid = "outerBlock">
       <h3>Related Products</h3>
       <RelatedBlockContainer>
-        {leftArrow === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
+        {scrollValue === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
         <div id="slider" ref={mySlider} onScroll={(e) => {
-          console.log(e.target.scrollLeft, e);
           setScrollValue(e.target.scrollLeft);
           }}>
-          {/* {imageData} */}
-          <RelatedInfo dataCompiled={dataCompiled} setDataCompiled={setDataCompiled} productId={productId} setProductId={setProductId} />
+          <RelatedInfo dataCompiled={dataCompiled} setDataCompiled={setDataCompiled} productId={productId} setProductId={setProductId} productInfo={productInfo} styleInfo={styleInfo} ratingInfo={ratingInfo} />
         </div>
-        {leftArrow === rightArrow ? <></> : <RightArrow onClick={slideRight} />}
+        {scrollValue === rightArrow ? <></> : <RightArrow onClick={slideRight} />}
       </RelatedBlockContainer>
       </div>
   );

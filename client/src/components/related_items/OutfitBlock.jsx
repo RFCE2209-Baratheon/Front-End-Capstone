@@ -11,6 +11,7 @@ import axios from 'axios';
 const OutfitBlock = function ({ productId }) {
   const [leftArrow, setLeftArrow] = useState(0);
   const [rightArrow, setRightArrow] = useState(0);
+  const [scrollValue, setScrollValue] = useState(0);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [outfitData, setOutfitData] = useState([]);
 
@@ -39,8 +40,8 @@ const OutfitBlock = function ({ productId }) {
 
   useEffect (() => {
     const farRight = document.getElementById('slider-two').scrollWidth - document.getElementById('slider-two').clientWidth;
-    setRightArrow(1100);
-  }, []);
+    setRightArrow(farRight);
+  }, [scrollValue]);
 
 
   const slideLeft = function () {
@@ -65,9 +66,7 @@ const OutfitBlock = function ({ productId }) {
         break;
     }
       }
-    console.log('This is is OFD', outfitData)
     let copy = outfitData.slice();
-    console.log('COPY', JSON.stringify(copy));
     // let joinedData = [...currentProduct, ...copy]
     if (flag === false) {
       copy.push(currentProduct);
@@ -83,8 +82,8 @@ const OutfitBlock = function ({ productId }) {
     <div data-testid = "outfitOuter">
       <h3>Your Outfit</h3>
       <OutfitBlockContainer>
-        {leftArrow === 0 ? <></> : <LeftAOutfit onClick={slideLeft} />}
-        <div id="slider-two">
+        {scrollValue === 0 ? <></> : <LeftAOutfit onClick={slideLeft} />}
+        <div id="slider-two" onScroll={(e) => {setScrollValue(e.target.scrollLeft)}}>
           <span><OutfitCards clickHandler={onClick}/></span>
           <span>{currentProduct ? mapped : null}</span>
         </div>

@@ -5,9 +5,10 @@ import { AiOutlineStar } from 'react-icons/ai';
 import {
   RelatedCardGraphic, TextOnCard, ImageOnCard, SalePrice, PriceStruckthrough, RelatedActnBttn
 } from './Assets/comparisonWidget.style.js';
+import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 
 const RelatedCard = function ({
-  category, productName, price, image, salePrice, features, productId, setProductId, currentId
+  category, productName, price, image, salePrice, features, productId, setProductId, currentId, starRating
 }) {
   const [showCompModal, setShowCompModal] = useState(false);
 
@@ -49,6 +50,8 @@ const RelatedCard = function ({
           ) : `$${ price}`}
         </p>
         <div>
+          <StarRatingStaticSummary rating={starRating}/>
+          {/* <p style={{color: "#F4F4F9"}} >{starRating}</p>
           <AiOutlineStar />
           {' '}
           <AiOutlineStar />
@@ -57,7 +60,7 @@ const RelatedCard = function ({
           {' '}
           <AiOutlineStar />
           {' '}
-          <AiOutlineStar />
+          <AiOutlineStar /> */}
         </div>
       </TextOnCard>
     </RelatedCardGraphic>
