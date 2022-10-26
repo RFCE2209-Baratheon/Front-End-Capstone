@@ -6,7 +6,7 @@ import { RelatedModuleStyle } from './Assets/comparisonWidget.style.js';
 const Related = function ({productId, setProductId}) {
 
   return (
-    <div style={{width: "1100px"}}>
+    <div style={{width: "1100px"}} data-testid = "mainComponent" >
       <RelatedBlock productId={productId} setProductId={setProductId} />
       <OutfitBlock productId={productId} setProductId={setProductId} />
     </div>
