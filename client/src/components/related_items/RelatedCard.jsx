@@ -23,7 +23,7 @@ const RelatedCard = function ({
       <RelatedActnBttn onClick={openCompModal}/>
       <ImageOnCard onClick={() => {setProductId(currentId)}} image={image} />
       <TextOnCard>
-        <p>
+        <p style={{color: "#F4F4F9"}}>
           {category}
           {' '}
           <br />

@@ -70,7 +70,7 @@ const OutfitBlock = function ({ productId }) {
 
   return (
     <div>
-      <h3>Your Outfit</h3>
+      <h2>Your Outfit</h2>
       <OutfitBlockContainer>
         {leftArrow === 0 ? <></> : <LeftAOutfit onClick={slideLeft} />}
         <div id="slider-two">
