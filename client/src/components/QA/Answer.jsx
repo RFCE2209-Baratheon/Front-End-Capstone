@@ -23,9 +23,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
 
   //hooks & handlers
   useEffect(()=> {
-
-    // Config for request
-    console.log('Fetching answers')
     axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
       setAnswers(res.data.results)
@@ -65,7 +62,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
     const config = {params: {answer_id: iD}}
     axios.put('/qa/answers/:answer_id/report', {}, config)
     .then((success) => {
-      console.log('question reported at id:', iD)
+
       axios.get(`/qa/questions/${questionid}/answers`)
         .then((res)=>{
           setAnswers(res.data.results)
@@ -97,7 +94,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
           <Test>
           <div>
             <AnswerStyle>
-            <span className= 'answer'>{`A: ${currentAnswer.body}`}</span>
+            <span className= 'answer'>{` ${currentAnswer.body}`}</span>
             </AnswerStyle>
             <div>
               <Images images={currentAnswer.photos} />
@@ -122,7 +119,10 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
 Answer.propTypes = {
   questionid: PropTypes.number,
   shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func
+  setShouldFetchQ: PropTypes.func,
+  openAModal: PropTypes.func,
+  shouldFetchA: PropTypes.bool,
+  searchedQ: PropTypes. array
 }
 
 export default Answer

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-
+import {PropTypes} from 'prop-types'
 const StyledThumbnail = styled.img`
   width: 100%;
   height: 100%;
@@ -24,10 +24,21 @@ const StyledThumbnail = styled.img`
 
 const Thumbnail = ( {thumbnail, selected, onClick} ) => {
   return (
-    <StyledThumbnailDiv selected={selected}>
-      <StyledThumbnail src={thumbnail.thumbnail_url} onClick={onClick} />
-    </StyledThumbnailDiv>
+    <div data-testid="thumbnail">
+      <StyledThumbnailDiv selected={selected}>
+        <StyledThumbnail src={thumbnail.thumbnail_url} onClick={onClick} />
+      </StyledThumbnailDiv>
+    </div>
   )
+}
+
+//please review this proptype
+Thumbnail.propTypes = {
+
+  thumbnail: PropTypes.object,
+  selected: PropTypes.bool,
+  onClick: PropTypes.func
+
 }
 
 export default Thumbnail;

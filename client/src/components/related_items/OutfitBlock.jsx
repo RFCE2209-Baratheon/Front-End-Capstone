@@ -60,7 +60,7 @@ const OutfitBlock = function ({ productId }) {
 
     let flag = false;
     for(let i = 0; i < outfitData.length; i++) {
-      // console.log(productId)
+
       if (outfitData[i].id === productId) {
         flag = true;
         break;

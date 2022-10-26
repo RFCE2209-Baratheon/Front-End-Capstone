@@ -14,7 +14,7 @@ const RelatedCard = function ({
 
   const openCompModal = function () {
     setShowCompModal(!showCompModal);
-    console.log('being clicked', showCompModal);
+
   };
 
   return (

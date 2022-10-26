@@ -14,7 +14,7 @@ const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
   const helpfulOnclick = () => {
     helpfulHandler(id)
     setVoted(false)
-    setHelpful(helpful+1)
+    //maybe move helpful count up to the api call
   }
 
   const reportOnclick = () => {
@@ -22,13 +22,13 @@ const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
     // setVoted(false)
     // setHelpful(helpful+1)
     reportHandler(id)
-    console.log('calling report handler')
+
   }
 
 //component
 return (
 
-  <span> {`Helpful | `}
+  <span> {`Helpful? | `}
     <HelpfulButton>
     { voted ? <u className='underlined' onClick={helpfulOnclick}>Yes</u> : <u className='underlined'>Already Voted</u>}
     </HelpfulButton>

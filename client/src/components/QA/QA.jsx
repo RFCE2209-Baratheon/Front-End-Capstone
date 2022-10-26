@@ -5,7 +5,7 @@ import QuestionList from './QuestionList.jsx';
 import {QuestionListStyle} from './assets/styles.js'
 import {PropTypes} from 'prop-types'
 
-const QA = ({productID}) => { return (<QuestionList productID={productID} /> )};
+const QA = ({productID}) => { return (<QuestionList data-testid="QL"productID={productID} /> )};
 
 //propTypes
 QA.propTypes = {

@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { FcCheckmark } from 'react-icons/fc';
+import { GoVerified } from 'react-icons/go';
 import ReviewListBody from './ReviewListBody.jsx';
 import StarRatingStatic from './StarRatingStatic.jsx';
 import Helpfulness from './Helpfulness.jsx';
+import { parseISO, format } from 'date-fns';
 // import StarRating from './StarRating.jsx';
 // import Rating from './newStar.jsx';
 
@@ -31,17 +33,12 @@ const Response = styled.div`{
 
 function ReviewListTile({ review, metaData }) {
 
-  const dateString = JSON.stringify(review.date.slice(0, 10));
-
   return (
     <Container data-testid="reviewlisttile-1">
-      <p>{review.rating}</p>
       <StarRatingStatic rating={review.rating} review={review} />
-      <div style={{ whiteSpace: 'nowrap' }}>
-        {`Verified User ${review.reviewer_name}`}
-        <p style={{ display: 'inline-block' }}>
-          {dateString}
-        </p>
+      <div style={{ textAlign:"right", whiteSpace: 'nowrap' }}>
+        <GoVerified style={{color:"green"}}/> <span><b>{review.reviewer_name}</b> {`,${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</span>
+
       </div>
       <Summary>{review.summary.slice(0, 60)}</Summary>
       <ReviewListBody review={review} />

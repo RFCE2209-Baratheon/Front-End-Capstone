@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 const CharacteristicRating = ({ type, setFunc, widthRatings }) => {
-   console.log('HELLO', type, widthRatings)
+
   return (
   <div data-testid="characteristic-1" onChange={(e) => { setFunc(Number(e.target.value)); }}>
     <p style={{ display: 'inline-block' }}>{`Please rate the ${type}`}</p>

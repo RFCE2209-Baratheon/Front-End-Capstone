@@ -37,10 +37,11 @@ const QuestionList = ({productID}) => {
   const currentComponent = 'QA';
   let currentTime = new Date()
 
+
   // Hooks & Handler
   useEffect(()=> {
 
-    console.log('setting questions')
+
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
@@ -87,7 +88,7 @@ const QuestionList = ({productID}) => {
   const openQModal = () => {
     setShowQModal(!showQModal)
   }
-  console.log('is searched q enabled', enableSearchQ)
+
   //component
   return (
     <QuestionListStyle className='qListStyle'>
@@ -97,14 +98,14 @@ const QuestionList = ({productID}) => {
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
           <Accordion>
-            <div className="Accordion">
+            <div className="Accordion" data-testid="accordian">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid='IQ' renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid="IQ" renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               })}
             </div>

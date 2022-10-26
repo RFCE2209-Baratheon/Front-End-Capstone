@@ -6,7 +6,7 @@
 /* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
+import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 import Bar from './Bar.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
 // import NewStarTest from './NewStarTest.jsx';
@@ -28,10 +28,10 @@ const BreakDown = styled.div`{
 }`;
 
 const RatingSummary = ({
-  product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
+  product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData, average, setAverage
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(1);
+  // const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,

@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
-import {StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand} from './styledIcons.js';
+import { PropTypes } from 'prop-types';
+import { StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand } from './styledIcons.js';
 
 const StyledCarousel = styled.div`
   position: relative;
@@ -53,6 +53,21 @@ const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextS
       </StyledCarousel>
     </>
   );
+}
+
+DefaultView.propTypes = {
+  styleImages: PropTypes.array,
+  activeThumbnails: PropTypes.array,
+  current: PropTypes.number,
+  setCurrent: PropTypes.func,
+  nextSlide: PropTypes.func,
+  prevSlide: PropTypes.func,
+  verticalScroll: PropTypes.bool,
+  upSlide: PropTypes.func,
+  downSlide: PropTypes.func,
+  length: PropTypes.number,
+  start: PropTypes.number,
+  end: PropTypes.number
 }
 
 export default DefaultView;

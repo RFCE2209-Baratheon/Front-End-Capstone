@@ -49,7 +49,7 @@ const postInteraction = (element, widget, time) => {
 
   axios.post('/interactions', dataObj)
     .then((success) => {
-      console.log(`Posted element: ${element} widget: ${widget} time: ${time}`)
+
     })
     .catch((error) => {
       console.log('Error posting interaction data')
@@ -59,6 +59,8 @@ const postInteraction = (element, widget, time) => {
 function App() {
   const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
+  const [average, setAverage] = useState(1);
+  const [allReviews, setAllReviews] = useState([]);
 
 
   useEffect(() => {
@@ -86,10 +88,10 @@ function App() {
 
     </StyledBanner>
     <AppStyle>
-      {productId && <Overview className='Overview' productId={productId}></Overview>}
+      {productId && <Overview className='Overview' productId={productId} average={average} reviews={allReviews.length}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
       {productId && <QA className='QA' productID={productId} />}
-      {productId && <Review productName={productName} productId={productId} className='Review'/>}
+      {productId && <Review allReviews={allReviews} setAllReviews={setAllReviews} average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
     </>
