@@ -18,11 +18,11 @@ const Title = styled.h2`{
 }`;
 
 
-const Review = ({ average, setAverage, productId, productName }) => {
+const Review = ({ allReviews, setAllReviews, average, setAverage, productId, productName }) => {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [allReviews, setAllReviews] = useState([]);
+
 
   const tempProduct = {
     id: productId,
@@ -49,7 +49,7 @@ const Review = ({ average, setAverage, productId, productName }) => {
     return (
       <>
         <Title>Ratings & Reviews</Title>
-        <Container data-testid="review-1">
+        <Container data-testid="review-1" id="review">
           <RatingSummary
             average={average}
             setAverage={setAverage}
@@ -74,5 +74,7 @@ const Review = ({ average, setAverage, productId, productName }) => {
     );
   }
 }
+
+
 
 export default Review;

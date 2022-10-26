@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand, StyledBackButton} from './styledIcons.js';
+import { PropTypes } from 'prop-types';
+import { StyledLeftArrowExpand, StyledRightArrowExpand, StyledUpArrowExpand, StyledDownArrowExpand, StyledBackButton } from './styledIcons.js';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 
@@ -49,6 +49,7 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
           {!magnified && current !== length-1 && <StyledRightArrowExpand onClick={nextSlide} />}
           {!magnified && current !== 0 && <StyledLeftArrowExpand onClick={prevSlide} />}
         </StyledHorizontalButtons>
+
         <StyledThumbnailAlign>
           <StyledButtonDiv>
             <StyledBackButton onClick={changeView}></StyledBackButton>
@@ -58,12 +59,30 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
 
             <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} />
         </StyledThumbnailAlign>
-          <StyledCarouselImageSize onClick={onClickMagnify}>
-            <ImageCarousel styleImages={styleImages} current={current} magnified={magnified} />
-          </StyledCarouselImageSize>
+
+        <StyledCarouselImageSize onClick={onClickMagnify}>
+          <ImageCarousel styleImages={styleImages} current={current} magnified={magnified} />
+        </StyledCarouselImageSize>
       </StyledCarousel>
     </>
   );
 }
+
+ExpandedView.propTypes = {
+  styleImages: PropTypes.array,
+  activeThumbnails: PropTypes.array,
+  current: PropTypes.number,
+  setCurrent: PropTypes.func,
+  nextSlide: PropTypes.func,
+  prevSlide: PropTypes.func,
+  verticalScroll: PropTypes.bool,
+  upSlide: PropTypes.func,
+  downSlide: PropTypes.func,
+  length: PropTypes.number,
+  start: PropTypes.number,
+  end: PropTypes.number,
+  changeView: PropTypes.func
+}
+
 
 export default ExpandedView;

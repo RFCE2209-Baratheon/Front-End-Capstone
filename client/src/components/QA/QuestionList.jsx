@@ -35,13 +35,13 @@ const QuestionList = ({productID}) => {
   const postInteraction = useContext(interactionContext)
   // const [openAModal, setOpenAModal] = useState(false)
   const currentComponent = 'QA';
-  // let currentTime = new Date()
-  let currentTime = '';
+  let currentTime = new Date()
+
 
   // Hooks & Handler
   useEffect(()=> {
 
-    console.log('setting questions')
+
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
