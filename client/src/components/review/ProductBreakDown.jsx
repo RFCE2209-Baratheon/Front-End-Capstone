@@ -55,7 +55,7 @@ const ProductBreakDown = ({ characteristic, value }) => {
 
   return (
     <>
-      <div style={{textAlign:"center", fontWeight:"bold"}}>{characteristic.toUpperCase()}</div>
+      <div data-testid='breakdown-1' style={{textAlign:"center", fontWeight:"bold"}}>{characteristic.toUpperCase()}</div>
       <div style={{textAling:"center", width:"auto"}}>
       <Triangle value={(value.value/5)*300}>
         <VscTriangleDown/>

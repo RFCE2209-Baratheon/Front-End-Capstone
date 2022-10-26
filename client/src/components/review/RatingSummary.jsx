@@ -6,34 +6,32 @@
 /* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
+import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 import Bar from './Bar.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
 // import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
-  border: solid;
-  border-radius: 20px;
   padding: 10px;
 }`;
 
 const SummaryContainer = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 
 const BreakDown = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 
 const RatingSummary = ({
-  product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
+  product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData, average, setAverage
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(1);
+  // const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
@@ -127,7 +125,7 @@ const RatingSummary = ({
       <StarRatingStaticSummary rating={average} />
       </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
-      <h3 style={{textAlign:"center"}}>Rating Summary</h3>
+      <h2 style={{textAlign:"center"}}>Rating Summary</h2>
       {clearFilters
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
@@ -139,7 +137,7 @@ const RatingSummary = ({
           </div>
         ))}
       </SummaryContainer>
-      <h3 style={{textAlign:"center"}}>Product Breakdown</h3>
+      <h2 style={{textAlign:"center"}}>Product Breakdown</h2>
       <BreakDown>
         {Object.keys(metaData.characteristics).map((characteristic, index) => (
           <div key={index}>

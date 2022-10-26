@@ -14,7 +14,7 @@ const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
   const helpfulOnclick = () => {
     helpfulHandler(id)
     setVoted(false)
-    setHelpful(helpful+1)
+    //maybe move helpful count up to the api call
   }
 
   const reportOnclick = () => {

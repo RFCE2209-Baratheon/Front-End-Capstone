@@ -36,8 +36,8 @@ function ReviewListBody({ review }) {
       <BodyStyle style={{wordWrap:"break-word"}}>{body}</BodyStyle>
       {toggleBody
         && <p onClick={() => { handleClick(); }} style={{ textDecoration: 'underline', color: 'blue' }}>Show More...</p>}
-      {review.photos.map((image) => (
-        <ImagePopUp image={image} />
+      {review.photos.map((image, index) => (
+        <ImagePopUp key={index} image={image} />
       ))}
     </>
   );

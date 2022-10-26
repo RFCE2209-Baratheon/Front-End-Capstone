@@ -16,6 +16,8 @@ const StyledIconDiv = styled.div`
   border-radius: 50%;
   position: relative;
   margin: 5px;
+  // margin-top: 10px;
+  // padding-bottom: 10px;
 `
 
 const StyledIconsDiv = styled.div`
@@ -28,10 +30,10 @@ const StyledOverlay = styled.div`
   position: absolute;
   bottom: 0px;
   right: 14px;
-  color: white;
   font-size: 30px;
   user-select: none;
   cursor: pointer;
+  color: #F4F4F9;
 `
 
 const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
@@ -39,8 +41,10 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
 
   return (
     <>
-      <b>STYLE &gt; </b>
-      <span>{currentStyle.name}</span>
+      <p>
+        <b>STYLE &gt; </b>
+        <span>{currentStyle.name}</span>
+      </p>
       <br></br>
       <StyledIconsDiv data-testid="style">
         {styleData.map((style, index) =>

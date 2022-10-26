@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import {
   RelatedBlockContainer, LeftArrow, RightArrow,
@@ -15,6 +15,8 @@ import './Assets/myStyle.css';
 const RelatedBlock = function ({ productId, setProductId }) {
   const [leftArrow, setLeftArrow] = useState(0);
   const [rightArrow, setRightArrow] = useState(0);
+  const [scrollValue, setScrollValue] = useState(0);
+  const mySlider = useRef(null);
   const [relatedArray, setRelatedArray] = useState([]);
   const [productInfo, setProductInfo] = useState([]);
   const [styleInfo, setStyleInfo] = useState([]);
@@ -100,21 +102,65 @@ const RelatedBlock = function ({ productId, setProductId }) {
   // }, [rightArrow]);
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
+    let arrayOfRelated = [];
+    axios.get(`/products/${productId}/related`)
+      .then((results) => {
+        arrayOfRelated = results.data;
+        // setRelatedArray(results.data);
+        return Promise.all(
+          [
+            Promise.all(arrayOfRelated.map((id) => {
+              return axios.get(`/products/${id}`)
+            })),
+            Promise.all(arrayOfRelated.map((id) => {
+              return axios.get(`/products/${id}/styles`)
+            }))
+          ]
+        )
+      })
+      .then(([products, styles]) => {
+        products = products.map((response) => {
+          return response.data
+        })
+        styles = styles.map((response) => {
+          return response.data
+        })
+
+        let joinedProducts = products.map((product) => {
+          for(let i = 0; i < styles.length; i++) {
+            if(product.id === Number(styles[i].product_id)) {
+              return {...product, ...styles[i]}
+            }
+          }
+        })
+        setDataCompiled(joinedProducts)
+      })
   }, [productId]);
 
-  useEffect(() => {
-    fetchProducts();
-  }, [relatedArray]);
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, [relatedArray]);
 
-  useEffect(() => {
-    fetchStyles();
-  }, [productInfo]);
+  // useEffect(() => {
+  //   fetchStyles();
+  // }, [productInfo]);
 
   useEffect (() => {
     const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
+    // console.log('scroll width', document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth);
     setRightArrow(farRight);
   }, [dataCompiled]);
+
+  useEffect(() => {
+    if(scrollValue === mySlider.current.scrollWidth - mySlider.current.clientWidth) {
+      console.log("All the way to the right");
+    } else if (mySlider.current.scrollLeft === 0){
+      console.log("all the way to the right")
+    }
+    console.log(scrollValue);
+  }, [scrollValue]);
+
 
   // useEffect(() => {
   //   console.log(styleInfo);
@@ -157,11 +203,14 @@ const RelatedBlock = function ({ productId, setProductId }) {
   // }, []);
 
   return (
-    <div>
+    <div data-testid = "outerBlock">
       <h3>Related Products</h3>
       <RelatedBlockContainer>
         {leftArrow === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
-        <div id="slider">
+        <div id="slider" ref={mySlider} onScroll={(e) => {
+          console.log(e.target.scrollLeft, e);
+          setScrollValue(e.target.scrollLeft);
+          }}>
           {/* {imageData} */}
           <RelatedInfo dataCompiled={dataCompiled} setDataCompiled={setDataCompiled} productId={productId} setProductId={setProductId} />
         </div>
@@ -172,3 +221,4 @@ const RelatedBlock = function ({ productId, setProductId }) {
 };
 
 export default RelatedBlock;
+

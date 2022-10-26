@@ -19,7 +19,7 @@ const StyledThumbnail = styled.img`
   overflow: hidden;
   position: relative;
   margin: 5px;
-  border: ${props => props.selected ? '3px solid white' : 'none'};
+  border: ${props => props.selected ? '3px solid #62929E' : 'none'};
 `
 
 const Thumbnail = ( {thumbnail, selected, onClick} ) => {

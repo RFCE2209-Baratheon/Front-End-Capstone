@@ -10,14 +10,15 @@ const Container = styled.div`{
   display: grid;
   grid-template-columns: auto auto;
   padding: 10px;
+  width: 1000px;
 }`;
 
-const Title = styled.h1`{
+const Title = styled.h2`{
   text-align: center
 }`;
 
 
-const Review = ({ productId, productName }) => {
+const Review = ({ average, setAverage, productId, productName }) => {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -48,8 +49,10 @@ const Review = ({ productId, productName }) => {
     return (
       <>
         <Title>Ratings & Reviews</Title>
-        <Container>
+        <Container data-testid="review-1">
           <RatingSummary
+            average={average}
+            setAverage={setAverage}
             reviews={reviews}
             setReviews={setReviews}
             setMetaData={setMetaData}

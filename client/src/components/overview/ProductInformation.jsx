@@ -7,12 +7,13 @@ const StyledSalePrice = styled.span`
   color: red;
 `
 
-const StyledSocials = styled.div`
+const StyledSocials = styled.p`
   > * {
     margin: 10px;
-    color: #5A5A5A;
+    color: #546A7B;
+    padding: 10px;
     &: hover {
-      color: #1C305C;
+      color: #62929E;
     };
 }
 `

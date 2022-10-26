@@ -14,6 +14,8 @@ import AddReviewForm from './AddReviewForm.jsx';
 const Container = styled.div`{
   test-align: center;
   border: solid;
+  border-width: 1px;
+  border-color: #62929E;
   padding: 10px;
   border-radius: 20px;
   margin: 32px;
@@ -22,12 +24,16 @@ const Container = styled.div`{
 }`;
 
 const SelectButton = styled.button`{
-  color: palevioletred;
   font-size: 1.5em;
+  background-color: white;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 2px solid #62929E;
+  border-radius: 50px;
+  box-shadow: 5px 5px 10px;
+  &:hover {
+    background-color:  #546A7B
+  }
 }`;
 
 const Menu = styled.ul`{
@@ -45,7 +51,7 @@ const List = styled.li`{
 }`;
 
 const ListButton = styled.button`{
-  width: 100%;
+  width: 100px;
   height: 100%;
   text-align: left;
   background: none;
@@ -58,7 +64,7 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 1400px;
+  max-height: 850px;
   overflow: scroll;
   // border: solid;
   border-radius: 10px;
@@ -139,7 +145,9 @@ const ReviewList = ({
   }
 
   return (
-    <div>
+    <>
+    <div style={{display:"inherit"}}>
+      <div style={{height:"100px"}}></div>
       <Container>
         <div data-testid="reviewlist-1">
           {allReviews.length}
@@ -158,9 +166,11 @@ const ReviewList = ({
           ))}
         </ScrollDiv>
       </Container>
+      <div>
       {moreReviewsButton
       && <SelectButton onClick={() => { expandReviews(); }}>More Reviews</SelectButton>}
       <SelectButton onClick={addReviewHandler}>Add a Review</SelectButton>
+      </div>
       {addReviewToggle
        && (
        <AddReviewForm
@@ -171,8 +181,10 @@ const ReviewList = ({
          productId={product.id}
        >
        </AddReviewForm>
+
        )}
     </div>
+    </>
   );
 };
 

@@ -65,7 +65,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
     const config = {params: {answer_id: iD}}
     axios.put('/qa/answers/:answer_id/report', {}, config)
     .then((success) => {
-      console.log('question reported at id:', iD)
+
       axios.get(`/qa/questions/${questionid}/answers`)
         .then((res)=>{
           setAnswers(res.data.results)
@@ -97,7 +97,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
           <Test>
           <div>
             <AnswerStyle>
-            <span className= 'answer'>{`A: ${currentAnswer.body}`}</span>
+            <span className= 'answer'>{` ${currentAnswer.body}`}</span>
             </AnswerStyle>
             <div>
               <Images images={currentAnswer.photos} />

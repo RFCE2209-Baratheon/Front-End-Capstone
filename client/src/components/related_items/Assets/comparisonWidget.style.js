@@ -6,7 +6,7 @@ import { BsPlusLg } from 'react-icons/bs';
 
 
 export const RelatedBlockContainer = styled.div`
-background-color: lightgrey;
+background-color: #F4F4F9;
 position: relative;
 display: flex;
 align-items: center;
@@ -23,7 +23,7 @@ margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
 border-radius: 18px;
-background: white;
+background: #62929E;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
 `;
@@ -43,25 +43,27 @@ margin: 0px 0px 0px 10px;
 `;
 
 export const LeftArrow = styled(BsFillArrowLeftCircleFill)`
-color: black;
+cursor: pointer;
+color: #546A7B;
 font-size: 2em;
 left: 0;
 position: absolute;
 z-index: 10;
 &:hover,
 &:focus {
-  color: moccasin;
+  color: #C6C5B9;
 }
 `;
 
 export const RightArrow = styled(BsFillArrowRightCircleFill)`
-color: black;
+cursor: pointer;
+color: #546A7B;
 font-size: 2em;
 right: 0;
 position: absolute;
 &:hover,
 &:focus {
-  color: moccasin;
+  color: #C6C5B9;
 }
 `;
 
@@ -75,7 +77,7 @@ text-decoration: line-through;
 `;
 
 export const RelatedActnBttn = styled(AiFillStar)`
-color: gold;
+color: #C6C5B9;
 font-size: 1.5em;
 position: absolute;
 right: 10px;
@@ -114,13 +116,14 @@ table-layout: fixed;
 `;
 
 export const TableValues = styled.tr`
-color: salmon;
+color: #546A7B;
 word-wrap: break-word;
 `;
 
 export const AddCardBtn = styled(BsPlusLg)`
+cursor: pointer;
 font-size: 3em;
-color: salmon;
+color: #546A7B;
 `;
 
 export const BtnContainer = styled.div`
@@ -137,6 +140,7 @@ width: 300px;
 `;
 
 export const OutfitCardGraphic = styled.span`
+cursor: pointer;
 display: inline-block;
 height: 450px;
 width: 300px;
@@ -150,7 +154,7 @@ position: relative;
 `;
 
 export const OutfitBlockContainer = styled.div`
-background-color: lightgrey;
+background-color: #F4F4F9;
 position: relative;
 display: flex;
 flex-direction: row;
@@ -159,19 +163,21 @@ height: 500px;
 `;
 
 export const LeftAOutfit = styled(BsFillArrowLeftCircleFill)`
-color: salmon;
+cursor: pointer;
+color: #546A7B;
 font-size: 2em;
 position: absolute;
 top: 50%;
 z-index: 10;
 &:hover,
 &:focus {
-  color: moccasin;
+  color: #C6C5B9;
 }
 `;
 
 export const RightAOutfit = styled(BsFillArrowRightCircleFill)`
-color: salmon;
+cursor: pointer;
+color: #546A7B;
 font-size: 2em;
 right: 0;
 position: absolute;
@@ -179,6 +185,6 @@ top: 50%;
 z-index: 10;
 &:hover,
 &:focus {
-  color: moccasin;
+  color: #C6C5B9;
 }
 `;

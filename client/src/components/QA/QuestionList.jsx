@@ -88,12 +88,12 @@ const QuestionList = ({productID}) => {
   const openQModal = () => {
     setShowQModal(!showQModal)
   }
-  console.log('is searched q enabled', enableSearchQ)
+
   //component
   return (
     <QuestionListStyle className='qListStyle'>
       { showQModal ? <Modal openQModal={openQModal} productId={productId} setProductId={setProductId} setShowQModal={setShowQModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
-        <div className ='Title'> QUESTIONS & ANSWERS </div>
+        <h2 className ='Title'> QUESTIONS & ANSWERS </h2>
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
@@ -101,12 +101,11 @@ const QuestionList = ({productID}) => {
             <div className="Accordion" data-testid="accordian">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid='IQ' renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion
-                   renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion data-testid="IQ" renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               })}
             </div>

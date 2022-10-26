@@ -45,6 +45,7 @@ const CloseButton = styled.button`{
 
 const ImagePopUp = ({ image }) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log('IMAGE', image)
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -52,7 +53,7 @@ const ImagePopUp = ({ image }) => {
 
   return (
     <>
-      <Thumbnail onClick={() => { toggleModal(); }} key={image.id} src={image.url} />
+      <Thumbnail data-testid="image-1"onClick={() => { toggleModal(); }} key={image.id} src={image.url} />
       {isOpen
       // <img onClick ={() => {toggleModal()}} src={image.url}></img>
       && (
