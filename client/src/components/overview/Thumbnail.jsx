@@ -23,10 +23,13 @@ const StyledThumbnail = styled.img`
 `
 
 const Thumbnail = ( {thumbnail, selected, onClick} ) => {
+  console.log('thumbnail: ', thumbnail)
   return (
-    <StyledThumbnailDiv selected={selected}>
-      <StyledThumbnail src={thumbnail.thumbnail_url} onClick={onClick} />
-    </StyledThumbnailDiv>
+    <div data-testid="thumbnail">
+      <StyledThumbnailDiv selected={selected}>
+        <StyledThumbnail src={thumbnail.thumbnail_url} onClick={onClick} />
+      </StyledThumbnailDiv>
+    </div>
   )
 }
 
