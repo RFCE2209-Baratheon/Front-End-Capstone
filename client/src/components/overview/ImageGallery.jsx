@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import {TiArrowBack} from 'react-icons/ti'
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;
@@ -15,7 +14,6 @@ const ImageGalleryContainerExpand = styled.div`
   position: relative;
   width: 100%;
 `
-
 
 const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
 
@@ -65,12 +63,6 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
 
   return (
     <>
-      {/* <div data-testid="expand-button">
-        <StyledExpand onClick={() => {
-          setDefaultView(!defaultView);
-          setExpandedView(!expandedView);
-        }} />
-      </div> */}
       <ImageGalleryContainerDefault onClick={changeView}>
         {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} />}
       </ImageGalleryContainerDefault>

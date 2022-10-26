@@ -37,10 +37,11 @@ const QuestionList = ({productID}) => {
   const currentComponent = 'QA';
   let currentTime = new Date()
 
+
   // Hooks & Handler
   useEffect(()=> {
 
-    console.log('setting questions')
+
 
     axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
@@ -96,8 +97,8 @@ const QuestionList = ({productID}) => {
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
-          <Accordion >
-            <div className="Accordion">
+          <Accordion>
+            <div className="Accordion" data-testid="accordian">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
                   <IndividualQuestion data-testid='IQ' renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />

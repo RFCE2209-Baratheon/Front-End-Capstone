@@ -23,9 +23,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
 
   //hooks & handlers
   useEffect(()=> {
-
-    // Config for request
-    console.log('Fetching answers')
     axios.get(`/qa/questions/${questionid}/answers`)
     .then((res)=>{
       setAnswers(res.data.results)
@@ -122,7 +119,10 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
 Answer.propTypes = {
   questionid: PropTypes.number,
   shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func
+  setShouldFetchQ: PropTypes.func,
+  openAModal: PropTypes.func,
+  shouldFetchA: PropTypes.bool,
+  searchedQ: PropTypes. array
 }
 
 export default Answer
