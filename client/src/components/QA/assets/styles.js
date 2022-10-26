@@ -32,7 +32,7 @@ width: 100%;
 }
 `
 const QuestionListStyle = styled.div`
-  background: rgb(240,177,17);
+  background: transparent;
   // rgsb(219, 144, 86)
   display: flex;
   flex-wrap: wrap;
@@ -41,8 +41,7 @@ const QuestionListStyle = styled.div`
 
 
   border: solid;
-  border-width: 1px;
-  border-radius: 5px;
+  border-color: #393D3F;
   margin: 50px;
   width: 50%;
 
@@ -54,8 +53,10 @@ const QuestionListStyle = styled.div`
 
   .loadMore {
     align: center;
-    border-radius: 5px;
-    background: rgb(240,177,17);
+    border: solid;
+    border-color: #393D3F;
+    border-width: 2px;
+    background: #F4F4F9;
     //rgb(240,177,17)
     white-space: normal !important;
     word-break:break-word;
@@ -67,8 +68,10 @@ const QuestionListStyle = styled.div`
   }
 
   .addQuestion{
-    border-radius: 5px;
-    background: rgb(240,177,17);
+    border: solid;
+    border-color: #393D3F;
+    background: #F4F4F9;
+    border-width: 2px;
     font-size: 20px;
     margin: 5px;
     height: 50px;
@@ -103,9 +106,9 @@ background: none;
 const Questions = styled.div`
 // border-top: ridge;
 // border-left: ridge;
-border: ridge;
+// border: ridge;
 border-radius: 5px;
-background: lightgray;
+background: #F4F4F9;
 // border-top-left-radius: 5px;
 border-color:rgb(222, 133, 64);
 margin-bottom: 5px;
@@ -135,15 +138,15 @@ padding-bottom: 25px;
 `
 const IndividualQuestionStyle = styled.div`
 
-border-left: solid;
-border-top: solid
-border-width: 1px;
-border-color: rgb(240,177,17);
-background: rgb(240,177,17);
-border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
-border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
-border-bottom-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
-border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '5px' : '0px')};
+// border-left: solid;
+// border-top: solid
+// border-width: 1px;
+// border-color: #F4F4F9;
+background: transparent;
+// border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+// border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+// border-bottom-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
+// border-bottom-left-radius: ${(props) => (props.selectIndex === JSON.stringify(props.renderQLength) ? '5px' : '0px')};
 
 .user {
   font-style: italic;
@@ -174,8 +177,11 @@ padding: 5px;
 `
 
 const Test =styled.div`
-padding-top 25px;
-padding-bottom 25px;
+padding-top: 25px;
+padding-bottom: 25px;
+padding-left: 10px;
+border: solid;
+border-color: #393D3F;
 `
 const AlignRight = styled.span`
 float: right;

@@ -17,7 +17,7 @@ const Helpfulness = ({ review, help }) => {
   const [clicked, setClicked] = useState(false);
 
   const handlePut = () => {
-    console.log('in put', review.review_id)
+
     let data = {id: review.review_id}
     axios.put('/reviews', data)
       .then((response) => {

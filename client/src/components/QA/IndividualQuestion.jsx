@@ -26,7 +26,7 @@ const [helpfulCount, setHelpfulCount] = useState(question.question_helpfulness)
 
 useEffect(()=>{
   if (searchedQ.length > 0) {
-    console.log('length of searchedQ', searchedQ.length)
+
     setEnableSearchQ(true)
     setOpen(null)
   }
@@ -36,7 +36,7 @@ useEffect(()=>{
 }, [searchedQ])
 
 const toggleOpen = () => {
-  console.log(open)
+
   if(open === null) {
 
     setOpen(true)
@@ -78,7 +78,7 @@ const reportQuestionOnclick = (iD) => {
 
 //component
   return (
-    <>
+    <div data-testid ='IQ'>
     <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
       <span className='question' onClick={toggleOpen}> {`Q: ${question.question_body}`}</span>
       <AlignRight>
@@ -89,7 +89,7 @@ const reportQuestionOnclick = (iD) => {
       </QuestionFolder>
     </IndividualQuestionStyle>
     {showAModal && <AddAnswerModal openAModal={openAModal} questionId={questionId} shouldFetchA={shouldFetchA} setShouldFetchA={setShouldFetchA}/>}
-    </>
+    </div>
   )
 }
 
@@ -98,7 +98,11 @@ IndividualQuestion.propTypes = {
   question: PropTypes.object,
   index: PropTypes.number,
   shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func
-
+  setShouldFetchQ: PropTypes.func,
+  renderQ: PropTypes.array,
+  searchedQ: PropTypes.array,
+  setEnableSearchQ: PropTypes.func,
+  renderQLength: PropTypes.number
 }
+
 export default IndividualQuestion

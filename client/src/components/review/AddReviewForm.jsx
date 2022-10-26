@@ -87,7 +87,7 @@ const AddReviewForm = ({
   const [starRating, setRating] = useState(0);
   const [recommendValue, setRecommendValue] = useState(false);
   const [images, setImages] = useState([]);
-  console.log('IMAGE', images);
+
 
   useEffect(() => {
     setBodyLength(bodyText.length);
@@ -167,7 +167,7 @@ const AddReviewForm = ({
 
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
-        console.log(photos);
+
         if (photos.event === 'success') {
           setImages([...images, photos.info.url]);
         }

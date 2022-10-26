@@ -42,7 +42,9 @@ function App() {
       .catch((error) => {
         console.log('error, could not get products from api. error: ', error)
       });
-  }, [])
+  }, []);
+
+
 
   console.log('Loading App.jsx with pid: ', productId)
 
@@ -50,9 +52,9 @@ function App() {
     <>
     <AppStyle>
 
-      {productId && <Overview className='Overview' productId={productId}></Overview>}
+      {productId && <Overview className='Overview' productId={'37315'}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
-      {productId && <QA className='QA' productID={productId} />}
+      {productId && <QA data-testid='IQ' productID={productId} />}
       {productId && <Review productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>

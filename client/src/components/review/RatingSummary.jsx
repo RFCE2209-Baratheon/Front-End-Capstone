@@ -9,7 +9,7 @@ import styled, { css } from 'styled-components';
 import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
 import Bar from './Bar.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
-import NewStarTest from './NewStarTest.jsx';
+// import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
   border: solid;
@@ -33,7 +33,7 @@ const RatingSummary = ({
   product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(0);
+  const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
@@ -41,7 +41,7 @@ const RatingSummary = ({
   const [clearFilters, setClearFilters] = useState(false);
 
   const calculateAverage = () => {
-    const { ratings } = metaData;
+    let { ratings } = metaData;
     let sum = 0;
     let sumFormula = 0;
     for (const rating in ratings) {
@@ -116,14 +116,16 @@ const RatingSummary = ({
   if (average === 0) {
     return null;
   }
+
   return (
     <Container>
+      <div>
       <h1>
-        Average Rating
         {' '}
         {average}
       </h1>
-      <NewStarTest rating={average} />
+      <StarRatingStaticSummary rating={average} />
+      </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h3 style={{textAlign:"center"}}>Rating Summary</h3>
       {clearFilters

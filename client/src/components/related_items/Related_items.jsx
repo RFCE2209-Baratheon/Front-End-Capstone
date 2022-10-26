@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import RelatedBlock from './RelatedBlock.jsx';
 import OutfitBlock from './OutfitBlock.jsx';
+import { RelatedModuleStyle } from './Assets/comparisonWidget.style.js';
 
 const Related = function ({productId, setProductId}) {
 
   return (
-    <div>
+    <div style={{width: "1100px"}}>
       <RelatedBlock productId={productId} setProductId={setProductId} />
-      <OutfitBlock />
+      <OutfitBlock productId={productId} setProductId={setProductId} />
     </div>
   );
 };
