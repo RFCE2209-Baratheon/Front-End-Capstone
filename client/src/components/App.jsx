@@ -59,6 +59,7 @@ const postInteraction = (element, widget, time) => {
 function App() {
   const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
+  const [average, setAverage] = useState(1);
 
 
   useEffect(() => {
@@ -88,8 +89,8 @@ function App() {
     <AppStyle>
       {productId && <Overview className='Overview' productId={productId}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
-      {productId && <QA data-testid='IQ' productID={productId} />}
-      {productId && <Review productName={productName} productId={productId} className='Review'/>}
+      {productId && <QA className='QA' productID={productId} />}
+      {productId && <Review average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
     </>
