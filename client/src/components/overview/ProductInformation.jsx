@@ -21,7 +21,7 @@ const StyledSocials = styled.p`
 const ProductInformation = ({ productData, currentStyle, reviewData }) => {
 
   return (
-    <>
+    <div data-testid="product-info">
       {reviewData ?
       <p>
         <span>⭐️⭐️⭐️⭐️⭐️</span> <a href="">Read all [#] reviews</a>
@@ -46,7 +46,7 @@ const ProductInformation = ({ productData, currentStyle, reviewData }) => {
         <a target="blank" href={"https://www.pinterest.com/pin/99360735500167749/"}><FaPinterest size={20}/></a>
         <a target="blank" href={"https://twitter.com/intent/tweet?text=Hello%20world"}><FaFacebook size={20}/></a>
       </StyledSocials>
-    </>
+    </div>
   )
 }
 

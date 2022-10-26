@@ -84,6 +84,7 @@ const Overview = ({ productId }) => {
 
   return (
     <>
+    <div data-testid="overview">
 
       <StyledContainer default={defaultView}>
         <StyledImageGallery>
@@ -101,7 +102,7 @@ const Overview = ({ productId }) => {
           </StyledAddToCart>
         </>}
       </StyledContainer>
-
+      </div>
     </>
   );
 }

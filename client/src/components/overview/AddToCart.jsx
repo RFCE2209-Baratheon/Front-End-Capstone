@@ -78,7 +78,7 @@ const AddToCart = ({ currentStyleSkus }) => {
 
   return (
     <> {mappedSizeOptions[0] ?
-        <AddToCartContainer>
+        <AddToCartContainer data-testid="addtocart">
           <div ref={messageRef}></div>
 
 
@@ -97,7 +97,7 @@ const AddToCart = ({ currentStyleSkus }) => {
 
 
           <p>
-            {maxQuantity > 0 && <AddToCartButton onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
+            {maxQuantity > 0 && <AddToCartButton data-testid="expand-button" onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
           </p>
         </AddToCartContainer> : <div>OUT OF STOCK</div> }
     </>
