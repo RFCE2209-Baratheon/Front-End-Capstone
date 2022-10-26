@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {PropTypes} from 'prop-types'
 
 const StyledIconImage = styled.img`
   width: 100%;
@@ -59,6 +60,15 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
       </StyledIconsDiv>
     </>
   )
+}
+
+//please review this proptype
+StyleSelector.propTypes = {
+
+  styleData: PropTypes.string,
+  currentStyle: PropTypes.object,
+  onStyleClick: PropTypes.func
+
 }
 
 export default StyleSelector;

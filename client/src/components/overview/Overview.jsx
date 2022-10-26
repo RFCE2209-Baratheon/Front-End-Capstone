@@ -3,9 +3,6 @@ import ProductInformation from './ProductInformation.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
-import exampleProductData from '../../example_data/get_all_products.js';
-import exampleStyleData from '../../example_data/get_styles.js';
-import exampleReviews from '../../example_data/get_reviews.js';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -40,14 +37,12 @@ const StyledAddToCart = styled.div`
   grid-area: right3;
 `
 
-const Overview = ({ productId }) => {
+const Overview = ({ productId, average, reviews }) => {
   const [styleData, setStyleData] = useState(null);
   const [currentStyle, setCurrentStyle] = useState(null);
   const [productData, setProductData] = useState(null);
-  const [reviewData, setReviewData] = useState(exampleReviews);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
-
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
@@ -84,15 +79,14 @@ const Overview = ({ productId }) => {
 
   return (
     <>
-    <div data-testid="overview">
-
-      <StyledContainer default={defaultView}>
+      <StyledContainer data-testid="overview" default={defaultView}>
         <StyledImageGallery>
           {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
         </StyledImageGallery>
+
         {defaultView && <>
           <StyledProductInfo>
-            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} reviewData={reviewData}/>)}
+            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} average={average} reviews={reviews}/>)}
           </StyledProductInfo>
           <StyledStyleSelector>
             {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
@@ -101,8 +95,8 @@ const Overview = ({ productId }) => {
             {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
           </StyledAddToCart>
         </>}
+
       </StyledContainer>
-      </div>
     </>
   );
 }

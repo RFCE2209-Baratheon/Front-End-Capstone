@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+import {PropTypes} from 'prop-types';
 import { ModalWrapper, ModalCloseBtn, TableValues, TableModal, ModalBackground } from './Assets/comparisonWidget.style.js';
 
 const ComparisonModal = function ({ productName, category, features, productId, setProductId, openCompModal }) {
@@ -18,10 +18,7 @@ const ComparisonModal = function ({ productName, category, features, productId, 
   }, [productId]);
 
   const joinFeatures = function () {
-    // let noDuplicates = (array, prop) => {
-    //   return [...new Map(array.map((m) => [m[prop], m])).values()];
-    // }
-    // console.log(noDuplicates(joinedFeatures, 'feature'));
+
     let noDups = {};
 
     return joinedFeatures.map((each) => {
@@ -29,9 +26,6 @@ const ComparisonModal = function ({ productName, category, features, productId, 
     let cardFeature = features.find((item) => {return item.feature === basicFeature});
     let mainFeature = mainProductInfo.features.find((item) => {return item.feature === basicFeature});
 
-    // console.log('this is the basic feature: ', basicFeature);
-    // console.log('cardFeatures is this one : ', cardFeature);
-    // console.log('and finally this is the main feature : ', mainFeature);
     if(noDups[basicFeature]) {
       return;
     } else if (cardFeature && mainFeature) {
