@@ -56,12 +56,23 @@ const OutfitBlock = function ({ productId }) {
   };
 
   const onClick = () => {
-    console.log('This is outfit data', outfitData);
+
+    let flag = false;
+    for(let i = 0; i < outfitData.length; i++) {
+      // console.log(productId)
+      if (outfitData[i].id === productId) {
+        flag = true;
+        break;
+    }
+      }
+    console.log('This is is OFD', outfitData)
     let copy = outfitData.slice();
-    console.log('COPY', copy);
+    console.log('COPY', JSON.stringify(copy));
     // let joinedData = [...currentProduct, ...copy]
-    copy.push(currentProduct);
-    setOutfitData(copy);
+    if (flag === false) {
+      copy.push(currentProduct);
+      setOutfitData(copy);
+    }
   }
 
   let mapped = outfitData.map((item, index) => {
@@ -69,8 +80,8 @@ const OutfitBlock = function ({ productId }) {
   });
 
   return (
-    <div>
-      <h2>Your Outfit</h2>
+    <div data-testid = "outfitOuter">
+      <h3>Your Outfit</h3>
       <OutfitBlockContainer>
         {leftArrow === 0 ? <></> : <LeftAOutfit onClick={slideLeft} />}
         <div id="slider-two">
