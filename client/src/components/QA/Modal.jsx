@@ -9,7 +9,7 @@ const {useState, useRef} = React;
 
 const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
 
-  console.log('productID in modal', productId)
+
 
   //state & refs
   const questionRef = useRef(null)
@@ -51,14 +51,14 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
             <ModalContent>
               <h2>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
-                <span className='formSpan'>Your Question *</span>
-                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
-                <span className='formSpan'>Your Nickname *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
-                <span className='formSpan'placeholder>Your Email *</span>
-                <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
-                <span className='finalSpan'>For authentication reasons, you will not be emailed</span>
-                <button className='submit'>Submit</button>
+                <span data-testid='modalform' className='formSpan'>Your Question *</span>
+                <textarea data-testid='modalform'type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
+                <span data-testid='modalform'className='formSpan'>Your Nickname *</span>
+                <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
+                <span data-testid='modalform'className='formSpan'placeholder>Your Email *</span>
+                <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
+                <span data-testid='modalform'className='finalSpan'>For authentication reasons, you will not be emailed</span>
+                <button data-testid='modalform'className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>
             <CloseModalButton aria-label='Close modal' onClick={openQModal}/>

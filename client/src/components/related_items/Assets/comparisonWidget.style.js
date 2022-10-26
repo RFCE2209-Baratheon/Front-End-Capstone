@@ -23,7 +23,7 @@ margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
 border-radius: 18px;
-background: #393D3F;
+background: #62929E;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
 `;
