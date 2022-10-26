@@ -9,23 +9,21 @@ import styled, { css } from 'styled-components';
 import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
 import Bar from './Bar.jsx';
 import ProductBreakDown from './ProductBreakDown.jsx';
-import NewStarTest from './NewStarTest.jsx';
+// import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
-  border: solid;
-  border-radius: 20px;
   padding: 10px;
 }`;
 
 const SummaryContainer = styled.div`{
-  border:solid;
-  borer-radius: 20px;
+
+  border-radius: 20px;
   padding: 10px;
 }`;
 
 const BreakDown = styled.div`{
-  border:solid;
-  borer-radius: 20px;
+
+  border-radius: 20px;
   padding: 10px;
 }`;
 
@@ -33,7 +31,7 @@ const RatingSummary = ({
   product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData,
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
-  const [average, setAverage] = useState(0);
+  const [average, setAverage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const [toggleFilter, setToggleFilter] = useState({
     1: false, 2: false, 3: false, 4: false, 5: false,
@@ -41,7 +39,7 @@ const RatingSummary = ({
   const [clearFilters, setClearFilters] = useState(false);
 
   const calculateAverage = () => {
-    const { ratings } = metaData;
+    let { ratings } = metaData;
     let sum = 0;
     let sumFormula = 0;
     for (const rating in ratings) {
@@ -81,8 +79,9 @@ const RatingSummary = ({
       }
       const resultsFiltered = allReviews.filter((review) =>
       JSON.stringify(review.rating) === rating);
-      const results = [...copy, ...resultsFiltered];
-      setReviews(results);
+      const results = [...resultsFiltered, ...copy];
+      const withoutDuplicates = [... new Set(results)]
+      setReviews(withoutDuplicates);
     }
     if (!tempObj[rating]) {
       setClearFilters(false);
@@ -115,35 +114,38 @@ const RatingSummary = ({
   if (average === 0) {
     return null;
   }
+
   return (
     <Container>
+      <div>
       <h1>
-        Average Rating
         {' '}
         {average}
       </h1>
-      <NewStarTest rating={average} />
+      <StarRatingStaticSummary rating={average} />
+      </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
-      <h3>Rating Summary</h3>
+      <h2 style={{textAlign:"center"}}>Rating Summary</h2>
       {clearFilters
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
-        {Object.keys(metaData.ratings).sort().reverse().map((rating) => (
-          <p onClick={() => { handleFilter(rating); }} style={{ whiteSpace: 'nowrap' }}>
-            {`${rating} stars`}
-            <Bar style={{ display: 'inline-block' }} star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
-          </p>
+        {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
+          <div key={index} onClick={() => { handleFilter(rating); }} style={{ marginTop:"10px", textAlign:"center", fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+            {`${rating} STARS`}
+            <div style={{height:"10px"}}></div>
+            <Bar star={rating} toggle={toggleFilter[rating]} sum={totalReviews} rating={metaData.ratings[rating]} />
+          </div>
         ))}
       </SummaryContainer>
-      <h3>Product Breakdown</h3>
+      <h2 style={{textAlign:"center"}}>Product Breakdown</h2>
       <BreakDown>
-        {Object.keys(metaData.characteristics).map((characteristic) => (
-          <p>
+        {Object.keys(metaData.characteristics).map((characteristic, index) => (
+          <div key={index}>
             <ProductBreakDown
               characteristic={characteristic}
               value={metaData.characteristics[characteristic]}
             />
-          </p>
+          </div>
         ))}
       </BreakDown>
     </Container>

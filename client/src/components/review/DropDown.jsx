@@ -32,13 +32,16 @@ const StyledButton = styled.input`
   padding: 0.5rem;
   border-radius: 1rem;
 `;
-export const DropDown = ({handleSelect}) => (
-  <select onChange={handleSelect}>
+export const DropDown = ({handleSelect}) => {
+
+  return (
+  <select data-testid="review-1" onChange={handleSelect}>
     <option value="relevant">Relevance</option>
     <option value="newest">Newest</option>
     <option value="helpful">Helpfulness</option>
   </select>
-);
+  )
+};
 
 export const Option = (props) => (
   <StyledOption selected={props.selected}>

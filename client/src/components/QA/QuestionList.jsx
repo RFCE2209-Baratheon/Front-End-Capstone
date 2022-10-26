@@ -7,6 +7,7 @@ import SearchBar from './SearchBar.jsx'
 import LoadMoreQs from './LoadMoreQs.jsx'
 import Modal from './Modal.jsx'
 import AddQuestion from './AddQuestion.jsx'
+import AddAnswerModal from './AddAnswerModal.jsx'
 import {interactionContext} from '../App.jsx'
 
 const { useState, useEffect, useContext } = React;
@@ -25,11 +26,15 @@ const QuestionList = ({productID}) => {
   const [searchedQ, setSearchedQ] = useState([])
   const [hide, setHide] = useState(true)
   const [enableSearchQ, setEnableSearchQ] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [showQModal, setShowQModal] = useState(false)
   const [shouldFetchQ, setShouldFetchQ] = useState(false)
-  const postInteraction = useContext(interactionContext)
-  const currentComponent = 'QA';
+  // const [open, setOpen] = useState(null)
 
+
+
+  const postInteraction = useContext(interactionContext)
+  // const [openAModal, setOpenAModal] = useState(false)
+  const currentComponent = 'QA';
   let currentTime = new Date()
 
   // Hooks & Handler
@@ -37,7 +42,7 @@ const QuestionList = ({productID}) => {
 
     console.log('setting questions')
 
-    axios.get('/qa/questions', {params: {product_id: productId, count: 500}})
+    axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
     .then((res)=>{
 
       if (res.data.results.length <= 4) {
@@ -50,7 +55,7 @@ const QuestionList = ({productID}) => {
       console.error(error)
     })
 
-  }, [productId, shouldFetchQ])
+  }, [productId, shouldFetchQ, searchedQ])
 
   useEffect(()=>{
 
@@ -60,11 +65,12 @@ const QuestionList = ({productID}) => {
 
   }, [end])
 
-  useEffect(()=>{
-    if (searchedQ.length > 0) {
-      setEnableSearchQ(true)
-    }
-  }, [searchedQ])
+  // useEffect(()=>{
+  //   if (searchedQ.length > 0) {
+  //     setEnableSearchQ(true)
+  //     setOpen(null)
+  //   }
+  // }, [searchedQ])
 
   const loadMore = (e) => {
 
@@ -78,15 +84,15 @@ const QuestionList = ({productID}) => {
     }
   }
 
-  const openModal = () => {
-    setShowModal(!showModal)
+  const openQModal = () => {
+    setShowQModal(!showQModal)
   }
-
+  console.log('is searched q enabled', enableSearchQ)
   //component
   return (
     <QuestionListStyle className='qListStyle'>
-      { showModal ? <Modal openModal={openModal} productId={productId} setProductId={setProductId} setShowModal={setShowModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
-        <div className ='Title'> QUESTIONS & ANSWERS </div>
+      { showQModal ? <Modal openQModal={openQModal} productId={productId} setProductId={setProductId} setShowQModal={setShowQModal} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/> : <></>}
+        <h2 className ='Title'> QUESTIONS & ANSWERS </h2>
         <SearchBar questions={questions} setRenderQ={setRenderQ} renderQ={renderQ} searchedQ={searchedQ} setSearchedQ={setSearchedQ} enableSearchQ={enableSearchQ} setEnableSearchQ={setEnableSearchQ}/>
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
@@ -94,18 +100,18 @@ const QuestionList = ({productID}) => {
             <div className="Accordion">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion key={index} question={question} open={open} index={index}/>
+                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ}/>
+                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               })}
             </div>
           </Accordion>
         </Wrapper>
       </QListWrapper>
-      <AddQuestion loadMore={loadMore} openModal={openModal}/>
+      <AddQuestion loadMore={loadMore} openQModal={openQModal}/>
       {hide ? <LoadMoreQs loadMore={loadMore}/> : <></>}
     </QuestionListStyle>
 

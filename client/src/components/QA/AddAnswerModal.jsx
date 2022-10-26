@@ -7,40 +7,41 @@ import axios from 'axios'
 
 const {useState, useRef} = React;
 
-const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
+const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA}) => {
 
-  console.log('productID in modal', productId)
+
+
 
   //state & refs
-  const questionRef = useRef(null)
+  const answerRef = useRef(null)
   const nicknameRef = useRef(null)
   const emailRef = useRef(null)
 
   //handler & helpers
-  const newPostObj = (question, nickname, email, productID, shouldFetchQ, setShouldFetchQ) => {
+  const newPostObj = (answer, nickname, email, photos) => {
     const dataObj = {
-      body: question,
+      body: answer,
       name: nickname,
       email: email,
-      product_id: productID
+      photos: []
     }
     return dataObj;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const dataObj = newPostObj(answerRef.current.value, nicknameRef.current.value, emailRef.current.value)
 
-    const dataObj = newPostObj(questionRef.current.value, nicknameRef.current.value, emailRef.current.value, parseInt(productId))
+    const config = {params: {question_id: questionId}}
 
-    axios.post('/qa/questions', dataObj)
+    axios.post('/qa/questions/:question_id/answers', dataObj, config)
     .then((res)=>{
-      setShowQModal(false)
-      setShouldFetchQ(!shouldFetchQ)
+      setShouldFetchA(!shouldFetchA)
+      openAModal()
     })
     .catch((err)=>{
 
     })
-
   }
 
   //component
@@ -51,8 +52,8 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
             <ModalContent>
               <h2>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
-                <span className='formSpan'>Your Question *</span>
-                <textarea type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
+                <span className='formSpan'>Your Answer *</span>
+                <textarea type='text' className='formTextArea' maxLength='1000' ref={answerRef}required='required'></textarea>
                 <span className='formSpan'>Your Nickname *</span>
                 <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
                 <span className='formSpan'placeholder>Your Email *</span>
@@ -61,7 +62,7 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
                 <button className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>
-            <CloseModalButton aria-label='Close modal' onClick={openQModal}/>
+            <CloseModalButton aria-label='Close modal' onClick={openAModal}/>
           </ModalWrapper>
         </ModalBackground>
     </>
@@ -69,16 +70,16 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
 }
 
 //proptypes
-Modal.propTypes = {
-  openQModal: PropTypes.func,
+AddAnswerModal.propTypes = {
+  openModal: PropTypes.func,
   productId: PropTypes.string,
   setProductId: PropTypes.func,
-  setShowQModal: PropTypes.func,
+  setShowModal: PropTypes.func,
   shouldFetchQ: PropTypes.bool,
   setShouldFetchQ: PropTypes.func,
 }
 
-export default Modal;
+export default AddAnswerModal;
 
 
 

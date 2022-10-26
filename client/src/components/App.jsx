@@ -5,9 +5,38 @@ import Related from './related_items/Related_items.jsx';
 import Overview from './overview/Overview.jsx';
 import axios from 'axios';
 import {AppStyle} from '../assets/styles.js'
+import styled from 'styled-components';
+// import logo from '../assets/logo-light.png';
+import logo from '../assets/logo-white-black-transparent.png'
 
 const {createContext} = React
 
+const StyledBanner = styled.section`
+  height: auto;
+  width: 100%;
+  height: auto;
+  background: #62929E;
+  z-index: 1;
+`
+
+const StyledLogo = styled.div`
+  display: flex;
+  // background-size: contain;
+  width: 200px;
+  height: 200px;
+  // border-radius: 50%
+  // overflow: hidden;
+  padding: 5px 5px 5px;
+  color: #F4F4F9;
+  z-index: 3;
+  transform: scale(1.5)
+`
+
+const Logo = styled.img`
+  // border: solid 1px #F4F4F9;
+  // border-radius: 50%;
+  z-index: 4;
+`
 
 //data-tracker
 const postInteraction = (element, widget, time) => {
@@ -29,12 +58,15 @@ const postInteraction = (element, widget, time) => {
 
 function App() {
   const [productId, setProductId] = useState(null);
+  const [productName, setProductName] = useState('');
+
 
   useEffect(() => {
     axios.get('/products')
       .then((response) => {
         // set default data to first product
         setProductId(parseInt(response.data[0].id));
+        setProductName(response.data[0].name);
       })
       .catch((error) => {
         console.log('error, could not get products from api. error: ', error)
@@ -47,12 +79,17 @@ function App() {
 
   return (
     <>
-    <AppStyle>
+    <StyledBanner>
+      <StyledLogo><Logo src={logo}></Logo></StyledLogo>
 
+      {/* Logo Goes Here */}
+
+    </StyledBanner>
+    <AppStyle>
       {productId && <Overview className='Overview' productId={productId}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
       {productId && <QA className='QA' productID={productId} />}
-      <Review className='Review'/>
+      {productId && <Review productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
     </>

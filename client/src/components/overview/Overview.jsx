@@ -69,9 +69,9 @@ const Overview = ({ productId }) => {
 
   }, [productId]);
 
-  const onStyleClick = (id) => {
+  const onStyleClick = (e, id) => {
     for (var i = 0; i < styleData.length; i++) {
-      if (styleData[i].style_id === ID) {
+      if (styleData[i].style_id === id) {
         setCurrentStyle(styleData[i]);
       }
     }

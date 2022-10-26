@@ -6,20 +6,18 @@ import { TiArrowBack } from 'react-icons/ti';
 
 const StyledLeftArrow = styled(AiOutlineArrowLeft)`
   position: absolute;
-  top: 325px;
   left: 90px;
-  font-size: 2rem;
-  color: yellow;
+  font-size: 3rem;
+  color: #62929E;
   z-index: 10;
   cursor: pointer;
   user-select: none;
 `
 const StyledRightArrow = styled(AiOutlineArrowRight)`
   position: absolute;
-  top: 325px;
   left: 550px;
-  font-size: 2rem;
-  color: yellow;
+  font-size: 3rem;
+  color: #62929E;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -30,7 +28,7 @@ const StyledExpand = styled(AiOutlineExpand)`
   top: 25%;
   left: 450px;
   font-size: 2rem;
-  color: yellow;
+  color: #62929E;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -38,10 +36,9 @@ const StyledExpand = styled(AiOutlineExpand)`
 
 const StyledUpArrow = styled(IoIosArrowUp)`
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: -28px;
   font-size: 2rem;
-  color: yellow;
+  color: #62929E;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -49,10 +46,9 @@ const StyledUpArrow = styled(IoIosArrowUp)`
 
 const StyledDownArrow = styled(IoIosArrowDown)`
   position: absolute;
-  top: 560px;
-  left: 30px;
+  top: 500px;
   font-size: 2rem;
-  color: yellow;
+  color: #62929E;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -67,22 +63,19 @@ const StyledRightArrowExpand = styled(StyledRightArrow)`
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`
-  left: -5px;
-  top: 20px;
-  color: darkgrey;
+  top: -20px;
 `
 
 const StyledDownArrowExpand = styled(StyledDownArrow)`
-  left: -5px;
-  color: darkgrey;
+  top: 500px;
+  color: #62929E;
 `
 
 const StyledBackButton = styled(TiArrowBack)`
-  top: 0px;
-  // left: 30px;
-  position: relative;
+  top: -50px;
+  position: absolute;
   font-size: 2rem;
-  color: black;
+  color: #393D3F;
   z-index: 10;
   cursor: pointer;
   user-select: none;

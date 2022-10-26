@@ -41,7 +41,6 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  console.log('the question id in get answers list', req.params.question_id)
   const requestConfig = {
     headers: {'Authorization': config.TOKEN}
   }
@@ -53,8 +52,6 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
     console.log(error)
   })
 })
-
-
 
 // Add a Question
 // Adds a question for the given product
@@ -80,6 +77,19 @@ app.post('/qa/questions/', (req, res) => {
 // POST /qa/questions/:question_id/answers
 app.post('/qa/questions/:question_id/answers', (req, res) => {
 
+  let id = parseInt(req.query.question_id)
+  console.log('type of the id', typeof id)
+  const requestConfig = {
+    headers: {'Authorization': config.TOKEN}
+  }
+  console.log('req.query', req.query)
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${id}/answers`, req.body, requestConfig)
+  .then((response)=> {
+    res.sendStatus(response.status)
+  })
+  .catch((err)=>{
+    console.log('WE ARE HAVING SOME ISSUES!', err)
+  })
 });
 // Mark Question as Helpful
 // Updates a question to show it was found helpful.
