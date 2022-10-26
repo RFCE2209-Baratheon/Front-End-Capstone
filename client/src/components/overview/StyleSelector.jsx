@@ -42,7 +42,7 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
       <b>STYLE &gt; </b>
       <span>{currentStyle.name}</span>
       <br></br>
-      <StyledIconsDiv>
+      <StyledIconsDiv data-testid="style">
         {styleData.map((style, index) =>
           <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
             setStyleId(style.style_id)

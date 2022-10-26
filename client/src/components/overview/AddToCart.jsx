@@ -78,7 +78,7 @@ const AddToCart = ({ currentStyleSkus }) => {
 
   return (
     <> {mappedSizeOptions[0] ?
-        <AddToCartContainer>
+        <AddToCartContainer data-testid="addtocart">
           <div ref={messageRef}></div>
 
 

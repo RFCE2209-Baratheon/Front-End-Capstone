@@ -35,7 +35,8 @@ const QuestionList = ({productID}) => {
   const postInteraction = useContext(interactionContext)
   // const [openAModal, setOpenAModal] = useState(false)
   const currentComponent = 'QA';
-  let currentTime = new Date()
+  // let currentTime = new Date()
+  let currentTime = '';
 
   // Hooks & Handler
   useEffect(()=> {
@@ -97,14 +98,15 @@ const QuestionList = ({productID}) => {
       <QListWrapper>
         <Wrapper className ='accordionWrapper'>
           <Accordion>
-            <div className="Accordion">
+            <div className="Accordion" data-testid="accordian">
               {enableSearchQ ? searchedQ.map(function(question, index) {
                 return (
                   <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               }) : renderQ.map(function(question, index) {
                 return (
-                  <IndividualQuestion renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
+                  <IndividualQuestion
+                   renderQLength={renderQ.length-1} key={index} question={question} open={open} index={index} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} searchedQ={searchedQ} setEnableSearchQ={setEnableSearchQ} />
                 )
               })}
             </div>

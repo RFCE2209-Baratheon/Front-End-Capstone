@@ -102,7 +102,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
             <div>
               <Images images={currentAnswer.photos} />
               <span className='user'>{`by ${currentAnswer.answerer_name}, `}</span>
-              <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span>
+              {/* <span>{format(parseISO(`${currentAnswer.date}`), 'MMMM d, yyyy  |  ')}</span> */}
               <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} helpfulHandler={helpfulAnswerOnclick} reportHandler={reportAnswerOnclick}/>
             </div>
           </div>

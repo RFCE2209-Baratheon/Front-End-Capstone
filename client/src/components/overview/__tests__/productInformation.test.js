@@ -1,25 +1,12 @@
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event'
 import axios from 'axios';
 import ImageGallery from '../../overview/ImageGallery.jsx';
 import AddToCart from '../../overview/AddToCart.jsx';
 import Overview from '../../overview/Overview.jsx';
 import ProductInformation from '../../overview/ProductInformation.jsx';
 
-axios.defaults.baseURL = 'http://127.0.0.1:3000';
-
-// test('should render ImageGallery component', () => {
-//   render(
-//       <ImageGallery styleImages={testData}/>
-//   );
-//   const expandButtonClass = screen.getByTestId('expand-button');
-//   // console.log('expand button class: ', expandButtonClass);
-//   // const expandButtonRoots = document.getElementsByClassName(expandButtonClass);
-
-//   expect(expandButtonClass).toBeInTheDocument();
-// })
 
 var productData = {
   "id": 37315,
@@ -191,10 +178,13 @@ afterEach(()=> {
 })
 
 
-test('It renders the Product Information component', () => {
-    // const user = userEvent.setup();
+describe('It renders the Product Information component', () => {
     render(<ProductInformation productData={productData} currentStyle={currentStyle} reviewData={reviewData}
       />);
-    const test = screen.getByTestId('product-info');
-    expect(test).toBeInTheDocument();
+    it("Shoulder render the product info component", () => {
+        const test = screen.getByTestId('product-info');
+        expect(test).toBeInTheDocument();
+    })
+
+
 });
