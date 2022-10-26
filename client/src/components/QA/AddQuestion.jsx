@@ -8,7 +8,7 @@ const AddQuestion = ({openQModal}) => {
   }
 //component
   return (
-  <button className='addQuestion'onClick={handleClick}> Add a question </button>
+  <button data-testid ='addQ' className='addQuestion'onClick={handleClick}>Add a question</button>
   )
 
 

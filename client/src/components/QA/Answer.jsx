@@ -97,7 +97,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
           <Test>
           <div>
             <AnswerStyle>
-            <span className= 'answer'>{`A: ${currentAnswer.body}`}</span>
+            <span className= 'answer'>{` ${currentAnswer.body}`}</span>
             </AnswerStyle>
             <div>
               <Images images={currentAnswer.photos} />

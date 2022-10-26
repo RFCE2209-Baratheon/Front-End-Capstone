@@ -3,11 +3,18 @@ import React from 'react';
 import '@testing-library/react/dont-cleanup-after-each';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event'
-import {render, screen, cleanup, waitFor} from '@testing-library/react';
+import {render, screen, cleanup, waitFor, fireEvent} from '@testing-library/react';
 import axios from 'axios';
 import QuestionList from '../QuestionList.jsx'
 import IndividualQuestion from '../IndividualQuestion.jsx';
+import AddQuestion from '../AddQuestion.jsx'
+import AddAnswer from '../AddAnswer.jsx'
+import AddAnswerModal from '../AddAnswerModal.jsx'
+import Modal from '../Modal.jsx'
+import {ModalForm} from '../assets/styles.js'
 import {format, parseISO} from 'date-fns'
+import QA from '../QA.jsx'
+
 jest.mock('axios')
 
 const data2 = {
@@ -348,7 +355,7 @@ const data2 = {
 
 
 
-describe('Testing App', function () {
+describe('Testing Question Render', function () {
 
     beforeAll(() => {
 
@@ -368,3 +375,84 @@ describe('Testing App', function () {
 	  expect(questionInstances).toHaveLength(4)
     });
 })
+
+
+
+
+
+
+
+describe('Testing Question Modal Render', () => {
+    const onClickMock = jest.fn()
+    beforeAll(() => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        });
+        afterEach(() => {
+
+        cleanup()
+        });
+
+    it('Should trigger modal', async () => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        await render(<QuestionList productId={'37311'}></QuestionList>);
+        const {container} = render(<AddQuestion onClick={onClickMock()}/>)
+
+        fireEvent.click(container, 'Add a question')
+        await render(<Modal/>)
+        expect(onClickMock).toHaveBeenCalledTimes(1)
+    });
+});
+
+describe('Testing Answer Modal Render', () => {
+    const onClickMock = jest.fn()
+    beforeAll(() => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        });
+        afterEach(() => {
+
+        cleanup()
+        });
+
+    it('Should trigger modal', async () => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        await render(<QuestionList productId={'37311'}></QuestionList>);
+        const {container} = render(<AddAnswer onClick={onClickMock()}/>)
+
+        fireEvent.click(container, 'Add Answer')
+        await render(<AddAnswerModal/>)
+        const { getByText } = render(<ModalForm onSubmit={onClickMock} />);
+
+        expect(onClickMock).toHaveBeenCalledTimes(1)
+    });
+});
+
+describe('Testing Answer Modal Render', () => {
+    const onClickMock = jest.fn()
+    beforeAll(() => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        });
+        afterEach(() => {
+
+        cleanup()
+        });
+
+    it('Should trigger modal', async () => {
+
+        axios.get.mockResolvedValue({ data: data2 });
+        await render(<QA productId={'37311'}></QA>);
+        await render(<QuestionList productId={'37311'} />)
+
+
+
+        expect(screen.queryByTestId('QL')).toBeInTheDocument()
+    });
+});
+
+
+
+
