@@ -44,7 +44,7 @@ const Helpfulness = ({ review, help }) => {
   };
 
   return (
-    <HelpfulDiv>
+    <HelpfulDiv data-testid="helpful-1">
       {'Helpful? '}
       <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} style={{ textDecoration: 'underline', color: 'blue' }}>
         {'Yes '}

@@ -31,6 +31,7 @@ const ProductBreakDown = ({ characteristic, value }) => {
   const Size = ['none selected', 'A Size Too Small', '1/2 a Size Too Small', 'Perfect', '1/2 a Size Too Big', 'A Size Too Wide'];
   const Fit = ['none selected', 'Runs Tight', 'Runs Slightly Tight', 'Perfect', 'Runs Slightly Long', 'Runs Long'];
   const [characteristicArray, setCharacteristicArray] = useState([]);
+  console.log('CHAR', characteristic, value)
 
   useEffect(() => {
     if (characteristic === 'Fit') {
@@ -55,7 +56,7 @@ const ProductBreakDown = ({ characteristic, value }) => {
 
   return (
     <>
-      <div style={{textAlign:"center", fontWeight:"bold"}}>{characteristic.toUpperCase()}</div>
+      <div data-testid='breakdown-1' style={{textAlign:"center", fontWeight:"bold"}}>{characteristic.toUpperCase()}</div>
       <div style={{textAling:"center", width:"auto"}}>
       <Triangle value={(value.value/5)*300}>
         <VscTriangleDown/>

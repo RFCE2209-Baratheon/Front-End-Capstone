@@ -21,7 +21,7 @@ function StarRatingStaticSummary({rating}) {
   }
 
   return (
-    <div style={{width:"min-content", textAlign:"center"}} className="star-rating">
+    <div data-testid="star-1" style={{width:"min-content", textAlign:"center"}} className="star-rating">
     <svg style={{height:"0px"}} className="linear-gradient-template">
     <Gradient id="half" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="50%" style={{stopColor: "rgb(255, 193, 7)"}}></stop>

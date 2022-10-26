@@ -12,7 +12,7 @@ const Container = styled.div`{
   padding: 10px;
 }`;
 
-const Title = styled.h1`{
+const Title = styled.h2`{
   text-align: center
 }`;
 
@@ -48,7 +48,7 @@ const Review = ({ productId, productName }) => {
     return (
       <>
         <Title>Ratings & Reviews</Title>
-        <Container>
+        <Container data-testid="review-1">
           <RatingSummary
             reviews={reviews}
             setReviews={setReviews}
