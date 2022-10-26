@@ -1,24 +1,15 @@
 import React from 'react';
-import { RelatedCardGraphic, TextOnCard, ImageOnCard } from './Assets/comparisonWidget.style.js';
+import { RelatedCardGraphic, TextOnCard, ImageOnCard, AddCardBtn, OutfitCardGraphic, BtnContainer, OuterBtnDiv } from './Assets/comparisonWidget.style.js';
 
-const OutfitCards = function () {
+const OutfitCards = function ({clickHandler}) {
   return (
-    <RelatedCardGraphic data-testid="cardOne">
-    {/* <TextOnCard>
-      <p>
-        Category
-        {' '}
-        <br />
-        Product Name
-        {' '}
-        <br />
-        $ Price
-      </p>
-      <div>
-      <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar />
-      </div>
-    </TextOnCard> */}
-  </RelatedCardGraphic>
+    <OutfitCardGraphic data-testid="cardOne">
+      <OuterBtnDiv>
+        <BtnContainer>
+          <AddCardBtn onClick={clickHandler}></AddCardBtn>
+        </BtnContainer>
+      </OuterBtnDiv>
+  </OutfitCardGraphic>
   )
 };
 

@@ -12,20 +12,18 @@ import ProductBreakDown from './ProductBreakDown.jsx';
 // import NewStarTest from './NewStarTest.jsx';
 
 const Container = styled.div`{
-  border: solid;
-  border-radius: 20px;
   padding: 10px;
 }`;
 
 const SummaryContainer = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 
 const BreakDown = styled.div`{
 
-  borer-radius: 20px;
+  border-radius: 20px;
   padding: 10px;
 }`;
 

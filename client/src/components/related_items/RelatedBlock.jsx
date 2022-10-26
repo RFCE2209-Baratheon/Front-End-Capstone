@@ -158,7 +158,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
 
   return (
     <div>
-      <h3>Related Products</h3>
+      <h2>Related Products</h2>
       <RelatedBlockContainer>
         {leftArrow === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
         <div id="slider">
@@ -167,7 +167,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
         </div>
         {leftArrow === rightArrow ? <></> : <RightArrow onClick={slideRight} />}
       </RelatedBlockContainer>
-    </div>
+      </div>
   );
 };
 
