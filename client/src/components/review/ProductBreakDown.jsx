@@ -31,7 +31,6 @@ const ProductBreakDown = ({ characteristic, value }) => {
   const Size = ['none selected', 'A Size Too Small', '1/2 a Size Too Small', 'Perfect', '1/2 a Size Too Big', 'A Size Too Wide'];
   const Fit = ['none selected', 'Runs Tight', 'Runs Slightly Tight', 'Perfect', 'Runs Slightly Long', 'Runs Long'];
   const [characteristicArray, setCharacteristicArray] = useState([]);
-  console.log('CHAR', characteristic, value)
 
   useEffect(() => {
     if (characteristic === 'Fit') {

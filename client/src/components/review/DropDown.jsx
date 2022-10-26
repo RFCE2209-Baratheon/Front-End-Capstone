@@ -33,7 +33,7 @@ const StyledButton = styled.input`
   border-radius: 1rem;
 `;
 export const DropDown = ({handleSelect}) => {
-  console.log(handleSelect)
+
   return (
   <select data-testid="review-1" onChange={handleSelect}>
     <option value="relevant">Relevance</option>

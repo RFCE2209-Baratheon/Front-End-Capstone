@@ -125,7 +125,7 @@ const RatingSummary = ({
       <StarRatingStaticSummary rating={average} />
       </div>
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
-      <h3 style={{textAlign:"center"}}>Rating Summary</h3>
+      <h2 style={{textAlign:"center"}}>Rating Summary</h2>
       {clearFilters
       && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
       <SummaryContainer>
@@ -137,7 +137,7 @@ const RatingSummary = ({
           </div>
         ))}
       </SummaryContainer>
-      <h3 style={{textAlign:"center"}}>Product Breakdown</h3>
+      <h2 style={{textAlign:"center"}}>Product Breakdown</h2>
       <BreakDown>
         {Object.keys(metaData.characteristics).map((characteristic, index) => (
           <div key={index}>
