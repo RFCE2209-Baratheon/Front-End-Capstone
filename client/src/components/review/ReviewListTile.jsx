@@ -37,7 +37,7 @@ function ReviewListTile({ review, metaData }) {
   return (
     <Container data-testid="reviewlisttile-1">
       <span>{review.rating}</span>
-      <StarRatingStatic rating={review.rating} review={review} />
+      <StarRatingStatic style={{userSelect:"none"}} rating={review.rating} review={review} />
       <div style={{ textAlign:"right", whiteSpace: 'nowrap' }}>
         <GoVerified style={{color:"#62929E"}}/> <span><b>{review.reviewer_name}</b> <i>{`${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</i></span>
 
