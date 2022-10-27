@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {PropTypes} from 'prop-types'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
-import {FaFacebook} from '@react-icons/all-files/fa/FaFacebook'
-import {FaPinterest} from '@react-icons/all-files/fa/FaPinterest'
 
 import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 
