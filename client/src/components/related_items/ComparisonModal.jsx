@@ -86,8 +86,8 @@ const ComparisonModal = function ({ productName, category, features, productId, 
 ComparisonModal.propTypes = {
   productName: PropTypes.string,
   category: PropTypes.string,
-  features: PropTypes.string,
-  productId: PropTypes.string,
+  features: PropTypes.array,
+  productId: PropTypes.number ,
   setProductId: PropTypes.func,
 }
 

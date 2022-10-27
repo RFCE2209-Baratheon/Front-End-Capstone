@@ -24,13 +24,13 @@ function StarRatingStatic({rating},{product}) {
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
-          <button
+          <span
             type="button"
             key={index}
             className={index <= avgRating ? 'on' : 'off'}
           >
             <span className="star">&#9733;</span>
-          </button>
+          </span>
         );
       })}
     </div>

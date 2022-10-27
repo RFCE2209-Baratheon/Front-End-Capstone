@@ -16,11 +16,12 @@ const Container = styled.div`{
   border: solid;
   border-width: 1px;
   border-color: #62929E;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
   margin: 32px;
   overflow-x: hidden;
   overflow-y: auto;
+  box-shadow: 5px 5px 10px;
 }`;
 
 const SelectButton = styled.button`{
@@ -64,7 +65,7 @@ const ListButton = styled.button`{
 }`;
 
 const ScrollDiv = styled.div`{
-  max-height: 850px;
+  max-height: 825px;
   overflow: scroll;
   // border: solid;
   border-radius: 10px;
@@ -75,7 +76,7 @@ const ScrollDiv = styled.div`{
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    border: 1px solid #808080;
+    border: 1px solid #62929E;
     background: white;
     border-radius: 10px;
     width: 10px;
@@ -120,8 +121,8 @@ const ReviewList = ({
 
   const expandReviews = () => {
     console.log('clicked')
-    const reviewList = allReviews.slice(0, reviewListIndex + 1);
     const newIndex = reviewListIndex + 2;
+    const reviewList = allReviews.slice(0, newIndex + 1);
     setReviewListIndex(newIndex);
     setReviews(reviewList);
     if (reviewListIndex + 1 > allReviews.length) {
@@ -148,7 +149,6 @@ const ReviewList = ({
   return (
     <>
     <div style={{display:"inherit"}}>
-      <div style={{height:"100px"}}></div>
       <Container>
         <div data-testid="reviewlist-1">
           {allReviews.length}
@@ -161,13 +161,13 @@ const ReviewList = ({
           {reviews.map((review, index) => (
             <ReviewListTile
               metaData={metaData}
-              key={index}
+              key={review.review_id}
               review={review}
             />
           ))}
         </ScrollDiv>
       </Container>
-      <div>
+      <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
       {moreReviewsButton
       && <SelectButton onClick={expandReviews}>More Reviews</SelectButton>}
       <SelectButton onClick={addReviewHandler}>Add a Review</SelectButton>

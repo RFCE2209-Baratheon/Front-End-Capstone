@@ -1,18 +1,18 @@
 const express = require('express')
-const compression = require('compression')
+// const compression = require('compression')
 const path = require('path');
 const app = express();
 const axios = require('axios');
 const config = require('../config.js');
 const requestConfig = {
-  headers: {'Authorization': config.TOKEN, 'Content-Encoding': 'gzip'}
+  headers: {'Authorization': config.TOKEN}
 }
 
 const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
 
 
-app.use(compression({level:6, threshold: 0}))
+// app.use(compression({level:6, threshold: 0}))
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json())
 

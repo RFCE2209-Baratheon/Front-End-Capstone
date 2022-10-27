@@ -93,7 +93,7 @@ const RelatedBlock = function ({ productId, setProductId }) {
 
   return (
     <div data-testid = "outerBlock">
-      <h3>Related Products</h3>
+      <h2>Related Products</h2>
       <RelatedBlockContainer>
         {scrollValue === 0 ? <></> : <LeftArrow onClick={slideLeft} />}
         <div id="slider" ref={mySlider} onScroll={(e) => {

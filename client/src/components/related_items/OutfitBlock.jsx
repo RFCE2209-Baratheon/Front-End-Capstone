@@ -97,7 +97,7 @@ const OutfitBlock = function ({ productId }) {
 
   return (
     <div data-testid = "outfitOuter">
-      <h3>Your Outfit</h3>
+      <h2>Your Outfit</h2>
       <OutfitBlockContainer>
         {scrollValue === 0 ? <></> : <LeftAOutfit onClick={slideLeft} />}
         <div id="slider-two" onScroll={(e) => {setScrollValue(e.target.scrollLeft)}}>
