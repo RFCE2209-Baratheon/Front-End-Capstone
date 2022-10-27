@@ -121,8 +121,8 @@ const ReviewList = ({
 
   const expandReviews = () => {
     console.log('clicked')
-    const reviewList = allReviews.slice(0, reviewListIndex + 1);
     const newIndex = reviewListIndex + 2;
+    const reviewList = allReviews.slice(0, newIndex + 1);
     setReviewListIndex(newIndex);
     setReviews(reviewList);
     if (reviewListIndex + 1 > allReviews.length) {
@@ -161,7 +161,7 @@ const ReviewList = ({
           {reviews.map((review, index) => (
             <ReviewListTile
               metaData={metaData}
-              key={index}
+              key={review.review_id}
               review={review}
             />
           ))}
