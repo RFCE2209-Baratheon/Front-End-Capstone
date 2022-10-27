@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: [new BundleAnalyzerPlugin({openAnalyzer: true}), new CompressionPlugin({
     algorithm: 'gzip',
-    test: /.js$|.css$/,
+    test: /.js$|.css$|.jsx/,
   })],
   module: {
     rules: [
