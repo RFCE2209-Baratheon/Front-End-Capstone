@@ -1,5 +1,5 @@
 import styled, {createGlobalStyle} from 'styled-components';
-import {MdClose} from '@react-icons/all-files/all-files/md/MdClose'
+import {MdClose} from '@react-icons/all-files/md/MdClose'
 
 
 const Wrapper = styled.div`

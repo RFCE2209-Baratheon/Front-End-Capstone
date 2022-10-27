@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { BsFillArrowLeftCircleFill } from '@react-icons/all-files/bs/BsFillArrowLeftCircleFill';
-import { BsFillArrowRightCircleFill } from '@react-icons/all-files/bs/BsFillArrowRightCircleFill';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { ImCancelCircle } from "@react-icons/all-files/im/ImCancelCircle";
 import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
-import { BsPlusLg } from '@react-icons/all-files/bs/BsPlusLg';
+import { BsPlusLg } from 'react-icons/bs';
 
 
 export const RelatedBlockContainer = styled.div`
