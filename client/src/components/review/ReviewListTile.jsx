@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
+import  checkMark   from '../../assets/checkmark.png'
 import { FcCheckmark } from 'react-icons/fc';
 import { parseISO, format } from 'date-fns';
 import ReviewListBody from './ReviewListBody.jsx';
@@ -32,9 +33,6 @@ const Response = styled.div`{
 
 function ReviewListTile({ review, metaData }) {
 
-  const dateString = JSON.stringify(review.date.slice(0, 10));
-  console.log(review.date)
-
   return (
     <Container data-testid="reviewlisttile-1">
       <p>{review.rating}</p>
@@ -51,7 +49,7 @@ function ReviewListTile({ review, metaData }) {
         && (
         <p>
           Recommended
-          <FcCheckmark />
+          <span><img style={{width:"30px", height: "30px"}} src={checkMark}/></span>
         </p>
         )
       )}

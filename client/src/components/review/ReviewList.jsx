@@ -119,13 +119,14 @@ const ReviewList = ({
   };
 
   const expandReviews = () => {
+    console.log('clicked')
+    const reviewList = allReviews.slice(0, reviewListIndex + 1);
+    const newIndex = reviewListIndex + 2;
+    setReviewListIndex(newIndex);
+    setReviews(reviewList);
     if (reviewListIndex + 1 > allReviews.length) {
       setMoreReviewsButton(false);
     }
-    const reviewList = allReviews.slice(0, reviewListIndex + 1);
-    setReviews(reviewList);
-    const newIndex = reviewListIndex + 2;
-    setReviewListIndex(newIndex);
   };
 
   const handleDropOpen = () => {
@@ -168,7 +169,7 @@ const ReviewList = ({
       </Container>
       <div>
       {moreReviewsButton
-      && <SelectButton onClick={() => { expandReviews(); }}>More Reviews</SelectButton>}
+      && <SelectButton onClick={expandReviews}>More Reviews</SelectButton>}
       <SelectButton onClick={addReviewHandler}>Add a Review</SelectButton>
       </div>
       {addReviewToggle
