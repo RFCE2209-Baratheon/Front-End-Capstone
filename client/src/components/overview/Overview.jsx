@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ProductInformation from './ProductInformation.jsx';
+import ProductInformation1 from './ProductInformation.jsx';
+import ProductInformation2 from './ProductInformation2.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -13,10 +14,12 @@ const StyledContainer = styled.div`
   grid-template-areas: ${props => props.default ?
     `"left1 right1"
     "left1 right2"
-    "left1 right3"` :
+    "left1 right3"
+    "bottom bottom"` :
     `". left1 ."
     ". left1 . "
-    ". left1 . "`};
+    ". left1 . "
+    "bottom bottom"`};
   column-gap: 10px;
   min-width: 1100px;
 `
@@ -28,6 +31,10 @@ const StyledImageGallery = styled.div`
 const StyledProductInfo = styled.div`
   grid-area: right1;
   max-width: 720px;
+`
+const StyledProductInfo2 = styled.div`
+  grid-area: bottom;
+  max-width: 1100px;
 `
 
 const StyledStyleSelector = styled.div`
@@ -43,12 +50,16 @@ const Overview = ({ productId, average, reviews }) => {
   const [productData, setProductData] = useState(null);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
+  const [styleId, setStyleId] = useState(null);
+
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
       .then((response) => {
         setStyleData(response.data.results)
         setCurrentStyle(response.data.results[0])
+        setStyleId(response.data.results[0].style_id)
+
       })
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
@@ -86,14 +97,17 @@ const Overview = ({ productId, average, reviews }) => {
 
         {defaultView && <>
           <StyledProductInfo>
-            {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} average={average} reviews={reviews}/>)}
+            {productData && currentStyle && (<ProductInformation1 productData={productData} productId={productId} currentStyle={currentStyle} average={average} reviews={reviews}/>)}
           </StyledProductInfo>
           <StyledStyleSelector>
-            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
+            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} styleId={styleId} setStyleId={setStyleId} />)}
             </StyledStyleSelector>
           <StyledAddToCart>
             {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
           </StyledAddToCart>
+          <StyledProductInfo2>
+            {productData && (<ProductInformation2 productData={productData}/>)}
+          </StyledProductInfo2>
         </>}
 
       </StyledContainer>

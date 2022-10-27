@@ -18,7 +18,7 @@ h2 {
 
 p, div, span {
   color: #393D3F;
-  // font-family: monospace;
+  font-family: monospace;
 }
 
 .root {
@@ -26,6 +26,14 @@ p, div, span {
 }
 
 .Overview {
+}
+
+.overlay {
+  color: #F4F4F9;
+}
+
+.price {
+  color: red;
 }
 
 // .QA {

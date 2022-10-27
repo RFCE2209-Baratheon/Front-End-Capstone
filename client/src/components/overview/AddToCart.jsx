@@ -7,15 +7,16 @@ import { PropTypes } from 'prop-types'
 const AddToCartButton = styled.button`
   background-color: white;
   font-family: monospace;
-
-  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
-
+  border: 1px solid black;
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
+  }
 `
 
 const AddToCartContainer = styled.div`
   width: 200px;
-  height: 200px;
-  padding: 50px;
+  // height: 200px;
+  // padding: 50px;
 `
 
 const AddToCart = ({ currentStyleSkus }) => {

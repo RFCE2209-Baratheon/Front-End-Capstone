@@ -38,25 +38,11 @@ const StarP = styled.p`
   text-align:center;
 `
 
-const ProductInformation1 = ({ productData, currentStyle, average, reviews }) => {
+const ProductInformation2 = ({ productData }) => {
 
   return (
-    <div data-testid="product-info">
-      {reviews > 0 ?
-      <StarP>
-        <StarRatingStaticSummary rating={average}/>
-        <StyledLink href="#review">Read all {reviews} reviews</StyledLink>
-      </StarP> : null}
-
-      <div>{productData.category.toUpperCase()}</div>
-      <h1>{productData.name}</h1>
-
-      {currentStyle.sale_price ?
-        <div><s>${currentStyle.original_price}</s> <StyledSalePrice className="price">${currentStyle.sale_price}</StyledSalePrice></div>
-      : '$' + currentStyle.original_price}
-
-      {/* {productData.description ?
-        <div>
+    <>
+      {productData.description ? <div>
           <h2>{productData.slogan}</h2>
           <p>{productData.description}</p>
         </div>
@@ -66,19 +52,16 @@ const ProductInformation1 = ({ productData, currentStyle, average, reviews }) =>
         <FaTwitter size={20}/></a>
         <a target="blank" href={"https://www.pinterest.com/pin/99360735500167749/"}><FaPinterest size={20}/></a>
         <a target="blank" href={"https://twitter.com/intent/tweet?text=Hello%20world"}><FaFacebook size={20}/></a>
-      </StyledSocials> */}
-    </div>
+      </StyledSocials>
+    </>
   )
 }
 
 //please review this proptype
-ProductInformation1.propTypes = {
+ProductInformation2.propTypes = {
 
   productData: PropTypes.object,
-  currentStyle: PropTypes.object,
-  average: PropTypes.number,
-  reviews: PropTypes.number
 
 }
 
-export default ProductInformation1;
+export default ProductInformation2;
