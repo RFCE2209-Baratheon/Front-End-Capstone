@@ -8,7 +8,7 @@ import {AppStyle} from '../assets/styles.js'
 import styled from 'styled-components';
 // import logo from '../assets/logo-light.png';
 import logo from '../assets/logo-white-black-transparent.png'
-
+console.log('in app')
 const {createContext} = React
 
 const StyledBanner = styled.section`

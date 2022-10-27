@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import  checkMark   from '../../assets/checkmark.png'
-import { FcCheckmark } from 'react-icons/fc';
 import { parseISO, format } from 'date-fns';
-import { GoVerified } from 'react-icons/go';
+import { GoVerified } from '@react-icons/all-files/go/GoVerified';
 import ReviewListBody from './ReviewListBody.jsx';
 import StarRatingStatic from './StarRatingStatic.jsx';
 import Helpfulness from './Helpfulness.jsx';

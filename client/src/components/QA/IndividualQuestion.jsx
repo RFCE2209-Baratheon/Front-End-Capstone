@@ -78,7 +78,7 @@ const reportQuestionOnclick = (iD) => {
 
 //component
   return (
-    <div data-testid ='IQ'>
+    <>
     <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
       <span className='question' onClick={toggleOpen}> <b>{`${question.question_body}`}</b></span>
       <AlignRight>
@@ -89,7 +89,7 @@ const reportQuestionOnclick = (iD) => {
       </QuestionFolder>
     </IndividualQuestionStyle>
     {showAModal && <AddAnswerModal openAModal={openAModal} questionId={questionId} shouldFetchA={shouldFetchA} setShouldFetchA={setShouldFetchA}/>}
-    </div>
+    </>
   )
 }
 

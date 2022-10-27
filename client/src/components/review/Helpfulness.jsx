@@ -2,8 +2,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
-import { HiOutlineEmojiHappy} from 'react-icons/hi';
-import { ImSad} from 'react-icons/im';
+import { HiOutlineEmojiHappy} from '@react-icons/all-files/hi/HiOutlineEmojiHappy';
+import { ImSad} from '@react-icons/all-files/im/ImSad';
 
 
 const HelpfulDiv = styled.div`{
