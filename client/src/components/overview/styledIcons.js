@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineExpand } from 'react-icons/ai';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { TiArrowBack } from 'react-icons/ti';
+import { AiOutlineArrowLeft } from '@react-icons/all-files/ai/AiOutlineArrowLeft';
+import { AiOutlineArrowRight } from '@react-icons/all-files/ai/AiOutlineArrowRight';
+import { AiOutlineExpand } from '@react-icons/all-files/ai/AiOutlineExpand';
+import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
+import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowDown';
+import { TiArrowBack } from '@react-icons/all-files/ti/TiArrowBack';
 
 
 const StyledLeftArrow = styled(AiOutlineArrowLeft)`

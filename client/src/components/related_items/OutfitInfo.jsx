@@ -1,7 +1,7 @@
 import React from 'react';
 import {PropTypes} from 'prop-types'
 import { RelatedCardGraphic, TextOnCard, ImageOnCard, AddCardBtn, OutfitCardGraphic, BtnContainer, OuterBtnDiv } from './Assets/comparisonWidget.style.js';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineStar } from '@react-icons/all-files/ai/AiOutlineStar';
 
 const OutfitInfo = function ({data}) {
 

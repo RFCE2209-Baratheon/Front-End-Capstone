@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar } from '@react-icons/all-files/fa/FaStar';
 // import './Rater.css';
 
 const NewStarTest = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
 import styled from 'styled-components';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineStar } from '@react-icons/all-files/ai/AiOutlineStar';
 import {
   RelatedCardGraphic, TextOnCard, ImageOnCard, SalePrice, PriceStruckthrough, RelatedActnBttn
 } from './Assets/comparisonWidget.style.js';

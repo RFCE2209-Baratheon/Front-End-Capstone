@@ -1,5 +1,6 @@
 import styled, {createGlobalStyle} from 'styled-components';
-import {MdClose} from 'react-icons/md'
+import {MdClose} from '@react-icons/all-files/all-files/md/MdClose'
+
 
 const Wrapper = styled.div`
 
@@ -209,14 +210,14 @@ const ModalButton = styled.button`
 
 
 const ModalBackground = styled.div`
-  width: 100%;
-  height: 100%;
-  background: rgba(57, 61, 63, 1)
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.8);
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+  z-index: 20;
   top: 0;
   left: 0;
 }`
@@ -224,13 +225,13 @@ const ModalBackground = styled.div`
 const ModalWrapper = styled.div`
   width: 35em;
   height: 35em;
-  box-shadow: 0 5px 16px rgba(57, 61, 63, 1);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .2);
   background: #fff;
   color: #000;
   display: grid;
   grid-template-columns: 1fr;
   position: relative;
-  z-index: 10;
+  z-index: 20;
   border-radius: 5px;
   overflow-y: scroll;
   ::-webkit-scrollbar {

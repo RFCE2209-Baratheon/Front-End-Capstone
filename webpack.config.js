@@ -1,4 +1,8 @@
 const path = require("path");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+  const CompressionPlugin = require("compression-webpack-plugin");
+
 module.exports = {
   mode: "development",
   entry: "./client/src/index.jsx",
@@ -6,6 +10,7 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: "bundle.js",
   },
+  plugins: [new BundleAnalyzerPlugin(), new CompressionPlugin()],
   module: {
     rules: [
       {
@@ -39,5 +44,7 @@ module.exports = {
     compress: true,
     // [port] what port on our local machine to run the dev server
     port: 3000,
-  }
+  },
+  optimization: {sideEffects: true}
+
 }

@@ -14,6 +14,41 @@ const app = express();
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json())
 
+
+app.get("*.js", function (req, res, next) {
+  const pathToGzipFile = req.url + ".gz";
+  try {
+    // Check if .gz file exists
+    if (fs.existsSync(path.join(clientDirPath, pathToGzipFile))) {
+      // Change the requested .js to return
+      // the compressed version - filename.js.gz
+      req.url = req.url + ".gz";
+      // Tell the browser the file is compressed and it should decompress it.
+      // You will get a blank screen without this header because it will try to parse
+      // the compressed file.
+      res.set("Content-Encoding", "gzip");
+      res.set("Content-Type", "text/javascript");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  next();
+});
+
+// Set the static files root directory
+// from which it should serve the files from.
+console.log("clientDirPath", clientDirPath);
+app.use(express.static(clientDirPath));
+
+// Always send the index.html file to the client
+
+
+console.log("Starting server");
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
+});
+
 app.listen(3000);
 
 
@@ -161,7 +196,7 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-  axios.get(`${api}/products/`, requestConfig)
+  axios.get(`${api}/products`, requestConfig)
   .then((response) => {
     res.send(response.data);
   })
@@ -264,3 +299,7 @@ app.post('/interactions', (req, res) => {
       console.log('Error posting to API');
     });
 })
+
+app.get("*", (req, res) => {
+  res.sendFile(clientIndexHtml);
+});

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
-import { ImCancelCircle } from "react-icons/im";
-import { AiFillStar } from 'react-icons/ai';
-import { BsPlusLg } from 'react-icons/bs';
+import { BsFillArrowLeftCircleFill } from '@react-icons/all-files/bs/BsFillArrowLeftCircleFill';
+import { BsFillArrowRightCircleFill } from '@react-icons/all-files/bs/BsFillArrowRightCircleFill';
+import { ImCancelCircle } from "@react-icons/all-files/im/ImCancelCircle";
+import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
+import { BsPlusLg } from '@react-icons/all-files/bs/BsPlusLg';
 
 
 export const RelatedBlockContainer = styled.div`
@@ -147,6 +148,8 @@ width: 300px;
 margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
+border: solid;
+border-color: #F4F4F9;
 border-radius: 18px;
 background: white;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
