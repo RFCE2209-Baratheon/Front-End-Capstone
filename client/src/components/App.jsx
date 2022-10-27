@@ -14,9 +14,12 @@ const {createContext} = React
 const StyledBanner = styled.section`
   height: auto;
   width: 100%;
-  height: auto;
   background: #62929E;
   z-index: 1;
+`
+
+const StyledFooter = styled(StyledBanner)`
+  height: 200px;
 `
 
 const StyledLogo = styled.div`
@@ -85,9 +88,6 @@ function App() {
     <>
     <StyledBanner>
       <StyledLogo><Logo src={logo}></Logo></StyledLogo>
-
-      {/* Logo Goes Here */}
-
     </StyledBanner>
     <AppStyle>
       {productId && <Overview className='Overview' productId={productId} average={average} reviews={allReviews.length}></Overview>}
@@ -96,6 +96,7 @@ function App() {
       {productId && <Review reviews={reviews} setReviews={setReviews} allReviews={allReviews} setAllReviews={setAllReviews} average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
+    <StyledFooter className="banner"></StyledFooter>
     </>
 
   );

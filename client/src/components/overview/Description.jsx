@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {PropTypes} from 'prop-types'
-import { FaTwitter, FaFacebook, FaPinterest } from 'react-icons/fa';
 import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import {FaFacebook} from '@react-icons/all-files/fa/FaFacebook'
+import {FaPinterest} from '@react-icons/all-files/fa/FaPinterest'
 
 const StyledSocials = styled.div`
   display: table-cell;

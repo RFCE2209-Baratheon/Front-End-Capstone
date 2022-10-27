@@ -7,8 +7,8 @@ align-items: center;
 justify-content: center;
 background: #F4F4F9;
 border-top: solid 50px #F4F4F9;
-// margin-left: 100px;
-// margin-right: 100px;
+border-left: solid 100px #F4F4F9;
+border-right: solid 100px #F4F4F9;
 
 h1 {
   color: #393D3F;
@@ -18,7 +18,7 @@ h2 {
   color: #546A7B;
 }
 
-p, div, button, option {
+p, div, option {
   color: #393D3F;
   font-family: monospace;
 }
@@ -28,7 +28,6 @@ p, div, button, option {
 }
 
 .Overview {
-  // margin-left: 200px;
   min-width: 900px;
 }
 
@@ -54,4 +53,4 @@ p, div, button, option {
 
 `
 
-export {AppStyle}
+export {AppStyle};
