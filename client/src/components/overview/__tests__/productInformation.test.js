@@ -177,7 +177,6 @@ afterEach(()=> {
     cleanup();
 })
 
-
 describe('It renders the Product Information component', () => {
     render(<ProductInformation productData={productData} currentStyle={currentStyle} reviewData={reviewData}
       />);
@@ -185,6 +184,4 @@ describe('It renders the Product Information component', () => {
         const test = screen.getByTestId('product-info');
         expect(test).toBeInTheDocument();
     })
-
-
 });
