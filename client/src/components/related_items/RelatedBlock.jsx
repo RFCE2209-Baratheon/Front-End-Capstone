@@ -23,64 +23,14 @@ const RelatedBlock = function ({ productId, setProductId }) {
   const [ratingInfo, setRatingInfo] = useState([]);
   const [dataCompiled, setDataCompiled] = useState([]);
 
-  const fetchData = function () {
-    axios.get(`/products/${productId}/related`)
-      .then((results) => {
-        setRelatedArray(results.data);
-      })
-
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchProducts = function () {
-    let arrayOfProducts = [];
-    relatedArray.forEach((id) => {
-      axios.get(`/products/${id}`)
-        .then((singleProduct) => {
-          arrayOfProducts.push(singleProduct.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-    setProductInfo(arrayOfProducts);
-  };
-
-  const fetchStyles = function () {
-    // let arrayOfStyles = [];
-    let arrayOfStyles = relatedArray.map((id) => {
-      return axios.get(`/products/${id}/styles`)
-        .then((singleProduct) => {
-          return singleProduct.data;
-          // arrayOfStyles.push(singleProduct.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-    Promise.all(arrayOfStyles)
-      .then((styles) => {
-        let data = [];
-        productInfo.forEach((product) => {
-          const styleData = styles.find((style) => {
-            return style.product_id.toString() === product.id.toString();
-          });
-          const result = {
-            ...product,
-            ...styleData,
-          };
-          data.push(result);
-        });
-        setDataCompiled(data);
-      });
-  };
+  useEffect(() => {
+    const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
+    setRightArrow(farRight);
+  }, [productInfo]);
 
 
   useEffect(() => {
     // fetchData();
-    setDataCompiled([]);
     let arrayOfRelated = [];
     axios.get(`/products/${productId}/related`)
       .then((results) => {
@@ -125,53 +75,9 @@ const RelatedBlock = function ({ productId, setProductId }) {
         setProductInfo(products);
         setStyleInfo(styles);
         setRatingInfo(ratings);
-
-        // let joinedProducts = products.map((product) => {
-
-        //   for(let i = 0; i < styles.length; i++) {
-        //     if(product.id === Number(styles[i].product_id)) {
-        //       var ratingAverage;
-        //       axios.get('/reviews/meta', { params: { product_id: product.id } })
-        //       // you need to store the meta data somehow/somewhere...
-        //       .then((getMetaSuccess) => {
-        //         let obj = getMetaSuccess.data.ratings;
-        //         let numOfReviews = 0;
-        //         let weightedFactor = 0;
-        //         for(let key in obj) {
-        //           weightedFactor += Number(key) * Number(obj[key]);
-        //           numOfReviews += Number(obj[key]);
-        //         }
-        //         ratingAverage = weightedFactor / numOfReviews;
-        //         // setDataCompiled(dataCompiled => [...dataCompiled, {product: product, styles:styles[i], rating: ratingAverage }])
-        //         console.log(dataCompiled);
-        //       })
-        //       .catch((err) => {
-        //         console.log(err);
-        //       });
-        //       return {...product, ...styles[i], ratingAvg: ratingAverage }
-        //     }
-        //   }
-        // })
-        // setDataCompiled(joinedProducts)
       })
   }, [productId]);
 
-
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, [relatedArray]);
-
-
-  // useEffect (() => {
-  //   const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
-  //   // console.log('scroll width', document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth);
-  //   setRightArrow(farRight);
-  // }, [dataCompiled]);
-
-  useEffect(() => {
-    const farRight = document.getElementById('slider').scrollWidth - document.getElementById('slider').clientWidth;
-    setRightArrow(farRight);
-  }, [scrollValue]);
 
   const slideLeft = function () {
     const slider = document.getElementById('slider');

@@ -1,26 +1,40 @@
 import React from 'react';
 import {PropTypes} from 'prop-types'
-import { RelatedCardGraphic, TextOnCard, ImageOnCard, AddCardBtn, OutfitCardGraphic, BtnContainer, OuterBtnDiv } from './Assets/comparisonWidget.style.js';
+import { RelatedCardGraphic, TextOnCard, ImageOnCard, AddCardBtn, OutfitCardGraphic, BtnContainer, OuterBtnDiv, StarsContainer, CloseActnBtn } from './Assets/comparisonWidget.style.js';
 import { AiOutlineStar } from 'react-icons/ai';
+import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 
-const OutfitInfo = function ({data}) {
+const OutfitInfo = function ({ data, productRating, outfitData, setOutfitData }) {
+  const deleteCard = () => {
+    let copyOutfitData = outfitData.slice();
+    for(let i = 0; i < copyOutfitData.length; i++) {
+      if(copyOutfitData[i].id === data.id) {
+        copyOutfitData.splice([i], 1)
+      }
+    }
+    setOutfitData(copyOutfitData);
+  };
+
 
   return (
   <OutfitCardGraphic data-testid="cardOne">
+    <CloseActnBtn onClick={deleteCard} />
     <ImageOnCard image={data.url} />
-    <TextOnCard>
-      <p>
+    <TextOnCard  >
+      <p style={{color: "#F4F4F9"}} >
         {data.category}
         {' '}
         <br />
         {data.name}
         {' '}
         <br />
-        {data.price}
+        ${data.price}
+        {' '}
+        <br />
+        <StarsContainer>
+            <StarRatingStaticSummary rating={productRating.ratingAvg}/>
+        </StarsContainer>
       </p>
-      <div>
-      <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar /> <AiOutlineStar />
-      </div>
     </TextOnCard>
   </OutfitCardGraphic>
 )

@@ -14,6 +14,7 @@ const OutfitBlock = function ({ productId }) {
   const [scrollValue, setScrollValue] = useState(0);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [outfitData, setOutfitData] = useState([]);
+  const [productRating, setProductRating] = useState({});
 
   useEffect(() => {
     let displayedData = {};
@@ -34,6 +35,21 @@ const OutfitBlock = function ({ productId }) {
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
       });
+    axios.get('/reviews/meta', { params: { product_id: productId } })
+      .then((response) => {
+        let ratingData = {};
+          let obj = response.data.ratings;
+          let numOfReviews = 0;
+          let weightedFactor = 0;
+          for(let key in obj) {
+            weightedFactor += Number(key) * Number(obj[key]);
+            numOfReviews += Number(obj[key]);
+          }
+          let ratingAverage = weightedFactor / numOfReviews;
+          ratingData.id = response.data.product_id;
+          ratingData.ratingAvg = ratingAverage;
+          setProductRating(ratingData);
+      })
 
     setCurrentProduct(displayedData);
     }, [productId])
@@ -74,8 +90,9 @@ const OutfitBlock = function ({ productId }) {
     }
   }
 
+
   let mapped = outfitData.map((item, index) => {
-    return <OutfitInfo data={item} key={index}/>;
+    return <OutfitInfo data={item} productRating={productRating} outfitData={outfitData} setOutfitData={setOutfitData} key={index}/>;
   });
 
   return (
@@ -87,7 +104,7 @@ const OutfitBlock = function ({ productId }) {
           <span><OutfitCards clickHandler={onClick}/></span>
           <span>{currentProduct ? mapped : null}</span>
         </div>
-        {leftArrow === rightArrow ? <></> : <RightAOutfit onClick={slideRight} />}
+        {scrollValue === rightArrow ? <></> : <RightAOutfit onClick={slideRight} />}
       </OutfitBlockContainer>
     </div>
   )

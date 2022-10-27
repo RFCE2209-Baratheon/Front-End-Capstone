@@ -26,6 +26,7 @@ border-radius: 18px;
 background: #62929E;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
+border: solid 1px #F4F4F9;
 `;
 
 export const ImageOnCard = styled.div`
@@ -123,7 +124,7 @@ word-wrap: break-word;
 export const AddCardBtn = styled(BsPlusLg)`
 cursor: pointer;
 font-size: 3em;
-color: #546A7B;
+color: #C6C5B9;
 `;
 
 export const BtnContainer = styled.div`
@@ -148,9 +149,10 @@ margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
 border-radius: 18px;
-background: white;
+background: #62929E;;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
+border: solid 1px #F4F4F9;
 `;
 
 export const OutfitBlockContainer = styled.div`
@@ -187,4 +189,21 @@ z-index: 10;
 &:focus {
   color: #C6C5B9;
 }
+`;
+
+export const StarsContainer = styled.div`
+position: relative;
+z-index: 15;
+left: -310px;
+padding: 5px;
+`;
+
+export const CloseActnBtn = styled(ImCancelCircle)`
+color: #C6C5B9;
+font-size: 1.5em;
+position: absolute;
+right: 5px;
+top: 5px;
+filter:drop-shadow(0px 0px 5px black);
+cursor: pointer;
 `;

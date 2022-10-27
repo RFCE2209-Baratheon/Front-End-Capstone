@@ -18,6 +18,7 @@ scroll-behavior: smooth;
   overflow-x: scroll;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  display: flex;
   }
 
 #slider-two::-webkit-scrollbar{
