@@ -15,9 +15,10 @@ const Container = styled.div`{
   border: solid;
   border-width: 1px;
   border-color: #62929E;
-  padding: 10px;
+  padding: 20px;
   border-radius: 20px;
   margin: 32px;
+  box-shadow: 5px 5px 10px;
 }`;
 
 const Summary = styled.p`{
@@ -35,9 +36,10 @@ function ReviewListTile({ review, metaData }) {
 
   return (
     <Container data-testid="reviewlisttile-1">
+      <span>{review.rating}</span>
       <StarRatingStatic rating={review.rating} review={review} />
       <div style={{ textAlign:"right", whiteSpace: 'nowrap' }}>
-        <GoVerified style={{color:"green"}}/> <span><b>{review.reviewer_name}</b> {`,${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</span>
+        <GoVerified style={{color:"#62929E"}}/> <span><b>{review.reviewer_name}</b> <i>{`${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</i></span>
 
       </div>
       <Summary>{review.summary.slice(0, 60)}</Summary>
@@ -46,7 +48,7 @@ function ReviewListTile({ review, metaData }) {
         && (
         <p>
           Recommended
-          <span><img style={{width:"30px", height: "30px"}} src={checkMark}/></span>
+          <span><GoVerified style={{paddingLeft:"5px", color:"#62929E"}}/></span>
         </p>
         )
       )}

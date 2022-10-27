@@ -56,8 +56,8 @@ const Helpfulness = ({ review, help }) => {
     <HelpfulDiv data-testid="helpful-1">
       {'Helpful? '}
       {hideClick &&
-      <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} style={{ textDecoration: 'underline', color: 'blue' }}>
-        {'Yes '}
+      <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} >
+        <span style={{ textDecoration: 'underline', color: '#62929E' }}>{'Yes'}</span>
         <span style={{ color: 'black' }}>
           {` |${helpfulness.yes}|  `}
         </span>
@@ -67,8 +67,8 @@ const Helpfulness = ({ review, help }) => {
         <HiOutlineEmojiHappy style={{color :'green'}}/>
       }
       {hideClick &&
-      <HelpfulClick disabled={clicked} onClick={() => { noHandler(helpfulness); }} style={{ textDecoration: 'underline', color: 'blue' }}>
-        {'No '}
+      <HelpfulClick disabled={clicked} onClick={() => { noHandler(helpfulness); }}>
+        <span style={{textDecoration:"underline", color: '#62929E'}}>{'No'}</span>
         <span style={{ color: 'black' }}>
           {` |${helpfulness.no}|  `}
         </span>

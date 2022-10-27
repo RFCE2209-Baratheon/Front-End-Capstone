@@ -16,7 +16,7 @@ import { fetchPhotos, openUploadWidget } from './CloudinaryService';
 const ModalBackground = styled.div`{
   width: 100%;
   height: 100%;
-  background-color: lightgrey;
+  background-color: #62929E;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ const ModalContainer = styled.div`{
   width: 500px;
   height: 800px;
   border-radius: 12px;
-  background-color: white;
+  background-color: #F4F4F9;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -184,7 +184,7 @@ const AddReviewForm = ({
         <CloudinaryContext cloudName="dmmzqckuu">
           <button onClick={() => { setAddReviewToggle(!addReviewToggle); }}>X</button>
           <form>
-            <h1>Write Your Review</h1>
+            <h2>Write Your Review</h2>
             <h3>
               {`About the ${productName}`}
               {' '}
