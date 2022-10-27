@@ -2,7 +2,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import  Helpfulness from '../review/Helpfulness.jsx';
+import  Helpfulness from './Helpfulness.jsx';
 import '@testing-library/jest-dom';
 
 afterEach(() => {

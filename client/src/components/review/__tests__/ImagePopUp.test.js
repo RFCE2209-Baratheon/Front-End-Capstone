@@ -3,7 +3,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import ImagePopUp from '../review/ImagePopUp.jsx';
+import ImagePopUp from './ImagePopUp.jsx';
 import '@testing-library/jest-dom';
 
 afterEach(() => {

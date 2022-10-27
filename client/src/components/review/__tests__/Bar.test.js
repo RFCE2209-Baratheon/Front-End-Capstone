@@ -3,7 +3,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import Bar from '../review/Bar.jsx';
+import Bar from './Bar.jsx';
 import '@testing-library/jest-dom';
 
 const metaData = {

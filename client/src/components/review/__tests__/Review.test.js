@@ -3,7 +3,7 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import Review from '../review/Review.jsx';
+import Review from '.Review.jsx';
 import '@testing-library/jest-dom';
 
 afterEach(() => {

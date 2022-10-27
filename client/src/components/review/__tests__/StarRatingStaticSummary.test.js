@@ -3,15 +3,20 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import DropDown from '../review/DropDown.jsx';
+import StarRatingStaticSummary from './StarRatingStaticSummary.jsx';
 import '@testing-library/jest-dom';
 
 afterEach(() => {
   cleanup();
 });
 
+const image = {
+  "id": 2456464,
+  "url": "http://res.cloudinary.com/dqmnjwd2c/image/upload/v1666661253/departed_ete3as.jpg"
+}
+
 test('should render ReviewList Component', () => {
-  render(<DropDown />);
-  const dropElement = screen.getByTestId('drop-1');
-  expect(dropElement).toBeInTheDocument();
+  render(<StarRatingStaticSummary rating={3.4}/>);
+  const starElement = screen.getByTestId('star-1');
+  expect(starElement).toBeInTheDocument();
 });
