@@ -117,8 +117,8 @@ const RatingSummary = ({
 
   return (
     <Container>
-      <div>
-      <h1>
+      <div style={{display:"flex", alignItems:"center"}}>
+      <h1 style={{width:"auto"}}>
         {' '}
         {average}
       </h1>
