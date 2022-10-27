@@ -33,7 +33,7 @@ const StyledLink = styled.a`
   }
 `
 
-const StarDiv = styled.div`
+const StarP = styled.p`
   width: min-content;
   text-align:center;
 `
@@ -43,10 +43,10 @@ const ProductInformation = ({ productData, currentStyle, average, reviews }) => 
   return (
     <div data-testid="product-info">
       {reviews > 0 ?
-      <StarDiv>
-        <span><StarRatingStaticSummary rating={average}/></span>
+      <StarP>
+        <StarRatingStaticSummary rating={average}/>
         <StyledLink href="#review">Read all {reviews} reviews</StyledLink>
-      </StarDiv> : null}
+      </StarP> : null}
 
       <div>{productData.category.toUpperCase()}</div>
       <h1>{productData.name}</h1>

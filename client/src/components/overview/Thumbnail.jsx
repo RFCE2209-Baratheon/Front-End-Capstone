@@ -7,7 +7,7 @@ const StyledThumbnail = styled.img`
   height: 100%;
   cursor: pointer;
   transform: scale(1.5);
-  margin-top: 20px;
+  margin-top: 11px;
   object-fit: cover;
   `
 
