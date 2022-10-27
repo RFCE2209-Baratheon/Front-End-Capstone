@@ -1,7 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import {VscTriangleDown} from 'react-icons/vsc'
+import {VscTriangleDown} from '@react-icons/all-files/vsc/VscTriangleDown'
 
 
 const OuterBar = styled.div`

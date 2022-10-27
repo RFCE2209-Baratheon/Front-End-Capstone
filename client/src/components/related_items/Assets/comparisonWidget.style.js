@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
-import { ImCancelCircle } from "react-icons/im";
-import { AiFillStar } from 'react-icons/ai';
-import { BsPlusLg } from 'react-icons/bs';
+import { ImCancelCircle } from "@react-icons/all-files/im/ImCancelCircle";
+import { AiFillStar } from '@react-icons/all-files/ai/AiFillStar';
+import { AiOutlineArrowRight } from '@react-icons/all-files/ai/AiOutlineArrowRight'
+import { AiOutlineArrowLeft } from '@react-icons/all-files/ai/AiOutlineArrowLeft'
+import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus'
+
+
 
 
 export const RelatedBlockContainer = styled.div`
@@ -43,7 +46,7 @@ grid-area: text;
 margin: 0px 0px 0px 10px;
 `;
 
-export const LeftArrow = styled(BsFillArrowLeftCircleFill)`
+export const LeftArrow = styled(AiOutlineArrowLeft)`//arrow left
 cursor: pointer;
 color: #546A7B;
 font-size: 2em;
@@ -56,7 +59,7 @@ z-index: 10;
 }
 `;
 
-export const RightArrow = styled(BsFillArrowRightCircleFill)`
+export const RightArrow = styled(AiOutlineArrowRight)`//arrow right
 cursor: pointer;
 color: #546A7B;
 font-size: 2em;
@@ -121,7 +124,7 @@ color: #546A7B;
 word-wrap: break-word;
 `;
 
-export const AddCardBtn = styled(BsPlusLg)`
+export const AddCardBtn = styled(AiOutlinePlus)`
 cursor: pointer;
 font-size: 3em;
 color: #C6C5B9;
@@ -148,6 +151,8 @@ width: 300px;
 margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
+border: solid;
+border-color: #F4F4F9;
 border-radius: 18px;
 background: #62929E;;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
@@ -164,7 +169,7 @@ width: 90%;
 height: 500px;
 `;
 
-export const LeftAOutfit = styled(BsFillArrowLeftCircleFill)`
+export const LeftAOutfit = styled(AiOutlineArrowLeft)`
 cursor: pointer;
 color: #546A7B;
 font-size: 2em;
@@ -177,7 +182,7 @@ z-index: 10;
 }
 `;
 
-export const RightAOutfit = styled(BsFillArrowRightCircleFill)`
+export const RightAOutfit = styled(AiOutlineArrowRight)`
 cursor: pointer;
 color: #546A7B;
 font-size: 2em;

@@ -18,10 +18,9 @@ const Title = styled.h2`{
 }`;
 
 
-const Review = ({ allReviews, setAllReviews, average, setAverage, productId, productName }) => {
+const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAverage, productId, productName }) => {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
-  const [reviews, setReviews] = useState([]);
 
 
   const tempProduct = {
