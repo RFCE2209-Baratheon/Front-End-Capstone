@@ -42,7 +42,6 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     setCurrent(current === 0 ? 0 : current - 1);
   };
 
-
   const upSlide = (e) => {
     e.stopPropagation();
     setStart(start === 0 ? 0 : start - 1);
@@ -63,7 +62,7 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
 
   return (
     <>
-      <ImageGalleryContainerDefault onClick={changeView}>
+      <ImageGalleryContainerDefault onClick={changeView} data-testid="image-gallery">
         {defaultView && <DefaultView styleImages={styleImages} activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide} verticalScroll={verticalScroll} upSlide={upSlide} downSlide={downSlide} length={length} start={start} />}
       </ImageGalleryContainerDefault>
 

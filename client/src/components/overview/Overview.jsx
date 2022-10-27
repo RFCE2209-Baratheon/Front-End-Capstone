@@ -56,6 +56,7 @@ const Overview = ({ productId, average, reviews }) => {
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
+
       .then((response) => {
         setStyleData(response.data.results)
         setCurrentStyle(response.data.results[0])

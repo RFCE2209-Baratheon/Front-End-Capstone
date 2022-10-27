@@ -8,7 +8,7 @@ import {AppStyle} from '../assets/styles.js'
 import styled from 'styled-components';
 // import logo from '../assets/logo-light.png';
 import logo from '../assets/logo-white-black-transparent.png'
-
+console.log('in app')
 const {createContext} = React
 
 const StyledBanner = styled.section`
@@ -60,7 +60,9 @@ function App() {
   const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
   const [average, setAverage] = useState(1);
+  const [reviews, setReviews] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
+
 
 
   useEffect(() => {
@@ -91,7 +93,7 @@ function App() {
       {productId && <Overview className='Overview' productId={productId} average={average} reviews={allReviews.length}></Overview>}
       {productId && <Related productId={productId} setProductId={setProductId} />}
       {productId && <QA className='QA' productID={productId} />}
-      {productId && <Review allReviews={allReviews} setAllReviews={setAllReviews} average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
+      {productId && <Review reviews={reviews} setReviews={setReviews} allReviews={allReviews} setAllReviews={setAllReviews} average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
 
     </AppStyle>
     </>
