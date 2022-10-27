@@ -5,7 +5,7 @@ const app = express();
 const axios = require('axios');
 const config = require('../config.js');
 const requestConfig = {
-  headers: {'Authorization': config.TOKEN, 'Accept-Encoding': 'gzip'}
+  headers: {'Authorization': config.TOKEN, 'Content-Encoding': 'gzip'}
 }
 
 const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
