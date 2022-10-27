@@ -43,9 +43,9 @@ const QuestionList = ({productID}) => {
 
 
 
-    axios.get('/qa/questions', {params: {product_id: productId, count: 100}})
+    axios.get('/qa/questions', {params: {product_id: productID, count: 15}})
     .then((res)=>{
-
+      console.log('setting questions')
       if (res.data.results.length <= 4) {
         setHide(false)
       }
@@ -56,7 +56,7 @@ const QuestionList = ({productID}) => {
       console.error(error)
     })
 
-  }, [productId, shouldFetchQ, searchedQ])
+  }, [productID, shouldFetchQ, searchedQ])
 
   useEffect(()=>{
 

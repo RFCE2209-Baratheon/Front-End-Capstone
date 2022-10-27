@@ -4,6 +4,8 @@ import OutfitBlock from './OutfitBlock.jsx';
 import {PropTypes} from 'prop-types'
 import { RelatedModuleStyle } from './Assets/comparisonWidget.style.js';
 
+
+
 const Related = function ({productId, setProductId}) {
 
   /*

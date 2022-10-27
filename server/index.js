@@ -1,20 +1,32 @@
+const express = require('express')
+const compression = require('compression')
 const path = require('path');
-const express = require('express'); // npm installed
+const app = express();
 const axios = require('axios');
 const config = require('../config.js');
-
-var api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
-
 const requestConfig = {
-  headers: {'Authorization': config.TOKEN}
+  headers: {'Authorization': config.TOKEN, 'Accept-Encoding': 'gzip'}
 }
 
-const app = express();
+const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
+
+
+app.use(compression({level:6, threshold: 0}))
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json())
 
 app.listen(3000);
+
+
+/*Q&A Route Handlers*/
+
+// QuestionList
+// Get questions
+// Get questions for the given product
+
+// Get/qa/questions
+
 
 
 /*Q&A Route Handlers*/
@@ -161,9 +173,10 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-  axios.get(`${api}/products/`, requestConfig)
+  axios.get(`${api}/products`, requestConfig)
   .then((response) => {
     res.send(response.data);
+
   })
   .catch((error) => {
     res.status(500);
@@ -264,3 +277,8 @@ app.post('/interactions', (req, res) => {
       console.log('Error posting to API');
     });
 })
+
+// app.get("*", (req, res) => {
+//   res.sendFile(clientIndexHtml);
+// });
+console.log("Starting server");
