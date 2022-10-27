@@ -64,11 +64,11 @@ const ComparisonModal = function ({ productName, category, features, productId, 
     <ModalWrapper>
     <ModalCloseBtn onClick={openCompModal}/>
       <TableModal>
-        <caption>
+        <caption style={{color: "#546A7B", fontSize: "1.2em", fontWeight: "bold"}}>
           Comparing
         </caption>
         <thead>
-          <tr>
+          <tr style={{fontSize: "1.2em"}} >
             <th>{productName}</th>
             <th> CHARACTERISTIC</th>
             <th> {mainProductInfo.name}</th>

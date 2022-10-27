@@ -101,6 +101,7 @@ position: absolute;
 z-index: 10;
 border-radius: 10px;
 bottom: 35em;
+padding: 20px;
 `;
 
 export const ModalCloseBtn = styled(ImCancelCircle)`
@@ -122,6 +123,7 @@ table-layout: fixed;
 export const TableValues = styled.tr`
 color: #546A7B;
 word-wrap: break-word;
+font-size: 1.2em;
 `;
 
 export const AddCardBtn = styled(AiOutlinePlus)`
