@@ -1,33 +1,41 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ProductInformation from './ProductInformation.jsx';
+import Description from './Description.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import styled from 'styled-components';
 import axios from 'axios';
+import { PropTypes } from 'prop-types';
 
 const StyledContainer = styled.div`
   display: grid;
-  grid-template-columns: ${props => props.default ? '650px auto' : 'auto 550px auto'};
+  grid-template-columns: ${props => props.default ? '650px auto' : 'auto'};
   grid-template-rows: auto;
   grid-template-areas: ${props => props.default ?
     `"left1 right1"
     "left1 right2"
-    "left1 right3"` :
-    `". left1 ."
-    ". left1 . "
-    ". left1 . "`};
+    "left1 right3"
+    "bottom bottom"` :
+    `"left1"
+    "bottom"`};
   column-gap: 10px;
-  min-width: 1100px;
+  // min-width: 1100px;
 `
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
+  // margin-left: 100px;
+  margin-left: ${props => props.default ? 'none' : '20%'};
+  margin-right: ${props => props.default ? 'none' : '30%'};
 `
 
 const StyledProductInfo = styled.div`
   grid-area: right1;
-  max-width: 720px;
+`
+const StyledDescription = styled.div`
+  grid-area: bottom;
+  margin-left: 100px;
 `
 
 const StyledStyleSelector = styled.div`
@@ -43,6 +51,8 @@ const Overview = ({ productId, average, reviews }) => {
   const [productData, setProductData] = useState(null);
   const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
+  const [styleId, setStyleId] = useState(null);
+
 
   useEffect(()=> {
     axios.get(`/products/${productId}/styles`)
@@ -50,6 +60,8 @@ const Overview = ({ productId, average, reviews }) => {
       .then((response) => {
         setStyleData(response.data.results)
         setCurrentStyle(response.data.results[0])
+        setStyleId(response.data.results[0].style_id)
+
       })
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
@@ -81,7 +93,7 @@ const Overview = ({ productId, average, reviews }) => {
   return (
     <>
       <StyledContainer data-testid="overview" default={defaultView}>
-        <StyledImageGallery>
+        <StyledImageGallery default={defaultView}>
           {currentStyle && <ImageGallery styleImages={currentStyle.photos} defaultView={defaultView} expandedView={expandedView} changeView={changeView} />}
         </StyledImageGallery>
 
@@ -90,16 +102,26 @@ const Overview = ({ productId, average, reviews }) => {
             {productData && currentStyle && (<ProductInformation productData={productData} productId={productId} currentStyle={currentStyle} average={average} reviews={reviews}/>)}
           </StyledProductInfo>
           <StyledStyleSelector>
-            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} />)}
+            {styleData && currentStyle && (<StyleSelector styleData={styleData} currentStyle={currentStyle} onStyleClick={onStyleClick} styleId={styleId} setStyleId={setStyleId} />)}
             </StyledStyleSelector>
           <StyledAddToCart>
             {currentStyle && <AddToCart currentStyleSkus={currentStyle.skus} />}
           </StyledAddToCart>
         </>}
+          <StyledDescription>
+            {productData && (<Description productData={productData} default={defaultView}/>)}
+          </StyledDescription>
 
       </StyledContainer>
     </>
   );
 }
+
+Overview.propTypes = {
+  productId: PropTypes.number,
+  average: PropTypes.number,
+  reviews: PropTypes.number
+}
+
 
 export default Overview;

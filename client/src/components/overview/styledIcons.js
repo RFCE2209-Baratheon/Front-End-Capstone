@@ -29,7 +29,7 @@ const StyledRightArrow = styled(AiOutlineArrowRight)`
 const StyledExpand = styled(AiOutlineExpand)`
   position: relative;
   top: 25%;
-  left: 450px;
+  left: 600px;
   font-size: 2rem;
   color: #62929E;
   z-index: 10;
@@ -58,19 +58,22 @@ const StyledDownArrow = styled(IoIosArrowDown)`
 `
 
 const StyledLeftArrowExpand = styled(StyledLeftArrow)`
-  // left: 515px;
+  // left: 450px;
+  left: 200px;
 `
 
 const StyledRightArrowExpand = styled(StyledRightArrow)`
-  left: 615px;
+  // left: 925px;
+  // left: 615px;
+  left: 700px;
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`
-  top: -20px;
+  top: -25px;
 `
 
 const StyledDownArrowExpand = styled(StyledDownArrow)`
-  top: 500px;
+  top: 490px;
   color: #62929E;
 `
 
