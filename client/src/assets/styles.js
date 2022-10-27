@@ -18,7 +18,6 @@ h2 {
   color: #546A7B;
 }
 
-
 p, div, button, option {
   color: #393D3F;
   font-family: monospace;
