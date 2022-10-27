@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event'
 import axios from 'axios';
 import AddToCart from '../../overview/AddToCart.jsx';
-import App from '../../App.jsx';
 
 axios.defaults.baseURL = 'http://127.0.0.1:3000';
 
@@ -44,6 +43,6 @@ test('should render AddToCart component', () => {
     render(
         <AddToCart currentStyleSkus={testData}/>
     );
-    const expandButtonClass = screen.getByTestId('addtocart');
-    expect(expandButtonClass).toBeInTheDocument();
+    const test = screen.getByTestId('addtocart');
+    expect(test).toBeInTheDocument();
 })

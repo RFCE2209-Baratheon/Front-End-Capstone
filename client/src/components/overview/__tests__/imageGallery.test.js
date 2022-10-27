@@ -54,17 +54,6 @@ test('should render ImageGallery component', () => {
     render(
         <ImageGallery styleImages={testData}/>
     );
-    const expandButtonClass = screen.getByTestId('expand-button');
-    expect(expandButtonClass).toBeInTheDocument();
+    const test = screen.getByTestId('image-gallery');
+    expect(test).toBeInTheDocument();
 })
-
-// describe('It renders the Overview component', () => {
-//     const user = userEvent.setup();
-
-//     // render(<Overview productId={'37311'} />);
-
-//     // const overviewWidgetRoots = document.getElementsByClassName(overviewWidget);
-
-//     // expect(overviewWidgetRoots).toBeInTheDocument();
-
-// })

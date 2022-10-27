@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import {PropTypes} from 'prop-types'
+import { PropTypes } from 'prop-types'
 const StyledThumbnail = styled.img`
   width: 100%;
   height: 100%;
   cursor: pointer;
   transform: scale(1.5);
-  margin-top: 20px;
+  margin-top: 11px;
   object-fit: cover;
   `
 
@@ -20,6 +20,9 @@ const StyledThumbnail = styled.img`
   position: relative;
   margin: 5px;
   border: ${props => props.selected ? '3px solid #62929E' : 'none'};
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
+  }
 `
 
 const Thumbnail = ( {thumbnail, selected, onClick} ) => {
@@ -32,13 +35,10 @@ const Thumbnail = ( {thumbnail, selected, onClick} ) => {
   )
 }
 
-//please review this proptype
 Thumbnail.propTypes = {
-
   thumbnail: PropTypes.object,
   selected: PropTypes.bool,
   onClick: PropTypes.func
-
 }
 
 export default Thumbnail;
