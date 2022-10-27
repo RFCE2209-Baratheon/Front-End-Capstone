@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import $ from 'jquery';
+import { PropTypes } from 'prop-types'
 
 const AddToCartButton = styled.button`
   background-color: white;
@@ -68,7 +69,7 @@ const AddToCart = ({ currentStyleSkus }) => {
       })
       axios.post('/cart', {sku_id: sku_id})
       .then((response) => {
-        console.log(response);
+        console.log('Item added to cart!')
       })
       .catch((error) => {
         console.log('error, could not add item to cart. error: ', error)
@@ -78,10 +79,8 @@ const AddToCart = ({ currentStyleSkus }) => {
 
   return (
     <> {mappedSizeOptions[0] ?
-        <AddToCartContainer>
+        <AddToCartContainer data-testid="addtocart">
           <div ref={messageRef}></div>
-
-
           <select ref={dropdownRef} value={size} name="size" onChange={(e) => {
             setSize(e.target.value);
             setSizeSelected(true);
@@ -94,14 +93,16 @@ const AddToCart = ({ currentStyleSkus }) => {
           }}>
             { sizeSelected && maxQuantity > 0 ? <> <option value="select">1</option> {mappedQtyOptions} </> : <option value="select">-</option> }
           </select>
-
-
           <p>
-            {maxQuantity > 0 && <AddToCartButton onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
+            {maxQuantity > 0 && <AddToCartButton data-testid="expand-button" onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
           </p>
         </AddToCartContainer> : <div>OUT OF STOCK</div> }
     </>
   )
+}
+
+AddToCart.propTypes = {
+  currentStyleSkus: PropTypes.object,
 }
 
 export default AddToCart;

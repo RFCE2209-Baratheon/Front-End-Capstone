@@ -48,7 +48,7 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
     return (
       <>
         <Title>Ratings & Reviews</Title>
-        <Container data-testid="review-1">
+        <Container data-testid="review-1" id="review">
           <RatingSummary
             average={average}
             setAverage={setAverage}
@@ -73,5 +73,7 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
     );
   }
 }
+
+
 
 export default Review;

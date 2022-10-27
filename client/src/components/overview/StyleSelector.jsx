@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {PropTypes} from 'prop-types'
 
 const StyledIconImage = styled.img`
   width: 100%;
@@ -46,7 +47,7 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
         <span>{currentStyle.name}</span>
       </p>
       <br></br>
-      <StyledIconsDiv>
+      <StyledIconsDiv data-testid="style">
         {styleData.map((style, index) =>
           <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
             setStyleId(style.style_id)
@@ -59,6 +60,15 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
       </StyledIconsDiv>
     </>
   )
+}
+
+//please review this proptype
+StyleSelector.propTypes = {
+
+  styleData: PropTypes.string,
+  currentStyle: PropTypes.object,
+  onStyleClick: PropTypes.func
+
 }
 
 export default StyleSelector;

@@ -59,15 +59,15 @@ const OutfitBlock = function ({ productId }) {
 
     let flag = false;
     for(let i = 0; i < outfitData.length; i++) {
-      // console.log(productId)
+
       if (outfitData[i].id === productId) {
         flag = true;
         break;
     }
       }
-    console.log('This is is OFD', outfitData)
+
     let copy = outfitData.slice();
-    console.log('COPY', JSON.stringify(copy));
+
     // let joinedData = [...currentProduct, ...copy]
     if (flag === false) {
       copy.push(currentProduct);

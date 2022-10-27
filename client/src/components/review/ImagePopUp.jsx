@@ -45,7 +45,6 @@ const CloseButton = styled.button`{
 
 const ImagePopUp = ({ image }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log('IMAGE', image)
 
   const toggleModal = () => {
     setIsOpen(!isOpen);

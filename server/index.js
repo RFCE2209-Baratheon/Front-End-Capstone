@@ -3,7 +3,11 @@ const express = require('express'); // npm installed
 const axios = require('axios');
 const config = require('../config.js');
 
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe
+var api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
+
+const requestConfig = {
+  headers: {'Authorization': config.TOKEN}
+}
 
 const app = express();
 
@@ -11,6 +15,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json())
 
 app.listen(3000);
+
 
 /*Q&A Route Handlers*/
 
@@ -21,12 +26,12 @@ app.listen(3000);
 // Get/qa/questions
 app.get('/qa/questions', (req, res) => {
 
-  const requestConfig = {
+  const newrequestConfig = {
     params: req.query,
     headers: {'Authorization': config.TOKEN}
   }
 
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', requestConfig)
+  axios.get(`${api}/qa/questions`, newrequestConfig)
   .then((response)=> {
     res.json(response.data)
   })
@@ -41,10 +46,8 @@ app.get('/qa/questions', (req, res) => {
 
 // GET /qa/questions/:question_id/answers
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  const requestConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${req.params.question_id}/answers`, requestConfig )
+
+  axios.get(`${api}/qa/questions/${req.params.question_id}/answers`, requestConfig )
   .then((response)=>{
     res.send(response.data)
   })
@@ -58,11 +61,8 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
-  const requestConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
 
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', req.body, requestConfig)
+  axios.post(`${api}/qa/questions`, req.body, requestConfig)
   .then((response)=> {
     res.sendStatus(response.status)
   })
@@ -78,12 +78,8 @@ app.post('/qa/questions/', (req, res) => {
 app.post('/qa/questions/:question_id/answers', (req, res) => {
 
   let id = parseInt(req.query.question_id)
-  console.log('type of the id', typeof id)
-  const requestConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  console.log('req.query', req.query)
-  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${id}/answers`, req.body, requestConfig)
+
+  axios.post(`${api}/qa/questions/${id}/answers`, req.body, requestConfig)
   .then((response)=> {
     res.sendStatus(response.status)
   })
@@ -99,10 +95,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
   // {params: {question_id: id}}
   let number = req.query.question_id
 
-  const newConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/helpful`, {}, newConfig)
+  axios.put(`${api}/qa/questions/${number}/helpful`, {}, requestConfig)
 
   .then((success) => {
     console.log('succesfully put route for helpful questions')
@@ -120,10 +113,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 
   let number = req.query.question_id
 
-  const newConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${number}/report`, {}, newConfig)
+  axios.put(`${api}/qa/questions/${number}/report`, {}, requestConfig)
 
   .then((success) => {
     console.log('succesfully put route for report questions')
@@ -138,14 +128,10 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 
 // PUT /qa/answers/:answer_id/helpful
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  // {params: {question_id: id}}
 
   let number = req.query.answer_id
 
-  const newConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${number}/helpful`, {}, newConfig)
+  axios.put(`${api}/qa/answers/${number}/helpful`, {}, requestConfig)
 
   .then((success) => {
     console.log('succesfully put route for helpful answers')
@@ -162,10 +148,7 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 app.put('/qa/answers/:answer_id/report', (req, res) => {
   let number = req.query.answer_id
 
-  const newConfig = {
-    headers: {'Authorization': config.TOKEN}
-  }
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${number}/report`, {}, newConfig)
+  axios.put(`${api}/qa/answers/${number}/report`, {}, requestConfig)
 
   .then((success) => {
     console.log('succesfully put route for report answer')
@@ -178,11 +161,7 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 // product detail handlers
 app.get('/products', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/', {
-    headers: {
-      Authorization: config.TOKEN,
-    },
-  })
+  axios.get(`${api}/products/`, requestConfig)
   .then((response) => {
     res.send(response.data);
   })
@@ -193,13 +172,8 @@ app.get('/products', (req, res) => {
 
 app.get('/products/:product_id', (req, res) => {
   let itemId = req.params.product_id;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}`, {
-    headers: {
-      Authorization: config.TOKEN,
-    },
-  })
+  axios.get(`${api}/products/${itemId}`, requestConfig)
     .then((productInfo) => {
-      // console.log('product info', productInfo.data)
       res.send(productInfo.data);
     })
     .catch((error) => {
@@ -209,11 +183,7 @@ app.get('/products/:product_id', (req, res) => {
 
 app.get('/products/:product_id/styles', (req, res) => {
   let itemId = req.params.product_id;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/styles`, {
-    headers: {
-      Authorization: config.TOKEN,
-    }
-  })
+  axios.get(`${api}/products/${itemId}/styles`, requestConfig)
     .then((styles) => {
       res.send(styles.data);
     })
@@ -224,11 +194,8 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 app.get('/products/:product_id/related', (req, res) => {
   let itemId = req.params.product_id;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${itemId}/related`, {
-    headers: {
-      Authorization: config.TOKEN,
-    },
-  })
+  axios.get(`${api}/products/${itemId}/related`, requestConfig
+  )
     .then((relatedItems) => {
       res.send(relatedItems.data);
     })
@@ -237,14 +204,9 @@ app.get('/products/:product_id/related', (req, res) => {
     });
 });
 
-// unsure here
-app.get('/cart', (req, res) => {
-
-});
-
 app.post('/cart', (req, res) => {
   var id = req.body.sku_id;
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart', {sku_id: id}, {headers: { Authorization: config.TOKEN }})
+  axios.post(`${api}/cart`, {sku_id: id}, requestConfig)
   .then((response)=> {
     res.sendStatus(response.status);
   })
@@ -253,27 +215,24 @@ app.post('/cart', (req, res) => {
   })
 });
 
-
-
 // Rating and Reviews
-
 app.get('/reviews/', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', { params: { product_id: req.query.product_id, sort: req.query.sort, count: 5000 }, headers: { Authorization: config.TOKEN } })
+  axios.get(`${api}/reviews`, { params: { product_id: req.query.product_id, sort: req.query.sort, count: 5000 }, headers: { Authorization: config.TOKEN } })
     .then((response) => {
       res.json(response.data);
     });
 });
 
 app.get('/reviews/meta', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: { product_id: req.query.product_id }, headers: { Authorization: config.TOKEN } })
+  axios.get(`${api}/reviews/meta`, { params: { product_id: req.query.product_id }, headers: { Authorization: config.TOKEN } })
     .then((response) => {
       res.json(response.data);
     });
 });
 
 app.post('/reviews', (req, res) => {
-  // console.log(req.body)
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews', req.body, { headers: { Authorization: config.TOKEN } })
+
+  axios.post(`${api}/reviews`, req.body, requestConfig)
     .then((response) => {
     })
     .catch((error) => {
@@ -282,8 +241,8 @@ app.post('/reviews', (req, res) => {
 });
 
 app.put('/reviews', (req, res) => {
-  console.log(req.body.id)
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/1275306/helpful`, { headers: { Authorization: config.TOKEN } })
+
+  axios.put(`${api}/reviews/1275306/helpful`, requestConfig)
     .then((response) => {
       console.log(response);
     })
@@ -296,11 +255,9 @@ app.put('reviews/:review_id/report/', (req, res) => {
 
 });
 
-
 app.post('/interactions', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/interactions', req.body, { headers: { Authorization: config.TOKEN }})
+  axios.post(`${api}/interactions`, req.body, requestConfig)
     .then((response) => {
-      console.log('interaction status', response.status)
       res.sendStatus(response.status);
     })
     .catch((error) => {
