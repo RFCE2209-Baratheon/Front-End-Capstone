@@ -15,8 +15,6 @@ const AddToCartButton = styled.button`
 
 const AddToCartContainer = styled.div`
   width: 200px;
-  // height: 200px;
-  // padding: 50px;
 `
 
 const AddToCart = ({ currentStyleSkus }) => {

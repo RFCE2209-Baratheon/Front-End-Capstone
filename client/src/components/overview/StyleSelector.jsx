@@ -40,7 +40,6 @@ const StyledOverlay = styled.div`
 `
 
 const StyleSelector = ( {styleData, currentStyle, onStyleClick, styleId, setStyleId} ) => {
-  // const [styleId, setStyleId] = useState(currentStyle.style_id);
 
   return (
     <>
@@ -64,15 +63,12 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick, styleId, setStyl
   )
 }
 
-//please review this proptype
 StyleSelector.propTypes = {
-
-  styleData: PropTypes.string,
+  styleData: PropTypes.array,
   currentStyle: PropTypes.object,
   onStyleClick: PropTypes.func,
   styleId: PropTypes.number,
   setStyleId: PropTypes.func
-
 }
 
 export default StyleSelector;

@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
+import { PropTypes } from 'prop-types';
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;
@@ -75,5 +75,12 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     </>
   )
 }
+ImageGallery.propTypes = {
+  styleImages: PropTypes.array,
+  defaultView: PropTypes.bool,
+  expandedView: PropTypes.bool,
+  changeView: PropTypes.func
+}
+
 
 export default ImageGallery;

@@ -14,8 +14,6 @@ const StyledCarousel = styled.section`
 
 const StyledThumbnailAlign = styled.div`
   position: relative;
-  // display: flex;
-  // justify-content: center;
 `
 
 const StyledCarouselImageSize = styled.div`
