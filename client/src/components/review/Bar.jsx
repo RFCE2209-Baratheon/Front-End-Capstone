@@ -11,7 +11,7 @@ border-radius: 20px;
 `;
 
 const OuterBar = styled.div`
-background-color: grey;
+background-color: #D0D0D0;
 height: 10px;
 border-radius: 20px;
 width: auto;

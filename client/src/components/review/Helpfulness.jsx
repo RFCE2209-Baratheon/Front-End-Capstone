@@ -10,8 +10,15 @@ const HelpfulDiv = styled.div`{
   white-space : nowrap;
 }`;
 
-const HelpfulClick = styled.button`{
+const HelpfulClick = styled.div`{
   display : inline-block;
+
+}`;
+
+const HelpfulYesNo = styled.span `{
+  &:hover {
+    cursor:pointer
+  }
 }`;
 
 const Helpfulness = ({ review, help }) => {
@@ -57,7 +64,7 @@ const Helpfulness = ({ review, help }) => {
       {'Helpful? '}
       {hideClick &&
       <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} >
-        <span style={{ textDecoration: 'underline', color: '#62929E' }}>{'Yes'}</span>
+        <HelpfulYesNo style={{ textDecoration: 'underline', color: '#62929E' }}>{'Yes'}</HelpfulYesNo>
         <span style={{ color: 'black' }}>
           {` |${helpfulness.yes}|  `}
         </span>
@@ -68,7 +75,7 @@ const Helpfulness = ({ review, help }) => {
       }
       {hideClick &&
       <HelpfulClick disabled={clicked} onClick={() => { noHandler(helpfulness); }}>
-        <span style={{textDecoration:"underline", color: '#62929E'}}>{'No'}</span>
+        <HelpfulYesNo style={{textDecoration:"underline", color: '#62929E'}}>{'No'}</HelpfulYesNo>
         <span style={{ color: 'black' }}>
           {` |${helpfulness.no}|  `}
         </span>

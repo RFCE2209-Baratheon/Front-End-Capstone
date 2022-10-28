@@ -24,15 +24,15 @@ function StarRatingStaticSummary({rating}) {
     <div style={{width:"125px", height:"57px", marginLeft:"10px"}}key={7} data-testid="star-1" className="star-rating">
     <svg key={6} style={{height:"0px"}} className="linear-gradient-template">
     <Gradient key={1} id="half" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="50%" style={{stopColor: "#393939"}}></stop>
+        <stop offset="50%" style={{stopColor: "#62929E"}}></stop>
         <stop offset="50%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
     </Gradient>
     <Gradient key={2} id="quarter" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="33%" style={{stopColor: "#393939"}}></stop>
+        <stop offset="33%" style={{stopColor: "#62929E"}}></stop>
         <stop offset="33%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
     </Gradient>
     <Gradient key={3} id="threeQuarter" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="66%" style={{stopColor: "#393939"}}></stop>
+        <stop offset="66%" style={{stopColor: "#62929E"}}></stop>
         <stop offset="66%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
     </Gradient>
     <Gradient key={4} id="empty" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -40,8 +40,8 @@ function StarRatingStaticSummary({rating}) {
         <stop offset="0%" style={{stopColor: "rgb(228, 229, 233)"}}></stop>
     </Gradient>
     <Gradient key={5} id="full" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="100%" style={{stopColor: "#393939"}}></stop>
-        <stop offset="100%" style={{stopColor: "#393939"}}></stop>
+        <stop offset="100%" style={{stopColor: "#62929E"}}></stop>
+        <stop offset="100%" style={{stopColor: "#62929E"}}></stop>
     </Gradient>
 </svg>
 
