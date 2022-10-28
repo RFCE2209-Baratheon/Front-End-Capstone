@@ -117,8 +117,8 @@ const RatingSummary = ({
 
   return (
     <Container>
-      <div>
-      <h1>
+      <div style={{display:"flex", alignItems:"center"}}>
+      <h1 style={{width:"auto"}}>
         {' '}
         {average}
       </h1>
@@ -127,7 +127,7 @@ const RatingSummary = ({
       <p>{`Based on a total of ${totalReviews} star clicks!`}</p>
       <h2 style={{textAlign:"center"}}>Rating Summary</h2>
       {clearFilters
-      && <p onClick={() => { resetFilters(); }} style={{ color: 'blue', textDecoration: 'underline' }}>Click to clear all filters.</p>}
+      && <button onClick={() => { resetFilters(); }} style={{ color: '#62929E', textDecoration: 'underline' }}>Click to clear all filters.</button>}
       <SummaryContainer>
         {Object.keys(metaData.ratings).sort().reverse().map((rating, index) => (
           <div key={index} onClick={() => { handleFilter(rating); }} style={{ marginTop:"10px", textAlign:"center", fontWeight: 'bold', whiteSpace: 'nowrap' }}>

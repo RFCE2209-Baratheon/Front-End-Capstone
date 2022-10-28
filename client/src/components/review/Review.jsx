@@ -18,10 +18,9 @@ const Title = styled.h2`{
 }`;
 
 
-const Review = ({ allReviews, setAllReviews, average, setAverage, productId, productName }) => {
+const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAverage, productId, productName }) => {
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
-  const [reviews, setReviews] = useState([]);
 
 
   const tempProduct = {
@@ -47,9 +46,9 @@ const Review = ({ allReviews, setAllReviews, average, setAverage, productId, pro
 
   if (metaData) {
     return (
-      <>
+      <div id="review">
         <Title>Ratings & Reviews</Title>
-        <Container data-testid="review-1" id="review">
+        <Container data-testid="review-1">
           <RatingSummary
             average={average}
             setAverage={setAverage}
@@ -70,7 +69,7 @@ const Review = ({ allReviews, setAllReviews, average, setAverage, productId, pro
             setAllReviews={setAllReviews}
           />
         </Container>
-      </>
+      </div>
     );
   }
 }
