@@ -10,10 +10,16 @@ const HelpfulDiv = styled.div`{
   white-space : nowrap;
 }`;
 
-const HelpfulClick = styled.button`{
+const HelpfulClick = styled.div`{
   display : inline-block;
+
 }`;
 
+const HelpfulYesNo = styled.span `{
+  &:hover {
+    cursor:pointer
+  }
+}`;
 const Helpfulness = ({ review, help }) => {
   // This state is only temporarily - need to implement storing the results permanently
   const [helpfulness, setHelpfulness] = useState({ yes: help, no: Math.floor(Math.random() * 100) });
@@ -53,7 +59,7 @@ const Helpfulness = ({ review, help }) => {
   };
 
   return (
-    <HelpfulDiv data-testid="helpful-1">
+    <HelpfulDiv style={{fontSize:"14px"}} data-testid="helpful-1">
       {'Helpful? '}
       {hideClick &&
       <HelpfulClick disabled={clicked} onClick={() => { yesHandler(helpfulness); }} >
