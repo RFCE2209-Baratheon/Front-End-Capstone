@@ -15,7 +15,9 @@ export const lightTheme = {
   appBorder: 'solid 100px #F4F4F9',
   a: '#546A7B',
   select: '#393D3F',
-  button: 'none'
+  button: 'none',
+  modal: '#F4F4F9',
+  caption: '#393D3F'
 }
 
 export const darkTheme = {
@@ -35,5 +37,7 @@ export const darkTheme = {
   appBorder: 'solid 100px #546A7B',
   a: '#C6C5B9',
   select: '#546A7B',
-  button: 'none'
+  button: 'none',
+  modal: '#F4F4F9',
+  caption: '#C6C5B9'
 }
