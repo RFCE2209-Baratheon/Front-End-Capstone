@@ -9,7 +9,7 @@ import { AiOutlinePlus } from '@react-icons/all-files/ai/AiOutlinePlus'
 
 
 export const RelatedBlockContainer = styled.div`
-background-color: #F4F4F9;
+// background-color: #F4F4F9;
 position: relative;
 display: flex;
 align-items: center;
@@ -156,14 +156,14 @@ justify-content: space-between;
 border: solid;
 border-color: #F4F4F9;
 border-radius: 18px;
-background: #62929E;;
+background: #62929E;
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
 border: solid 1px #F4F4F9;
 `;
 
 export const OutfitBlockContainer = styled.div`
-background-color: #F4F4F9;
+// background-color: #F4F4F9;
 position: relative;
 display: flex;
 flex-direction: row;
