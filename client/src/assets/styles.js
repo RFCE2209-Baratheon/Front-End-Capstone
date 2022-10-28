@@ -57,6 +57,10 @@ input {
   background: ${({ theme }) => theme.logo};
 }
 
+.star {
+
+}
+
 
 // overview styles
 .Overview {

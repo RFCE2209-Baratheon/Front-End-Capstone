@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { $ } from 'jquery';
+import $ from 'jquery';
 import { PropTypes } from 'prop-types'
 
 const AddToCartButton = styled.button`
