@@ -98,7 +98,6 @@ export const ModalWrapper = styled.div`
 width: 35vw;
 height: 20vh;
 box-shadow: 3px 10px 16px black;
-background: white;
 display: grid;
 grid-template-columns: 1fr;
 position: absolute;

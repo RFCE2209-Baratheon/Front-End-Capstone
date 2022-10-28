@@ -71,6 +71,17 @@ input {
   color: red;
 }
 
-`
+// related items styles
+.modal-wrapper {
+  background: ${({ theme }) => theme.background};
+}
 
+.table-info {
+  color: ${({ theme }) => theme.modal };
+  padding: 300px;
+}
+`
+// .modal-wrapper {
+//   background: ${({ theme }) => theme.background};
+// }
 export {AppStyle};
