@@ -41,6 +41,14 @@ const AppStyle = createGlobalStyle`
 
   }
 
+  .modalForm {
+    background: ${({ theme }) => theme.background};
+  }
+
+  .modalHeader {
+    text: ${({ theme }) => theme.text};
+  }
+
   h1 {
   color: ${({ theme }) => theme.h1};
   }
@@ -108,8 +116,14 @@ input {
   color: ${({ theme }) => theme.modal };
   padding: 300px;
 }
+
+/ review styles
+.on {
+  color: none;
+}
+.off {
+  color: #C6C5B9;
+}
 `
-// .modal-wrapper {
-//   background: ${({ theme }) => theme.background};
-// }
+
 export {AppStyle};
