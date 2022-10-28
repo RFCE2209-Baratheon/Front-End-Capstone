@@ -5,6 +5,7 @@ white-space: nowrap;
 overflow-x: scroll;
 scrollbar-width: none;
 scroll-behavior: smooth;
+padding: 30px;
 }
 
 #slider::-webkit-scrollbar{

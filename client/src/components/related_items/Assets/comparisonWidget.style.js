@@ -26,10 +26,14 @@ margin-left: 1em;
 margin-right: 1em;
 justify-content: space-between;
 border-radius: 18px;
-background: linear-gradient(to left top, #62929E, #546A7B);
+background: linear-gradient(to left top, #62929E 30%, #546A7B);
 box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
 position: relative;
 border: solid 1px #F4F4F9;
+transition: transform 500ms ease;
+&:hover{
+  transform: scale(1.1);
+}
 `;
 
 export const ImageOnCard = styled.div`

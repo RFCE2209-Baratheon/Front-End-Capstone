@@ -16,8 +16,7 @@ export const lightTheme = {
   a: '#546A7B',
   select: '#393D3F',
   button: 'none',
-  modal: '#F4F4F9',
-  caption: '#393D3F'
+  modal: '#546A7B',
 }
 
 export const darkTheme = {
@@ -39,5 +38,4 @@ export const darkTheme = {
   select: '#546A7B',
   button: 'none',
   modal: '#F4F4F9',
-  caption: '#C6C5B9'
 }
