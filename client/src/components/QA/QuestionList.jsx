@@ -42,6 +42,8 @@ const QuestionList = ({productID}) => {
   // Hooks & Handler
   useEffect(()=> {
 
+
+
     axios.get('/qa/questions', {params: {product_id: productID, count: 100}})
     .then((res)=>{
       console.log('setting questions')
@@ -111,8 +113,8 @@ const QuestionList = ({productID}) => {
           </Accordion>
         </Wrapper>
       </QListWrapper>
-      <AddQuestion loadMore={loadMore} openQModal={openQModal}/>
-      {hide ? <LoadMoreQs loadMore={loadMore}/> : <></>}
+      <AddQuestion className='AddQuestion' loadMore={loadMore} openQModal={openQModal}/>
+      {hide ? <LoadMoreQs className='LoadMore' loadMore={loadMore}/> : <></>}
     </QuestionListStyle>
 
   )

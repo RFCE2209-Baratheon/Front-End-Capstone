@@ -1,11 +1,11 @@
 const express = require('express')
-const compression = require('compression')
+// const compression = require('compression')
 const path = require('path');
 const app = express();
 const axios = require('axios');
 const config = require('../config.js');
 const requestConfig = {
-  headers: {'Authorization': config.TOKEN, 'Content-Encoding': 'gzip'}
+  headers: {'Authorization': config.TOKEN}
 }
 const noCompressionConfig = {
   headers: {'Authorization': config.TOKEN, 'x-no-compression': true}
@@ -24,7 +24,7 @@ const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
 
 
-app.use(compression({level:6, threshold: 0}))
+// app.use(compression({level:6, threshold: 0}))
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json())
 
@@ -231,7 +231,7 @@ app.get('/products/:product_id/related', (req, res) => {
 
 app.post('/cart', (req, res) => {
   var id = req.body.sku_id;
-  axios.post(`${api}/cart`, {sku_id: id}, requestConfig)
+  axios.post(`${api}/cart`, {sku_id: id}, noCompressionConfig)
   .then((response)=> {
     res.sendStatus(response.status);
   })

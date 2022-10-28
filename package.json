@@ -30,6 +30,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "express": "^4.15.0",
+    "git": "^0.1.5",
     "jest-environment-jsdom": "^29.2.1",
     "jquery": "^3.6.1",
     "prop-types": "^15.8.1",

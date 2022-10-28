@@ -42,6 +42,7 @@ const QuestionListStyle = styled.div`
 
   border: solid;
   border-color: #393D3F;
+  border-radius: 20px;
   margin: 50px;
   width: 50%;
   padding: 40px;
@@ -57,6 +58,7 @@ const QuestionListStyle = styled.div`
     border: solid;
     border-color: #393D3F;
     border-width: 2px;
+    border-radius: 50px;
     background: #F4F4F9;
     //rgb(240,177,17)
     white-space: normal !important;
@@ -75,6 +77,7 @@ const QuestionListStyle = styled.div`
   .addQuestion{
     border: solid;
     border-color: #393D3F;
+    border-radius: 50px;
     background: #F4F4F9;
     color: #393D3F;
     border-width: 2px;
@@ -192,6 +195,8 @@ padding-left: 10px;
 border: solid;
 border-color: #393D3F;
 `
+
+//modalheader
 const AlignRight = styled.span`
 float: right;
 padding: 5px;
@@ -272,6 +277,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 gap: 5px;
+
 .formSpan {
   width 90%;
   padding: 5px 24px;
@@ -295,7 +301,8 @@ gap: 5px;
 .submit {
   margin: 5px;
   cursor: pointer;
-  border-radius: 5px 5px 5px 5px;
+  border: solid;
+  border-radius: 50px;
   width 50%;
 }
 .finalSpan {

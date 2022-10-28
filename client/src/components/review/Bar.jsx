@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const StyleBar = styled.div`
 width: ${(props) =>  (props.rating / props.sum) * 100}%;
 height: 10px;
-background-color: #066701;
+background-color: #5F8575;
 border-radius: 20px;
 `;
 

@@ -17,7 +17,6 @@ const ImageCarousel = ( {styleImages, current, magnified} ) => {
   );
 }
 
-//please review this proptype
 ImageCarousel.propTypes = {
   styleImages: PropTypes.array,
   current: PropTypes.number,
