@@ -59,13 +59,13 @@ const StyledDownArrow = styled(IoIosArrowDown)`
 
 const StyledLeftArrowExpand = styled(StyledLeftArrow)`
   // left: 450px;
-  left: 150px;
+  left: 200px;
 `
 
 const StyledRightArrowExpand = styled(StyledRightArrow)`
   // left: 925px;
   // left: 615px;
-  left: 650px;
+  left: 700px;
 `
 
 const StyledUpArrowExpand = styled(StyledUpArrow)`

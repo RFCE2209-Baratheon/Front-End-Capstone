@@ -24,6 +24,8 @@ const AddToCart = ({ currentStyleSkus }) => {
   const [quantity, setQuantity] = useState(1);
   const dropdownRef = useRef(null);
   const messageRef = useRef(null);
+  const [cartMessage, setCartMessage] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   var mappedQtyOptions;
 
@@ -40,6 +42,12 @@ const AddToCart = ({ currentStyleSkus }) => {
       }
     });
   }, [size]);
+
+  useEffect(()=> {
+    setTimeout(() => {
+      setCartMessage(false);
+    }, 3000);
+  }, [buttonClicked])
 
   if (maxQuantity > 0) {
     var max = maxQuantity > 15 ? 15 : maxQuantity;
@@ -76,6 +84,8 @@ const AddToCart = ({ currentStyleSkus }) => {
       .catch((error) => {
         console.log('error, could not add item to cart. error: ', error)
       });
+      setButtonClicked(true);
+      setCartMessage(true);
     }
   }
 
@@ -98,6 +108,8 @@ const AddToCart = ({ currentStyleSkus }) => {
           <p>
             {maxQuantity > 0 && <AddToCartButton data-testid="expand-button" onClick={onButtonClick}>ADD TO BAG +</AddToCartButton>}
           </p>
+
+          {cartMessage && <p>Added to cart!</p>}
         </AddToCartContainer> : <div>OUT OF STOCK</div> }
     </>
   )
