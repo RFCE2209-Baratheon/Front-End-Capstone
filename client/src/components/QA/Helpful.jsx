@@ -44,7 +44,8 @@ Helpful.propTypes = {
   helpfulCount  : PropTypes.number,
   id: PropTypes.number,
   helpfulHandler: PropTypes.func,
-  reportHandler: PropTypes.func
+  reportHandler: PropTypes.func,
+  currentQ: PropTypes.object
 }
 
 export default Helpful

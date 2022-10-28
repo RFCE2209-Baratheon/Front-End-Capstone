@@ -71,12 +71,10 @@ const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA})
 
 //proptypes
 AddAnswerModal.propTypes = {
-  openModal: PropTypes.func,
-  productId: PropTypes.string,
-  setProductId: PropTypes.func,
-  setShowModal: PropTypes.func,
-  shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func,
+  openAModal: PropTypes.func,
+  questionId: PropTypes.string,
+  shouldFetchA: PropTypes.bool,
+  setShouldFetchA: PropTypes.func,
 }
 
 export default AddAnswerModal;
