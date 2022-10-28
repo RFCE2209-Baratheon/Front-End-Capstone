@@ -1,19 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {PropTypes} from 'prop-types'
+import { PropTypes } from 'prop-types';
 import StarRatingStaticSummary from '../shared_components/StarRatingStaticSummary.jsx';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
-import {FaFacebook} from '@react-icons/all-files/fa/FaFacebook'
-import {FaPinterest} from '@react-icons/all-files/fa/FaPinterest'
+import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook';
+import { FaPinterest } from '@react-icons/all-files/fa/FaPinterest';
 
 const StyledSocials = styled.div`
   display: table-cell;
-  // width: 25%;
-  // padding-top: 10px;
-  // text-align: center;
-  // vertical-align: middle;
-  // padding: auto;
   padding-left: 35px;
 
   > a {
@@ -26,26 +20,26 @@ const StyledSocials = styled.div`
   }
 `
 const StyledContainer = styled.div`
-display: table;
-width: 100%;
-padding: 10px;
+  display: table;
+  width: 100%;
+  padding: 10px;
 `
 const StyledDescription = styled.div`
-width: 40%;
-display: table-cell;
-// padding-right: 50px;
+  width: 40%;
+  display: table-cell;
+  // padding-right: 50px;
 `
 const StyledFeatures = styled.div`
-padding-left: 35px;
-display: table-cell;
-width: 25%;
+  padding-left: 35px;
+  display: table-cell;
+  width: 25%;
 `
 
 const StyledHR = styled.div`
-display: table-cell;
-height: 60%;
-width: 1px;
-background-color: #62929E;
+  display: table-cell;
+  height: 60%;
+  width: 1px;
+  background-color: #62929E;
 `
 
 const Description = ({ productData, defaultView }) => {
@@ -55,9 +49,7 @@ const Description = ({ productData, defaultView }) => {
     featuresMapped = productData.features.map((element, index) => {
       return (
       <div key={index}>{element.feature}: {element.value}</div>)}
-
   )}
-
 
   return (
     <>
@@ -91,12 +83,9 @@ const Description = ({ productData, defaultView }) => {
   )
 }
 
-//please review this proptype
 Description.propTypes = {
-
   productData: PropTypes.object,
   defaultView: PropTypes.bool
-
 }
 
 export default Description;

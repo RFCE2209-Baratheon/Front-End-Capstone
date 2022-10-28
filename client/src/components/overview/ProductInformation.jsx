@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {PropTypes} from 'prop-types'
@@ -10,7 +9,6 @@ const StyledSalePrice = styled.span`
 `
 
 const StyledLink = styled.a`
-  color: #546A7B;
   text-decoration: none;
 
   &: hover {
@@ -18,7 +16,7 @@ const StyledLink = styled.a`
   };
 
   &: visited {
-    color: #546A7B
+    color: #62929E;
   }
 `
 

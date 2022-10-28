@@ -82,5 +82,4 @@ ExpandedView.propTypes = {
   changeView: PropTypes.func
 }
 
-
 export default ExpandedView;

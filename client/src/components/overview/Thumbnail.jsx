@@ -9,9 +9,9 @@ const StyledThumbnail = styled.img`
   transform: scale(1.5);
   margin-top: 11px;
   object-fit: cover;
-  `
+`
 
-  const StyledThumbnailDiv = styled.div`
+const StyledThumbnailDiv = styled.div`
   display: flex;
   justify-content: center;
   width: 65px;
