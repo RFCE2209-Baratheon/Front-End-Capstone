@@ -99,24 +99,17 @@ input {
   color: red;
 }
 
-// review styles
-.on {
-  color: none;
-}
-
-.off {
-  color: #C6C5B9;
-}
-
 // related items styles
 .modal-wrapper {
   background: ${({ theme }) => theme.background};
 }
 
-.captions {
-  color:  ${({ theme }) => theme.captions};
+.table-info {
+  color: ${({ theme }) => theme.modal };
+  padding: 300px;
 }
-
 `
-
+// .modal-wrapper {
+//   background: ${({ theme }) => theme.background};
+// }
 export {AppStyle};
