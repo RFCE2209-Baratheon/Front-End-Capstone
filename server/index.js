@@ -7,7 +7,19 @@ const config = require('../config.js');
 const requestConfig = {
   headers: {'Authorization': config.TOKEN, 'Content-Encoding': 'gzip'}
 }
+const noCompressionConfig = {
+  headers: {'Authorization': config.TOKEN, 'x-no-compression': true}
+}
 
+
+
+const filterGzip = () => {
+  if (req.headers['x-no-compression']) {
+    return false
+  }
+
+  return compression.filter(req, res)
+}
 const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
 
@@ -74,7 +86,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 // POST /qa/questions
 app.post('/qa/questions/', (req, res) => {
 
-  axios.post(`${api}/qa/questions`, req.body, requestConfig)
+  axios.post(`${api}/qa/questions`, req.body, noCompressionConfig)
   .then((response)=> {
     res.sendStatus(response.status)
   })
@@ -91,7 +103,7 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 
   let id = parseInt(req.query.question_id)
 
-  axios.post(`${api}/qa/questions/${id}/answers`, req.body, requestConfig)
+  axios.post(`${api}/qa/questions/${id}/answers`, req.body, noCompressionConfig)
   .then((response)=> {
     res.sendStatus(response.status)
   })
@@ -107,7 +119,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
   // {params: {question_id: id}}
   let number = req.query.question_id
 
-  axios.put(`${api}/qa/questions/${number}/helpful`, {}, requestConfig)
+  axios.put(`${api}/qa/questions/${number}/helpful`, {}, noCompressionConfig)
 
   .then((success) => {
     console.log('succesfully put route for helpful questions')
@@ -125,7 +137,7 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 
   let number = req.query.question_id
 
-  axios.put(`${api}/qa/questions/${number}/report`, {}, requestConfig)
+  axios.put(`${api}/qa/questions/${number}/report`, {}, noCompressionConfig)
 
   .then((success) => {
     console.log('succesfully put route for report questions')
@@ -143,7 +155,7 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 
   let number = req.query.answer_id
 
-  axios.put(`${api}/qa/answers/${number}/helpful`, {}, requestConfig)
+  axios.put(`${api}/qa/answers/${number}/helpful`, {}, noCompressionConfig)
 
   .then((success) => {
     console.log('succesfully put route for helpful answers')
@@ -160,7 +172,7 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 app.put('/qa/answers/:answer_id/report', (req, res) => {
   let number = req.query.answer_id
 
-  axios.put(`${api}/qa/answers/${number}/report`, {}, requestConfig)
+  axios.put(`${api}/qa/answers/${number}/report`, {}, noCompressionConfig)
 
   .then((success) => {
     console.log('succesfully put route for report answer')
