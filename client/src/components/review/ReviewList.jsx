@@ -153,7 +153,7 @@ const ReviewList = ({
         <div style={{fontSize:"14px"}} data-testid="reviewlist-1">
           <b>{allReviews.length}</b>
           {' '}
-          <span style={{marginLeft:"5px"}}>reviews for this product, sorted by</span>
+          <span style={{rightMargin:"5px"}}>reviews for this product, sorted by</span>
           <DropDown handleSelect={handleSelect} />
         </div>
         <ScrollDiv>
