@@ -13,6 +13,7 @@ const AppStyle = createGlobalStyle`
   border-top: ${({ theme }) => theme.appBorder};
   border-left: ${({ theme }) => theme.appBorder};
   border-right: ${({ theme }) => theme.appBorder};
+  padding-bottom: 50px;
 
   h1 {
   color: ${({ theme }) => theme.h1};

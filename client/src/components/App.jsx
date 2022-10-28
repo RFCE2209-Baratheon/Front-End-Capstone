@@ -10,6 +10,7 @@ import { AppStyle } from '../assets/styles.js'
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Theme.js"
 import Toggler from './Toggler.jsx';
+import { AiOutlineShoppingCart } from '@react-icons/all-files/ai/AiOutlineShoppingCart';
 
 const StyledBanner = styled.div`
   display: flex;
@@ -25,20 +26,31 @@ const StyledFooter = styled(StyledBanner)`
 
 const StyledLogo = styled.div`
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   padding: 5px 5px 5px;
   color: #F4F4F9;
   z-index: 3;
 `
 
 const StyledToggler = styled.div`
-  margin-left: auto;
+  // margin-left: auto;
   padding: 50px;
 `
 
 const Logo = styled.img`
   z-index: 4;
+`
+
+const StyledShoppingCart = styled(AiOutlineShoppingCart)`
+  margin-left: auto;
+  padding-top: 55px;
+  padding-bottom: 50px;
+  padding-right: 20px;
+  font-size: 2rem;
+  color: #C6C5B9;
+  z-index: 3;
+  cursor: pointer;
 `
 
 //data-tracker
@@ -64,12 +76,10 @@ function App() {
   const [average, setAverage] = useState(1);
   const [reviews, setReviews] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
-
   const [theme, setTheme] = useState('light');
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
-    console.log('theme set to: ', theme)
 }
 
   useEffect(() => {
@@ -84,15 +94,14 @@ function App() {
       });
   }, []);
 
-
-
-  console.log('Loading App.jsx with pid: ', productId)
+  // console.log('Loading App.jsx with pid: ', productId)
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
       <StyledBanner className="banner">
         <StyledLogo><Logo src={logo}></Logo></StyledLogo>
+        <StyledShoppingCart/>
         <StyledToggler>
           <Toggler theme={theme} toggleTheme={themeToggler}/>
         </StyledToggler>
@@ -105,7 +114,14 @@ function App() {
         {productId && <QA className='QA' productID={productId} />}
         {productId && <Review reviews={reviews} setReviews={setReviews} allReviews={allReviews} setAllReviews={setAllReviews} average={average} setAverage={setAverage} productName={productName} productId={productId} className='Review'/>}
       </div>
-      <StyledFooter className="banner"></StyledFooter>
+      <StyledFooter className="banner">
+        <ul style={{listStyle: 'none', padding: '40px'}}>
+          <li style={{marginBottom: '10px'}}>Shop</li>
+          <li style={{marginBottom: '10px'}}>About</li>
+          <li style={{marginBottom: '10px'}}>Help</li>
+        </ul>
+        <div  style={{marginLeft: 'auto', padding: '50px'}}>© Baratheon</div>
+      </StyledFooter>
       </>
     </ThemeProvider>
   );
