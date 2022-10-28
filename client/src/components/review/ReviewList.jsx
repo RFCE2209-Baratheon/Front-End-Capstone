@@ -150,10 +150,10 @@ const ReviewList = ({
     <>
     <div style={{display:"inherit"}}>
       <Container>
-        <div data-testid="reviewlist-1">
-          {allReviews.length}
+        <div style={{fontSize:"14px"}} data-testid="reviewlist-1">
+          <b>{allReviews.length}</b>
           {' '}
-          reviews for this product, sorted by
+          <span style={{rightMargin:"10px"}}>reviews for this product, sorted by </span>
           <DropDown handleSelect={handleSelect} />
         </div>
         <ScrollDiv>

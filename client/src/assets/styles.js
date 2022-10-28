@@ -13,6 +13,33 @@ const AppStyle = createGlobalStyle`
   border-top: ${({ theme }) => theme.appBorder};
   border-left: ${({ theme }) => theme.appBorder};
   border-right: ${({ theme }) => theme.appBorder};
+  padding-bottom: 50px;
+
+  .formSpan: {
+    color: ${({ theme }) => theme.background};
+  }
+
+  .test {
+    background: ${({ theme }) => theme.background};
+  }
+
+  .loadMore {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
+
+  .submit {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+    border-color: ${({ theme }) => theme.text};
+  }
+
+  .addQuestion {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
 
   h1 {
   color: ${({ theme }) => theme.h1};
@@ -35,6 +62,7 @@ const AppStyle = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.a};
   }
+
 }
 
 p, div, option {

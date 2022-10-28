@@ -37,17 +37,16 @@ function ReviewListTile({ review, metaData }) {
 
   return (
     <Container data-testid="reviewlisttile-1">
-      <span>{review.rating}</span>
       <StarRatingStatic style={{userSelect:"none"}} rating={review.rating} review={review} />
       <div style={{ textAlign:"right", whiteSpace: 'nowrap' }}>
-        <GoVerified style={{color:"#62929E"}}/> <span><b>{review.reviewer_name}</b> <i>{`${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</i></span>
+        <GoVerified style={{color:"#62929E"}}/> <span style={{fontSize:"14px"}}><b>{review.reviewer_name}</b> <i>{`${format(parseISO(review.date), ' MMMM d, yyyy ')}`}</i></span>
 
       </div>
       <Summary>{review.summary.slice(0, 60)}</Summary>
       <ReviewListBody review={review} />
       {(review.recommend
         && (
-        <p>
+        <p style={{fontSize:"14px"}}>
           Recommended
           <span><GoVerified style={{paddingLeft:"5px", color:"#62929E"}}/></span>
         </p>

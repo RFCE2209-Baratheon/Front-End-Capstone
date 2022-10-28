@@ -91,7 +91,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
         {renderA.map(function (currentAnswer, index) {
           return (
           <Questions key={index}>
-          <Test>
+          <Test className='test'>
           <div>
             <AnswerStyle>
             <span className= 'answer'>{` ${currentAnswer.body}`}</span>
