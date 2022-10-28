@@ -14,6 +14,32 @@ const AppStyle = createGlobalStyle`
   border-left: ${({ theme }) => theme.appBorder};
   border-right: ${({ theme }) => theme.appBorder};
 
+  .formSpan: {
+    color: ${({ theme }) => theme.background};
+  }
+
+  .test {
+    background: ${({ theme }) => theme.background};
+  }
+
+  .loadMore {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
+
+  .submit {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+    border-color: ${({ theme }) => theme.text};
+  }
+
+  .addQuestion {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
+
   h1 {
   color: ${({ theme }) => theme.h1};
   }

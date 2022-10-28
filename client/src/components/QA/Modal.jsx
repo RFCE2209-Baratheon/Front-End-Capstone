@@ -48,8 +48,8 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
     <>
         <ModalBackground>
           <ModalWrapper>
-            <ModalContent>
-              <h2>Have a Question?</h2>
+            <ModalContent className = 'modalForm'>
+              <h2 className='modalheader'>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <span data-testid='modalform' className='formSpan'>Your Question *</span>
                 <textarea data-testid='modalform'type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>

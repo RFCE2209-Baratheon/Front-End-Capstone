@@ -6,15 +6,14 @@ import Report from './Report.jsx'
 const {useState} = React;
 
 //handlers
-const Helpful = ({helpfulCount, id, helpfulHandler, reportHandler}) => {
-
+const Helpful = ({currentQ, helpfulCount, id, helpfulHandler, reportHandler}) => {
   const [helpful, setHelpful] = useState(helpfulCount)
   const [voted, setVoted] = useState(true);
 
   const helpfulOnclick = () => {
     helpfulHandler(id)
     setVoted(false)
-    setHelpful(helpfulCount + 1)
+    setHelpful(currentQ.question_helpfulness + 1)
     //maybe move helpful count up to the api call
   }
 
@@ -45,7 +44,8 @@ Helpful.propTypes = {
   helpfulCount  : PropTypes.number,
   id: PropTypes.number,
   helpfulHandler: PropTypes.func,
-  reportHandler: PropTypes.func
+  reportHandler: PropTypes.func,
+  currentQ: PropTypes.object
 }
 
 export default Helpful

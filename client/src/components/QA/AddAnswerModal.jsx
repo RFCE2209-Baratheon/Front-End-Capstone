@@ -49,8 +49,8 @@ const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA})
     <>
         <ModalBackground>
           <ModalWrapper>
-            <ModalContent>
-              <h2>Have a Question?</h2>
+            <ModalContent className = 'modalForm'>
+              <h2 className='modalheader'>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <span className='formSpan'>Your Answer *</span>
                 <textarea type='text' className='formTextArea' maxLength='1000' ref={answerRef}required='required'></textarea>
@@ -71,12 +71,10 @@ const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA})
 
 //proptypes
 AddAnswerModal.propTypes = {
-  openModal: PropTypes.func,
-  productId: PropTypes.string,
-  setProductId: PropTypes.func,
-  setShowModal: PropTypes.func,
-  shouldFetchQ: PropTypes.bool,
-  setShouldFetchQ: PropTypes.func,
+  openAModal: PropTypes.func,
+  questionId: PropTypes.string,
+  shouldFetchA: PropTypes.bool,
+  setShouldFetchA: PropTypes.func,
 }
 
 export default AddAnswerModal;
