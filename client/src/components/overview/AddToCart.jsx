@@ -1,18 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import {$} from 'jquery';
+import { $ } from 'jquery';
 import { PropTypes } from 'prop-types'
 
 const AddToCartButton = styled.button`
   background-color: white;
   font-family: monospace;
+  border: 1px solid black;
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
+  }
 `
 
 const AddToCartContainer = styled.div`
   width: 200px;
-  height: 200px;
-  padding: 50px;
 `
 
 const AddToCart = ({ currentStyleSkus }) => {

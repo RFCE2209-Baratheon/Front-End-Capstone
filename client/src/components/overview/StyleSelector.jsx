@@ -17,8 +17,12 @@ const StyledIconDiv = styled.div`
   border-radius: 50%;
   position: relative;
   margin: 5px;
-  // margin-top: 10px;
-  // padding-bottom: 10px;
+  border: 1px solid #62929E;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
+  }
 `
 
 const StyledIconsDiv = styled.div`
@@ -33,12 +37,9 @@ const StyledOverlay = styled.div`
   right: 14px;
   font-size: 30px;
   user-select: none;
-  cursor: pointer;
-  color: #F4F4F9;
 `
 
-const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
-  const [styleId, setStyleId] = useState(currentStyle.style_id);
+const StyleSelector = ( {styleData, currentStyle, onStyleClick, styleId, setStyleId} ) => {
 
   return (
     <>
@@ -50,11 +51,11 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
       <StyledIconsDiv data-testid="style">
         {styleData.map((style, index) =>
           <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
+            onStyleClick(e, style.style_id);
             setStyleId(style.style_id)
-            onStyleClick(e, styleId);
             }}>
             <StyledIconImage src={style.photos[0].thumbnail_url}/>
-            {styleId === style.style_id && <StyledOverlay>✓</StyledOverlay>}
+            {styleId === style.style_id && <StyledOverlay className="overlay">✓</StyledOverlay>}
           </StyledIconDiv>
         )}
       </StyledIconsDiv>
@@ -62,13 +63,12 @@ const StyleSelector = ( {styleData, currentStyle, onStyleClick} ) => {
   )
 }
 
-//please review this proptype
 StyleSelector.propTypes = {
-
-  styleData: PropTypes.string,
+  styleData: PropTypes.array,
   currentStyle: PropTypes.object,
-  onStyleClick: PropTypes.func
-
+  onStyleClick: PropTypes.func,
+  styleId: PropTypes.number,
+  setStyleId: PropTypes.func
 }
 
 export default StyleSelector;

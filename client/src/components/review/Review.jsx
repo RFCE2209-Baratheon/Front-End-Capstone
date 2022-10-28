@@ -46,9 +46,9 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
 
   if (metaData) {
     return (
-      <>
+      <div id="review">
         <Title>Ratings & Reviews</Title>
-        <Container data-testid="review-1" id="review">
+        <Container data-testid="review-1">
           <RatingSummary
             average={average}
             setAverage={setAverage}
@@ -69,7 +69,7 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
             setAllReviews={setAllReviews}
           />
         </Container>
-      </>
+      </div>
     );
   }
 }

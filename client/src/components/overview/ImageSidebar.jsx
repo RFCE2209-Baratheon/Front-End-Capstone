@@ -14,15 +14,12 @@ const ImageSidebar = ( {activeThumbnails, current, setCurrent, start, end} ) => 
   );
 }
 
-//please review this proptype
 ImageSidebar.propTypes = {
-
   activeThumbnails: PropTypes.array,
   current: PropTypes.number,
   setCurrent: PropTypes.func,
   start: PropTypes.number,
   end: PropTypes.number
-
 }
 
 export default ImageSidebar;
