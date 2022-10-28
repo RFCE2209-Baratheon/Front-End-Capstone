@@ -1,4 +1,9 @@
 export const lightTheme = {
+  onyx: '#393D3F',
+  ghost: '#F4F4F9',
+  silver: '#C6C5B9',
+  steelTeal: '#62929E',
+  darkElectricBlue: '#546A7B',
   body: '#F4F4F9',
   text: '#393D3F',
   toggleBorder: '#FFF',
@@ -11,9 +16,16 @@ export const lightTheme = {
   a: '#546A7B',
   select: '#393D3F',
   button: 'none',
+  modal: '#F4F4F9',
+  caption: '#393D3F'
 }
 
 export const darkTheme = {
+  onyx: '#393D3F',
+  ghost: '#F4F4F9',
+  silver: '#C6C5B9',
+  steelTeal: '#62929E',
+  darkElectricBlue: '#546A7B',
   body: '#363537',
   text: '#C6C5B9',
   toggleBorder: '#F4F4F9',
@@ -25,5 +37,7 @@ export const darkTheme = {
   appBorder: 'solid 100px #546A7B',
   a: '#C6C5B9',
   select: '#546A7B',
-  button: 'none'
+  button: 'none',
+  modal: '#F4F4F9',
+  caption: '#C6C5B9'
 }

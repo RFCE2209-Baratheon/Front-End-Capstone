@@ -61,6 +61,7 @@ const AppStyle = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.a};
   }
+
 }
 
 p, div, option {
@@ -95,6 +96,24 @@ input {
 
 .price {
   color: red;
+}
+
+// review styles
+.on {
+  color: none;
+}
+
+.off {
+  color: #C6C5B9;
+}
+
+// related items styles
+.modal-wrapper {
+  background: ${({ theme }) => theme.background};
+}
+
+.captions {
+  color:  ${({ theme }) => theme.captions};
 }
 
 `
