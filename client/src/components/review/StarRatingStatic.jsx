@@ -20,7 +20,7 @@ function StarRatingStatic({rating},{product}) {
   }, []);
 
   return (
-    <div className="star-rating">
+    <div style={{fontSize:"25px"}}className="star-rating">
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
