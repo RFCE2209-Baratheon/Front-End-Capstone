@@ -267,7 +267,7 @@ app.post('/reviews', (req, res) => {
 
 app.put('/reviews', (req, res) => {
 
-  axios.put(`${api}/reviews/1275306/helpful`, requestConfig)
+  axios.put(`${api}/reviews/${req.body.id}/helpful`, requestConfig)
     .then((response) => {
       console.log(response);
     })
