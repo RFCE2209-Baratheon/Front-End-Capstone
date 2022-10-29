@@ -53,11 +53,11 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <label data-testid='modalform' className='formSpan'>Your Question *</label>
                 <textarea data-testid='modalform'type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
-                <label data-testid='modalform'className='formSpan'>Your Nickname *</span>
+                <label data-testid='modalform'className='formSpan'>Your Nickname *</label>
                 <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
-                <label data-testid='modalform'className='formSpan'placeholder>Your Email *</span>
+                <label data-testid='modalform'className='formSpan'placeholder>Your Email *</label>
                 <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
-                <label data-testid='modalform'className='finalSpan'>For authentication reasons, you will not be emailed</span>
+                <label data-testid='modalform'className='finalSpan'>For authentication reasons, you will not be emailed</label>
                 <button data-testid='modalform'className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>

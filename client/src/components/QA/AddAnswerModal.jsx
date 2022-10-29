@@ -52,13 +52,13 @@ const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA})
             <ModalContent className = 'modalForm'>
               <h2 className='modalheader'>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
-                <label className='formSpan'>Your Answer *</span>
+                <label className='formSpan'>Your Answer *</label>
                 <textarea type='text' className='formTextArea' maxLength='1000' ref={answerRef}required='required'></textarea>
-                <label className='formSpan'>Your Nickname *</span>
+                <label className='formSpan'>Your Nickname *</label>
                 <input type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
-                <label className='formSpan'placeholder>Your Email *</span>
+                <label className='formSpan'placeholder>Your Email *</label>
                 <input type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
-                <label className='finalSpan'>For authentication reasons, you will not be emailed</span>
+                <label className='finalSpan'>For authentication reasons, you will not be emailed</label>
                 <button className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>
