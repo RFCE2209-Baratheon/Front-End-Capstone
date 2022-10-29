@@ -10,11 +10,12 @@ This application comes out of the box ready to host.
 ### Related Projects
 https://github.com/RFCE2209-Baratheon
 
-Table of Contents
-Usage
-Requirements
+### Team
 
-
+Brian Stern
+Huong Nguyen
+Mario Valencia
+Andrew Arsenault
 
 ### Starting the web application
 
