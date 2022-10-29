@@ -31,7 +31,6 @@ const Response = styled.div`{
 }`;
 
 function ReviewListTile({ review, metaData }) {
-  console.log('ONE REVIEW', review)
 
   return (
     <Container data-testid="reviewlisttile-1">

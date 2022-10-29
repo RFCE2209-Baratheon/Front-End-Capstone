@@ -83,7 +83,7 @@ const ScrollDiv = styled.div`{
 }`;
 
 const ReviewList = ({
-  product, reviews, setReviews, allReviews, setAllReviews, metaData,
+  productId, product, reviews, setReviews, allReviews, setAllReviews, metaData,
 }) => {
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
@@ -92,14 +92,14 @@ const ReviewList = ({
 
   useEffect(() => {
     getReviews('relevant');
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     setReviewListIndex(1);
   }, [allReviews]);
 
   const getReviews = (sortParameter) => {
-    axios.get('/reviews/', { params: { product_id: product.id, sort: sortParameter } })
+    axios.get('/reviews/', { params: { product_id: productId, sort: sortParameter } })
       .then(getReviewSuccess)
       .catch((err) => {
         console.log(err);
