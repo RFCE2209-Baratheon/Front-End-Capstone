@@ -9,8 +9,6 @@ const {useState, useRef} = React;
 
 const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
 
-
-
   //state & refs
   const questionRef = useRef(null)
   const nicknameRef = useRef(null)

@@ -11,7 +11,6 @@ const AddQuestion = ({openQModal}) => {
   <button data-testid ='addQ' className='addQuestion'onClick={handleClick}>Add a Question</button>
   )
 
-
 }
 
 //propTypes
