@@ -21,8 +21,8 @@ const StyledLink = styled.a`
 `
 
 const StarP = styled.p`
-  width: min-content;
-  text-align: center;
+  // width: min-content;
+  text-align: left;
 `
 
 const StyledProductInfo = styled.div`
@@ -40,7 +40,7 @@ const ProductInformation = ({ productData, currentStyle, average, reviews }) => 
         <StyledLink href="#review">Read all {reviews} reviews</StyledLink>
       </StarP> : null}
 
-      <div>{productData.category.toUpperCase()}</div>
+      <p>{productData.category.toUpperCase()}</p>
       <h1>{productData.name}</h1>
 
       {currentStyle.sale_price ?

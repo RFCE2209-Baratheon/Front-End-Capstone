@@ -13,6 +13,33 @@ const AppStyle = createGlobalStyle`
   border-top: ${({ theme }) => theme.appBorder};
   border-left: ${({ theme }) => theme.appBorder};
   border-right: ${({ theme }) => theme.appBorder};
+  padding-bottom: 50px;
+
+  .formSpan: {
+    color: ${({ theme }) => theme.background};
+  }
+
+  .test {
+    background: ${({ theme }) => theme.background};
+  }
+
+  .loadMore {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
+
+  .submit {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+    border-color: ${({ theme }) => theme.text};
+  }
+
+  .addQuestion {
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
+
+  }
 
   h1 {
   color: ${({ theme }) => theme.h1};
@@ -72,24 +99,17 @@ input {
   color: red;
 }
 
-// review styles
-.on {
-  color: none;
-}
-
-.off {
-  color: #C6C5B9;
-}
-
 // related items styles
 .modal-wrapper {
   background: ${({ theme }) => theme.background};
 }
 
-.captions {
-  color:  ${({ theme }) => theme.captions};
+.table-info {
+  color: ${({ theme }) => theme.modal };
+  padding: 300px;
 }
-
 `
-
+// .modal-wrapper {
+//   background: ${({ theme }) => theme.background};
+// }
 export {AppStyle};

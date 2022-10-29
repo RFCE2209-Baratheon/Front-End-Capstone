@@ -1,7 +1,6 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
@@ -27,6 +26,12 @@ const ModalBackground = styled.div`{
 }`;
 
 const ModalContainer = styled.div`{
+  button {
+    border:none;
+  }
+  .upload {
+    border:solid;
+  }
   width: 500px;
   height: 800px;
   border-radius: 12px;
@@ -56,12 +61,16 @@ const InputBody = styled.input`{
 }`;
 
 const SelectButton = styled.button`{
-  color: palevioletred;
   font-size: 1.5em;
+  background-color: white;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid black;
-  border-radius: 3px;
+  border: 2px solid #62929E;
+  border-radius: 50px;
+  box-shadow: 5px 5px 10px;
+  &:hover {
+    background-color:  #546A7B
+  }
 }`;
 
 const Thumbnail = styled.img`
@@ -229,8 +238,9 @@ const AddReviewForm = ({
             <h5>Email</h5>
             <input required maxLength="60" onChange={(e) => { setUserEmail(e.target.value); }} type="email" placeholder="Example: jackson11@email.com" />
             <p style={{ fontSize: '10px' }}>For privacy reasons, you will not be emailed</p>
+            <div>
             {images.length < 5
-            && <SelectButton type="button" onClick={() => beginUpload()}>Photo Upload</SelectButton>}
+            && <SelectButton className="upload" type="button" onClick={() => beginUpload()}>Photo Upload</SelectButton>}
             <section>
               {images.map((i) => (
                 <Image
@@ -244,7 +254,8 @@ const AddReviewForm = ({
                 />
               ))}
             </section>
-            <SelectButton type="submit" onClick={() => { Submit(); }}>Submit Review</SelectButton>
+            <SelectButton className="upload" type="submit" onClick={() => { Submit(); }}>Submit Review</SelectButton>
+            </div>
           </form>
         </CloudinaryContext>
       </ModalContainer>

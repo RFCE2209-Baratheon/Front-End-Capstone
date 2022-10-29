@@ -21,7 +21,7 @@ const ComparisonModal = function ({ productName, category, features, productId, 
 
     let noDups = {};
 
-    return joinedFeatures.map((each) => {
+    return joinedFeatures.map((each, idx) => {
     let basicFeature = each.feature;
     let cardFeature = features.find((item) => {return item.feature === basicFeature});
     let mainFeature = mainProductInfo.features.find((item) => {return item.feature === basicFeature});
@@ -31,7 +31,7 @@ const ComparisonModal = function ({ productName, category, features, productId, 
     } else if (cardFeature && mainFeature) {
       noDups[basicFeature] = 1;
       return (
-        <TableValues>
+        <TableValues className="table-info" key={idx} >
           <td>{cardFeature.value}</td>
           <td>{basicFeature}</td>
           <td>{mainFeature.value}</td>
@@ -40,7 +40,7 @@ const ComparisonModal = function ({ productName, category, features, productId, 
     } else if (cardFeature) {
       noDups[basicFeature] = 1;
       return (
-        <TableValues>
+        <TableValues className="table-info" key={idx} >
           <td>{cardFeature.value}</td>
           <td>{basicFeature}</td>
           <td>-</td>
@@ -49,7 +49,7 @@ const ComparisonModal = function ({ productName, category, features, productId, 
     } else {
       noDups[basicFeature] = 1;
       return (
-        <TableValues>
+        <TableValues className="table-info" key={idx} >
           <td>-</td>
           <td>{basicFeature}</td>
           <td>{mainFeature.value}</td>
@@ -61,20 +61,20 @@ const ComparisonModal = function ({ productName, category, features, productId, 
 
 
   return (
-    <ModalWrapper className="modal-wrapper">
+    <ModalWrapper className="modal-wrapper" >
     <ModalCloseBtn onClick={openCompModal}/>
       <TableModal>
-        <caption className="caption" style={{fontSize: "1.2em", fontWeight: "bold"}}>
+        <caption style={{fontSize: "1.2em", fontWeight: "bold"}} >
           Comparing
         </caption>
         <thead>
-          <tr style={{fontSize: "1.2em"}} >
+          <tr style={{fontSize: "1.2em", whiteSpace: "pre-line"}} >
             <th>{productName}</th>
             <th> CHARACTERISTIC</th>
             <th> {mainProductInfo.name}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style={{ whiteSpace: "pre-line"}}>
             {joinFeatures()}
         </tbody>
       </TableModal>

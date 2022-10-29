@@ -28,6 +28,7 @@ const QuestionList = ({productID}) => {
   const [enableSearchQ, setEnableSearchQ] = useState(false)
   const [showQModal, setShowQModal] = useState(false)
   const [shouldFetchQ, setShouldFetchQ] = useState(false)
+
   // const [open, setOpen] = useState(null)
 
 
@@ -43,7 +44,7 @@ const QuestionList = ({productID}) => {
 
 
 
-    axios.get('/qa/questions', {params: {product_id: productID, count: 50}})
+    axios.get('/qa/questions', {params: {product_id: productID, count: 100}})
     .then((res)=>{
       console.log('setting questions')
       if (res.data.results.length <= 4) {
@@ -112,8 +113,8 @@ const QuestionList = ({productID}) => {
           </Accordion>
         </Wrapper>
       </QListWrapper>
-      <AddQuestion loadMore={loadMore} openQModal={openQModal}/>
-      {hide ? <LoadMoreQs loadMore={loadMore}/> : <></>}
+      <AddQuestion className='AddQuestion' loadMore={loadMore} openQModal={openQModal}/>
+      {hide ? <LoadMoreQs className='LoadMore' loadMore={loadMore}/> : <></>}
     </QuestionListStyle>
 
   )

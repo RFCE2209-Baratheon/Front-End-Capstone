@@ -13,7 +13,7 @@ const IndividualQuestion = ({renderQLength, question, index, shouldFetchQ, setSh
 
 
 //State
-// const [open, setOpen] = useState(false)
+const [currentQ, setCurrentQ] = useState()
 const [showAModal, setShowAModal] = useState(false)
 const [questionId, setQuestionId] = useState(question.question_id)
 const [shouldFetchA, setShouldFetchA] = useState(false);
@@ -22,8 +22,12 @@ const [helpfulCount, setHelpfulCount] = useState(question.question_helpfulness)
 
 
 
-//hooks & handlers
 
+//hooks & handlers
+// useEffect(()=> {
+//  setShouldFetchQ(!shouldFetchQ)
+// },[resetQ])
+//maybe remove above its temporary
 useEffect(()=>{
   if (searchedQ.length > 0) {
 
@@ -54,12 +58,14 @@ const helpfulQuestionOnclick = (iD) => {
   const config = {params: {question_id: iD}}
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
-    setShouldFetchQ(!shouldFetchQ)
+    console.log('successful put, trying to set questions')
+
+
   })
   .catch((error) => {
 
   })
-
+  setShouldFetchQ(!shouldFetchQ)
 }
 
 const reportQuestionOnclick = (iD) => {
@@ -76,13 +82,14 @@ const reportQuestionOnclick = (iD) => {
 
 }
 
+
 //component
   return (
     <>
     <IndividualQuestionStyle className = 'individualQuestion' selectIndex={`${index}`} renderQLength={renderQLength}>
       <span className='question' onClick={toggleOpen}> <b>{`${question.question_body}`}</b></span>
       <AlignRight>
-        <Helpful className='helpful'helpfulCount={helpfulCount} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
+        <Helpful className='helpful' currentQ={currentQ} helpfulCount={helpfulCount} id={question.question_id} helpfulHandler={helpfulQuestionOnclick} reportHandler={reportQuestionOnclick}/>
       </AlignRight>
       <QuestionFolder className={index} open={open}>
         <Answer questionid={question.question_id} shouldFetchQ={shouldFetchQ} setShouldFetchQ={setShouldFetchQ} openAModal={openAModal} shouldFetchA={shouldFetchA} searchedQ={searchedQ}/>
