@@ -36,4 +36,5 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+![Screenshot 2022-10-29 at 9 20 34 AM](https://user-images.githubusercontent.com/56766405/198833922-3aaa2bd7-aa11-4042-9990-9ce6f5861030.png)
 
