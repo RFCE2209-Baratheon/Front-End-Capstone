@@ -16,9 +16,7 @@ Requirements
 
 
 
-### Usage
-
-> Starting the web application
+### Starting the web application
 
 Ensure that you have node working on version 16.8.2 or higher. If you do not you can install it here https://nodejs.org/en/download/
 
