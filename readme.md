@@ -12,9 +12,9 @@ https://github.com/RFCE2209-Baratheon
 
 ### Team
 
-Brian Stern
-Huong Nguyen
-Mario Valencia
+Brian Stern,
+Huong Nguyen,
+Mario Valencia,
 Andrew Arsenault
 
 ### Starting the web application
