@@ -39,7 +39,8 @@ npm run start
 
 #### Hosting
 
-> Configuring the server:
+> Configuring the server
+
 After you have built the project you may host locally or externally on a third-party hosting service.
 
 The server, by default, is hosted locally on port 3000. Be sure that this port is available or configure it in the server/index.js file.
