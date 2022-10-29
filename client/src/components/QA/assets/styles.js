@@ -24,6 +24,8 @@ overflow-y: scroll;
 height: 300px;
 width: 100%;
 
+display: flex;
+flex-direction: column;
 
 
 ::-webkit-scrollbar {
@@ -111,7 +113,11 @@ padding-bottom: 20px;
 height: auto;
 `
 const Accordion = styled.div`
-
+.Accordion {
+display: flex;
+flex-direction: column;
+align-items: space-between;
+}
 background: none;
 `
 
@@ -154,6 +160,10 @@ const IndividualQuestionStyle = styled.div`
 // border-top: solid
 // border-width: 1px;
 // border-color: #F4F4F9;
+width: auto;
+display: flex;
+flex-direction: column;
+padding-bottom: 30px;
 background: transparent;
 // border-top-left-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};
 // border-top-right-radius: ${(props) => (props.selectIndex === '0' ? '5px' : '0px')};

@@ -27,7 +27,7 @@ const SearchBar = ({questions, setRenderQ, renderQ, searchedQ, setSearchedQ, ena
   const sort = (text) => {
 
     const newArray = questions.filter(function(question, index) {
-        if(question.question_body.includes(text)){
+        if(question.question_body.toLowerCase().includes(text.toLowerCase())){
           return question
         }
       })
