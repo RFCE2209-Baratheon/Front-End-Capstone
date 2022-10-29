@@ -1,9 +1,8 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/button-has-type */
+
+
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
