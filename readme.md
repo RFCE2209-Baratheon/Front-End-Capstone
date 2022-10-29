@@ -1,6 +1,6 @@
 
-## Project Name
-HackReactor FEC - Team Baratheon
+## HackReactor FEC - Team Baratheon
+
 
 ### Overview
 A retail website fufulling an intensive business requirement document as provided by a client. The website provides functionality for browsing/shopping a number of available products hosted on a third-party API.
