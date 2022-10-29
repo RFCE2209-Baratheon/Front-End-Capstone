@@ -1,5 +1,5 @@
 
-###Project Name
+## Project Name
 HackReactor FEC - Team Baratheon
 
 ### Overview
