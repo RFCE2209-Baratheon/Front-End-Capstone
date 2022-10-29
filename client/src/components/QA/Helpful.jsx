@@ -14,7 +14,6 @@ const Helpful = ({currentQ, helpfulCount, id, helpfulHandler, reportHandler}) =>
     helpfulHandler(id)
     setVoted(false)
     setHelpful(currentQ.question_helpfulness + 1)
-    //maybe move helpful count up to the api call
   }
 
   const reportOnclick = () => {

@@ -4,13 +4,9 @@ import {PropTypes} from 'prop-types'
 import {ModalBackground, ModalStyle, ModalWrapper, ModalContent, CloseModalButton, ModalForm} from './assets/styles.js'
 import axios from 'axios'
 
-
 const {useState, useRef} = React;
 
 const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA}) => {
-
-
-
 
   //state & refs
   const answerRef = useRef(null)

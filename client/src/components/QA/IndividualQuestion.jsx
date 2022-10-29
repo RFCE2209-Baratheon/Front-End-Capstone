@@ -59,8 +59,6 @@ const helpfulQuestionOnclick = (iD) => {
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
     console.log('successful put, trying to set questions')
-
-
   })
   .catch((error) => {
 
@@ -81,7 +79,6 @@ const reportQuestionOnclick = (iD) => {
   })
 
 }
-
 
 //component
   return (

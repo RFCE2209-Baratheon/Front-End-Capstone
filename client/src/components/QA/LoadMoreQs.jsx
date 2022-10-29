@@ -8,7 +8,6 @@ const LoadMoreQs = ({loadMore}) => {
   <button className='loadMore' id='123' onClick={(e) => {loadMore(e)}}> Load More Questions </button>
   )
 
-
 }
 
 //propTypes
