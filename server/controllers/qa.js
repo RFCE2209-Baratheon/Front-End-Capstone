@@ -95,7 +95,7 @@ const reportQuestion = (req, res) => {
 
 // Mark Answer as Helpful
 // Updates an answer to show it was found helpful.
-const markAnswerHelpful = () => {
+const markAnswerHelpful = (req, res) => {
   let number = req.query.answer_id
 
   axios.put(`${api}/qa/answers/${number}/helpful`, {}, noCompressionConfig)

@@ -46,7 +46,7 @@ const AddAnswerModal = ({openAModal, questionId, shouldFetchA, setShouldFetchA})
         <ModalBackground>
           <ModalWrapper>
             <ModalContent className = 'modalForm'>
-              <h2 className='modalheader'>Have a Question?</h2>
+              <h2 className='modalheader'>Add an Answer</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
                 <label className='formSpan'>Your Answer *</label>
                 <textarea type='text' className='formTextArea' maxLength='1000' ref={answerRef}required='required'></textarea>

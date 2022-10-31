@@ -20,14 +20,7 @@ const [shouldFetchA, setShouldFetchA] = useState(false);
 const [open, setOpen] = useState(null)
 const [helpfulCount, setHelpfulCount] = useState(question.question_helpfulness)
 
-
-
-
-//hooks & handlers
-// useEffect(()=> {
-//  setShouldFetchQ(!shouldFetchQ)
-// },[resetQ])
-//maybe remove above its temporary
+//hooks
 useEffect(()=>{
   if (searchedQ.length > 0) {
 
@@ -53,25 +46,23 @@ const openAModal = () => {
   setShowAModal(!showAModal)
 }
 
-const helpfulQuestionOnclick = (iD) => {
+const helpfulQuestionOnclick = (id) => {
 
-  const config = {params: {question_id: iD}}
+  const config = {params: {question_id: id}}
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
-    console.log('successful put, trying to set questions')
   })
   .catch((error) => {
 
   })
-  setShouldFetchQ(!shouldFetchQ)
+
 }
 
-const reportQuestionOnclick = (iD) => {
+const reportQuestionOnclick = (id) => {
 
-  const config = {params: {question_id: iD}}
+  const config = {params: {question_id: id}}
   axios.put('/qa/questions/:question_id/report', {}, config)
   .then((success) => {
-    console.log('report success, fetching questions now')
     setShouldFetchQ(!shouldFetchQ)
   })
   .catch((error) => {
