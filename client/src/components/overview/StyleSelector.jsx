@@ -1,6 +1,37 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types'
 import styled from 'styled-components';
-import {PropTypes} from 'prop-types'
+
+const StyleSelector = ( {styleData, currentStyle, onStyleClick, styleId, setStyleId} ) => {
+  return (
+    <>
+      <p>
+        <b>STYLE &gt; </b>
+        <span>{currentStyle.name}</span>
+      </p>
+      <br></br>
+      <StyledIconsDiv data-testid="style">
+        {styleData.map((style, index) =>
+          <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
+            onStyleClick(e, style.style_id);
+            setStyleId(style.style_id);
+            }}>
+            <StyledIconImage src={style.photos[0].thumbnail_url}/>
+            {styleId === style.style_id && <StyledOverlay className="overlay">✓</StyledOverlay>}
+          </StyledIconDiv>
+        )}
+      </StyledIconsDiv>
+    </>
+  )
+}
+
+StyleSelector.propTypes = {
+  styleData: PropTypes.array,
+  currentStyle: PropTypes.object,
+  onStyleClick: PropTypes.func,
+  styleId: PropTypes.number,
+  setStyleId: PropTypes.func
+}
 
 const StyledIconImage = styled.img`
   width: 100%;
@@ -9,7 +40,8 @@ const StyledIconImage = styled.img`
   flex-direction: row;
   transform: scale(1.5);
   margin-top: 12px;
-  `
+`
+
 const StyledIconDiv = styled.div`
   width: 75px;
   height: 75px;
@@ -34,42 +66,10 @@ const StyledIconsDiv = styled.div`
 const StyledOverlay = styled.div`
   position: absolute;
   bottom: 0px;
-  right: 14px;
-  font-size: 30px;
+  right: 8px;
+  font-size: 45px;
   user-select: none;
 `
-
-const StyleSelector = ( {styleData, currentStyle, onStyleClick, styleId, setStyleId} ) => {
-
-  return (
-    <>
-      <p>
-        <b>STYLE &gt; </b>
-        <span>{currentStyle.name}</span>
-      </p>
-      <br></br>
-      <StyledIconsDiv data-testid="style">
-        {styleData.map((style, index) =>
-          <StyledIconDiv id={`styleselector${index}`} key={index} onClick={(e) => {
-            onStyleClick(e, style.style_id);
-            setStyleId(style.style_id)
-            }}>
-            <StyledIconImage src={style.photos[0].thumbnail_url}/>
-            {styleId === style.style_id && <StyledOverlay className="overlay">✓</StyledOverlay>}
-          </StyledIconDiv>
-        )}
-      </StyledIconsDiv>
-    </>
-  )
-}
-
-StyleSelector.propTypes = {
-  styleData: PropTypes.array,
-  currentStyle: PropTypes.object,
-  onStyleClick: PropTypes.func,
-  styleId: PropTypes.number,
-  setStyleId: PropTypes.func
-}
 
 export default StyleSelector;
 

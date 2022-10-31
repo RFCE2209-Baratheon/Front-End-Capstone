@@ -3,6 +3,27 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import ReactImageZoom from 'react-image-zoom';
 
+const CarouselItem = ({ image, magnified }) => {
+  const zoomProps =  {width: 600, height: 600, zoomWidth: 600, img: image.url, zoomPosition: 'original'};
+
+  return (
+    <>
+      <StyledCarouselImageDiv>
+        {magnified &&
+          <StyledReactZoomImage>
+            <ReactImageZoom {...zoomProps} />
+          </StyledReactZoomImage>}
+        {!magnified && <StyledCarouselImage src={image.url} />}
+      </StyledCarouselImageDiv>
+    </>
+  )
+}
+
+CarouselItem.propTypes = {
+  image: PropTypes.object,
+  magnified: PropTypes.bool
+}
+
 const StyledCarouselImage = styled.img`
   width: 100%;
   height: auto;
@@ -24,26 +45,5 @@ const StyledReactZoomImage = styled.div`
     cursor:zoom-out;
 }
 `
-
-const CarouselItem = ({ image, magnified }) => {
-  const zoomProps =  {width: 600, height: 600, zoomWidth: 600, img: image.url, zoomPosition: 'original'};
-
-  return (
-    <>
-      <StyledCarouselImageDiv>
-        {magnified &&
-          <StyledReactZoomImage>
-            <ReactImageZoom {...zoomProps} />
-          </StyledReactZoomImage>}
-        {!magnified && <StyledCarouselImage src={image.url} />}
-      </StyledCarouselImageDiv>
-    </>
-  )
-}
-
-CarouselItem.propTypes = {
-  image: PropTypes.object,
-  magnified: PropTypes.bool
-}
 
 export default CarouselItem;

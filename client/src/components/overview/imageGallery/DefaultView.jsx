@@ -3,33 +3,7 @@ import styled from 'styled-components';
 import ImageCarousel from './ImageCarousel.jsx';
 import ImageSidebar from './ImageSidebar.jsx';
 import { PropTypes } from 'prop-types';
-import { StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand } from './styledIcons.js';
-
-const StyledCarousel = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-`
-
-const StyledThumbnailAlign = styled.div`
-  text-align: left;
-  position: absolute;
-  margin-left: 10px;
-`
-
-const StyledCarouselImageSize = styled.div`
-  width: 500px;
-`
-
-const StyledVerticalButtons = styled.div`
-  display: flex;
-  justify-content: center;
-`
-const StyledHorizontalButtons = styled.div`
-  display: flex;
-  align-content: center;
-`
+import { StyledLeftArrow, StyledRightArrow, StyledUpArrow, StyledDownArrow, StyledExpand } from '../styledIcons.js';
 
 const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextSlide, prevSlide, verticalScroll, upSlide, downSlide, length, start, end} ) => {
   return (
@@ -69,5 +43,31 @@ DefaultView.propTypes = {
   start: PropTypes.number,
   end: PropTypes.number
 }
+
+const StyledCarousel = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+`
+
+const StyledThumbnailAlign = styled.div`
+  text-align: left;
+  position: absolute;
+  margin-left: 10px;
+`
+
+const StyledCarouselImageSize = styled.div`
+  width: 500px;
+`
+
+const StyledVerticalButtons = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const StyledHorizontalButtons = styled.div`
+  display: flex;
+  align-content: center;
+`
 
 export default DefaultView;

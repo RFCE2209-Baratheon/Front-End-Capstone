@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import { PropTypes } from 'prop-types'
 import Thumbnail from './Thumbnail.jsx';
-import {PropTypes} from 'prop-types'
+
 const ImageSidebar = ( {activeThumbnails, current, setCurrent, start, end} ) => {
   return (
     <>
