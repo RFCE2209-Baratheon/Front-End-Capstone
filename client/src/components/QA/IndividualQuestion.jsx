@@ -51,7 +51,6 @@ const helpfulQuestionOnclick = (iD) => {
   const config = {params: {question_id: iD}}
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
-    console.log('successful put, trying to set questions')
   })
   .catch((error) => {
 
@@ -64,7 +63,6 @@ const reportQuestionOnclick = (iD) => {
   const config = {params: {question_id: iD}}
   axios.put('/qa/questions/:question_id/report', {}, config)
   .then((success) => {
-    console.log('report success, fetching questions now')
     setShouldFetchQ(!shouldFetchQ)
   })
   .catch((error) => {
