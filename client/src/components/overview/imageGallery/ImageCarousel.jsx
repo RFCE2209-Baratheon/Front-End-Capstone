@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import CarouselItem from './CarouselItem.jsx';
-import {PropTypes} from 'prop-types'
-const ImageCarousel = ( {styleImages, current, magnified} ) => {
+import { PropTypes } from 'prop-types'
 
+const ImageCarousel = ( {styleImages, current, magnified} ) => {
   return (
     <>
         {styleImages.map((image, index) =>

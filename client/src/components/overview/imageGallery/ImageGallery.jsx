@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import { PropTypes } from 'prop-types';
 
 const ImageGalleryContainerDefault = styled.div`
   width: 500px;
@@ -16,10 +16,8 @@ const ImageGalleryContainerExpand = styled.div`
 `
 
 const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) => {
-
   const [current, setCurrent] = useState(0);
   const length = styleImages.length;
-
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(7);
   const [activeThumbnails, setActiveThumbnails] = useState(styleImages.slice(start, end));
@@ -74,12 +72,12 @@ const ImageGallery = ({ styleImages, defaultView, expandedView, changeView }) =>
     </>
   )
 }
+
 ImageGallery.propTypes = {
   styleImages: PropTypes.array,
   defaultView: PropTypes.bool,
   expandedView: PropTypes.bool,
   changeView: PropTypes.func
 }
-
 
 export default ImageGallery;
