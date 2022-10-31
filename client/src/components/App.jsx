@@ -4,12 +4,12 @@ import axios from 'axios';
 import { AppStyle } from '../assets/styles.js';
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Theme.js";
-import { AiOutlineShoppingCart } from '@react-icons/all-files/ai/AiOutlineShoppingCart';
+import { StyledBanner, StyledFooter, StyledLogo, StyledToggler, Logo, StyledShoppingCart } from '../assets/AppStyles.js';
 import logo from '../assets/logo-white-black-transparent.png';
 import Overview from './overview/Overview.jsx';
 import Related from './related_items/Related_items.jsx';
 import Review from './review/Review.jsx';
-import QA from './QA/QA.jsx'
+import QA from './QA/QA.jsx';
 import Toggler from './Toggler.jsx';
 
 //data-tracker
@@ -85,47 +85,6 @@ function App() {
     </ThemeProvider>
   );
 }
-
-const StyledBanner = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: auto;
-  width: 100%;
-  z-index: 1;
-`
-
-const StyledFooter = styled(StyledBanner)`
-  height: 200px;
-`
-
-const StyledLogo = styled.div`
-  display: flex;
-  width: 180px;
-  height: 180px;
-  padding: 5px 5px 5px;
-  color: #F4F4F9;
-  z-index: 3;
-`
-
-const StyledToggler = styled.div`
-  // margin-left: auto;
-  padding: 50px;
-`
-
-const Logo = styled.img`
-  z-index: 4;
-`
-
-const StyledShoppingCart = styled(AiOutlineShoppingCart)`
-  margin-left: auto;
-  padding-top: 55px;
-  padding-bottom: 50px;
-  padding-right: 20px;
-  font-size: 2rem;
-  color: #C6C5B9;
-  z-index: 3;
-  cursor: pointer;
-`
 
 export const interactionContext = createContext(postInteraction);
 export default App;
