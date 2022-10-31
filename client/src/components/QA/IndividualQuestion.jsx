@@ -51,11 +51,12 @@ const helpfulQuestionOnclick = (id) => {
   const config = {params: {question_id: id}}
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
+    setShouldFetchQ(!shouldFetchQ)
   })
   .catch((error) => {
 
   })
-  setShouldFetchQ(!shouldFetchQ)
+
 }
 
 const reportQuestionOnclick = (id) => {
