@@ -9,8 +9,6 @@ const {useState, useRef} = React;
 
 const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ, setShouldFetchQ}) => {
 
-
-
   //state & refs
   const questionRef = useRef(null)
   const nicknameRef = useRef(null)
@@ -51,13 +49,13 @@ const Modal = ({openQModal, productId, setProductId, setShowQModal, shouldFetchQ
             <ModalContent className = 'modalForm'>
               <h2 className='modalheader'>Have a Question?</h2>
               <ModalForm onSubmit={(e) => {handleSubmit(e)}}  >
-                <span data-testid='modalform' className='formSpan'>Your Question *</span>
+                <label data-testid='modalform' className='formSpan'>Your Question *</label>
                 <textarea data-testid='modalform'type='text' className='formTextArea' maxLength='1000' ref={questionRef} required='required'></textarea>
-                <span data-testid='modalform'className='formSpan'>Your Nickname *</span>
+                <label data-testid='modalform'className='formSpan'>Your Nickname *</label>
                 <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Example: WickedCool1337' ref={nicknameRef} required='required'></input>
-                <span data-testid='modalform'className='formSpan'placeholder>Your Email *</span>
+                <label data-testid='modalform'className='formSpan'placeholder>Your Email *</label>
                 <input data-testid='modalform'type='text' className='formInput'  maxLength='60' placeholder='Why did you like the product?' ref={emailRef} required='required'></input>
-                <span data-testid='modalform'className='finalSpan'>For authentication reasons, you will not be emailed</span>
+                <label data-testid='modalform'className='finalSpan'>For authentication reasons, you will not be emailed</label>
                 <button data-testid='modalform'className='submit'>Submit</button>
               </ModalForm>
             </ModalContent>

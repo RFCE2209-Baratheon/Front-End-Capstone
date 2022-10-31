@@ -29,20 +29,13 @@ const QuestionList = ({productID}) => {
   const [showQModal, setShowQModal] = useState(false)
   const [shouldFetchQ, setShouldFetchQ] = useState(false)
 
-  // const [open, setOpen] = useState(null)
-
-
-
+  //data-tracking
   const postInteraction = useContext(interactionContext)
-  // const [openAModal, setOpenAModal] = useState(false)
   const currentComponent = 'QA';
   let currentTime = new Date()
 
-
   // Hooks & Handler
   useEffect(()=> {
-
-
 
     axios.get('/qa/questions', {params: {product_id: productID, count: 100}})
     .then((res)=>{
@@ -66,13 +59,6 @@ const QuestionList = ({productID}) => {
     }
 
   }, [end])
-
-  // useEffect(()=>{
-  //   if (searchedQ.length > 0) {
-  //     setEnableSearchQ(true)
-  //     setOpen(null)
-  //   }
-  // }, [searchedQ])
 
   const loadMore = (e) => {
 
@@ -116,7 +102,6 @@ const QuestionList = ({productID}) => {
       <AddQuestion className='AddQuestion' loadMore={loadMore} openQModal={openQModal}/>
       {hide ? <LoadMoreQs className='LoadMore' loadMore={loadMore}/> : <></>}
     </QuestionListStyle>
-
   )
 }
 

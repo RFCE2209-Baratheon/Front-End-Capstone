@@ -1,9 +1,8 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/button-has-type */
+
+
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
@@ -84,7 +83,7 @@ const ScrollDiv = styled.div`{
 }`;
 
 const ReviewList = ({
-  product, reviews, setReviews, allReviews, setAllReviews, metaData,
+  productId, product, reviews, setReviews, allReviews, setAllReviews, metaData,
 }) => {
   const [moreReviewsButton, setMoreReviewsButton] = useState(false);
   const [reviewListIndex, setReviewListIndex] = useState(1);
@@ -93,14 +92,14 @@ const ReviewList = ({
 
   useEffect(() => {
     getReviews('relevant');
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     setReviewListIndex(1);
   }, [allReviews]);
 
   const getReviews = (sortParameter) => {
-    axios.get('/reviews/', { params: { product_id: product.id, sort: sortParameter } })
+    axios.get('/reviews/', { params: { product_id: productId, sort: sortParameter } })
       .then(getReviewSuccess)
       .catch((err) => {
         console.log(err);

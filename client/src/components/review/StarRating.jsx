@@ -5,7 +5,7 @@ function StarRating({setRating, rating}) {
   const [ratingDescription, setRatingDescription] = useState(['', 'Poor', 'Fair', 'Average', 'Good', 'Great']);
 
   return (
-    <div style={{ whiteSpace: 'nowrap' }} className="star-rating">
+    <div style={{height:"50px", fontSize:"25px", whiteSpace: 'nowrap' }} className="star-rating">
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
@@ -17,7 +17,7 @@ function StarRating({setRating, rating}) {
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(rating)}
           >
-            <span className="star">&#9733;</span>
+            <span style={{fontSize:"25px"}} className="star">&#9733;</span>
           </button>
         );
       })}

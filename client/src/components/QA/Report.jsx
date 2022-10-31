@@ -13,19 +13,9 @@ const Report = ({reportOnclick}) => {
 
 }
 
-
 //proptype
 Report.propTypes = {
   reportOnclick: PropTypes.func
 }
 
 export default Report;
-
-
-
-// PUT /qa/questions/:question_id/report
-
-// Parameters
-
-// Parameter	Type	Description
-// question_id	integer	Required ID of the question to update
