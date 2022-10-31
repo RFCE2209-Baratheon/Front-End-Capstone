@@ -10,7 +10,7 @@ import IndividualQuestion from '../IndividualQuestion.jsx';
 import AddQuestion from '../AddQuestion.jsx'
 import AddAnswer from '../AddAnswer.jsx'
 import AddAnswerModal from '../AddAnswerModal.jsx'
-import Modal from '../Modal.jsx'
+import Modal from '../AddQuestionModal.jsx'
 import {ModalForm} from '../assets/styles.js'
 import {format, parseISO} from 'date-fns'
 import QA from '../QA.jsx'
