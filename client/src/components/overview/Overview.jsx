@@ -12,7 +12,7 @@ const Overview = ({ productId, average, reviews }) => {
   const [styleData, setStyleData] = useState(null);
   const [currentStyle, setCurrentStyle] = useState(null);
   const [productData, setProductData] = useState(null);
-  const [defaultView, setDefaultView] = useState(true); // refactor to simplify to one state view
+  const [defaultView, setDefaultView] = useState(true);
   const [expandedView, setExpandedView] = useState(false);
   const [styleId, setStyleId] = useState(null);
 
