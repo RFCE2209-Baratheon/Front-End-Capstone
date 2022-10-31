@@ -1,5 +1,5 @@
 const express = require('express');
-// const compression = require('compression');
+const compression = require('compression');
 const path = require('path');
 const app = express();
 const axios = require('axios');
@@ -8,7 +8,6 @@ const { getAllProducts, getProduct, getProductStyles, addToCart } = require('./c
 const getRelatedProducts = require('./controllers/related.js');
 const { getAllQuestions, getAnswers, addQuestion, addAnswer, reportQuestion, markQuestionHelpful, markAnswerHelpful, reportAnswer } = require('./controllers/qa.js');
 const { getReviews, getReviewsMeta, addReview, markReviewHelpful, reportReview } = require('./controllers/reviews.js');
-
 
 const requestConfig = {
   headers: {'Authorization': config.TOKEN}
@@ -26,7 +25,7 @@ const filterGzip = () => {
 
 const api = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
-// app.use(compression({level:6, threshold: 0}))
+app.use(compression({level:6, threshold: 0}))
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 app.listen(3000);
@@ -37,6 +36,9 @@ app.get('/products/:product_id', getProduct);
 app.get('/products/:product_id/styles', getProductStyles);
 app.post('/cart', addToCart)
 
+// related routes
+app.get('/products/:product_id/related', getRelatedProducts);
+
 // qa routes
 app.get('/qa/questions', getAllQuestions);
 app.get('/qa/questions/:question_id/answers', getAnswers);
@@ -46,9 +48,6 @@ app.put('/qa/questions/:question_id/helpful', markQuestionHelpful);
 app.put('/qa/questions/:question_id/report', reportQuestion);
 app.put('/qa/answers/:answer_id/helpful', markAnswerHelpful);
 app.put('/qa/answers/:answer_id/report', reportAnswer);
-
-// related routes
-app.get('/products/:product_id/related', getRelatedProducts);
 
 // review routes
 app.get('/reviews/', getReviews);
@@ -67,9 +66,5 @@ app.post('/interactions', (req, res) => {
       console.log('Error posting to API');
     });
 })
-
-// app.get("*", (req, res) => {
-//   res.sendFile(clientIndexHtml);
-// });
 
 console.log("Starting server");
