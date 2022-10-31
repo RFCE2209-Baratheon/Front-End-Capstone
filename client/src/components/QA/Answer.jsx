@@ -47,8 +47,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
     const config = {params: {answer_id: iD}}
     axios.put('/qa/answers/:answer_id/helpful', {}, config)
     .then((success) => {
-      // setVoted(false)
-      // setHelpful(helpful+1)
     })
     .catch((error) => {
 
