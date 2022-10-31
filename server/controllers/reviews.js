@@ -9,7 +9,6 @@ const noCompressionConfig = {
   headers: {'Authorization': config.TOKEN, 'x-no-compression': true}
 }
 
-// Rating and Reviews
 const getReviews = (req, res) => {
   axios.get(`${api}/reviews`, { params: { product_id: req.query.product_id, sort: req.query.sort, count: 5000 }, headers: { Authorization: config.TOKEN } })
   .then((response) => {

@@ -23,9 +23,9 @@ const getAllQuestions = (req, res) => {
     })
 }
 
+// Answers List
+// Returns answers for a given question. This list does not include any reported answers.
 const getAnswers = (req, res) => {
-  // Answers List
-  // Returns answers for a given question. This list does not include any reported answers.
   axios.get(`${api}/qa/questions/${req.params.question_id}/answers`, requestConfig )
     .then((response)=>{
       res.send(response.data)
@@ -95,7 +95,6 @@ const reportQuestion = (req, res) => {
 
 // Mark Answer as Helpful
 // Updates an answer to show it was found helpful.
-
 const markAnswerHelpful = () => {
   let number = req.query.answer_id
 
