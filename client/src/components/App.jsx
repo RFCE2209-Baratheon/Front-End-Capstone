@@ -53,8 +53,6 @@ function App() {
       });
   }, []);
 
-  // console.log('Loading App.jsx with pid: ', productId)
-
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
