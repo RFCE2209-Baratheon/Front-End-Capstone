@@ -17,11 +17,7 @@ const Helpful = ({currentQ, helpfulCount, id, helpfulHandler, reportHandler}) =>
   }
 
   const reportOnclick = () => {
-    // handler(id)
-    // setVoted(false)
-    // setHelpful(helpful+1)
     reportHandler(id)
-
   }
 
 //component
