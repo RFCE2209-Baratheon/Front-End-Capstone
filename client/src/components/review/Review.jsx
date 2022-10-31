@@ -22,23 +22,20 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
   const [product, setProduct] = useState(tempProduct);
   const [metaData, setMetaData] = useState([]);
 
-
   const tempProduct = {
     id: productId,
     name: productName,
   };
 
   const getMetaData = () => {
-    axios.get('/reviews/meta', { params: { product_id: tempProduct.id } })
+    axios.get('/reviews/meta', { params: { product_id: productId} })
       .then(getMetaSuccess)
       .catch((err) => {
         console.log(err);
       });
   };
 
-  useEffect(() => {
-    getMetaData();
-  }, []);
+  useEffect(getMetaData, [productId]);
 
   const getMetaSuccess = (response) => {
     setMetaData(response.data);
@@ -59,8 +56,10 @@ const Review = ({ reviews, setReviews, allReviews, setAllReviews, average, setAv
             product={tempProduct}
             allReviews={allReviews}
             setAllReviews={setAllReviews}
+            productId={productId}
           />
           <ReviewList
+            productId={productId}
             reviews={reviews}
             setReviews={setReviews}
             metaData={metaData}

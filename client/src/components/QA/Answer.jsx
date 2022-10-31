@@ -1,6 +1,6 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
-import {Questions, HelpfulButton, Test, AnswerStyle} from './assets/styles.js'
+import {Questions, HelpfulButton, AnswerWrapper, AnswerStyle} from './assets/styles.js'
 import {format, parseISO} from 'date-fns'
 import Helpful from './Helpful.jsx'
 import Images from './Images.jsx'
@@ -47,9 +47,6 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
     const config = {params: {answer_id: iD}}
     axios.put('/qa/answers/:answer_id/helpful', {}, config)
     .then((success) => {
-      // setShouldFetchQ(!shouldFetchQ)
-      setVoted(false)
-      setHelpful(helpful+1)
     })
     .catch((error) => {
 
@@ -83,15 +80,13 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
     setRenderA(answers.slice(start, renderA.length + 2))
   }
 
-
-
   //component
   return (
       <>
         {renderA.map(function (currentAnswer, index) {
           return (
           <Questions key={index}>
-          <Test className='test'>
+          <AnswerWrapper>
           <div>
             <AnswerStyle>
             <span className= 'answer'>{` ${currentAnswer.body}`}</span>
@@ -103,7 +98,7 @@ const Answer = ({questionid, shouldFetchQ, setShouldFetchQ, openAModal, shouldFe
               <Helpful helpfulCount={currentAnswer.helpfulness} id={currentAnswer.answer_id} helpfulHandler={helpfulAnswerOnclick} reportHandler={reportAnswerOnclick}/>
             </div>
           </div>
-          </Test>
+          </AnswerWrapper>
           </Questions >
           )
         })}

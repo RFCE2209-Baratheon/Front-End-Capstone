@@ -1,49 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { PropTypes } from 'prop-types';
+import axios from 'axios';
+import styled from 'styled-components';
 import ProductInformation from './ProductInformation.jsx';
 import Description from './Description.jsx';
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from './imageGallery/ImageGallery.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
-import styled from 'styled-components';
-import axios from 'axios';
-import { PropTypes } from 'prop-types';
-
-const StyledContainer = styled.div`
-  display: grid;
-  grid-template-columns: ${props => props.default ? '650px auto' : 'auto'};
-  grid-template-rows: auto;
-  grid-template-areas: ${props => props.default ?
-    `"left1 right1"
-    "left1 right2"
-    "left1 right3"
-    "bottom bottom"` :
-    `"left1"
-    "bottom"`};
-  column-gap: 10px;
-  // min-width: 1100px;
-`
-
-const StyledImageGallery = styled.div`
-  grid-area: left1;
-  // margin-left: 100px;
-  margin-left: ${props => props.default ? 'none' : '20%'};
-  margin-right: ${props => props.default ? 'none' : '30%'};
-`
-
-const StyledProductInfo = styled.div`
-  grid-area: right1;
-`
-const StyledDescription = styled.div`
-  grid-area: bottom;
-  margin-left: 100px;
-`
-
-const StyledStyleSelector = styled.div`
-  grid-area: right2;
-`
-const StyledAddToCart = styled.div`
-  grid-area: right3;
-`
 
 const Overview = ({ productId, average, reviews }) => {
   const [styleData, setStyleData] = useState(null);
@@ -54,9 +17,8 @@ const Overview = ({ productId, average, reviews }) => {
   const [styleId, setStyleId] = useState(null);
 
 
-  useEffect(()=> {
+  useEffect(() => {
     axios.get(`/products/${productId}/styles`)
-
       .then((response) => {
         setStyleData(response.data.results)
         setCurrentStyle(response.data.results[0])
@@ -66,15 +28,13 @@ const Overview = ({ productId, average, reviews }) => {
       .catch((error) => {
         console.log('error, could not get styles from api. error: ', error)
       });
-
     axios.get(`products/${productId}`)
-    .then((response) => {
-      setProductData(response.data);
-    })
-    .catch((error) => {
-      console.log('error, could not get current product data from api. error: ', error)
-    });
-
+      .then((response) => {
+        setProductData(response.data);
+      })
+      .catch((error) => {
+        console.log('error, could not get current product data from api. error: ', error)
+      });
   }, [productId]);
 
   const onStyleClick = (e, id) => {
@@ -123,5 +83,41 @@ Overview.propTypes = {
   reviews: PropTypes.number
 }
 
+const StyledContainer = styled.div`
+  display: grid;
+  grid-template-columns: ${props => props.default ? '650px auto' : 'auto'};
+  grid-template-rows: auto;
+  grid-template-areas: ${props => props.default ?
+    `"left1 right1"
+    "left1 right2"
+    "left1 right3"
+    "bottom bottom"` :
+    `"left1"
+    "bottom"`};
+  column-gap: 10px;
+  // min-width: 1100px;
+`
+
+const StyledImageGallery = styled.div`
+  grid-area: left1;
+  // margin-left: 100px;
+  margin-left: ${props => props.default ? 'none' : '20%'};
+  margin-right: ${props => props.default ? 'none' : '30%'};
+`
+
+const StyledProductInfo = styled.div`
+  grid-area: right1;
+`
+const StyledDescription = styled.div`
+  grid-area: bottom;
+  margin-left: 100px;
+`
+
+const StyledStyleSelector = styled.div`
+  grid-area: right2;
+`
+const StyledAddToCart = styled.div`
+  grid-area: right3;
+`
 
 export default Overview;

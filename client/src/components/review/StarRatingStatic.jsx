@@ -9,7 +9,6 @@ function StarRatingStatic({rating},{product}) {
       sum += review.rating;
     });
     const average = sum / product.results.length;
-    // need to round to closest 1/4 point still
     setRating(average);
   };
 

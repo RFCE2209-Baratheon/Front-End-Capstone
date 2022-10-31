@@ -28,7 +28,7 @@ const BreakDown = styled.div`{
 }`;
 
 const RatingSummary = ({
-  product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData, average, setAverage
+  productId, product, allReviews, setAllReviews, reviews, setReviews, metaData, setMetaData, average, setAverage
 }) => {
   // need to pass data down for overall rating - will update this with axios call in reviews
   // const [average, setAverage] = useState(1);

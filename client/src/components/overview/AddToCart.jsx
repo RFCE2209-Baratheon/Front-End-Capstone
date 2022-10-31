@@ -1,31 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { PropTypes } from 'prop-types'
 import styled from 'styled-components';
 import axios from 'axios';
 import $ from 'jquery';
-import { PropTypes } from 'prop-types'
-
-const AddToCartButton = styled.button`
-  background-color: white;
-  font-family: monospace;
-  border: 1px solid black;
-  &:hover {
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
-  }
-`
-
-const AddToCartContainer = styled.div`
-  width: 200px;
-`
 
 const AddToCart = ({ currentStyleSkus }) => {
   const [size, setSize] = useState('');
   const [sizeSelected, setSizeSelected] = useState(false);
   const [maxQuantity, setMaxQuantity] = useState(1);
   const [quantity, setQuantity] = useState(1);
-  const dropdownRef = useRef(null);
-  const messageRef = useRef(null);
   const [cartMessage, setCartMessage] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
+  const dropdownRef = useRef(null);
+  const messageRef = useRef(null);
 
   var mappedQtyOptions;
 
@@ -33,7 +20,7 @@ const AddToCart = ({ currentStyleSkus }) => {
     if (currentStyleSkus[sku].quantity > 0) {
       return <option key={index}>{currentStyleSkus[sku].size}</option>}
     }
-  )
+  );
 
   useEffect(() => {
     Object.keys(currentStyleSkus).forEach((sku, index) =>
@@ -57,7 +44,7 @@ const AddToCart = ({ currentStyleSkus }) => {
     }
     mappedQtyOptions = quantityOptions.map((num, i) =>
       <option key={i}>{num}</option>
-    )
+    );
   }
 
   const onButtonClick = () => {
@@ -76,14 +63,14 @@ const AddToCart = ({ currentStyleSkus }) => {
         if (currentStyleSkus[sku].quantity >= quantity && currentStyleSkus[sku].size === size) {
           sku_id = sku;
         }
-      })
-      axios.post('/cart', {sku_id: sku_id})
-      .then((response) => {
-        console.log('Item added to cart!')
-      })
-      .catch((error) => {
-        console.log('error, could not add item to cart. error: ', error)
       });
+      axios.post('/cart', {sku_id: sku_id})
+        .then((response) => {
+          console.log('Item added to cart!');
+        })
+        .catch((error) => {
+          console.log('error, could not add item to cart. error: ', error);
+        });
       setButtonClicked(true);
       setCartMessage(true);
     }
@@ -97,7 +84,8 @@ const AddToCart = ({ currentStyleSkus }) => {
             setSize(e.target.value);
             setSizeSelected(true);
           }}>
-            <option value="select">select size</option> {mappedSizeOptions}
+            <option value="select">select size</option>
+            {mappedSizeOptions}
           </select>
 
           <select name="quantity" onChange={(e) => {
@@ -118,5 +106,18 @@ const AddToCart = ({ currentStyleSkus }) => {
 AddToCart.propTypes = {
   currentStyleSkus: PropTypes.object,
 }
+
+const AddToCartButton = styled.button`
+  background-color: white;
+  font-family: monospace;
+  border: 1px solid black;
+  &:hover {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.24),0 5px 10px 0 rgba(0,0,0,0.19);
+  }
+`
+
+const AddToCartContainer = styled.div`
+  width: 200px;
+`
 
 export default AddToCart;
