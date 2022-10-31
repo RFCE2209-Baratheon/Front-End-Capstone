@@ -46,9 +46,9 @@ const openAModal = () => {
   setShowAModal(!showAModal)
 }
 
-const helpfulQuestionOnclick = (iD) => {
+const helpfulQuestionOnclick = (id) => {
 
-  const config = {params: {question_id: iD}}
+  const config = {params: {question_id: id}}
   axios.put('/qa/questions/:question_id/helpful', {}, config)
   .then((success) => {
   })
@@ -58,9 +58,9 @@ const helpfulQuestionOnclick = (iD) => {
   setShouldFetchQ(!shouldFetchQ)
 }
 
-const reportQuestionOnclick = (iD) => {
+const reportQuestionOnclick = (id) => {
 
-  const config = {params: {question_id: iD}}
+  const config = {params: {question_id: id}}
   axios.put('/qa/questions/:question_id/report', {}, config)
   .then((success) => {
     setShouldFetchQ(!shouldFetchQ)
