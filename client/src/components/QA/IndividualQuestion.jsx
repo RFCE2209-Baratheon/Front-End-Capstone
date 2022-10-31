@@ -20,14 +20,7 @@ const [shouldFetchA, setShouldFetchA] = useState(false);
 const [open, setOpen] = useState(null)
 const [helpfulCount, setHelpfulCount] = useState(question.question_helpfulness)
 
-
-
-
-//hooks & handlers
-// useEffect(()=> {
-//  setShouldFetchQ(!shouldFetchQ)
-// },[resetQ])
-//maybe remove above its temporary
+//hooks
 useEffect(()=>{
   if (searchedQ.length > 0) {
 
