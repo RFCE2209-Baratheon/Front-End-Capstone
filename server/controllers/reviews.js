@@ -33,7 +33,7 @@ const addReview = (req, res) => {
 }
 
 const markReviewHelpful = (req, res) => {
-  axios.put(`${api}/reviews/1275306/helpful`, requestConfig)
+  axios.put(`${api}/reviews/${req.body.id}/helpful`, requestConfig)
     .then((response) => {
       console.log(response);
     })
