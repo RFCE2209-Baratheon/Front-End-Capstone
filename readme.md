@@ -9,7 +9,8 @@ This application comes out of the box ready to host.
 * [Team](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/edit/main/readme.md#team)
 * [Tech Stack](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#tech-stack)  
 * [Product Features](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#product-features)  
-* [Installation](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)  
+* [Installation](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)
+* [Contributors](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#contributors)  
 
 
 ## Team
@@ -144,3 +145,9 @@ npm run server-dev
 
 ### Requirements
 (https://nodejs.org/en/download/)
+
+### Contributors
+
+<a href="https://github.com/RFCE2209-Baratheon/Front-End-Capstone/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=RFCE2209-Baratheon/Front-End-Capstone" />
+</a>
