@@ -18,7 +18,7 @@ This application comes out of the box ready to host.
 * Huong Nguyen - [Product Overview](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#product-overview)
 * Mario Valencia - [Related Products](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#related-products)
 * Andrew Arsenault - [Questions & Answers](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#questions--answers)
-* Brian Stern - [Related Products](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#related-products)
+* Brian Stern - [Responses & Reviews](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#ratings--reviews)
 
 
 ## Tech Stack
