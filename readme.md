@@ -31,73 +31,73 @@ This application comes out of the box ready to host.
 
 ## Product Features
 
-## Website Overview
+### Website Overview
 ![](./readMeGifs/website.gif)
 
-### Toggle Theme
+Toggle Theme
 ![](./readMeGifs/themeToggle.gif)
 
 ## Product Overview
 
-### Product Image Carousel
+Product Image Carousel
 ![](./readMeGifs/overviewCarousel.gif)
 
-### Style Selector
+Style Selector
 ![](./readMeGifs/overviewStyleSelector.gif)
 
-### Add Product to Cart
+Add Product to Cart
 ![](./readMeGifs/overviewAddToCart.gif)
 
 ## Related Products
 
-### Related Product Selector
+Related Product Selector
 ![](./readMeGifs/relatedProductChange.gif)
 
-### Related Products Cards
+Related Products Cards
 ![](./readMeGifs/relatedCardAnimation.gif)
 
-### Related Products Carousel
+Related Products Carousel
 ![](./readMeGifs/relatedCardsCarousel.gif)
 
-### Outfit Creation
+Outfit Creation
 ![](./readMeGifs/relatedOutfitCreation.gif)
 
 
 ## Questions & Answers
 
-### Load More Questions
+Load More Questions
 ![](./readMeGifs/qaLoadQuestions.gif)
 
-### View Answers to Questions
+View Answers to Questions
 ![](./readMeGifs/qaViewAnswers.gif)
 
-### Search Questions and Answers
+Search Questions and Answers
 ![](./readMeGifs/qaSearch.gif)
 
-### Vote Helpfulness of Question
+Vote Helpfulness of Question
 ![](./readMeGifs/qaHelpfulVote.gif)
 
-### Report Question
+Report Question
 ![](./readMeGifs/qaReportQuestion.gif)
 
-### Add a Question
+Add a Question
 ![](./readMeGifs/qaAddQuestion.gif)
 
 ## Ratings & Reviews
 
-### Load More Reviews
+Load More Reviews
 ![](./readMeGifs/reviewLoadMoreReviews.gif)
 
-### Vote Helpfulness of Review
+Vote Helpfulness of Review
 ![](./readMeGifs/reviewsVoteHelpful.gif)
 
-### Sort Reviews by Category
+Sort Reviews by Category
 ![](./readMeGifs/reviewsSort.gif)
 
-### Sort Reviews by Rating
+Sort Reviews by Rating
 ![](./readMeGifs/reviewsSortByRating.gif)
 
-### Add a Review
+Add a Review
 
 ![](./readMeGifs/reviewsAddReview.gif)
 
