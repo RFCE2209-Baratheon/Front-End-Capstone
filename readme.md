@@ -2,20 +2,37 @@
 ## HackReactor FEC - Team Baratheon
 
 
-### Overview
+## Overview
 A retail website fufulling an intensive business requirement document as provided by a client. The website provides functionality for browsing/shopping a number of available products hosted on a third-party API.
 
 This application comes out of the box ready to host.
 
-### Related Projects
-https://github.com/RFCE2209-Baratheon
+## Table of Contents
+* [Team](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/edit/main/readme.md#team)
+* [Tech Stack](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#tech-stack)  
+* [Product Features](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#product-features)  
+* [Installation](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)  
+* [Roadmap](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)  
 
-### Team
+
+## Team
 
 Brian Stern,
 Huong Nguyen,
 Mario Valencia,
 Andrew Arsenault
+
+## Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+
+## Product Features
+
+## Installation
 
 ### Starting the web application
 
