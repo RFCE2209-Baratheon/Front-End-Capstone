@@ -42,6 +42,9 @@ Toggle Theme
 Product Image Carousel
 ![](./readMeGifs/overviewCarousel.gif)
 
+Product Image Magnification
+![](./readMeGifs/overviewExpandedView.gif)
+
 Style Selector
 ![](./readMeGifs/overviewStyleSelector.gif)
 
