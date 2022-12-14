@@ -1,5 +1,5 @@
 
-## HackReactor FEC - Team Baratheon
+## Baratheon Retail
 
 
 ## Overview
@@ -12,15 +12,14 @@ This application comes out of the box ready to host.
 * [Tech Stack](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#tech-stack)  
 * [Product Features](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#product-features)  
 * [Installation](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)  
-* [Roadmap](https://github.com/huongnguyen04/dinner-party/blob/main/README.md#installation)  
 
 
 ## Team
+* [Huong Nguyen](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#product-overview) - Product Overview
+* [Mario Valencia](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#related-products) - Related Products
+* [Andrew Arsenault](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#questions--answers) - Questions & Answers
+* [Brian Stern](https://github.com/RFCE2209-Baratheon/Front-End-Capstone/tree/overview6#related-products) - Related Products
 
-Brian Stern,
-Huong Nguyen,
-Mario Valencia,
-Andrew Arsenault
 
 ## Tech Stack
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -34,6 +33,9 @@ Andrew Arsenault
 
 ## Website Overview
 ![](./readMeGifs/website.gif)
+
+### Toggle Theme
+![](./readMeGifs/themeToggle.gif)
 
 ## Product Overview
 
@@ -63,8 +65,41 @@ Andrew Arsenault
 
 ## Questions & Answers
 
+### Load More Questions
+![](./readMeGifs/qaLoadQuestions.gif)
+
+### View Answers to Questions
+![](./readMeGifs/qaViewAnswers.gif)
+
+### Search Questions and Answers
+![](./readMeGifs/qaSearch.gif)
+
+### Vote Helpfulness of Question
+![](./readMeGifs/qaHelpfulVote.gif)
+
+### Report Question
+![](./readMeGifs/qaReportQuestion.gif)
+
+### Add a Question
+![](./readMeGifs/qaAddQuestion.gif)
+
 ## Ratings & Reviews
 
+### Load More Reviews
+![](./readMeGifs/reviewLoadMoreReviews.gif)
+
+### Vote Helpfulness of Review
+![](./readMeGifs/reviewsVoteHelpful.gif)
+
+### Sort Reviews by Category
+![](./readMeGifs/reviewsSort.gif)
+
+### Sort Reviews by Rating
+![](./readMeGifs/reviewsSortByRating.gif)
+
+### Add a Review
+
+![](./readMeGifs/reviewsAddReview.gif)
 
 ## Installation
 
@@ -108,7 +143,3 @@ npm run server-dev
 
 ### Requirements
 (https://nodejs.org/en/download/)
-
-
-
-
