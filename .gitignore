@@ -106,3 +106,4 @@ dist
 /config.js
 /public/bundle.js
 /public/bundle.js.gz
+.DS_Store
