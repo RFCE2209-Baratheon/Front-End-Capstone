@@ -16,7 +16,6 @@ const Overview = ({ productId, average, reviews }) => {
   const [expandedView, setExpandedView] = useState(false);
   const [styleId, setStyleId] = useState(null);
 
-
   useEffect(() => {
     axios.get(`/products/${productId}/styles`)
       .then((response) => {
@@ -92,17 +91,14 @@ const StyledContainer = styled.div`
     "left1 right2"
     "left1 right3"
     "bottom bottom"` :
-    `"left1"
-    "bottom"`};
+    `". left1 ."
+    "bottom bottom bottom"`};
   column-gap: 10px;
-  // min-width: 1100px;
+  min-width: 1100px;
 `
 
 const StyledImageGallery = styled.div`
   grid-area: left1;
-  // margin-left: 100px;
-  margin-left: ${props => props.default ? 'none' : '20%'};
-  margin-right: ${props => props.default ? 'none' : '30%'};
 `
 
 const StyledProductInfo = styled.div`
@@ -110,6 +106,8 @@ const StyledProductInfo = styled.div`
 `
 const StyledDescription = styled.div`
   grid-area: bottom;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: 100px;
 `
 
