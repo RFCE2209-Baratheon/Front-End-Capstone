@@ -13,9 +13,7 @@ const DefaultView = ( {styleImages, activeThumbnails, current, setCurrent, nextS
             {current !== length-1 && <StyledRightArrow onClick={nextSlide} />}
             {current !== 0 && <StyledLeftArrow onClick={prevSlide} />}
           </StyledHorizontalButtons>
-        <StyledCarouselImageSize>
           <ImageCarousel styleImages={styleImages} current={current} />
-        </StyledCarouselImageSize>
 
         <StyledThumbnailAlign>
           <StyledVerticalButtons>
@@ -57,15 +55,12 @@ const StyledThumbnailAlign = styled.div`
   margin-left: 10px;
 `
 
-const StyledCarouselImageSize = styled.div`
-  width: 500px;
-`
-
 const StyledVerticalButtons = styled.div`
   display: flex;
   justify-content: center;
 `
 const StyledHorizontalButtons = styled.div`
+  width: 100%;
   display: flex;
   align-content: center;
 `
