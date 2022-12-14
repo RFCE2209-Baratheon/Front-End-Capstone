@@ -32,6 +32,40 @@ Andrew Arsenault
 
 ## Product Features
 
+## Website Overview
+![](./readMeGifs/website.gif)
+
+## Product Overview
+
+### Product Image Carousel
+![](./readMeGifs/overviewCarousel.gif)
+
+### Style Selector
+![](./readMeGifs/overviewStyleSelector.gif)
+
+### Add Product to Cart
+![](./readMeGifs/overviewAddToCart.gif)
+
+## Related Products
+
+### Related Product Selector
+![](./readMeGifs/relatedProductChange.gif)
+
+### Related Products Cards
+![](./readMeGifs/relatedCardAnimation.gif)
+
+### Related Products Carousel
+![](./readMeGifs/relatedCardsCarousel.gif)
+
+### Outfit Creation
+![](./readMeGifs/relatedOutfitCreation.gif)
+
+
+## Questions & Answers
+
+## Ratings & Reviews
+
+
 ## Installation
 
 ### Starting the web application
