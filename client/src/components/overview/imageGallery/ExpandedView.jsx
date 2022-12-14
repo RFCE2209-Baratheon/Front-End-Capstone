@@ -21,11 +21,11 @@ const ExpandedView = ( {styleImages, activeThumbnails, current, setCurrent, next
         </StyledHorizontalButtons>
 
         <StyledThumbnailAlign>
-          <StyledButtonDiv>
+          <StyledVerticalButtons>
             <StyledBackButton onClick={changeView}></StyledBackButton>
             {!magnified && verticalScroll && start !== 0 && <StyledUpArrowExpand onClick={upSlide} />}
             {!magnified && verticalScroll && end !== length && <StyledDownArrowExpand onClick={downSlide} />}
-          </StyledButtonDiv>
+          </StyledVerticalButtons>
 
             <ImageSidebar activeThumbnails={activeThumbnails} current={current} setCurrent={setCurrent} start={start} />
         </StyledThumbnailAlign>
@@ -66,20 +66,18 @@ const StyledThumbnailAlign = styled.div`
 `
 
 const StyledCarouselImageSize = styled.div`
-  width: 500px;
   &:hover {
     cursor:crosshair;
   }
 `
 
-const StyledButtonDiv = styled.div`
+const StyledVerticalButtons = styled.div`
   display: flex;
   justify-content: center;
 `
 
 const StyledHorizontalButtons = styled.div`
-  display: flex;
-  align-content: center;
+  width: 100%;
 `
 
 export default ExpandedView;

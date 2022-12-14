@@ -72,7 +72,7 @@ const StyledContainer = styled.div`
 const StyledDescription = styled.div`
   width: 40%;
   display: table-cell;
-  // padding-right: 50px;
+  padding-right: 20px;
 `
 const StyledFeatures = styled.div`
   padding-left: 35px;
