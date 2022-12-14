@@ -89,6 +89,12 @@ Add a Question
 Load More Reviews
 ![](./readMeGifs/reviewLoadMoreReviews.gif)
 
+Vote Helpfulness of Review
+![](./readMeGifs/reviewsVoteHelpful.gif)
+
+Sort Reviews by Category
+![](./readMeGifs/reviewsSort.gif)
+
 Sort Reviews by Rating
 ![](./readMeGifs/reviewsSortByRating.gif)
 
